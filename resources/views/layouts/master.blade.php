@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="IPTECH-CI">
-    <meta name="keywords" content="IPTECH-CI,ecole,eleve,etablissement">
+    <meta name="description" content="AEJ">
+    <meta name="keywords" content="aej">
     <meta name="author" content="Amia Stephane - r4gamia@gmail.com">
-    <title>IPTECH-CI - @yield('title')</title>
-    <link rel="apple-touch-icon" href="{{ asset('app-assets/images/logo/icon_iptechci.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/logo/icon_iptechci.png') }}">
+    <title>AEJ-DIAGNOSTIC - @yield('title')</title>
+    <link rel="apple-touch-icon" href="{{ asset('app-assets/images/logo/logo_aej.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/logo/logo_aej.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
     @include('layouts.styles')
 </head>
@@ -32,12 +32,6 @@
                         <h2 class="content-header-title float-left mb-0">@yield('title')</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('home') }}">Tableau de Bord</a>
-                                </li>
-                                <li class="breadcrumb-item">
-                                    <a href="#">@yield('title')</a>
-                                </li>
                                 <li class="breadcrumb-item active">@yield('subTitle')</li>
                             </ol>
                         </div>

@@ -38,12 +38,12 @@
                 </a>
                 <ul class="menu-content" style="">
                     <li>
-                        <a href="{{ route('eleves.create') }}">
+                        <a href="">
                             <i></i><span class="menu-item" data-i18n="Categorie create">Ajouter</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('eleves.index') }}">
+                        <a href="">
                             <i></i><span class="menu-item" data-i18n="Categorie create">Liste</span>
                         </a>
                     </li>
@@ -58,24 +58,24 @@
                     </a>
                     <ul class="menu-content" style="">
                         <li>
-                            <a href="{{route('ecole.create')}}">
+                            <a href="">
                                 <i></i><span class="menu-item" data-i18n="Categorie create">Ajouter</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('viewiport') }}">
+                            <a href="">
                                 <i></i><span class="menu-item" data-i18n="Categorie create">Importer</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('ecole.index')}}">
+                            <a href="">
                                 <i></i><span class="menu-item" data-i18n="Categorie affiche">Liste</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('users.index')}}">
+                    <a href="">
                         <i class="feather icon-zap"></i>
                         <span class="menu-title" data-i18n="">Utilisateur</span>
                     </a>

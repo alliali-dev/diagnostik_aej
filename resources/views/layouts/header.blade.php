@@ -22,12 +22,12 @@
                 <ul class="nav navbar-nav ">
                     @if (Route::has('login'))
                         @auth
-                            @if(auth()->user()->hasRole('Admin'))
+                            @if(auth()->user()->hasRole('SuperAdmin'))
                                 <div class="col float-right">
                                     <div class="form-group">
                                         <label for="name"><span class="custom-control-indicator" style="font-size: 14px;">Année Acedemic</span></label>
                                         {{--{{ Form::select('active', list_academic(),null, ['id' => 'academic','class'=>'form-control', 'required' => 'required']) }}--}}
-                                        {{ Form::select('active', list_academic() != null ? list_academic() : null,null, ['id' => 'academic','class'=>'form-control', 'required'=>true ]) }}
+                                    {{--    {{ Form::select('active', list_academic() != null ? list_academic() : null,null, ['id' => 'academic','class'=>'form-control', 'required'=>true ]) }}--}}
                                     </div>
                                 </div>
                             @endif
@@ -35,7 +35,7 @@
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="font-size: 14px;">
                                         <span class="user-name text-bold-600">{{ Auth::user()->name }}</span>
-                                        <span class="user-status">CODE ECOLE: {{ Auth::user()->settings['code'] }}</span>
+                                        <span class="user-status">CODE ECOLE: {{ Auth::user()->agence->code }}</span>
                                     </div>
                                     <span>
                                 <img class="round" src="{{ asset('login.png') }}"
@@ -47,7 +47,7 @@
                                     <a class="dropdown-item" href="#">
                                         <i class="feather icon-user"></i> Mon Compte
                                     </a>
-                                    @if(auth()->user()->hasRole('Admin'))
+                                    @if(auth()->user()->hasRole('SuperAdmin'))
                                         <a class="dropdown-item" href="{{route('users.index')}}">
                                             <i class="feather icon-user-plus"></i> Gérer Utilisateur
                                         </a>
@@ -81,33 +81,6 @@
 </nav>
 @section('js')
     <script>
-        $(document).ready(function () {
-            $("#academic").on('change',function() {
-                var val = $(this).val();
-                console.log(val);
-                if(val != ''){
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        url: "{{ route('anneescolaire.set.acedemic') }}",
-                        method: 'post',
-                        data:{id:val},
-                        dataType: 'json',
-                        success: function(result){
-
-                            location.reload(true);
-
-                        },error:function(jqXHR, textStatus){
-                            alert('Error.\n'+ jqXHR.responseText);
-                        }
-                    });
-                }
-            });
-        });
-
     </script>
 @endsection
 <!-- END: Header-->
