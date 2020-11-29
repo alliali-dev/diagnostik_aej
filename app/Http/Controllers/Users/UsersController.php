@@ -31,6 +31,7 @@ class UsersController extends Controller
 
     public function index()
     {
+
         $title = 'List of active Users';
         $users = User::where('status', true)->get();
         return view('users.index');
@@ -109,7 +110,7 @@ class UsersController extends Controller
             'name' => 'sometimes|required',
             'email' => 'sometimes|required|email|unique:users',
             'password' => 'sometimes',
-            'ecole_id' => 'required|string',
+            'agence_id' => 'required|string',
             'password_confirm' => 'sometimes|same:password'
         ]);
 

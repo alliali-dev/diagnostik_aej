@@ -18,8 +18,8 @@
                 <div class="mb-3">
                     <a class="btn btn-primary" href=""
                        data-toggle="modal"
-                       data-target="#addRole">
-                        <span><i class="feather icon-plus"></i>Ajouter role</span>
+                       data-target="#addAgence">
+                        <span><i class="feather icon-plus"></i>Ajouter agence</span>
                     </a>
                 </div>
 
@@ -27,45 +27,42 @@
                     <table class="table table-hover table-striped">
                         <thead>
                         <tr>
-                            {{--  @if(auth()->user()->hasRole('Admin'))
-                                  <th>Etablissement</th>
-                              @endif--}}
                             <th>#</th>
                             <th>name</th>
-                            <th>description</th>
+                            <th>code</th>
                             <th>date creation</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($roles as $item)
+                        @foreach($agences as $item)
                             <tr>
                                 <td> {{ $item->id }}</td>
                                 <td> {{ $item->name }}</td>
-                                <td> {{ $item->guard_name }}</td>
+                                <td> {{ $item->code }}</td>
                                 <td> {{ $item->created_at }}</td>
                                 <td class="float-right">
                                     <button type="button"
                                             data-id="{{$item->id}}"
                                             data-name="{{$item->name}}"
-                                            data-guard_name="{{$item->guard_name}}"
+                                            data-code="{{$item->code}}"
                                             data-toggle="modal"
-                                            data-target="#editRole"
+                                            data-target="#editAgence"
                                             class="btn btn-icon btn-icon rounded-circle btn-primary mr-0 waves-effect waves-light">
                                         <i class="feather icon-edit"></i>
                                     </button>
                                     <button type="button"
                                             data-id="{{$item->id}}"
                                             data-toggle="modal"
-                                            data-target="#deletedRole"
+                                            data-target="#deletedAgence"
                                             class="btn btn-icon btn-icon rounded-circle btn-danger mr-0 waves-effect waves-light">
                                         <i class="feather icon-trash"></i>
                                     </button>
                                 </td>
                             </tr>
                         @endforeach
-                        @if(count($roles) < 1)
+                        @if(count($agences) < 1)
                             <tr>
-                                <td colspan="10" class="text-center">Pas d'role trouvé !</td>
+                                <td colspan="10" class="text-center">Pas d'agence trouvé !</td>
                             </tr>
                         @endif
                         </tbody>
@@ -82,18 +79,18 @@
 
 
     <!-- Modal New Social Viewer -->
-    <div class="modal fade" id="addRole" tabindex="-1" role="dialog"
+    <div class="modal fade" id="addAgence" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel16" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white" id="myModalLabel16">Ajouter role</h4>
+                    <h4 class="modal-title text-white" id="myModalLabel16">Ajouter agence</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                {{ Form::open(['route'=>'roles.store', 'files'=>true , 'method' => 'POST']) }}
+                {{ Form::open(['route'=>'users.agencestore', 'files'=>true , 'method' => 'POST']) }}
                 {{csrf_field()}}
                 <!-- Form Group -->
                     <div class="form-group">
@@ -101,8 +98,8 @@
                         <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
                     </div>
                     <div class="form-group">
-                        <label for="email-1">Description</label>
-                        <input type="text" name="guard_name" class="form-control" aria-describedby="emailHelp1">
+                        <label for="email-1">Code</label>
+                        <input type="text" name="code" class="form-control" aria-describedby="emailHelp1">
                     </div>
                     <div class="form-group text-right mb-0">
                         <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
@@ -116,7 +113,7 @@
 
 
     <!-- Modal New Social Viewer -->
-    <div class="modal fade" id="editRole" tabindex="-1" role="dialog"
+    <div class="modal fade" id="editAgence" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel16" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -127,7 +124,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                {{ Form::open(['route'=>'roles.update', 'files'=>true , 'method' => 'POST']) }}
+                {{ Form::open(['route'=>'users.agenceupdate', 'files'=>true , 'method' => 'POST']) }}
                 @method('PUT')
                 @csrf()
                 <!-- Form Group -->
@@ -137,8 +134,8 @@
                     </div>
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="email-1">Description</label>
-                        <input type="text" name="guard_name" class="form-control" id="guard_name" aria-describedby="emailHelp1">
+                        <label for="email-1">Code</label>
+                        <input type="text" name="code" class="form-control" id="code" aria-describedby="emailHelp1">
                     </div>
                     <div class="form-group text-right mb-0">
                         <button type="submit" class="btn btn-success text-uppercase">Modifier</button>
@@ -150,7 +147,7 @@
         </div>
     </div>
 
-    <div class="modal modal-danger fade" id="deletedRole" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+    <div class="modal modal-danger fade" id="deletedAgence" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-danger white">
@@ -160,14 +157,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ Form::open(['route'=>'roles.destroy', 'files'=>true , 'methode' => 'POST']) }}
+                    {{ Form::open(['route'=>'users.agencedestroy', 'files'=>true , 'methode' => 'POST']) }}
                     {{method_field('delete')}}
                     {{csrf_field()}}
                     <div class="modal-body">
                         <p class="text-center">
                             Êtes-vous sûr de vouloir le supprimer ?
                         </p>
-                        <input type="hidden" name="id" id="role_id" value="">
+                        <input type="hidden" name="id" id="agence_id" value="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Non, Annuler</button>
@@ -182,22 +179,22 @@
 @endsection
 @section('js')
     <script>
-        $('#deletedRole').on('show.bs.modal', function (event) {
+        $('#deletedAgence').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');
             var modal = $(this);
-            modal.find('.modal-body #role_id').val(id);
+            modal.find('.modal-body #agence_id').val(id);
         });
 
-        $('#editRole').on('show.bs.modal', function (event) {
+        $('#editAgence').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');
             var name = button.data('name');
-            var guard_name = button.data('guard_name');
+            var code = button.data('code');
             var modal = $(this);
             modal.find('.modal-body #id').val(id);
             modal.find('.modal-body #name').val(name);
-            modal.find('.modal-body #guard_name').val(guard_name);
+            modal.find('.modal-body #code').val(code);
         });
     </script>
 @endsection

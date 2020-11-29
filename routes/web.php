@@ -18,13 +18,25 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::group(['prefix'=>'Session','namespace'=>'Session','as'=>'session.'], function () {
     Route::post('/login', 'SessionController@login')->name('login');
+});
+
+Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function () {
+    Route::get('/', 'RoleController@index')->name('index');
+    Route::post('/store', 'RoleController@store')->name('store');
+    Route::delete('/destroy', 'RoleController@destroy')->name('destroy');
+    Route::put('/update', 'RoleController@update')->name('update');
 });
 
 Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], function () {
 
     Route::post('autocomplete', 'AgenceController@autocomplete')->name('autocomplete');
+    Route::get('/agence', 'AgenceController@index')->name('agenceindex');
+    Route::post('/agence/store', 'AgenceController@store')->name('agencestore');
+    Route::delete('/agence/destroy', 'AgenceController@destroy')->name('agencedestroy');
+    Route::put('/agence/update', 'AgenceController@update')->name('agenceupdate');
 
     Route::get('/', 'UsersController@index')->name('index');
     Route::get('/create', 'UsersController@create')->name('create');

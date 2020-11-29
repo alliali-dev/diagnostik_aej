@@ -35,7 +35,7 @@
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="font-size: 14px;">
                                         <span class="user-name text-bold-600">{{ Auth::user()->name }}</span>
-                                        <span class="user-status">CODE ECOLE: {{ Auth::user()->agence->code }}</span>
+                                        <span class="user-status">Code Agence: {{ Auth::user()->agence->code }}</span>
                                     </div>
                                     <span>
                                 <img class="round" src="{{ asset('login.png') }}"
@@ -51,14 +51,29 @@
                                         <a class="dropdown-item" href="{{route('users.index')}}">
                                             <i class="feather icon-user-plus"></i> Gérer Utilisateur
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('roles.index') }}">
                                             <i class="feather icon-shield"></i> Gérer Roles
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('users.agenceindex') }}">
+                                            <i class="feather icon-shield"></i> Gérer Agences
                                         </a>
                                     @endif
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="icon icon-login-page icon-fw mr-2 mr-sm-1"></i>{{ __('Déconnexion') }}
                                     </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    {{--  <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="feather icon-log-out"></i>{{ __('Logout') }}
+                                </a>
+                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>--}}
                                 </div>
                             </li>
 

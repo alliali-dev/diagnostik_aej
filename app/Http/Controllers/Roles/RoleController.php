@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Roles;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
@@ -8,31 +8,11 @@ use Illuminate\Http\Request;
 use MercurySeries\Flashy\Flashy;
 use Spatie\Permission\Models\Role;
 
-class AgenceController extends Controller
+class RoleController extends Controller
 {
-    public function autocomplete(Request $request){
-
-        $search = $request->search;
-        if($search == ''){
-
-            $agences = Agence::orderby('name','asc')->select('id','name')->limit(10)->get();
-        }else{
-
-            $agences = Agence::orderby('name','asc')->select('id','name')->where('name', 'like', '%' .$search . '%')->limit(10)->get();
-        }
-
-        $response = array();
-
-        foreach($agences as $agence){
-            $response[] = array("value"=> $agence->id,"label"=> $agence->name);
-        }
-
-        return response()->json($response);
-    }
-
     public function index(){
-        $agences = Agence::all();
-        return view('users.agence.index',compact('agences'));
+        $roles = Role::get();
+        return view('users.roles.index',compact('roles'));
     }
 
     public function store(Request $request){
@@ -41,13 +21,14 @@ class AgenceController extends Controller
             Flashy::error('ajouter un nom');
             return back();
         }
+
         try {
-            Agence::create($request->all());
+            Role::create($request->all());
             Flashy::success('Enregistrement effectue');
         } catch (\Exception $exception) {
             Flashy::error('Enregistrement annule');
         }
-        return back();
+      return back();
     }
 
     public function update(Request $request){
@@ -56,7 +37,7 @@ class AgenceController extends Controller
             Flashy::error('ajouter un name');
             return back();
         }
-        $role = Agence::findOrFail($request->id);
+        $role = Role::findById($request->id);
         if($role){
             $role->update($request->all());
             Flashy::success('Modification effectue');
@@ -67,11 +48,12 @@ class AgenceController extends Controller
     public function destroy(Request $request)
     {
         try {
-            Agence::destroy($request->id);
+            Role::destroy($request->id);
         } catch (\Exception $exception) {
             Flashy::error('Suppression interrompu');
         }
         Flashy::success('Roles efface');
         return back();
     }
+
 }

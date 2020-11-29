@@ -182,7 +182,7 @@
                 },
                 select: function (event, ui) {
                     // Set selection
-                    $('#agnce').val(ui.item.label); // display the selected text
+                    $('#agence').val(ui.item.label); // display the selected text
                     $('#agenceid').val(ui.item.value); // save selected id to input
                     return false;
                 }
