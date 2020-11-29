@@ -23,13 +23,13 @@
                     @if (Route::has('login'))
                         @auth
                             @if(auth()->user()->hasRole('SuperAdmin'))
-                                <div class="col float-right">
+                                {{--<div class="col float-right">
                                     <div class="form-group">
                                         <label for="name"><span class="custom-control-indicator" style="font-size: 14px;">Année Acedemic</span></label>
-                                        {{--{{ Form::select('active', list_academic(),null, ['id' => 'academic','class'=>'form-control', 'required' => 'required']) }}--}}
-                                    {{--    {{ Form::select('active', list_academic() != null ? list_academic() : null,null, ['id' => 'academic','class'=>'form-control', 'required'=>true ]) }}--}}
+                                        --}}{{--{{ Form::select('active', list_academic(),null, ['id' => 'academic','class'=>'form-control', 'required' => 'required']) }}--}}{{--
+                                    --}}{{--    {{ Form::select('active', list_academic() != null ? list_academic() : null,null, ['id' => 'academic','class'=>'form-control', 'required'=>true ]) }}--}}{{--
                                     </div>
-                                </div>
+                                </div>--}}
                             @endif
                             <li class="dropdown dropdown-user nav-item float-right">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
@@ -55,7 +55,7 @@
                                             <i class="feather icon-shield"></i> Gérer Roles
                                         </a>
                                         <a class="dropdown-item" href="{{ route('users.agenceindex') }}">
-                                            <i class="feather icon-shield"></i> Gérer Agences
+                                            <i class="feather icon-activity"></i> Gérer Agences
                                         </a>
                                     @endif
                                     <div class="dropdown-divider"></div>

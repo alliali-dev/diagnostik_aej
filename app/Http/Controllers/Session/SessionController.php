@@ -26,18 +26,31 @@ class SessionController extends Controller
 
     public function login()
     {
-       // dd(\request()->all());
+        request()->validate([
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'agence_id' => 'required|string',
+        ]);
+
         $user = User::where('email', request(['email']))->first();
 
         if(!$user){
             Flashy::error('Aucun compte ne correspond à cet utilisateur. Veuillez contacter l\'administrateur');
             return back();
         }else{
-            $agence = Agence::where('code',request(['code']))->first();
-            session()->put( 'orig_agence', $agence->id );
+            $agence = Agence::where('code',request(['agence_id']))->first();
+            if (!$agence){
+                Flashy::error('Verifier votre code agence');
+                return back();
+            }else{
+                session()->put('orig_agence',$agence->id);
+               // dd(session()->get('orig_agence'));
+            }
         }
+        $data = request(['email', 'password']);
+        $data['agence_id'] = $agence->id;
 
-        if(!auth()->attempt(request(['email', 'password','']))){
+        if(!auth()->attempt($data)){
             Flashy::error('Votre adresse électronique ou votre mot de passe est incorrecte');
             return back();
         }

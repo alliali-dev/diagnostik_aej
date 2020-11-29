@@ -50,7 +50,7 @@
                 </ul>
             </li>
 
-            @if(auth()->user()->hasRole('Admin'))
+            @if(auth()->user()->hasRole('SuperAdmin'))
                 <li class="nav-item has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-dollar-sign"></i>

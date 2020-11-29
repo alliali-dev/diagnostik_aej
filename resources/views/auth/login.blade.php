@@ -58,7 +58,7 @@
                                     <div class="divider">
                                         <div class="divider-text">CODE AGENCE</div>
                                         <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                            <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required
+                                            <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="agence_id" value="{{ old('code') }}" required
                                                    autocomplete="current-password">
                                             <div class="form-control-position">
                                                 <i class="feather icon-user-minus"></i>
