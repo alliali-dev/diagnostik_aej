@@ -7,7 +7,7 @@
                 <a class="navbar-brand">
                     <div class="brand-logo"></div>
                     <h2 class="brand-text mb-0">
-                        IPTECH-CI
+                        AEJ-DIAG
                     </h2>
                 </a>
             </li>
@@ -34,23 +34,23 @@
             <li class="nav-item  has-sub sidebar-group-active">
                 <a href="#">
                     <i class="feather icon-user-plus"></i>
-                    <span class="menu-title" data-i18n="Videos">Elèves</span>
+                    <span class="menu-title" data-i18n="Videos">Diagnostique suivie</span>
                 </a>
                 <ul class="menu-content" style="">
                     <li>
-                        <a href="">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">Ajouter</span>
+                        <a href="{{ route('diagnostik.create') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">suivie</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">Liste</span>
+                        <a href="{{ route('diagnostik.index') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">liste</span>
                         </a>
                     </li>
                 </ul>
             </li>
 
-            @if(auth()->user()->hasRole('SuperAdmin'))
+           {{-- @if(auth()->user()->hasRole('SuperAdmin'))
                 <li class="nav-item has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-dollar-sign"></i>
@@ -80,7 +80,7 @@
                         <span class="menu-title" data-i18n="">Utilisateur</span>
                     </a>
                 </li>
-            @endif
+            @endif--}}
         </ul>
     </div>
 </div>

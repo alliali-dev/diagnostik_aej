@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd(session()->get('orig_agence'));
+        //dd(getagencesession());
         return view('home');
     }
 }

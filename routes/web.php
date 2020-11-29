@@ -30,6 +30,14 @@ Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function (
     Route::put('/update', 'RoleController@update')->name('update');
 });
 
+Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
+    Route::get('/', 'DiagnostikController@index')->name('index');
+    Route::get('/create', 'DiagnostikController@create')->name('create');
+    Route::post('/store', 'DiagnostikController@store')->name('store');
+    Route::delete('/destroy/{id}', 'DiagnostikController@destroy')->name('destroy');
+    Route::put('/update/{id}', 'DiagnostikController@update')->name('update');
+});
+
 Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], function () {
 
     Route::post('autocomplete', 'AgenceController@autocomplete')->name('autocomplete');
