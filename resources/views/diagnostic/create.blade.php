@@ -555,19 +555,23 @@
             $(document).ready(function(){
                 $( "#matriculeaej" ).autocomplete({
                     source: function( request, response ) {
-                        // Fetch data
-                        $.ajax({
-                            url:"http://localhost/diag_api/public/api/"+ request.term,
-                            type: 'get',
-                            dataType: "json",
-                            data: {
-                                _token: "{{ csrf_token() }}",
-                                search: request.term
-                            },
-                            success: function( data ) {
-                                response( data );
-                            }
-                        });
+                       if(request.term.length > 11){
+                            console.log(request.term.length);
+                            // Fetch data
+                            $.ajax({
+                                url:"http://localhost/diag_api/public/api/"+ request.term,
+                                type: 'get',
+                                dataType: "json",
+                                data: {
+                                    _token: "{{ csrf_token() }}",
+                                    search: request.term
+                                },
+                                success: function( data ) {
+                                    response( data );
+                                }
+                            });
+                       }
+
                     },
                     select: function (event, ui) {
                         // Set selection
@@ -582,7 +586,7 @@
                         $('#nationalite').val(ui.item.nationalite);
                         $('#contact').val(ui.item.telephone);
                         $('#diplome').val(ui.item.diplome);
-                        $('#niveaudetude').val(ui.item.niveaudetude);
+                        $('#niveaudetude').val(ui.item.niveauetude);
                         // display the selected text
                         //$('#agenceid').val(ui.item.value); // save selected id to input
                         return false;
