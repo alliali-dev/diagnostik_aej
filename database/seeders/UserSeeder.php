@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'agence_id' => 1
+            'agence_id' => 17
         ]);
     }
 }

@@ -44,6 +44,11 @@
                     </li>
                     <li>
                         <a href="{{ route('diagnostik.index') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">Mes Suivies</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('diagnostik.index') }}">
                             <i></i><span class="menu-item" data-i18n="Categorie create">liste</span>
                         </a>
                     </li>

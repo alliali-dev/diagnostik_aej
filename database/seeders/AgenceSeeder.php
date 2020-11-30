@@ -17,20 +17,108 @@ class AgenceSeeder extends Seeder
     {
         $agence= [
             [
-                'name' => 'PLATEAU',
-                'code' => 'PLAT01',
+                'name' => 'ABOBO',
+                'code' => '01',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ],
-            [
+            ], [
+                'name' => 'ADJAME',
+                'code' => '02',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ], [
+                'name' => 'TREICHVILLE',
+                'code' => '03',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
                 'name' => 'YOPOUGON',
-                'code' => 'YOP02',
+                'code' => '04',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'MARCORY',
-                'code' => 'MAR03',
+            ],[
+                'name' => 'DIMBOKRO',
+                'code' => '06',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'ABENGOUROU',
+                'code' => '07',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'DALOA',
+                'code' => '08',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'BOUAKE',
+                'code' => '09',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'GAGNOA',
+                'code' => '10',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'SANPEDRO',
+                'code' => '11',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'YAMOUSSOUKRO',
+                'code' => '12',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'GUIGLO',
+                'code' => '13',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'KORHOGO',
+                'code' => '16',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'DG-PLATEAU',
+                'code' => '17',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'ABOISSO',
+                'code' => '18',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'MAN',
+                'code' => '19',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'BEOUMI',
+                'code' => '20',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'DAOUKRO',
+                'code' => '21',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'ODIENNE',
+                'code' => '22',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'SOUBRE',
+                'code' => '23',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],[
+                'name' => 'PRESTIGE',
+                'code' => '24',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

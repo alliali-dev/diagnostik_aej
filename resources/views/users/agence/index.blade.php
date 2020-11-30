@@ -70,7 +70,7 @@
                 </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center mt-2">
-                       {{-- {{ $ecoles->links() }}--}}
+                        {{ $agences->links() }}
                     </ul>
                 </nav>
             </div>

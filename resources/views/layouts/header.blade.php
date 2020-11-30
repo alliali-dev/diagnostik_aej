@@ -38,7 +38,7 @@
                                         <span class="user-status">Code Agence: {{ Auth::user()->agence->code }}</span>
                                     </div>
                                     <span>
-                                <img class="round" src="{{ asset('login.png') }}"
+                                <img class="round" src="{{ asset('app-assets/images/logo/logo_aej.png') }}"
                                      alt="avatar" height="40" width="40"/>
                                         {{--<img src="{{ asset('app-assets/images/portrait/small/avatar-s-11.png') }}" alt="branding logo" width="100%">--}}
                             </span>

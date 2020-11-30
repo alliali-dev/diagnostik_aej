@@ -17,41 +17,106 @@
                     <div class="card-content">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-8">
-
+                                <div class="col-12">
                                     <form id="videoForm" action="" class="icons-tab-steps wizard-circle"
                                           method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="template" value="optin">
                                     @csrf
                                     <!-- Step 1 -->
-                                        <h6><i class="step-icon feather icon-video"></i> Video</h6>
+                                        <h6><i class="step-icon feather icon-info"></i>Information Demandeur</h6>
                                         <fieldset>
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col">
                                                     <div class="form-group">
-                                                        <label for="videoSource">Video Source</label>
-                                                        <select class="custom-select form-control" id="videoSource"
-                                                                name="campaign[video_source]">
-                                                            <option value="mp4">MP4</option>
-                                                            <option value="youtube" selected>YouTube</option>
-                                                            <option value="vimeo">Vimeo</option>
-                                                        </select>
-                                                        <button id="btnFindVideo" type="button"
-                                                                class="btn btn-icon btn-icon rounded-circle btn-danger mt-1 waves-effect waves-light float-right"
-                                                                data-toggle="modal" data-target="#searchVideo">
-                                                            <i class="feather icon-search"></i>
-                                                        </button>
+                                                        <label for="matriculeaej">N° AEJ</label>
+                                                        <input type="text" name="matriculeaej" id="matriculeaej" placeholder="numero aej" class="form-control" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-12">
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col">
                                                     <div class="form-group">
-                                                        <label for="videoURL">Video URL</label>
-                                                        <input type="text" class="form-control" id="videoURL" name="campaign[video_url]" required>
+                                                        <label for="sexe">Sexe</label>
+                                                        <input type="text" class="form-control" id="sexe" name="sexe">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="datenaisance">Date naissance</label>
+                                                        <input type="text" class="form-control" id="datenaissance" name="datenaissance" placeholder="date de naissance">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="age">Age</label>
+                                                        <input type="text" class="form-control" id="age" name="age" placeholder="age">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="naturepiece">Nature Piece</label>
+                                                        <input type="text" name="naturepiece" id="naturepiece" placeholder="nature pieces" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="numpiece">N° Piece</label>
+                                                        <input type="text" name="npiece" id="npiece" placeholder="N° piece" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="nationalite">Nationalite</label>
+                                                        <input type="text" name="nationalite" id="nationalite" placeholder="nationalite" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="contact">Contact</label>
+                                                        <input type="text" name="contact" id="contact" placeholder="contact" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="lieudereisdence">Lieu de residence habituel</label>
+                                                        <input type="text" name="lieudereisdence" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="diplome">Diplôme</label>
+                                                        <input type="text" name="diplome" id="diplome" placeholder="Diplôme" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="specialitediplome">Spécialité du diplôme</label>
+                                                        <input type="text" name="specialitediplome" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="anneediplome">Année d'obtention du diplôme</label>
+                                                        <input type="text" name="anneediplome" id="anneediplome" placeholder="Année d'obtention du diplôme" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="niveaudetude">Niveau d'etudes</label>
+                                                        <input type="text" name="niveaudetude" id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                         </fieldset>
-
                                         <!-- Step 2 -->
                                         <h6><i class="step-icon feather icon-settings"></i> Settings</h6>
                                         <fieldset>
@@ -475,6 +540,8 @@
     <script src="{{ asset('app-assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
+    <script src="{{asset('jqueryui/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('jqueryui/jquery-ui.min.js')}}" type="text/javascript"></script>
 
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('app-assets/js/scripts/forms/wizard-steps.js') }}"></script>
@@ -484,6 +551,44 @@
     <script src="{{ asset('js/optin-product.js') }}"></script>
     <script>
         $(function() {
+
+            $(document).ready(function(){
+                $( "#matriculeaej" ).autocomplete({
+                    source: function( request, response ) {
+                        // Fetch data
+                        $.ajax({
+                            url:"http://localhost/diag_api/public/api/"+ request.term,
+                            type: 'get',
+                            dataType: "json",
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                                search: request.term
+                            },
+                            success: function( data ) {
+                                response( data );
+                            }
+                        });
+                    },
+                    select: function (event, ui) {
+                        // Set selection
+                        console.log(ui.item);
+                        console.log(ui.item);
+                        $('#matriculeaej').val(ui.item.label);
+                        $('#sexe').val(ui.item.sexe);
+                        $('#datenaissance').val(ui.item.datenaissance);
+                        $('#age').val(ui.item.age);
+                        $('#naturepiece').val(ui.item.typepieceidentite);
+                        $('#npiece').val(ui.item.numerocni);
+                        $('#nationalite').val(ui.item.nationalite);
+                        $('#contact').val(ui.item.telephone);
+                        $('#diplome').val(ui.item.diplome);
+                        $('#niveaudetude').val(ui.item.niveaudetude);
+                        // display the selected text
+                        //$('#agenceid').val(ui.item.value); // save selected id to input
+                        return false;
+                    }
+                });
+            });
 
             if ($('#videoSource').val() === 'youtube') {
                 $('#btnFindVideo').fadeIn('fast');
