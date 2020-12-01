@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Campaigns @endsection
+@section('title') Diagnostic @endsection
 
-@section('subTitle') Lead Template @endsection
+@section('subTitle') Post-suivie @endsection
 
 @section('content')
 
@@ -28,17 +28,8 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="matriculeaej">N° AEJ</label>
-                                                        <input type="text" name="matriculeaej" id="matriculeaej" placeholder="numero aej" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-
-                                                <div class="col">
-                                                    <div class="form-group">
                                                         <label for="sexe">Sexe</label>
-                                                        <input type="text" class="form-control" id="sexe" name="sexe">
+                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="sexe">
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -533,6 +524,38 @@
     </section>
     <!-- Form wizard with icon tabs section end -->
 
+     <div class="modal fade" id="addAej" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title text-white" id="myModalLabel16">Entrez n° AEJ</h4>
+                    {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> --}}
+                </div>
+                <div class="modal-body">
+                    <form>
+                        @csrf
+                        <div class="form-group">
+                            <label for="matriculeaej">N° AEJ</label>
+                            <input type="text" name="matriculeaej" id="matriculeaej" placeholder="numero aej" class="form-control" required>
+                        </div>
+                        <div id="loader" class="text-center" style="display: none;">
+                            <!--img src="{{ asset('img/loader_squares.gif') }}" alt="Loader"-->
+                            <div class="spinner-border" role="status" style="color: royalblue;">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <!--form control-->
+                        <div class="form-group text-right mb-0">
+                        <a class="btn btn-warning" href="{{route('home')}}">retour</a>
+                            <button type="button" id="aej_ok" class="btn btn-success">ok</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -546,120 +569,50 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('app-assets/js/scripts/forms/wizard-steps.js') }}"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="https://cdn.plyr.io/3.5.3/plyr.js"></script>
+  {{--   <script src="https://cdn.plyr.io/3.5.3/plyr.js"></script>
     <script src="{{ asset('js/optin-player.js') }}"></script>
-    <script src="{{ asset('js/optin-product.js') }}"></script>
+    <script src="{{ asset('js/optin-product.js') }}"></script> --}}
     <script>
-        $(function() {
+        $(document).ready(function(){
+            $("#addAej").modal(
+                {
+                    keyboard: false,
+                    backdrop:'static'
+                },'show');
+                var test = $("#aej_ok");
+                console.log(test);
 
-            $(document).ready(function(){
-                $( "#matriculeaej" ).autocomplete({
-                    source: function( request, response ) {
-                       if(request.term.length > 11){
-                            console.log(request.term.length);
-                            // Fetch data
-                            $.ajax({
-                                url:"http://localhost/diag_api/public/api/"+ request.term,
-                                type: 'get',
-                                dataType: "json",
-                                data: {
-                                    _token: "{{ csrf_token() }}",
-                                    search: request.term
-                                },
-                                success: function( data ) {
-                                    response( data );
-                                }
-                            });
-                       }
+                $("#aej_ok").click(function() {
+                     $('#loader').fadeIn();
+                    var matriculeaej = $('#matriculeaej').val();
 
-                    },
-                    select: function (event, ui) {
-                        // Set selection
-                        console.log(ui.item);
-                        console.log(ui.item);
-                        $('#matriculeaej').val(ui.item.label);
-                        $('#sexe').val(ui.item.sexe);
-                        $('#datenaissance').val(ui.item.datenaissance);
-                        $('#age').val(ui.item.age);
-                        $('#naturepiece').val(ui.item.typepieceidentite);
-                        $('#npiece').val(ui.item.numerocni);
-                        $('#nationalite').val(ui.item.nationalite);
-                        $('#contact').val(ui.item.telephone);
-                        $('#diplome').val(ui.item.diplome);
-                        $('#niveaudetude').val(ui.item.niveauetude);
-                        // display the selected text
-                        //$('#agenceid').val(ui.item.value); // save selected id to input
-                        return false;
+                    if (matriculeaej.length > 11) {
+                             $.ajax({
+                        url:"http://localhost/diag_api/public/api/"+ matriculeaej,
+                        type: 'get',
+                        dataType: "json",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            search: matriculeaej
+                        },success: function( data ) {
+                            $('#matriculeaej').val(data[0].label);
+                            $('#sexe').val(data[0].sexe);
+                            $('#datenaissance').val(data[0].datenaissance);
+                            $('#age').val(data[0].age);
+                            $('#naturepiece').val(data[0].typepieceidentite);
+                            $('#npiece').val(data[0].numerocni);
+                            $('#nationalite').val(data[0].nationalite);
+                            $('#contact').val(data[0].telephone);
+                            $('#diplome').val(data[0].diplome);
+                            $('#niveaudetude').val(data[0].niveauetude);
+                            $("#addAej").modal('hide');
+                             $('#loader').fadeOut();
+                        },error: function (jqXHR, exception) {
+                            alert(jqXHR);
+                        }
+                        });
                     }
                 });
-            });
-
-            if ($('#videoSource').val() === 'youtube') {
-                $('#btnFindVideo').fadeIn('fast');
-            }
-
-            // Resize the offers slider on window's resize
-            $(window).on('resize', function() {
-                makeResizing()
-            });
-
-            $('#btnSearch').on('click', function() {
-                $('#results').empty();
-                $('.loader').fadeIn('fast');
-                $.ajax({
-                    url: '',
-                    type: 'post',
-                    dataType: 'JSON',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        filter: $('#filter').val(),
-                        search: $('#search').val()
-                    }
-                }).done(function (data) {
-                    $('.loader').fadeOut('fast');
-                    $.each(data, function(i){
-                        $('#results').append(`
-                            <div class="col-xl-4 col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <img class="card-img-top img-fluid"
-                                             src="${data[i].image}" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title">${data[i].title}</h4>
-                                            <div class="d-flex justify-content-between mt-2">
-                                                <div class="icon-view mr-2">
-                                                    <i class="feather icon-eye text-success font-medium-5 align-middle"></i>
-                                                    <span>${data[i].views}</span>
-                                                </div>
-                                                <div class="icon-comment mr-2">
-                                                    <i class="feather icon-message-square font-medium-5 align-middle text-primary"></i>
-                                                    <span>${data[i].comments}</span>
-                                                </div>
-                                                <div class="icon-like mr-2">
-                                                    <i class="feather icon-thumbs-up text-danger font-medium-5 align-middle"></i>
-                                                    <span>${data[i].likes}</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" data-id="${data[i].link}"
-                                                class="btn gradient-light-primary btn-block mt-2 waves-effect waves-light select-video">
-                                                Select Video
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `);
-                    });
-                }).fail(function (error) {
-                    console.log(error)
-                });
-            });
-
-            $(document).on('click','.select-video', function () {
-                var url = $(this).data('id');
-                $('#searchVideo').modal('hide');
-                $('#videoURL').val(url).trigger('change');
-            });
         });
 
         function toggleOffers(offer_type) {
