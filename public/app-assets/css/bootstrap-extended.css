@@ -478,8 +478,10 @@ select.form-control:not([multiple='multiple']) {
   background-position : -webkit-calc(100% - 12px) 13px, -webkit-calc(100% - 20px) 13px, 100% 0;
   background-position :    -moz-calc(100% - 12px) 13px, -moz-calc(100% - 20px) 13px, 100% 0;
   background-position :         calc(100% - 12px) 13px, calc(100% - 20px) 13px, 100% 0;
-  -webkit-background-size : 12px 12px,  10px 10px;
-          background-size : 12px 12px,  10px 10px;
+  -webkit-background-size : 12px 12px,
+  10px 10px;
+          background-size : 12px 12px,
+  10px 10px;
   background-repeat : no-repeat;
   -webkit-appearance : none;
      -moz-appearance : none;

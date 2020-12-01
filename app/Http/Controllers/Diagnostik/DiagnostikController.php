@@ -61,6 +61,9 @@ class DiagnostikController extends Controller
     {
         //
     }
+    public function diagnos (){
+        return view('diagnostic.diagnos');
+    }
 
     /**
      * Update the specified resource in storage.

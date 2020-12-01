@@ -52,6 +52,11 @@
                             <i></i><span class="menu-item" data-i18n="Categorie create">liste</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('diagnostik.diagnos') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">Faire un entretien</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
