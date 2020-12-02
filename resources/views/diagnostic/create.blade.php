@@ -118,12 +118,23 @@
                                         <h6><i class="step-icon feather icon-settings"></i> Axe de travail</h6>
                                         <fieldset>
                                             <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="title">Duree de la rencontre</label>
-                                                        <input type="text" class="form-control" id="title" name="dureerencontre" required>
-                                                    </div>
+                                                <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="title">Duree de la rencontre</label>
+                                                            <input type="text" class="form-control" id="dureerencontre" name="dureerencontre" required>
+                                                        </div>
                                                 </div>
+                                                <div class="col">
+                                                    <button type="button" id="start" class="btn btn-success">commencer</button>
+                                                </div>
+                                                <div class="col">
+                                                    <button type="button" id="stop" class="btn btn-warning">arreter</button>
+                                                </div>
+                                                <div class="col">
+                                                    <button type="button" id="init" class="btn btn-info">initialiser</button>
+                                                </div>
+                                            </div>
+                                                <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
@@ -180,266 +191,6 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <!-- Step 3 -->
-                                       {{-- <h6><i class="step-icon feather icon-box"></i> Optin</h6>
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="productTitle">Title</label>
-                                                        <input type="text" class="form-control" id="productTitle" name="products[0][title]" required="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="productDescription">Description</label>
-                                                        <textarea name="products[0][description]" id="productDescription" rows="3" class="form-control" required=""></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="productPrice">Headline</label>
-                                                        <input type="text" class="form-control" id="productHeadline" name="products[0][headline]" required="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="ctaText">Button Text</label>
-                                                        <input type="text" class="form-control" id="ctaText" name="products[0][ctaText]">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="ThankMessage">Thank You Message</label>
-                                                        <input type="text" class="form-control" id="thankMessage" name="products[0][thank_message]" required="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="productImage">Image</label><br>
-                                                        <input type="file" id="productImage" name="products[0][image]">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--div class="accordion" id="slidesAccordion" data-toggle-hover="true"></div-->
-                                            <br>
-                                            <!--button id="addSlide" class="btn btn-block btn-success">Add Optin</button-->
-                                            <br>
-                                        </fieldset>
-
-                                        <!-- Step 4 -->
-                                        <h6><i class="step-icon feather icon-circle"></i> Customize</h6>
-                                        <fieldset>
-                                            <div class="accordion" id="custom" data-toggle-hover="true">
-                                                <div class="collapse-margin">
-                                                    <div class="card-header" id="customHeadingOne">
-                                                        <span class="lead collapse-title collapsed" data-toggle="collapse" role="button"
-                                                              data-target="#customCollapseOne" aria-expanded="false" aria-controls="customCollapseOne">
-                                                          Player
-                                                        </span>
-                                                    </div>
-                                                    <div id="customCollapseOne" class="collapse" aria-labelledby="customHeadingOne" data-parent="#custom">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="progressBarColor">Color</label>
-                                                                        <input type="color" class="form-control" id="progressBarColor" name="player[color]" value="#086EB3">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="controlsBarDisplay">Control Bar</label>
-                                                                        <select class="custom-select form-control" id="controlsBarDisplay" name="player[controls]">
-                                                                            <option value="1" selected>Yes</option>
-                                                                            <option value="0">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="autoplay">Autoplay</label>
-                                                                        <select class="custom-select form-control" id="autoplay" name="player[autoplay]">
-                                                                            <option value="1">Yes</option>
-                                                                            <option value="0" selected>No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 d-none">
-                                                                    <div class="form-group">
-                                                                        <label for="playerSize">Size</label>
-                                                                        <select class="custom-select form-control" id="playerSize" name="player[size]">
-                                                                            <option value="550x304">550x469</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="playerThumbnail">Thumbnail</label>
-                                                                        <input type="file" id="playerThumbnail" name="player[thumbnail]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="collapse-margin">
-                                                    <div class="card-header" id="customHeadingTwo">
-                                                    <span class="lead collapse-title collapsed" data-toggle="collapse" role="button"
-                                                          data-target="#customCollapseTwo" aria-expanded="false" aria-controls="customCollapseTwo">
-                                                      Optin
-                                                    </span>
-                                                    </div>
-                                                    <div id="customCollapseTwo" class="collapse" aria-labelledby="customHeadingTwo" data-parent="#custom">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="titleSize">Title Size</label>
-                                                                        <select class="custom-select form-control" id="titleSize" name="player[optinTitleSize]">
-                                                                            <option value="12">12</option>
-                                                                            <option value="14">14</option>
-                                                                            <option value="16">16</option>
-                                                                            <option value="18">18</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="titleColor">Title Color</label>
-                                                                        <input type="color" class="form-control" id="titleColor" name="player[optinTitleColor]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="descriptionSize">Description Size</label>
-                                                                        <select class="custom-select form-control" id="descriptionSize" name="player[optinDescriptionSize]">
-                                                                            <option value="12">12</option>
-                                                                            <option value="14">14</option>
-                                                                            <option value="16">16</option>
-                                                                            <option value="18">18</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="descriptionColor">Description Color</label>
-                                                                        <input type="color" class="form-control" id="descriptionColor" name="player[optinDescriptionColor]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="ctaSize">CTA Size</label>
-                                                                        <select class="custom-select form-control" id="ctaSize" name="player[optinCtaSize]">
-                                                                            <option value="12">12</option>
-                                                                            <option value="14">14</option>
-                                                                            <option value="16">16</option>
-                                                                            <option value="18">18</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="ctaColor">CTA Color</label>
-                                                                        <input type="color" class="form-control" id="ctaColor" name="player[optinCtaColor]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="buttonColor">Button Color</label>
-                                                                        <input type="color" class="form-control" id="buttonColor" name="player[optinButtonColor]" value="#FE0000">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="collapse-margin">
-                                                    <div class="card-header" id="customHeadingThree">
-                                                        <span class="lead collapse-title" data-toggle="collapse" role="button" data-target="#customCollapseThree" aria-expanded="false" aria-controls="customCollapseThree">
-                                                          Sharing
-                                                        </span>
-                                                    </div>
-                                                    <div id="customCollapseThree" class="collapse" aria-labelledby="customHeadingThree" data-parent="#custom">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="facebookLogo">Facebook</label>
-                                                                        <select class="custom-select form-control" id="facebookLogo" name="player[facebookLogo]">
-                                                                            <option value="1">Yes</option>
-                                                                            <option value="0" selected>No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="twitterLogo">Twitter</label>
-                                                                        <select class="custom-select form-control" id="twitterLogo" name="player[twitterLogo]">
-                                                                            <option value="1">Yes</option>
-                                                                            <option value="0" selected>No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="linkedinLogo">Linkedin</label>
-                                                                        <select class="custom-select form-control" id="linkedinLogo" name="player[linkedinLogo]">
-                                                                            <option value="1">Yes</option>
-                                                                            <option value="0" selected>No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="pinterestLogo">Pinterest</label>
-                                                                        <select class="custom-select form-control" id="pinterestLogo" name="player[pinterestLogo]">
-                                                                            <option value="1">Yes</option>
-                                                                            <option value="0" selected>No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="collapse-margin">
-                                                    <div class="card-header" id="customHeadingFour">
-                                                        <span class="lead collapse-title collapsed" data-toggle="collapse" role="button" data-target="#customCollapseFour" aria-expanded="false" aria-controls="customCollapseFour">
-                                                          Brand
-                                                        </span>
-                                                    </div>
-                                                    <div id="customCollapseFour" class="collapse" aria-labelledby="customHeadingFour" data-parent="#custom">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="form-group">
-                                                                        <label for="brandRemoved">Remove</label>
-                                                                        <select class="custom-select form-control" id="brandRemoved" name="player[brandRemoved]">
-                                                                            <option value="1" selected>Yes</option>
-                                                                            <option value="0">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 brandLink">
-                                                                    <div class="form-group">
-                                                                        <label for="brandLink">Link</label>
-                                                                        <input type="text" class="form-control" id="brandLink" name="player[brandLink]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 brandImage">
-                                                                    <div class="form-group">
-                                                                        <label for="brandImage">Image</label> <br>
-                                                                        <input type="file" id="brandImage" name="player[brandImage]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </fieldset>--}}
                                     </form>
                                 </div>
                             </div>
@@ -448,7 +199,6 @@
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="searchVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -459,7 +209,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
                         <div class="row mb-3">
                             <div class="col-xl-5 col-md-6 col-sm-12">
                                 <div class="form-label-group">
@@ -531,7 +280,6 @@
         </div>
     </div>
 @endsection
-
 @section('js')
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('app-assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
@@ -539,14 +287,64 @@
     <!-- END: Page Vendor JS-->
     <script src="{{asset('jqueryui/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('jqueryui/jquery-ui.min.js')}}" type="text/javascript"></script>
-
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('app-assets/js/scripts/forms/wizard-steps.js') }}"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  {{--   <script src="https://cdn.plyr.io/3.5.3/plyr.js"></script>
-    <script src="{{ asset('js/optin-player.js') }}"></script>
-    <script src="{{ asset('js/optin-product.js') }}"></script> --}}
+    <script type="text/javascript" src="https://daokun.webs.com/jquery.stopwatch.js"></script>
+    {{--gestion des chronometre--}}
+    <script>
+            $(function () {
+                var centiemeSeconde = 0;
+                var seconde = 0;
+                var minute = 0;
+                var heure = 0;
+                var comptage;
+                function  chrono () {
+                    if(centiemeSeconde<900){
+                        centiemeSeconde++;
+                    }else{
+                        centiemeSeconde = 0;
+                        if(seconde<59){
+                            seconde ++;
+                        }else{
+                            seconde =0;
+                            if(minute<59){
+                                minute++;
+                            }else{
+                                minute=0;
+                                heure++;
+                            }
+                        }
+                    }
+                    $('#dureerencontre').val(heure +' : '+ minute +' : '+ seconde +' : '+ centiemeSeconde);
+                }
+                $('#start').click(function () {
+                    comptage = setInterval(chrono,10);
+                   $(this).attr('disabled','disabled')
+                   $('#init').attr('disabled','disabled')
+                    $('#stop').removeAttr('disabled')
+                });
 
+                $('#stop').click(function(){
+                     clearInterval(comptage);
+                    $(this).attr('disabled','disabled')
+                    $('#start').removeAttr('disabled').text('continuer')
+                    $('#init').removeAttr('disabled')
+                });
+
+                $('#init').click(function(){
+                     centiemeSeconde = 0;
+                     seconde = 0;
+                     minute = 0;
+                     heure = 0;
+                    $('#dureerencontre').val('00:00:00:00');
+                    $(this).attr('disabled','disabled')
+                    $('#start').removeAttr('disabled').text('Commencer')
+                    $('#stop').attr('disabled','disabled');
+                });
+
+            });
+    </script>
     <script type="text/javascript">
         //niveaudetude
         $(document).ready(function(){
