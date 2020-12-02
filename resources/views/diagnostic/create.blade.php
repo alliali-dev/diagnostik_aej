@@ -78,6 +78,8 @@
                                                     <div class="form-group">
                                                         <label for="lieudereisdence">Lieu de residence habituel</label>
                                                         <input type="text" name="lieudereisdence" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
+                                                        <input type="hidden" name="commune_id" id='agenceid' readonly>
+                                                        <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -572,6 +574,35 @@
   {{--   <script src="https://cdn.plyr.io/3.5.3/plyr.js"></script>
     <script src="{{ asset('js/optin-player.js') }}"></script>
     <script src="{{ asset('js/optin-product.js') }}"></script> --}}
+
+    <script type="text/javascript">
+        /*lieudereisdence agenceid*/
+        $(document).ready(function(){
+            $( "#lieudereisdence" ).autocomplete({
+                source: function( request, response ) {
+                    // Fetch data
+                    $.ajax({
+                        url:"{{route('diagnostik.autocomville')}}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            search: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    // Set selection
+                    $('#lieudereisdence').val(ui.item.label); // display the selected text
+                    $('#agenceid').val(ui.item.value); // save selected id to input
+                    return false;
+                }
+            });
+        });
+    </script>
     <script>
         $(document).ready(function(){
             $("#addAej").modal(
@@ -609,6 +640,7 @@
                              $('#loader').fadeOut();
                         },error: function (jqXHR, exception) {
                             alert(jqXHR);
+                            $('#loader').fadeOut();
                         }
                         });
                     }

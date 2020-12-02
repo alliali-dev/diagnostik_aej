@@ -37,6 +37,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::delete('/destroy/{id}', 'DiagnostikController@destroy')->name('destroy');
     Route::put('/update/{id}', 'DiagnostikController@update')->name('update');
     Route::get('/diagnos','DiagnostikController@diagnos')->name('diagnos');
+    Route::post('autocomville', 'DiagnostikController@autocomVille')->name('autocomville');
 });
 
 Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], function () {
@@ -80,5 +81,5 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     Route::get('/agencies-clients', 'UsersController@agenciesClients')->name('agenciesClients');
     Route::get('/agencies-clients-table', 'UsersController@agenciesClientsTable')->name('agenciesClientsTable');
 
-    
+
 });

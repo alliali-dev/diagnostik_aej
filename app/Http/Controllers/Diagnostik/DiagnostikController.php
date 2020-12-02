@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Diagnostik;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agence;
+use App\Models\Commune;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,6 +18,21 @@ class DiagnostikController extends Controller
     public function index()
     {
         //
+    }
+
+    public function autocomVille(Request $request){
+        $search = $request->search;
+
+        if($search == ''){
+            $communes = Commune::orderby('nom','asc')->select('id','nom')->limit(10)->get();
+        }else{
+            $communes = Commune::orderby('nom','asc')->select('id','nom')->where('nom', 'like', '%' .$search . '%')->limit(10)->get();
+        }
+        $response = array();
+        foreach($communes as $commune){
+            $response[] = array("value"=> $commune->id,"label"=> strtoupper($commune->nom) );
+        }
+        return response()->json($response);
     }
 
     /**

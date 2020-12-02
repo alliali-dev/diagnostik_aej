@@ -50,6 +50,8 @@ class SessionController extends Controller
         $data = request(['email', 'password']);
         $data['agence_id'] = $agence->id;
 
+       // dd($data);
+
         if(!auth()->attempt($data)){
             Flashy::error('Votre adresse électronique ou votre mot de passe est incorrecte');
             return back();
