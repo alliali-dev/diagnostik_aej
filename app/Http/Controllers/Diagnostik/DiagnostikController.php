@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Diagnostik;
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
 use App\Models\Commune;
+use App\Models\Niveauetude;
+use App\Models\Specialite;
+use Database\Seeders\NiveauetudeSeeder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -35,6 +38,36 @@ class DiagnostikController extends Controller
         return response()->json($response);
     }
 
+    public function autocomSpecialite(Request $request){
+        $search = $request->search;
+
+        if($search == ''){
+            $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->limit(10)->get();
+        }else{
+            $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->where('libelle', 'like', '%' .$search . '%')->limit(10)->get();
+        }
+        $response = array();
+        foreach($specialites as $specialite){
+            $response[] = array("value"=> $specialite->id,"label"=> strtoupper($specialite->libelle) );
+        }
+        return response()->json($response);
+    }
+
+    public function autocomNiveauEtude(Request $request){
+        $search = $request->search;
+
+        if($search == ''){
+            $specialites = Niveauetude::orderby('libelle','asc')->select('id','libelle')->limit(10)->get();
+        }else{
+            $specialites = Niveauetude::orderby('libelle','asc')->select('id','libelle')->where('libelle', 'like', '%' .$search . '%')->limit(10)->get();
+        }
+        $response = array();
+        foreach($specialites as $specialite){
+            $response[] = array("value"=> $specialite->id,"label"=> strtoupper($specialite->libelle) );
+        }
+        return response()->json($response);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +75,11 @@ class DiagnostikController extends Controller
      */
     public function create()
     {
-        return view('diagnostic.create');
+        $date_now = date('Y');
+        for($i = 1960; $i <= $date_now ;$i ++){
+            $data[] = ['dateannee'=> $i];
+        }
+        return view('diagnostic.create',compact('data'));
         //
     }
 
@@ -54,7 +91,7 @@ class DiagnostikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

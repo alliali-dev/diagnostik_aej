@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <form id="videoForm" action="" class="icons-tab-steps wizard-circle"
+                                    <form id="videoForm" action="{{ route('diagnostik.store') }}" class="icons-tab-steps wizard-circle"
                                           method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="template" value="optin">
                                     @csrf
@@ -99,7 +99,11 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="anneediplome">Année d'obtention du diplôme</label>
-                                                        <input type="text" name="anneediplome" id="anneediplome" placeholder="Année d'obtention du diplôme" class="form-control" required>
+                                                            <select name="anneediplome" id="anneediplome" class="form-control">
+                                                                @foreach($data as $item)
+                                                                <option value="{{$item['dateannee']}}">{{$item['dateannee']}}</option>
+                                                                @endforeach
+                                                            </select>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -111,40 +115,73 @@
                                             </div>
                                         </fieldset>
                                         <!-- Step 2 -->
-                                        <h6><i class="step-icon feather icon-settings"></i> Settings</h6>
+                                        <h6><i class="step-icon feather icon-settings"></i> Axe de travail</h6>
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="title">Title</label>
-                                                        <input type="text" class="form-control" id="title" name="campaign[title]" required>
+                                                        <label for="title">Duree de la rencontre</label>
+                                                        <input type="text" class="form-control" id="title" name="dureerencontre" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="description">Description</label>
-                                                        <textarea name="campaign[description]" id="description" rows="3"
-                                                                  class="form-control ckeditor" required></textarea>
+                                                        <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
+                                                        <select name="approche" id="approche" class="form-control">
+                                                            <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
+                                                            <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="tags">Tags</label>
-                                                        <input type="text" class="form-control" id="tags" name="campaign[tags]">
+                                                        <label for="modalite">Modalite de prise en charge</label>
+                                                        <select name="approche" id="approche" class="form-control">
+                                                            <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
+                                                            <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="retargeting">Retargeting</label>
-                                                        <textarea name="campaign[retargeting]" id="retargeting" rows="3"
-                                                                  class="form-control ckeditor"></textarea>
+                                                        <label for="modalite">Axe de travail</label>
+                                                        <select name="axetravail" id="axetravail" class="form-control">
+                                                            <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
+                                                            <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
+                                                            <option value="{{__('PS')}}">{{__('PS')}}</option>
+                                                            <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
+                                                            <option value="{{__('AGR')}}">{{__('AGR')}}</option>
+                                                            <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
+                                                            <option value="{{__('ED')}}">{{__('ED')}}</option>
+                                                            <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
+                                                            <option value="{{__('PC')}}">{{__('PC')}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="planaction">Plan d'action</label>
+                                                        <textarea name="planaction" id="planaction" rows="3" class="form-control" required="">
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="planaction">Date prochain RDV</label>
+                                                        <input type="date" name="dateprochainrdv" id="dateprochainrdv" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="observation">Observation</label>
+                                                        <textarea name="observation" id="observation" rows="3" class="form-control" required="">
+                                                        </textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </fieldset>
-
                                         <!-- Step 3 -->
-                                        <h6><i class="step-icon feather icon-box"></i> Optin</h6>
+                                       {{-- <h6><i class="step-icon feather icon-box"></i> Optin</h6>
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-12">
@@ -402,74 +439,9 @@
                                                 </div>
                                             </div>
 
-                                        </fieldset>
+                                        </fieldset>--}}
                                     </form>
                                 </div>
-
-                                {{--<div class="col-6 offset-1">
-                                    <div class="video-container">
-                                        <div class="player-brand" style="display: none;">
-                                            <a href="#" target="_blank"><img src="" alt="Banding Logo"></a>
-                                        </div>
-                                        <div class="sharing-buttons">
-                                            <a href="#" class="facebook">
-                                            <span class="fa-stack fa-lg">
-                                                <i class="fa fa-circle fa-stack-2x"></i>
-                                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                            </a>
-                                            <a href="#" class="pinterest">
-                                            <span class="fa-stack fa-lg">
-                                                <i class="fa fa-circle fa-stack-2x"></i>
-                                                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                            </a>
-                                            <a href="#" class="twitter">
-                                                <span class="fa-stack fa-lg">
-                                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                            <a href="#" class="linkedin">
-                                                <span class="fa-stack fa-lg">
-                                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="offer-info">
-                                            <div class="offer-content">
-                                                <i class="fa fa-close mask-offer"></i>
-                                                <form action="#" class="form" method="post">
-                                                    @csrf()
-                                                    <div class="form-group">
-                                                        <h2 class="offer-headline" style="text-align: center;">Headline</h2>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" name="name" placeholder="Name" class="form-control" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="email" name="email" placeholder="Email" class="form-control" required>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-block btn-primary">Download Your Copy</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div id="my-video">
-                                            <div class="plyr" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
-                                        </div>
-                                        <div class="optin-offer">
-                                            <img src="{{ asset('img/offer-default.png') }}" alt="">
-                                            <div class="right-block">
-                                                <h2 class="offer-title">Product Title</h2>
-                                                <p class="offer-description">Product Description</p>
-                                                <div class="right-block-bottom">
-                                                    <a id="show-offer" href="#" class="btn btn-sm btn-danger offer-link" target="_blank">Learn More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -576,6 +548,58 @@
     <script src="{{ asset('js/optin-product.js') }}"></script> --}}
 
     <script type="text/javascript">
+        //niveaudetude
+        $(document).ready(function(){
+            $( "#niveaudetude" ).autocomplete({
+                source: function( request, response ) {
+                    // Fetch data
+                    $.ajax({
+                        url:"{{route('diagnostik.autocomniveautude')}}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            search: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    // Set selection
+                    $('#niveaudetude').val(ui.item.label); // display the selected text
+                    //$('#agenceid').val(ui.item.value); // save selected id to input
+                    return false;
+                }
+            });
+        });
+        //specialitediplome
+        $(document).ready(function(){
+            $( "#specialitediplome" ).autocomplete({
+                source: function( request, response ) {
+                    // Fetch data
+                    $.ajax({
+                        url:"{{route('diagnostik.autocomspecialite')}}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            search: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    // Set selection
+                    $('#specialitediplome').val(ui.item.label); // display the selected text
+                    //$('#agenceid').val(ui.item.value); // save selected id to input
+                    return false;
+                }
+            });
+        });
         /*lieudereisdence agenceid*/
         $(document).ready(function(){
             $( "#lieudereisdence" ).autocomplete({
