@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('diagnostik.index') }}">
+                        <a href="{{ route('diagnostik.mes_suivies') }}">
                             <i></i><span class="menu-item" data-i18n="Categorie create">Mes Suivies</span>
                         </a>
                     </li>

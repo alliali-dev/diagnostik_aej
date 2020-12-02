@@ -35,6 +35,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/create', 'DiagnostikController@create')->name('create');
     Route::post('/store', 'DiagnostikController@store')->name('store');
     Route::delete('/destroy/{id}', 'DiagnostikController@destroy')->name('destroy');
+    Route::get('/mes_suivies', 'DiagnostikController@mes_suivies')->name('mes_suivies');
     Route::put('/update/{id}', 'DiagnostikController@update')->name('update');
     Route::get('/diagnos','DiagnostikController@diagnos')->name('diagnos');///autocomSpecialite autocomNiveauEtude
     Route::post('autocomville', 'DiagnostikController@autocomVille')->name('autocomville');

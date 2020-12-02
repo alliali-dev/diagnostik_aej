@@ -94,6 +94,10 @@ class DiagnostikController extends Controller
         dd($request->all());
     }
 
+    public function mes_suivies(){
+        return view('diagnostic.mes_suivies');
+    }
+
     /**
      * Display the specified resource.
      *

@@ -147,7 +147,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="modalite">Modalite de prise en charge</label>
-                                                        <select name="approche" id="approche" class="form-control">
+                                                        <select name="modalite" id="modalite" class="form-control">
                                                             <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
                                                             <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
                                                         </select>
@@ -316,6 +316,10 @@
                             }
                         }
                     }
+                    console.log(heure);
+                    console.log(minute);
+                    console.log(seconde);
+                    console.log(centiemeSeconde);
                     $('#dureerencontre').val(heure +' : '+ minute +' : '+ seconde +' : '+ centiemeSeconde);
                 }
                 $('#start').click(function () {
@@ -348,6 +352,11 @@
     <script type="text/javascript">
         //niveaudetude
         $(document).ready(function(){
+
+            $('textarea').each(function(){
+                $(this).val($(this).val().trim());
+            });
+
             $( "#niveaudetude" ).autocomplete({
                 source: function( request, response ) {
                     // Fetch data
@@ -461,7 +470,7 @@
                             $("#addAej").modal('hide');
                              $('#loader').fadeOut();
                         },error: function (jqXHR, exception) {
-                            alert(jqXHR);
+                            alert('reessayer svp !!!');
                             $('#loader').fadeOut();
                         }
                         });
