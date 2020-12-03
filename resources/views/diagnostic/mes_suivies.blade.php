@@ -58,41 +58,53 @@
                                     @endif
                                 </div>--}}
                                 <div class="row">
-                                    {{--@foreach($accounts as $account)
-                                        @if($account->getRelation('network')->slug === 'twitter')
-                                            <div class="col-lg-3 col-sm-6 col-12">
-                                                <div class="card shadow border-info bg-transparent">
-                                                    <div class="card-header d-flex align-items-start mb-2 pb-0">
-                                                        <div class="avatar bg-rgba-info mt-1 ml-2 p-50">
-                                                            <div class="avatar-content">
-                                                                <img
-                                                                    src="{{ network_image($account->getRelation('network')->slug)  }}"
-                                                                    height="70" width="70" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <p class="mb-1">{{ $account->name }}</p>
-                                                            <div class="float-right">
-                                                                <a href="{{ route('accounts.edit',$account->id) }}"
-                                                                   class="btn btn-icon btn-icon rounded-circle btn-primary mr-0 waves-effect waves-light">
-                                                                    <i class="feather icon-edit-1"></i>
-                                                                </a>
-                                                                <a href="" class="btn btn-icon btn-icon rounded-circle btn-success mr-0 waves-effect waves-light">
-                                                                    <i class="feather icon-repeat"></i>
-                                                                </a>
-                                                                <button type="button"
-                                                                        class="btn btn-icon btn-icon rounded-circle btn-danger waves-effect waves-light"
-                                                                        data-account_id={{$account->id}} data-toggle="modal"
-                                                                        data-target="#delete">
-                                                                    <i class="feather icon-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach--}}
+                                    <div class="table-responsive-sm">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>N AEJ</th>
+                                                <th>SEXE</th>
+                                                <th>COMMUNE</th>
+                                                <th>DIPLOME</th>
+                                                <th>DUREE RENCONTRE</th>
+                                                <th>AXE TRAVAIL</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($suivies->get() as $item)
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="float-right">
+                                                        <a href=""
+                                                           class="btn btn-icon btn-icon rounded-circle btn-primary mr-0 waves-effect waves-light">
+                                                            <i class="feather icon-edit"></i>
+                                                        </a>
+                                                        <button type="button"
+                                                                data-id=""
+                                                                data-toggle="modal"
+                                                                data-target="#deletedEcole"
+                                                                class="btn btn-icon btn-icon rounded-circle btn-danger mr-0 waves-effect waves-light">
+                                                            <i class="feather icon-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            @if(count($suivies->get()) < 1)
+                                                <tr>
+                                                    <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
+                                                </tr>
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-center mt-2">
+                                            {{ $suivies->paginate(5)->links() }}
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="2rencontre" role="tabpanel"

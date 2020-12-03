@@ -13,19 +13,20 @@ class SuiviRencontre extends Model
 
     protected $table = 'suivi_rencontres';
 
-    protected $fillable = ['sexe','datenaisance','age','naturepiece','npiece','nationalite','contact',
+    protected $fillable = ['sexe','datenaisance','nomprenom','age','naturepiece','npiece','nationalite','contact',
                             'lieudereisdence','diplome','specialitediplome','anneediplome','niveaudetude','user_id',
                             'agence_id'
         ];
     protected $casts = [
         'sexe'          => 'string',
+        'nomprenom'     => 'string',
         'datenaisance'  => 'date',
         'age'           => 'integer',
         'naturepiece'   => 'string',
         'npiece'        => 'string',
         'nationalite'   => 'string',
         'contact'       => 'string',
-        'lieudereisdence' => 'string',
+        'lieudereisdence'   => 'string',
         'diplome'           => 'string',
         'specialitediplome' => 'string',
         'anneediplome'      => 'string',

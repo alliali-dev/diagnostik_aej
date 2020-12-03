@@ -31,6 +31,7 @@
                                                         <label for="sexe">Sexe</label>
                                                         <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]">
                                                     </div>
+                                                    <input type="hidden" id="nomprenom" name="demandeur[nomprenom]">
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
@@ -465,6 +466,7 @@
                             $('#contact').val(data[0].telephone);
                             $('#diplome').val(data[0].diplome);
                             $('#niveaudetude').val(data[0].niveauetude);
+                            $('#nomprenom').val(data[0].nomprenom);
                             $("#addAej").modal('hide');
                              $('#loader').fadeOut();
                         },error: function (jqXHR, exception) {

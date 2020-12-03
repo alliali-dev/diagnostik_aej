@@ -120,7 +120,8 @@ class DiagnostikController extends Controller
     }
 
     public function mes_suivies(){
-        return view('diagnostic.mes_suivies');
+        $suivies =  SuiviRencontre::mine();
+        return view('diagnostic.mes_suivies',compact('suivies'));
     }
 
     /**
