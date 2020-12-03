@@ -29,19 +29,19 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="sexe">Sexe</label>
-                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="sexe">
+                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance">Date naissance</label>
-                                                        <input type="text" class="form-control" id="datenaissance" name="datenaissance" placeholder="date de naissance">
+                                                        <input type="text" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="age">Age</label>
-                                                        <input type="text" class="form-control" id="age" name="age" placeholder="age">
+                                                        <input type="text" class="form-control" id="age" name="demandeur[age]" placeholder="age">
                                                     </div>
                                                 </div>
                                             </div>
@@ -50,19 +50,19 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="naturepiece">Nature Piece</label>
-                                                        <input type="text" name="naturepiece" id="naturepiece" placeholder="nature pieces" class="form-control">
+                                                        <input type="text" name="demandeur[naturepiece]" id="naturepiece" placeholder="nature pieces" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="numpiece">N° Piece</label>
-                                                        <input type="text" name="npiece" id="npiece" placeholder="N° piece" class="form-control">
+                                                        <input type="text" name="demandeur[npiece]" id="npiece" placeholder="N° piece" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite">Nationalite</label>
-                                                        <input type="text" name="nationalite" id="nationalite" placeholder="nationalite" class="form-control">
+                                                        <input type="text" name="demandeur[nationalite]" id="nationalite" placeholder="nationalite" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,13 +71,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="contact">Contact</label>
-                                                        <input type="text" name="contact" id="contact" placeholder="contact" class="form-control">
+                                                        <input type="text" name="demandeur[contact]" id="contact" placeholder="contact" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="lieudereisdence">Lieu de residence habituel</label>
-                                                        <input type="text" name="lieudereisdence" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
+                                                        <input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
                                                         <input type="hidden" name="commune_id" id='agenceid' readonly>
                                                         <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
@@ -85,7 +85,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="diplome">Diplôme</label>
-                                                        <input type="text" name="diplome" id="diplome" placeholder="Diplôme" class="form-control">
+                                                        <input type="text" name="demandeur[diplome]" id="diplome" placeholder="Diplôme" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,13 +93,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="specialitediplome">Spécialité du diplôme</label>
-                                                        <input type="text" name="specialitediplome" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">
+                                                        <input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="anneediplome">Année d'obtention du diplôme</label>
-                                                            <select name="anneediplome" id="anneediplome" class="form-control">
+                                                            <select name="demandeur[anneediplome]" id="anneediplome" class="form-control">
                                                                 @foreach($data as $item)
                                                                 <option value="{{$item['dateannee']}}">{{$item['dateannee']}}</option>
                                                                 @endforeach
@@ -109,7 +109,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="niveaudetude">Niveau d'etudes</label>
-                                                        <input type="text" name="niveaudetude" id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">
+                                                        <input type="text" name="demandeur[niveaudetude]" id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,24 +121,22 @@
                                                 <div class="col">
                                                         <div class="form-group">
                                                             <label for="title">Duree de la rencontre</label>
-                                                            <input type="text" class="form-control" id="dureerencontre" name="dureerencontre" required>
+                                                            <input type="text" class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
                                                         </div>
                                                 </div>
                                                 <div class="col">
-                                                    <button type="button" id="start" class="btn btn-success">commencer</button>
-                                                </div>
-                                                <div class="col">
-                                                    <button type="button" id="stop" class="btn btn-warning">arreter</button>
-                                                </div>
-                                                <div class="col">
-                                                    <button type="button" id="init" class="btn btn-info">initialiser</button>
+                                                    <div class="form-group text-right mb-0">
+                                                        <button type="button" id="start" class="btn btn-success">commencer</button>
+                                                        <button type="button" id="stop" class="btn btn-warning">arreter</button>
+                                                        <button type="button" id="init" class="btn btn-info">initialiser</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                                 <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
-                                                        <select name="approche" id="approche" class="form-control">
+                                                        <select name="rencontre[approche]"  id="approche" class="form-control">
                                                             <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
                                                             <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
                                                         </select>
@@ -147,7 +145,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="modalite">Modalite de prise en charge</label>
-                                                        <select name="modalite" id="modalite" class="form-control">
+                                                        <select name="rencontre[modalite]" id="modalite" class="form-control">
                                                             <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
                                                             <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
                                                         </select>
@@ -156,7 +154,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="modalite">Axe de travail</label>
-                                                        <select name="axetravail" id="axetravail" class="form-control">
+                                                        <select name="rencontre[axetravail]" id="axetravail" class="form-control">
                                                             <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
                                                             <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
                                                             <option value="{{__('PS')}}">{{__('PS')}}</option>
@@ -171,21 +169,21 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="planaction">Plan d'action</label>
-                                                        <textarea name="planaction" id="planaction" rows="3" class="form-control" required="">
-                                                        </textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
                                                         <label for="planaction">Date prochain RDV</label>
-                                                        <input type="date" name="dateprochainrdv" id="dateprochainrdv" class="form-control">
+                                                        <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control">
                                                     </div>
                                                 </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="planaction">Plan d'action</label>
+                                                            <textarea name="rencontre[planaction]" id="planaction" rows="3" class="form-control" required="">
+                                                        </textarea>
+                                                        </div>
+                                                    </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="observation">Observation</label>
-                                                        <textarea name="observation" id="observation" rows="3" class="form-control" required="">
+                                                        <textarea name="rencontre[observation]" id="observation" rows="3" class="form-control" required="">
                                                         </textarea>
                                                     </div>
                                                 </div>
@@ -300,7 +298,7 @@
                 var heure = 0;
                 var comptage;
                 function  chrono () {
-                    if(centiemeSeconde<900){
+                    if(centiemeSeconde<99){
                         centiemeSeconde++;
                     }else{
                         centiemeSeconde = 0;
@@ -320,7 +318,7 @@
                     console.log(minute);
                     console.log(seconde);
                     console.log(centiemeSeconde);
-                    $('#dureerencontre').val(heure +' : '+ minute +' : '+ seconde +' : '+ centiemeSeconde);
+                    $('#dureerencontre').val(heure +':'+ minute +':'+ seconde +':'+ centiemeSeconde);
                 }
                 $('#start').click(function () {
                     comptage = setInterval(chrono,10);

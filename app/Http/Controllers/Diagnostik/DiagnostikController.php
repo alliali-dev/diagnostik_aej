@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Agence;
 use App\Models\Commune;
 use App\Models\Niveauetude;
+use App\Models\Rencontre;
 use App\Models\Specialite;
+use App\Models\SuiviRencontre;
 use Database\Seeders\NiveauetudeSeeder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use MercurySeries\Flashy\Flashy;
 
 class DiagnostikController extends Controller
 {
@@ -91,7 +94,29 @@ class DiagnostikController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        try {
+        $data_demandeur = $request->demandeur;
+        $data_demandeur['user_id']= auth()->id();
+        $data_demandeur['agence_id']= session()->get('orig_agence');
+
+        $data_rencontre = $request->rencontre;
+        $data_rencontre['user_id']= auth()->id();
+        $data_rencontre['typerencontre']= 1;
+        $data_rencontre['agence_id']= session()->get('orig_agence');
+
+        //dd($data_demandeur,$data_rencontre);
+        $suivierencontre =  SuiviRencontre::create($data_demandeur);
+            if ($suivierencontre){
+                $data_rencontre['suivirencontre_id'] = $suivierencontre->id;
+                $rencontre = Rencontre::create($data_rencontre);
+                session()->flash('success','Bien ajoute');
+            }
+        }catch (\Exception $e){
+            //Flashy::error();
+            session()->flash('warning',$e->getMessage());
+        }
+        return redirect()->route('diagnostik.mes_suivies');
     }
 
     public function mes_suivies(){

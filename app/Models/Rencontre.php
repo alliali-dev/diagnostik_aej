@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class Rencontre extends Model
 {
@@ -26,4 +28,11 @@ class Rencontre extends Model
         'dateprochainrdv' => 'date',
         'observation' => 'string',
     ];
+
+    public function suivirencontre(){
+        return $this->belongsTo( SuiviRencontre::class);
+    }
+
+
+
 }

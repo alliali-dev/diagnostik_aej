@@ -29,7 +29,7 @@ Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function (
     Route::delete('/destroy', 'RoleController@destroy')->name('destroy');
     Route::put('/update', 'RoleController@update')->name('update');
 });
-
+//diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
     Route::get('/', 'DiagnostikController@index')->name('index');
     Route::get('/create', 'DiagnostikController@create')->name('create');

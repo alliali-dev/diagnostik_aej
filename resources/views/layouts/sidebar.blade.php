@@ -39,7 +39,7 @@
                 <ul class="menu-content" style="">
                     <li>
                         <a href="{{ route('diagnostik.create') }}">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">suivie</span>
+                            <i></i><span class="menu-item" data-i18n="Categorie create">1ere Rencontre</span>
                         </a>
                     </li>
                     <li>

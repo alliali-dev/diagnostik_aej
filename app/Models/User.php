@@ -48,4 +48,12 @@ class User extends Authenticatable
     public function agence(){
         return $this->belongsTo( Agence::class);
     }
+
+    public function rencontres() {
+        return $this->hasMany(Rencontre::class);
+    }
+
+    public function suivirencontres() {
+        return $this->hasMany(SuiviRencontre::class);
+    }
 }

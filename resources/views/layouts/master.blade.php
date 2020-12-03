@@ -40,6 +40,9 @@
             </div>
         </div>
         <div class="content-body">
+            @include('layouts.inc.message')
+            @include('layouts.inc.flash')
+            @include('layouts.inc.flash_admin')
             @yield('content')
         </div>
     </div>
