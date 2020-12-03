@@ -32,11 +32,12 @@
                                                         <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]">
                                                     </div>
                                                     <input type="hidden" id="nomprenom" name="demandeur[nomprenom]">
+                                                    <input type="hidden" id="matricule_aej" name="demandeur[matricule_aej]">
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance">Date naissance</label>
-                                                        <input type="text" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance">
+                                                        <input type="date" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance">
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -457,6 +458,7 @@
                             search: matriculeaej
                         },success: function( data ) {
                             $('#matriculeaej').val(data[0].label);
+                            $('#matricule_aej').val(data[0].label);
                             $('#sexe').val(data[0].sexe);
                             $('#datenaissance').val(data[0].datenaissance);
                             $('#age').val(data[0].age);

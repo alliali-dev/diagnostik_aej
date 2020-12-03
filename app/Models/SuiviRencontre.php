@@ -13,13 +13,14 @@ class SuiviRencontre extends Model
 
     protected $table = 'suivi_rencontres';
 
-    protected $fillable = ['sexe','datenaisance','nomprenom','age','naturepiece','npiece','nationalite','contact',
+    protected $fillable = ['sexe','datenaisance','nomprenom','matricule_aej','age','naturepiece','npiece','nationalite','contact',
                             'lieudereisdence','diplome','specialitediplome','anneediplome','niveaudetude','user_id',
                             'agence_id'
         ];
     protected $casts = [
         'sexe'          => 'string',
         'nomprenom'     => 'string',
+        'matricule_aej' => 'string',
         'datenaisance'  => 'date',
         'age'           => 'integer',
         'naturepiece'   => 'string',
@@ -35,20 +36,6 @@ class SuiviRencontre extends Model
         'agence_id'         => 'integer',
     ];
 
-    public function scopeMine(Builder $query)
-    {
-        if(auth()->user()->hasRole('SuperAdmin')){
-            return $query;
-        }elseif(auth()->user()->hasRole('CAgence')){
-            return $query->where('agence_id',  session()->get('orig_agence'))
-                ->get();
-        }elseif(auth()->user()->hasRole('CEmploi')){
-            return $query->where('agence_id',  session()->get('orig_agence'))
-                ->where('user_id',  Auth::id())
-                ->get();
-        }
-    }
-
     public function user(){
         return $this->belongsTo( User::class);
     }
@@ -56,6 +43,6 @@ class SuiviRencontre extends Model
         return $this->belongsTo( Agence::class);
     }
     public function rencontre(){
-        return $this->hasMany( Rencontre::class);
+        return $this->belongsTo( Rencontre::class);
     }
 }

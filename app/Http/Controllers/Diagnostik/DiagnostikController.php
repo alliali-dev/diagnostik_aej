@@ -102,6 +102,7 @@ class DiagnostikController extends Controller
 
         $data_rencontre = $request->rencontre;
         $data_rencontre['user_id']= auth()->id();
+        $data_rencontre['dateprochainrdv']= $request->rencontre['dateprochainrdv'].'06:30:08';
         $data_rencontre['typerencontre']= 1;
         $data_rencontre['agence_id']= session()->get('orig_agence');
 
@@ -120,8 +121,8 @@ class DiagnostikController extends Controller
     }
 
     public function mes_suivies(){
-        $suivies =  SuiviRencontre::mine();
-        return view('diagnostic.mes_suivies',compact('suivies'));
+        $rencontres =  Rencontre::mine();
+        return view('diagnostic.mes_suivies',compact('rencontres'));
     }
 
     /**
