@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use MercurySeries\Flashy\Flashy;
 use Spatie\Permission\Models\Role;
 
+
 class RoleController extends Controller
 {
     public function index(){
