@@ -120,9 +120,88 @@ class DiagnostikController extends Controller
         return redirect()->route('diagnostik.mes_suivies');
     }
 
+    public function store1to2rencontre(Request $request){
+        try {
+
+            $rencontre = Rencontre::findOrfail($request->rencontre_id);
+            $rencontre->update(['status' => true]);
+
+            if($rencontre){
+                $data = $request->rencontre;
+                $data['user_id'] = auth()->id();
+                $data['dateprochainrdv'] = $request->rencontre['dateprochainrdv'] . '06:30:08';
+                $data['agence_id'] = session()->get('orig_agence');
+                Rencontre::create($data);
+            }
+            session()->flash('success', 'Bien ajoute');
+        } catch (\Exception $e) {
+            session()->flash('warning', $e->getMessage());
+        }
+
+        return back();
+    }
+
+    public function store2to3rencontre(Request $request){
+
+        try {
+
+            $rencontre = Rencontre::findOrfail($request->rencontre_id);
+            $rencontre->update(['status' => true]);
+
+            if ($rencontre) {
+
+                $data = $request->rencontre;
+                $data['user_id'] = auth()->id();
+
+                if($data['typerencontre'] = "5"){
+                    $data['status'] = false;
+                }
+
+                $data['dateprochainrdv'] = $request->rencontre['dateprochainrdv'] . '06:30:08';
+                $data['agence_id'] = session()->get('orig_agence');
+                Rencontre::create($data);
+                
+            }
+            session()->flash('success', 'Bien ajoute');
+        } catch (\Exception $e) {
+            session()->flash('warning', $e->getMessage());
+        }
+        return back();
+    }
+
+    public function store3to4rencontre(){
+
+    }
+
+    public function store4to5_rencontre(){
+
+    }
+
     public function mes_suivies(){
-        $rencontres =  Rencontre::mine();
-        return view('diagnostic.mes_suivies',compact('rencontres'));
+
+        $rencontres1 = Rencontre::mine()
+                        ->where('typerencontre', 1)
+                        ->where('status',false)
+                        ->get();
+
+        $rencontres2 = Rencontre::mine()
+                        ->where('typerencontre', 2)
+                        ->where('status', false)
+                        ->get();
+        $rencontres3 = Rencontre::mine()
+                        ->where('typerencontre', 3)
+                        ->where('status', false)
+                        ->get();
+        $rencontres4 = Rencontre::mine()
+                        ->where('typerencontre', 4)
+                        ->where('status', false)
+                        ->get();
+        $rencontres5 = Rencontre::mine()
+                        ->where('typerencontre', 5)
+                        ->where('status', true)
+                        ->get();
+
+        return view('diagnostic.mes_suivies',compact('rencontres1','rencontres2','rencontres3', 'rencontres4', 'rencontres5'));
     }
 
     /**

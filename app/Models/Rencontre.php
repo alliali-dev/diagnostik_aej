@@ -11,9 +11,9 @@ class Rencontre extends Model
 {
     use HasFactory;
     protected $table = 'rencontres';
-    protected $fillable = ['dureerencontre','approche','typerencontre','modalite',
+    protected $fillable = ['dureerencontre','approche','typerencontre','modalite', 'status',
                             'axetravail','planaction','dateprochainrdv','observation',
-                            'user_id', 'suivirencontre_id','agence_id'];
+                            'user_id', 'suivirencontre_id','agence_id', 'presencedemandeur'];
 
     protected $casts = [
         'dureerencontre'    => 'string',
@@ -27,6 +27,8 @@ class Rencontre extends Model
         'planaction'        => 'string',
         'dateprochainrdv'   => 'datetime',
         'observation'       => 'string',
+        'presencedemandeur' => 'string',
+        'status'            => 'boolean',
     ];
 
     public function scopeMine(Builder $query)
@@ -46,7 +48,5 @@ class Rencontre extends Model
     public function suivirencontre(){
         return $this->belongsTo( SuiviRencontre::class);
     }
-
-
 
 }
