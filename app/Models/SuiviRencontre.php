@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SuiviRencontre extends Model
 {
+
     use HasFactory;
 
     protected $table = 'suivi_rencontres';
