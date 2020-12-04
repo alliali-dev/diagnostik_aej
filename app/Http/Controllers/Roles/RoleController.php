@@ -16,7 +16,6 @@ class RoleController extends Controller
     }
 
     public function store(Request $request){
-
         if(!$request->name){
             Flashy::error('ajouter un nom');
             return back();
