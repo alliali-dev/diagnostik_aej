@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Campaigns @endsection
+@section('title') Entretiens @endsection
 
-@section('subTitle') Lead Template @endsection
+@section('subTitle') faire l'entretien @endsection
 
 @section('content')
 
@@ -41,13 +41,13 @@
 
                                             <div class="col">
                                                 <div class="form-group">
-                                             
+
                                                     <label for="sexe">Sexe</label>
                                                     <input type="text" class="form-control" id="sexe" name="sexe">
                                                 </div>
                                             </div>
                                         </div><br><br>
-                                        
+
 
                                         <div class="row">
                                             <div class="col">
@@ -57,7 +57,7 @@
                                                 <div class="form-group">
                                                     <label>
                                                         <input type="radio" name="niv_forma" id="niv_forma" value="non scolarisee" checked>&nbsp;&nbsp;&nbsp;non scolarisée
-                                                    </label> 
+                                                    </label>
                                                     <label>
                                                         <input type="radio" name="niv_forma" id="niv_forma" value="primaire">&nbsp;&nbsp;&nbsp;primaire
                                                     </label>
@@ -112,7 +112,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            
+
                                         </div><br><br>
                                         <div class="row">
 
@@ -246,7 +246,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </fieldset>
                                     <!-- Step 2 -->
                                     <h6><i class="step-icon feather icon-settings"></i> Settings</h6>
