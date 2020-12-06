@@ -1,6 +1,14 @@
 @extends('layouts.master')
 @section('title') Gestion de rencontre @endsection
 @section('subTitle') Suivie 1 | 2 | 3 | 4 | 5 @endsection
+
+@section('css')
+   {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">--}}
+{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">--}}
+@endsection
+
 @section('content')
 <section id="socialAccounts" class="card">
     <div class="card-header">
@@ -59,7 +67,7 @@
                                 <div class="mb-4">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="col-sm-12">
                                     <div class="table-responsive-sm">
                                         <table class="table table-bordered" id="renTb1">
                                             <thead>
@@ -155,9 +163,9 @@
                                 <div class="mb-4">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="col-sm-12">
                                 <div class="table-responsive-sm">
-                                    <table class="table table-bordered" id="renTb2">
+                                    <table class="table table-bordered" id="renTb2" style="width: 100%;">
                                         <thead>
                                         <tr>
                                             <th>N AEJ</th>
@@ -252,9 +260,9 @@
                                 <div class="mb-4">
                                 </div>
                             </div>
-                            <div>
+                            <div class="col-12">
                                 <div class="table-responsive-sm">
-                                    <table class="table table-bordered" id="renTb3">
+                                    <table class="table table-bordered" id="renTb3" style="width: 100%;">
                                         <thead>
                                         <tr>
                                             <th>N AEJ</th>
@@ -352,7 +360,7 @@
                             </div>
                              <div>
                                 <div class="table-responsive-sm">
-                                    <table class="table table-bordered" id="renTb4">
+                                    <table class="table table-bordered" id="renTb4" style="width: 100%;">
                                         <thead>
                                         <tr>
                                             <th>N AEJ</th>
@@ -449,7 +457,7 @@
                             </div>
                            <div>
                                 <div class="table-responsive-sm">
-                                    <table class="table table-bordered" id="renTb5">
+                                    <table class="table table-bordered" id="renTb5" style="width: 100%;">
                                         <thead>
                                         <tr>
                                             <th>N AEJ</th>

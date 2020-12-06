@@ -93,8 +93,8 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 1)
-                ->where('status',false)
-                ->get();
+                ->where('status',false);
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -156,8 +156,8 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 2)
-                ->where('status',false)
-                ->get();
+                ->where('status',false);
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -217,8 +217,8 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 3)
-                ->where('status',false)
-                ->get();
+                ->where('status',false);
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -278,8 +278,8 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 4)
-                ->where('status',false)
-                ->get();
+                ->where('status',false);
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -340,8 +340,8 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 5 )
-                ->where('status',false)
-                ->get();
+                ->where('status',false);
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -459,25 +459,21 @@ class DiagnostikController extends Controller
 
         $rencontres1 = Rencontre::mine()
                         ->where('typerencontre', 1)
-                        ->where('status',false)
-                        ->get();
+                        ->where('status',false);
+
 
         $rencontres2 = Rencontre::mine()
                         ->where('typerencontre', 2)
-                        ->where('status', false)
-                        ->get();
+                        ->where('status', false);
         $rencontres3 = Rencontre::mine()
                         ->where('typerencontre', 3)
-                        ->where('status', false)
-                        ->get();
+                        ->where('status', false);
         $rencontres4 = Rencontre::mine()
                         ->where('typerencontre', 4)
-                        ->where('status', false)
-                        ->get();
+                        ->where('status', false);
         $rencontres5 = Rencontre::mine()
                         ->where('typerencontre', 5)
-                        ->where('status', true)
-                        ->get();
+                        ->where('status', true);
 
         return view('diagnostic.mes_suivies',compact('rencontres1','rencontres2','rencontres3', 'rencontres4', 'rencontres5'));
     }
