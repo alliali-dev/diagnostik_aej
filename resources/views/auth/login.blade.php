@@ -56,12 +56,12 @@
                                 </div>
                                 <div class="login-footer">
                                     <div class="divider">
-                                        <div class="divider-text">CODE AGENCE</div>
+                                        <div class="divider-text"></div>
                                         <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                            <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="agence_id" value="{{ old('code') }}" required
-                                                   autocomplete="current-password">
+                                            {{--<input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="agence_id" value="{{ old('code') }}"
+                                                   required autocomplete="current-password">--}}
                                             <div class="form-control-position">
-                                                <i class="feather icon-user-minus"></i>
+                                               {{-- <i class="feather icon-user-minus"></i>--}}
                                             </div>
                                         </fieldset>
 

@@ -59,95 +59,95 @@
                                 <div class="mb-4">
                                 </div>
                             </div>
-                            <div class="row">
-                                    <div class="table-responsive-sm">
-                                        <table class="table table-bordered" id="renTb1">
-                                            <thead>
+                            <div>
+                                <div class="table-responsive-sm">
+                                    <table class="table table-bordered" id="renTb1">
+                                        <thead>
+                                        <tr>
+                                            <th>N AEJ</th>
+                                            <th>NOM PRENOM</th>
+                                            <th>SEXE</th>
+                                            <th>COMMUNE</th>
+                                            <th>DIPLOME</th>
+                                            <th>DUREE (h:m:s:ms)</th>
+                                            <th>DATE RDV</th>
+                                            <th>AXE TRAVAIL</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                   {{-- <table class="table table-hover table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>N AEJ</th>
+                                            <th>NOM PRENOM</th>
+                                            <th>SEXE</th>
+                                            <th>COMMUNE</th>
+                                            <th>DIPLOME</th>
+                                            <th>DUREE (h:m:s:ms)</th>
+                                            <th>DATE RDV</th>
+                                            <th>AXE TRAVAIL</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($rencontres1 as $item)
+                                            @if($item->dateprochainrdv->isFuture())
+                                                <tr>
+                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
+                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
+                                                    <td>{{ $item->suivirencontre->sexe }}</td>
+                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
+                                                    <td>{{ $item->suivirencontre->diplome }}</td>
+                                                    <td>{{ $item->dureerencontre }}</td>
+                                                    <td>{{ $item->dateprochainrdv }}</td>
+                                                    <td>{{ $item->axetravail }}</td>
+                                                    @php
+                                                        $output = '';
+                                                        $now = Carbon\Carbon::now();
+                                                        $end_date = Carbon\Carbon::parse($item->dateprochainrdv);
+                                                        $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+                                                    @endphp
+                                                    <td class="float-right">
+                                                        <span class="badge badge-success mr-1" style="font-size: small;">
+                                                            {{$endOutput}}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                <tr>
+                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
+                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
+                                                    <td>{{ $item->suivirencontre->sexe }}</td>
+                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
+                                                    <td>{{ $item->suivirencontre->diplome }}</td>
+                                                    <td>{{ $item->dureerencontre }}</td>
+                                                    <td>{{ $item->dateprochainrdv }}</td>
+                                                    <td>{{ $item->axetravail }}</td>
+                                                    <td class="float-right">
+                                                        <button class="btn btn-primary btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter2rdv"
+                                                                data-suivirencontre_id="{{ $item->suivirencontre->id }}"
+                                                                data-rencontre_id="{{ $item->id }}"
+                                                                data-typerencontre="2"
+                                                                >Traiter 2eme RDV
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                        @if(count($rencontres1) < 1)
                                             <tr>
-                                                <th>N AEJ</th>
-                                                <th>NOM PRENOM</th>
-                                                <th>SEXE</th>
-                                                <th>COMMUNE</th>
-                                                <th>DIPLOME</th>
-                                                <th>DUREE (h:m:s:ms)</th>
-                                                <th>DATE RDV</th>
-                                                <th>AXE TRAVAIL</th>
-                                                <th>Action</th>
+                                                <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                        {{-- <table class="table table-hover table-striped">
-                                             <thead>
-                                             <tr>
-                                                 <th>N AEJ</th>
-                                                 <th>NOM PRENOM</th>
-                                                 <th>SEXE</th>
-                                                 <th>COMMUNE</th>
-                                                 <th>DIPLOME</th>
-                                                 <th>DUREE (h:m:s:ms)</th>
-                                                 <th>DATE RDV</th>
-                                                 <th>AXE TRAVAIL</th>
-                                                 <th></th>
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             @foreach($rencontres1 as $item)
-                                                 @if($item->dateprochainrdv->isFuture())
-                                                     <tr>
-                                                         <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                         <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                         <td>{{ $item->suivirencontre->sexe }}</td>
-                                                         <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                         <td>{{ $item->suivirencontre->diplome }}</td>
-                                                         <td>{{ $item->dureerencontre }}</td>
-                                                         <td>{{ $item->dateprochainrdv }}</td>
-                                                         <td>{{ $item->axetravail }}</td>
-                                                         @php
-                                                             $output = '';
-                                                             $now = Carbon\Carbon::now();
-                                                             $end_date = Carbon\Carbon::parse($item->dateprochainrdv);
-                                                             $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
-                                                         @endphp
-                                                         <td class="float-right">
-                                                             <span class="badge badge-success mr-1" style="font-size: small;">
-                                                                 {{$endOutput}}
-                                                             </span>
-                                                         </td>
-                                                     </tr>
-                                                 @else
-                                                     <tr>
-                                                         <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                         <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                         <td>{{ $item->suivirencontre->sexe }}</td>
-                                                         <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                         <td>{{ $item->suivirencontre->diplome }}</td>
-                                                         <td>{{ $item->dureerencontre }}</td>
-                                                         <td>{{ $item->dateprochainrdv }}</td>
-                                                         <td>{{ $item->axetravail }}</td>
-                                                         <td class="float-right">
-                                                             <button class="btn btn-primary btn-rounded"
-                                                                     data-toggle="modal"
-                                                                     data-target="#traiter2rdv"
-                                                                     data-suivirencontre_id="{{ $item->suivirencontre->id }}"
-                                                                     data-rencontre_id="{{ $item->id }}"
-                                                                     data-typerencontre="2"
-                                                                     >Traiter 2eme RDV
-                                                                 <i class="feather icon-edit"></i>
-                                                             </button>
-                                                         </td>
-                                                     </tr>
-                                                 @endif
-                                             @endforeach
-                                             @if(count($rencontres1) < 1)
-                                                 <tr>
-                                                     <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
-                                                 </tr>
-                                             @endif
-                                             </tbody>
-                                         </table>--}}
-                                    </div>
+                                        @endif
+                                        </tbody>
+                                    </table>--}}
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="redditPIll" role="tabpanel" aria-labelledby="reddit-icon-pill">
@@ -155,7 +155,7 @@
                                 <div class="mb-4">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div>
                                 <div class="table-responsive-sm">
                                     <table class="table table-bordered" id="renTb2">
                                         <thead>
@@ -1019,105 +1019,8 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="https://daokun.webs.com/jquery.stopwatch.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
-        $(function () {
-            $('#renTb1').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route('diagnostik.getrec1') }}'
-                },
-                columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
-                    {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
-                    {data: 'action', orderable: false, searchable: false},
-                ]
-            });
-
-            $('#renTb2').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route('diagnostik.getrec2') }}'
-                },
-                columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
-                    {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
-                    {data: 'action', orderable: false, searchable: false},
-                ]
-            });
-
-            $('#renTb3').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route('diagnostik.getrec3') }}'
-                },
-                columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
-                    {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
-                    {data: 'action', orderable: false, searchable: false},
-                ]
-            });
-
-            $('#renTb4').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route('diagnostik.getrec4') }}'
-                },
-                columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
-                    {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
-                    {data: 'action', orderable: false, searchable: false},
-                ]
-            });
-
-            $('#renTb5').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: '{{ route('diagnostik.getrec5') }}'
-                },
-                columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
-                    {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
-                    {data: 'action', orderable: false, searchable: false},
-                ]
-            });
-        });
 
         $('#traiter2rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -1397,5 +1300,106 @@
             var modal = $(this);
             modal.find('.modal-body #account_id').val(account_id);
         })
+    </script>
+
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(function () {
+            $('#renTb1').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('diagnostik.getrec1') }}'
+                },
+                columns: [
+                    {data: 'matricule_aej'},
+                    {data: 'nomprenom'},
+                    {data: 'sexe'},
+                    {data: 'lieudereisdence'},
+                    {data: 'diplome', orderable: false, searchable: false},
+                    {data: 'dureerencontre'},
+                    {data: 'dateprochainrdv'},
+                    {data: 'axetravail'},
+                    {data: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+            $('#renTb2').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('diagnostik.getrec2') }}'
+                },
+                columns: [
+                    {data: 'matricule_aej'},
+                    {data: 'nomprenom'},
+                    {data: 'sexe'},
+                    {data: 'lieudereisdence'},
+                    {data: 'diplome', orderable: false, searchable: false},
+                    {data: 'dureerencontre'},
+                    {data: 'dateprochainrdv'},
+                    {data: 'axetravail'},
+                    {data: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+            $('#renTb3').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('diagnostik.getrec3') }}'
+                },
+                columns: [
+                    {data: 'matricule_aej'},
+                    {data: 'nomprenom'},
+                    {data: 'sexe'},
+                    {data: 'lieudereisdence'},
+                    {data: 'diplome', orderable: false, searchable: false},
+                    {data: 'dureerencontre'},
+                    {data: 'dateprochainrdv'},
+                    {data: 'axetravail'},
+                    {data: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+            $('#renTb4').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('diagnostik.getrec4') }}'
+                },
+                columns: [
+                    {data: 'matricule_aej'},
+                    {data: 'nomprenom'},
+                    {data: 'sexe'},
+                    {data: 'lieudereisdence'},
+                    {data: 'diplome', orderable: false, searchable: false},
+                    {data: 'dureerencontre'},
+                    {data: 'dateprochainrdv'},
+                    {data: 'axetravail'},
+                    {data: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+            $('#renTb5').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('diagnostik.getrec5') }}'
+                },
+                columns: [
+                    {data: 'matricule_aej'},
+                    {data: 'nomprenom'},
+                    {data: 'sexe'},
+                    {data: 'lieudereisdence'},
+                    {data: 'diplome', orderable: false, searchable: false},
+                    {data: 'dureerencontre'},
+                    {data: 'dateprochainrdv'},
+                    {data: 'axetravail'},
+                    {data: 'action', orderable: false, searchable: false},
+                ]
+            });
+        });
     </script>
 @endsection

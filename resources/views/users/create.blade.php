@@ -122,20 +122,46 @@
 
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="role">Role</label>
-                                @foreach ($roles as $role)
-                                    <fieldset class="form-group">
-                                        <div class="vs-checkbox-con vs-checkbox-primary">
-                                            {{ Form::checkbox('roles[]',  $role->id ) }}
-                                            <span class="vs-checkbox">
-                                                 <span class="vs-checkbox--check">
-                                                  <i class="vs-icon feather icon-check"></i>
-                                                  </span>
-                                            </span>
-                                            <span class="">{{ $role->name }}</span>
-                                        </div>
-                                    </fieldset>
-                                @endforeach
+                                <label for="role">Roles</label>
+                                <ul class="list-unstyled">
+
+                                        @if(auth()->user()->hasRole('SuperAdmin'))
+                                            @foreach ($roles as $role)
+                                                <li class="d-inline-block mr-2">
+                                                    <fieldset class="form-group">
+                                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                                            {{ Form::checkbox('roles[]',  $role->id ) }}
+                                                            <span class="vs-checkbox">
+                                                                <span class="vs-checkbox--check">
+                                                                    <i class="vs-icon feather icon-check"></i>
+                                                                </span>
+                                                            </span>
+                                                            <span class="">{{ $role->name }}</span>
+                                                        </div>
+                                                    </fieldset>
+                                                </li>
+                                            @endforeach
+                                        @elseif( auth()->user()->hasRole('CAgence') )
+                                            @foreach ($roles as $role)
+                                                @if( in_array($role->name, ['CEmploi']) )
+                                                    <li class="d-inline-block mr-2">
+                                                        <fieldset class="form-group">
+                                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                                {{ Form::checkbox('roles[]',  $role->id ) }}
+                                                                <span class="vs-checkbox">
+                                                                    <span class="vs-checkbox--check">
+                                                                        <i class="vs-icon feather icon-check"></i>
+                                                                    </span>
+                                                                </span>
+                                                                <span class="">{{ $role->name }}</span>
+                                                            </div>
+                                                        </fieldset>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        @endif
+
+                                </ul>
                             </div>
                         </div>
 

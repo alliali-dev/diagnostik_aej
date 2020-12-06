@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rencontre;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd(getagencesession());
-        return view('home');
+        $rencontres = Rencontre::mine();
+       // dd($rencontres->where('axetravail','FCQ')->count());
+        return view('home',compact('rencontres'));
     }
 }

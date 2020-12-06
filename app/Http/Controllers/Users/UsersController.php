@@ -262,6 +262,7 @@ class UsersController extends Controller
         return DataTables::of($users)
             ->addColumn('actions', function ($model) {
                 $actions = '';
+                if(auth()->user()->hasRole('SuperAdmin')){
                 if($model->id != Auth::id())
                     $actions .= '<a href="'. route('users.login-as', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-success mr-0 waves-effect waves-light"><i class="feather icon-lock"></i></a>';
                 $actions .= '<a href="'. route('users.view', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-info  waves-effect waves-light"><i class="feather icon-search"></i></a>';
@@ -269,18 +270,20 @@ class UsersController extends Controller
                 $actions .= '<a href="'. route('users.passwordReset', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-success  waves-effect waves-light"><i class="feather icon-refresh-ccw"></i></a>';
 
                 if($model->id != Auth::id()) {
-                    $actions .= '<form action="'. route('users.update') .'" method="post" style="display: inline">'.
-                        '<input type="hidden" name="_method" value="PUT">'.
-                        '<input type="hidden" name="id" value="'. $model->id .'">'. csrf_field();
-                    if($model->status)
-                        $actions .= '<input type="hidden" name="status" value="0"><button type="submit" class="btn btn-icon btn-icon rounded-circle btn-warning  waves-effect waves-light"><i class="feather icon-pause"></i></button>';
-                    else
-                        $actions .= '<input type="hidden" name="status" value="1"><button type="submit" class="btn btn-icon btn-icon rounded-circle btn-success waves-effect waves-light"><i class="feather icon-play-circle"></i></button>';
-                    $actions .= '</form>';
-                    $actions .= '<form action="' . route( 'users.delete' ) . '" method="post" style="display: inline">' .
-                        '<input type="hidden" name="id" value="' . $model->id . '">' . csrf_field() .
-                        '<button type="submit" class="btn btn-icon btn-icon rounded-circle btn-danger waves-effect waves-light"><i class="feather icon-trash"></i></button>';
-                    $actions .= '</form>';
+
+                        $actions .= '<form action="'. route('users.update') .'" method="post" style="display: inline">'.
+                            '<input type="hidden" name="_method" value="PUT">'.
+                            '<input type="hidden" name="id" value="'. $model->id .'">'. csrf_field();
+                        if($model->status)
+                            $actions .= '<input type="hidden" name="status" value="0"><button type="submit" class="btn btn-icon btn-icon rounded-circle btn-warning  waves-effect waves-light"><i class="feather icon-pause"></i></button>';
+                        else
+                            $actions .= '<input type="hidden" name="status" value="1"><button type="submit" class="btn btn-icon btn-icon rounded-circle btn-success waves-effect waves-light"><i class="feather icon-play-circle"></i></button>';
+                        $actions .= '</form>';
+                        $actions .= '<form action="' . route( 'users.delete' ) . '" method="post" style="display: inline">' .
+                            '<input type="hidden" name="id" value="' . $model->id . '">' . csrf_field() .
+                            '<button type="submit" class="btn btn-icon btn-icon rounded-circle btn-danger waves-effect waves-light"><i class="feather icon-trash"></i></button>';
+                        $actions .= '</form>';
+                    }
                 }
                 return $actions;
             })

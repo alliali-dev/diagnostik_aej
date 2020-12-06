@@ -32,6 +32,11 @@ Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function (
 //diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
     Route::get('/', 'DiagnostikController@index')->name('index');
+    Route::get('/getRec1', 'DiagnostikController@getRec1')->name('getrec1');
+    Route::get('/getRec2', 'DiagnostikController@getRec2')->name('getrec2');
+    Route::get('/getRec3', 'DiagnostikController@getRec3')->name('getrec3');
+    Route::get('/getRec4', 'DiagnostikController@getRec4')->name('getrec4');
+    Route::get('/getRec5', 'DiagnostikController@getRec5')->name('getrec5');
     Route::get('/create', 'DiagnostikController@create')->name('create');
     Route::post('/store', 'DiagnostikController@store')->name('store');
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');

@@ -34,7 +34,7 @@
             <li class="nav-item  has-sub sidebar-group-active">
                 <a href="#">
                     <i class="feather icon-user-plus"></i>
-                    <span class="menu-title" data-i18n="Videos">Diagnostique suivie</span>
+                    <span class="menu-title" data-i18n="Videos">Diagnostique</span>
                 </a>
                 <ul class="menu-content" style="">
                     <li>

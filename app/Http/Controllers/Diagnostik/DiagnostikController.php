@@ -9,10 +9,12 @@ use App\Models\Niveauetude;
 use App\Models\Rencontre;
 use App\Models\Specialite;
 use App\Models\SuiviRencontre;
+use Carbon\Carbon;
 use Database\Seeders\NiveauetudeSeeder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use MercurySeries\Flashy\Flashy;
+use Yajra\DataTables\Facades\DataTables;
 
 class DiagnostikController extends Controller
 {
@@ -86,6 +88,296 @@ class DiagnostikController extends Controller
         //
     }
 
+    public function getRec1(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Rencontre::mine()
+                ->where('typerencontre', 1)
+                ->where('status',false)
+                ->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    $end_date = Carbon::parse($row->dateprochainrdv);
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+
+                    if($row->dateprochainrdv->isFuture()){
+                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                                            '.$endOutput.'
+                                            </span>';
+                    }else{
+                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter2rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="2"
+                                                                >Traiter 2eme RDV
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                    }
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->suivirencontre->matricule_aej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->suivirencontre->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->suivirencontre->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('lieudereisdence', function ($row){
+                    $lieudereisdence = $row->suivirencontre->lieudereisdence ;
+                    return $lieudereisdence;
+                })
+                ->editColumn('diplome', function ($row){
+                    $diplome = $row->suivirencontre->diplome ;
+                    return $diplome;
+                })
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+
+
+
+    public function getRec2(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Rencontre::mine()
+                ->where('typerencontre', 2)
+                ->where('status',false)
+                ->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    $end_date = Carbon::parse($row->dateprochainrdv);
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+
+                    if($row->dateprochainrdv->isFuture()){
+                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                                            '.$endOutput.'
+                                            </span>';
+                    }else{
+                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter3rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="3"
+                                                                >Traiter 3eme RDV
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                    }
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->suivirencontre->matricule_aej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->suivirencontre->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->suivirencontre->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('lieudereisdence', function ($row){
+                    $lieudereisdence = $row->suivirencontre->lieudereisdence ;
+                    return $lieudereisdence;
+                })
+                ->editColumn('diplome', function ($row){
+                    $diplome = $row->suivirencontre->diplome ;
+                    return $diplome;
+                })
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+
+    public function getRec3(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Rencontre::mine()
+                ->where('typerencontre', 3)
+                ->where('status',false)
+                ->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    $end_date = Carbon::parse($row->dateprochainrdv);
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+
+                    if($row->dateprochainrdv->isFuture()){
+                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                                            '.$endOutput.'
+                                            </span>';
+                    }else{
+                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter4rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="4"
+                                                                >Traiter 4eme RDV
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                    }
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->suivirencontre->matricule_aej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->suivirencontre->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->suivirencontre->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('lieudereisdence', function ($row){
+                    $lieudereisdence = $row->suivirencontre->lieudereisdence ;
+                    return $lieudereisdence;
+                })
+                ->editColumn('diplome', function ($row){
+                    $diplome = $row->suivirencontre->diplome ;
+                    return $diplome;
+                })
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+
+    public function getRec4(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Rencontre::mine()
+                ->where('typerencontre', 4)
+                ->where('status',false)
+                ->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    $end_date = Carbon::parse($row->dateprochainrdv);
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+
+                    if($row->dateprochainrdv->isFuture()){
+                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                                            '.$endOutput.'
+                                            </span>';
+                    }else{
+                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter5rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="5"
+                                                                >Traiter 5eme RDV
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                    }
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->suivirencontre->matricule_aej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->suivirencontre->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->suivirencontre->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('lieudereisdence', function ($row){
+                    $lieudereisdence = $row->suivirencontre->lieudereisdence ;
+                    return $lieudereisdence;
+                })
+                ->editColumn('diplome', function ($row){
+                    $diplome = $row->suivirencontre->diplome ;
+                    return $diplome;
+                })
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+
+
+    public function getRec5(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Rencontre::mine()
+                ->where('typerencontre', 5 )
+                ->where('status',false)
+                ->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->suivirencontre->matricule_aej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->suivirencontre->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->suivirencontre->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('lieudereisdence', function ($row){
+                    $lieudereisdence = $row->suivirencontre->lieudereisdence ;
+                    return $lieudereisdence;
+                })
+                ->editColumn('diplome', function ($row){
+                    $diplome = $row->suivirencontre->diplome ;
+                    return $diplome;
+                })
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -142,25 +434,18 @@ class DiagnostikController extends Controller
     }
 
     public function store2to3rencontre(Request $request){
-
         try {
-
             $rencontre = Rencontre::findOrfail($request->rencontre_id);
             $rencontre->update(['status' => true]);
-
             if ($rencontre) {
-
                 $data = $request->rencontre;
                 $data['user_id'] = auth()->id();
-
                 if($data['typerencontre'] = "5"){
                     $data['status'] = false;
                 }
-
                 $data['dateprochainrdv'] = $request->rencontre['dateprochainrdv'] . '06:30:08';
                 $data['agence_id'] = session()->get('orig_agence');
                 Rencontre::create($data);
-                
             }
             session()->flash('success', 'Bien ajoute');
         } catch (\Exception $e) {
@@ -169,13 +454,6 @@ class DiagnostikController extends Controller
         return back();
     }
 
-    public function store3to4rencontre(){
-
-    }
-
-    public function store4to5_rencontre(){
-
-    }
 
     public function mes_suivies(){
 

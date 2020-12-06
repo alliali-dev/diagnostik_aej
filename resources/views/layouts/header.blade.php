@@ -57,6 +57,10 @@
                                         <a class="dropdown-item" href="{{ route('users.agenceindex') }}">
                                             <i class="feather icon-activity"></i> Gérer Agences
                                         </a>
+                                    @elseif(auth()->user()->hasRole('CAgence'))
+                                        <a class="dropdown-item" href="{{route('users.index')}}">
+                                            <i class="feather icon-user-plus"></i> Gérer Utilisateur
+                                        </a>
                                     @endif
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
