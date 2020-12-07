@@ -29,6 +29,16 @@ Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function (
     Route::delete('/destroy', 'RoleController@destroy')->name('destroy');
     Route::put('/update', 'RoleController@update')->name('update');
 });
+
+Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'chefagence.'], function () {
+    Route::get('/rencontre1', 'ChefagenceController@rencontre1')->name('rencontre1');
+    Route::get('/rencontre2', 'ChefagenceController@rencontre1')->name('rencontre2');
+    Route::get('/rencontre3', 'ChefagenceController@rencontre1')->name('rencontre3');
+    Route::get('/rencontre4', 'ChefagenceController@rencontre1')->name('rencontre4');
+    Route::get('/rencontre5', 'ChefagenceController@rencontre1')->name('rencontre5');
+});
+
+
 //diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
     Route::get('/', 'DiagnostikController@index')->name('index');

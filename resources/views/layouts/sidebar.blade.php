@@ -59,38 +59,39 @@
                     </li>
                 </ul>
             </li>
-
-           {{-- @if(auth()->user()->hasRole('SuperAdmin'))
-                <li class="nav-item has-sub sidebar-group-active">
-                    <a href="#">
-                        <i class="feather icon-dollar-sign"></i>
-                        <span class="menu-title" data-i18n="Campaigns">Ecoles</span>
-                    </a>
-                    <ul class="menu-content" style="">
-                        <li>
-                            <a href="">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Ajouter</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Importer</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i></i><span class="menu-item" data-i18n="Categorie affiche">Liste</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="">
-                        <i class="feather icon-zap"></i>
-                        <span class="menu-title" data-i18n="">Utilisateur</span>
-                    </a>
-                </li>
-            @endif--}}
+            <li class="nav-item  has-sub sidebar-group-active">
+                <a href="#">
+                    <i class="feather icon-user"></i>
+                    <span class="menu-title" data-i18n="Videos">Chef d'agence</span>
+                </a>
+                <ul class="menu-content" style="">
+                    <li>
+                        <a href="{{ route('chefagence.rencontre1') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">1ere Rencontre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('chefagence.rencontre2') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">2eme Rencontre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('chefagence.rencontre3') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">3eme Rencontre</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="{{ route('chefagence.rencontre4') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">4eme Rencontre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('chefagence.rencontre5') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">5eme Rencontre</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

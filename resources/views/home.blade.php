@@ -9,12 +9,12 @@
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-start pb-0">
-                            <div class="avatar bg-rgba-success p-50 m-0">
+                            <div class="avatar bg-rgba-warning p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-user text-success font-medium-5"></i>
+                                    <i class="feather icon-folder text-info font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1"><span class="badge badge-success">{{ $rencontres->where('typerencontre',1)->count() }}</span></h2>
+                            <h2 class="text-bold-700 mt-1"><span class="badge badge-info">{{ $rencontres->where('typerencontre',1)->count() }}</span></h2>
                             <p class="mb-2">NBRE de DE RECU A LA 1ière RENCONTRE</p>
                         </div>
                     </div>
@@ -22,12 +22,12 @@
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-start pb-0">
-                            <div class="avatar bg-rgba-success p-50 m-0">
+                            <div class="avatar bg-rgba-warning p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-user text-success font-medium-5"></i>
+                                    <i class="feather icon-folder text-info font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1"><span class="badge badge-success">{{ $rencontres->where('typerencontre',1)->count() }}</span></h2>
+                            <h2 class="text-bold-700 mt-1"><span class="badge badge-info">{{ $rencontres->where('typerencontre',1)->count() }}</span></h2>
                             <p class="mb-2">NBRE de DE RECUS SUR RDV</p>
                         </div>
                     </div>
@@ -35,12 +35,12 @@
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-start pb-0">
-                            <div class="avatar bg-rgba-success p-50 m-0">
+                            <div class="avatar bg-rgba-warning p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-user text-success font-medium-5"></i>
+                                    <i class="feather icon-folder text-info font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1"><span class="badge badge-success">{{ $rencontres->where('presencedemandeur','ABSENT NON EXCUSE')->count() }}</span></h2>
+                            <h2 class="text-bold-700 mt-1"><span class="badge badge-info">{{ $rencontres->where('presencedemandeur','ABSENT NON EXCUSE')->count() }}</span></h2>
                             <p class="mb-2">NBRE de DE ABSENTS AU RDV SANS EXCUSE</p>
                         </div>
                     </div>
@@ -48,12 +48,12 @@
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-start pb-0">
-                            <div class="avatar bg-rgba-success p-50 m-0">
+                            <div class="avatar bg-rgba-warning p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-user text-success font-medium-5"></i>
+                                    <i class="feather icon-folder text-info font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1"><span class="badge badge-success">{{ $rencontres->where('presencedemandeur','ABSENT EXCUSE')->count() }}</span></h2>
+                            <h2 class="text-bold-700 mt-1"><span class="badge badge-info">{{ $rencontres->where('presencedemandeur','ABSENT EXCUSE')->count() }}</span></h2>
                             <p class="mb-2">NBRE de DE EXCUSES</p>
                         </div>
                     </div>
@@ -72,12 +72,16 @@
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-start pb-0">
-                            <div class="avatar bg-rgba-success p-50 m-0">
+                            <div class="avatar bg-rgba-secondary p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-user text-success font-medium-5"></i>
+                                    <i class="feather icon-file text-secondary font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1"><span class="badge badge-success">{{ $rencontres->where('modalite','SUIVI')->count() }}</span></h2>
+                            <h2 class="text-bold-700 mt-1">
+                                <span class="badge badge-secondary">
+                                    {{ $rencontres->where('modalite','SUIVI')->count() }}
+                                </span>
+                            </h2>
                             <p class="mb-2">SUIVI</p>
                         </div>
                     </div>
@@ -85,12 +89,16 @@
                 <div class="col-lg-3 col-sm-6 col-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-start pb-0">
-                            <div class="avatar bg-rgba-success p-50 m-0">
+                            <div class="avatar bg-rgba-secondary p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-user text-success font-medium-5"></i>
+                                    <i class="feather icon-file text-secondary font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1"><span class="badge badge-success">{{ $rencontres->where('modalite','ACCOMPAGNEMENT')->count() }}</span></h2>
+                            <h2 class="text-bold-700 mt-1">
+                                <span class="badge badge-secondary">
+                                    {{ $rencontres->where('modalite','ACCOMPAGNEMENT')->count() }}
+                                </span>
+                            </h2>
                             <p class="mb-2">ACCOMPAGNEMENT</p>
                         </div>
                     </div>
