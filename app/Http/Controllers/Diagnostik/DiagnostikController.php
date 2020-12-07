@@ -100,7 +100,7 @@ class DiagnostikController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
-                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
@@ -163,7 +163,7 @@ class DiagnostikController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
-                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
@@ -224,7 +224,7 @@ class DiagnostikController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
-                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
@@ -285,7 +285,7 @@ class DiagnostikController extends Controller
                 ->addColumn('action', function($row){
                     $actionBtn = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
-                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
+                    $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
