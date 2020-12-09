@@ -84,7 +84,13 @@ class DiagnostikController extends Controller
         for($i = 1960; $i <= $date_now ;$i ++){
             $data[] = ['dateannee'=> $i];
         }
-        return view('diagnostic.create',compact('data'));
+
+        $niveauetudes = Niveauetude::orderby('libelle','asc')->select('id','libelle')->get();
+        $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
+        $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
+
+
+        return view('diagnostic.create',compact('data','niveauetudes','specialites','communes'));
         //
     }
 
@@ -106,6 +112,16 @@ class DiagnostikController extends Controller
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
+                        $actionBtn .= ' <button class="btn btn-info btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter2rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="2"
+                                                                data-presencedemandeur="SANS-RDV"
+                                                                >Edit 2eme sans-rdv
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
                     }else{
                         $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
@@ -169,6 +185,17 @@ class DiagnostikController extends Controller
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
+
+                        $actionBtn .= '<button class="btn btn-info btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter3rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="3"
+                                                                data-presencedemandeur="SANS-RDV"
+                                                                >Edit 3e sans-rdv
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
                     }else{
                         $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
@@ -176,7 +203,7 @@ class DiagnostikController extends Controller
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
                                                                 data-rencontre_id="'.$row->id .'"
                                                                 data-typerencontre="3"
-                                                                >Traiter 3eme RDV
+                                                                >Traiter 3e RDV
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
 
@@ -230,6 +257,16 @@ class DiagnostikController extends Controller
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
+                        $actionBtn .= '<button class="btn btn-info btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter4rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="4"
+                                                                data-presencedemandeur="SANS-RDV"
+                                                                >Edit 4e sans-rdv
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
                     }else{
                         $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
@@ -291,6 +328,16 @@ class DiagnostikController extends Controller
                         $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
+                        $actionBtn .= '<button class="btn btn-info btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#traiter5rdv"
+                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-typerencontre="5"
+                                                                data-presencedemandeur="SANS-RDV"
+                                                                >Edit 5e sans-rdv
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
                     }else{
                         $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
@@ -386,7 +433,6 @@ class DiagnostikController extends Controller
      */
     public function store(Request $request)
     {
-
         try {
         $data_demandeur = $request->demandeur;
         $data_demandeur['user_id']= auth()->id();

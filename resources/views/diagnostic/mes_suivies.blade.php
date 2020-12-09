@@ -3,10 +3,9 @@
 @section('subTitle') Suivie 1 | 2 | 3 | 4 | 5 @endsection
 
 @section('css')
-   {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -530,6 +529,17 @@
                                 @csrf
                                 <fieldset>
                                     <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche" id="lbpresencede2">Presence demandeur</label>
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur2" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="title">Duree de la rencontre</label>
@@ -542,9 +552,6 @@
                                                 <button type="button" id="stop" class="btn btn-warning">
                                                     <i class="feather icon-pause"></i>
                                                 </button>
-                                                <button type="button" id="init" class="btn btn-info">
-                                                    <i class="feather icon-refresh-ccw"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -555,22 +562,11 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
-                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
-                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
-                                                    <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
+                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -611,14 +607,14 @@
                                             <div class="form-group">
                                                 <label for="planaction">Plan d'action</label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
-                                                        </textarea>
+                                                </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="observation">Observation</label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
-                                                        </textarea>
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -632,8 +628,6 @@
                     </div>
                 </div>
             </div>
-
-
             {{--modal rencontre 2 vers 3 --}}
             <div class="modal fade" id="traiter3rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -649,6 +643,17 @@
                                 @csrf
                                 <fieldset>
                                     <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche" id="lbpresencede3">Presence demandeur</label>
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur3" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="title">Duree de la rencontre</label>
@@ -661,9 +666,6 @@
                                                 <button type="button" id="stop1" class="btn btn-warning">
                                                     <i class="feather icon-pause"></i>
                                                 </button>
-                                                <button type="button" id="init1" class="btn btn-info">
-                                                    <i class="feather icon-refresh-ccw"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -674,22 +676,11 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
-                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
-                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
-                                                    <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
+                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -751,8 +742,6 @@
                     </div>
                 </div>
             </div>
-
-
             {{--modal rencontre 3 vers 4 --}}
             <div class="modal fade" id="traiter4rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -768,6 +757,17 @@
                                 @csrf
                                 <fieldset>
                                     <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche" id="lbpresencede4">Presence demandeur</label>
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur4" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="title">Duree de la rencontre</label>
@@ -780,9 +780,6 @@
                                                 <button type="button" id="stop2" class="btn btn-warning">
                                                     <i class="feather icon-pause"></i>
                                                 </button>
-                                                <button type="button" id="init2" class="btn btn-info">
-                                                    <i class="feather icon-refresh-ccw"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -793,22 +790,11 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
-                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
-                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
-                                                    <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
+                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -849,7 +835,7 @@
                                             <div class="form-group">
                                                 <label for="planaction">Plan d'action</label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
-                                                        </textarea>
+                                                </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -870,7 +856,6 @@
                     </div>
                 </div>
             </div>
-
             {{--modal rencontre 4 vers 5 --}}
             <div class="modal fade" id="traiter5rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -886,6 +871,17 @@
                                 @csrf
                                 <fieldset>
                                     <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche" id="lbpresencede5">Presence demandeur</label>
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur5" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="title">Duree de la rencontre</label>
@@ -911,22 +907,11 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
-                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
-                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
-                                                    <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
+                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -967,14 +952,14 @@
                                             <div class="form-group">
                                                 <label for="planaction">Plan d'action</label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
-                                                        </textarea>
+                                                </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="observation">Observation</label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
-                                                        </textarea>
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -988,8 +973,6 @@
                     </div>
                 </div>
             </div>
-
-
         <!-- Modal de Suppression -->
             <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel16" aria-hidden="true">
@@ -1032,96 +1015,171 @@
     <script>
         $(function () {
             $('#renTb1').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('diagnostik.getrec1') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
+                    {data: 'matricule_aej' , orderable: false, searchable: false},
+                    {data: 'nomprenom' , orderable: false, searchable: false},
+                    {data: 'sexe' , orderable: false, searchable: false},
+                    {data: 'lieudereisdence' , orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
+                    {data: 'dureerencontre' , orderable: false, searchable: false},
+                    {data: 'dateprochainrdv' , orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
             });
 
             $('#renTb2').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('diagnostik.getrec2') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
+                    {data: 'matricule_aej', orderable: false, searchable: false},
+                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'sexe', orderable: false, searchable: false},
+                    {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
+                    {data: 'dureerencontre', orderable: false, searchable: false},
+                    {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
             });
 
             $('#renTb3').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('diagnostik.getrec3') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
+                    {data: 'matricule_aej', orderable: false, searchable: false},
+                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'sexe', orderable: false, searchable: false},
+                    {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
+                    {data: 'dureerencontre', orderable: false, searchable: false},
+                    {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
             });
 
             $('#renTb4').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('diagnostik.getrec4') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
+                    {data: 'matricule_aej', orderable: false, searchable: false},
+                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'sexe', orderable: false, searchable: false},
+                    {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
+                    {data: 'dureerencontre', orderable: false, searchable: false},
+                    {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
             });
 
             $('#renTb5').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('diagnostik.getrec5') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej'},
-                    {data: 'nomprenom'},
-                    {data: 'sexe'},
-                    {data: 'lieudereisdence'},
+                    {data: 'matricule_aej', orderable: false, searchable: false},
+                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'sexe', orderable: false, searchable: false},
+                    {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
-                    {data: 'dureerencontre'},
-                    {data: 'dateprochainrdv'},
-                    {data: 'axetravail'},
+                    {data: 'dureerencontre', orderable: false, searchable: false},
+                    {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
             });
@@ -1132,10 +1190,20 @@
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
+            var presencedemandeur = button.data('presencedemandeur');
             var modal = $(this);
+            if(presencedemandeur){
+                modal.find('.modal-body #presencedemandeur2').hide();
+                modal.find('.modal-body #lbpresencede2').hide();
+                modal.find('.modal-body #presencedemandeur2').val(presencedemandeur);
+            }else{
+                modal.find('.modal-body #presencedemandeur2').show();
+                modal.find('.modal-body #lbpresencede2').show();
+            }
             modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
             modal.find('.modal-body #typerencontre').val(typerencontre);
             modal.find('.modal-body #rencontre_id').val(rencontre_id);
+
         });
 
         $('#traiter3rdv').on('show.bs.modal', function (event) {
@@ -1143,47 +1211,82 @@
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
+            var presencedemandeur = button.data('presencedemandeur');
             var modal = $(this);
+            if(presencedemandeur){
+                modal.find('.modal-body #presencedemandeur3').hide();
+                modal.find('.modal-body #lbpresencede3').hide();
+                modal.find('.modal-body #presencedemandeur3').val(presencedemandeur);
+            }else{
+                modal.find('.modal-body #presencedemandeur3').show();
+                modal.find('.modal-body #lbpresencede3').show();
+            }
             modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
             modal.find('.modal-body #typerencontre').val(typerencontre);
             modal.find('.modal-body #rencontre_id').val(rencontre_id);
+            //modal.find('.modal-body #presencedemandeur').val(presencedemandeur);
         });
 
-         $('#traiter3rdv').on('show.bs.modal', function (event) {
+         /*$('#traiter3rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
-            var modal = $(this);
+            var presencedemandeur = button.data('presencedemandeur');
+             var modal = $(this);
+             if(presencedemandeur){
+                 modal.find('.modal-body #presencedemandeur').hide();
+                 modal.find('.modal-body #lbpresencede').hide();
+                 modal.find('.modal-body #presencedemandeur').val(presencedemandeur);
+             }else{
+                 modal.find('.modal-body #presencedemandeur').show();
+                 modal.find('.modal-body #lbpresencede').show();
+             }
             modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
             modal.find('.modal-body #typerencontre').val(typerencontre);
             modal.find('.modal-body #rencontre_id').val(rencontre_id);
-        });
+            modal.find('.modal-body #presencedemandeur').val(presencedemandeur);
+         });*/
 
          $('#traiter4rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
+            var presencedemandeur = button.data('presencedemandeur4');
             var modal = $(this);
+             if(presencedemandeur){
+                 modal.find('.modal-body #presencedemandeur4').hide();
+                 modal.find('.modal-body #lbpresencede4').hide();
+                 modal.find('.modal-body #presencedemandeur4').val(presencedemandeur);
+             }else{
+                 modal.find('.modal-body #presencedemandeur4').show();
+                 modal.find('.modal-body #lbpresencede4').show();
+             }
             modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
             modal.find('.modal-body #typerencontre').val(typerencontre);
             modal.find('.modal-body #rencontre_id').val(rencontre_id);
-        });
+         });
 
          $('#traiter5rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
+            var presencedemandeur = button.data('presencedemandeur');
             var modal = $(this);
+             if(presencedemandeur){
+                 modal.find('.modal-body #presencedemandeur5').hide();
+                 modal.find('.modal-body #lbpresencede5').hide();
+                 modal.find('.modal-body #presencedemandeur5').val(presencedemandeur);
+             }else{
+                 modal.find('.modal-body #presencedemandeur5').show();
+                 modal.find('.modal-body #lbpresencede5').show();
+             }
             modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
             modal.find('.modal-body #typerencontre').val(typerencontre);
             modal.find('.modal-body #rencontre_id').val(rencontre_id);
-        });
-
-
-
+         });
 
         $(function () {
             var centiemeSeconde = 0;

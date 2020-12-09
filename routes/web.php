@@ -32,12 +32,16 @@ Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function (
 
 Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'chefagence.'], function () {
     Route::get('/rencontre1', 'ChefagenceController@rencontre1')->name('rencontre1');
-    Route::get('/rencontre2', 'ChefagenceController@rencontre1')->name('rencontre2');
-    Route::get('/rencontre3', 'ChefagenceController@rencontre1')->name('rencontre3');
-    Route::get('/rencontre4', 'ChefagenceController@rencontre1')->name('rencontre4');
-    Route::get('/rencontre5', 'ChefagenceController@rencontre1')->name('rencontre5');
+    Route::get('/getagencerenct1', 'ChefagenceController@getAgenceRenct1')->name('getagencerenct1');
+    Route::get('/rencontre2', 'ChefagenceController@rencontre2')->name('rencontre2');
+    Route::get('/getagencerenct2', 'ChefagenceController@getAgenceRenct2')->name('getagencerenct2');
+    Route::get('/rencontre3', 'ChefagenceController@rencontre3')->name('rencontre3');
+    Route::get('/getagencerenct3', 'ChefagenceController@getAgenceRenct3')->name('getagencerenct3');
+    Route::get('/rencontre4', 'ChefagenceController@rencontre4')->name('rencontre4');
+    Route::get('/getagencerenct4', 'ChefagenceController@getAgenceRenct4')->name('getagencerenct4');
+    Route::get('/rencontre5', 'ChefagenceController@rencontre5')->name('rencontre5');
+    Route::get('/getagencerenct5', 'ChefagenceController@getAgenceRenct5')->name('getagencerenct5');
 });
-
 
 //diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {

@@ -35,7 +35,7 @@
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="font-size: 14px;">
                                         <span class="user-name text-bold-600">{{ Auth::user()->name }}</span>
-                                        <span class="user-status">Code Agence: {{ Auth::user()->agence->code }}</span>
+                                        <span class="user-status">Code Agence: {{ Auth::user()->agence->name }}</span>
                                     </div>
                                     <span>
                                 <img class="round" src="{{ asset('app-assets/images/logo/logo_aej.png') }}"

@@ -29,7 +29,8 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="sexe">Sexe</label>
-                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]">
+                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]" disabled>
+                                                        <input type="hidden" id="sexe_db" name="demandeur[sexe]">
                                                     </div>
                                                     <input type="hidden" id="nomprenom" name="demandeur[nomprenom]">
                                                     <input type="hidden" id="matricule_aej" name="demandeur[matricule_aej]">
@@ -37,13 +38,15 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance">Date naissance</label>
-                                                        <input type="date" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance">
+                                                        <input type="date" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance" disabled>
+                                                        <input type="hidden" id="datenaissance_db" name="demandeur[datenaisance]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="age">Age</label>
-                                                        <input type="text" class="form-control" id="age" name="demandeur[age]" placeholder="age">
+                                                        <input type="text" class="form-control" id="age" name="demandeur[age]" placeholder="age" disabled>
+                                                        <input type="hidden" id="age_db" name="demandeur[age]">
                                                     </div>
                                                 </div>
                                             </div>
@@ -52,19 +55,22 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="naturepiece">Nature Piece</label>
-                                                        <input type="text" name="demandeur[naturepiece]" id="naturepiece" placeholder="nature pieces" class="form-control">
+                                                        <input type="text" name="demandeur[naturepiece]" id="naturepiece" placeholder="nature pieces" class="form-control" disabled>
+                                                        <input type="hidden" id="naturepiece_db" name="demandeur[naturepiece]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="numpiece">N° Piece</label>
-                                                        <input type="text" name="demandeur[npiece]" id="npiece" placeholder="N° piece" class="form-control">
+                                                        <input type="text" name="demandeur[npiece]" id="npiece" placeholder="N° piece" class="form-control" disabled>
+                                                        <input type="hidden" id="npiece_db" name="demandeur[npiece]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite">Nationalite</label>
-                                                        <input type="text" name="demandeur[nationalite]" id="nationalite" placeholder="nationalite" class="form-control">
+                                                        <input type="text" name="demandeur[nationalite]" id="nationalite" placeholder="nationalite" class="form-control" disabled>
+                                                        <input type="hidden" id="nationalite_db" name="demandeur[nationalite]">
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,21 +79,29 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="contact">Contact</label>
-                                                        <input type="text" name="demandeur[contact]" id="contact" placeholder="contact" class="form-control">
+                                                        <input type="text" name="demandeur[contact]" id="contact" placeholder="contact" class="form-control" disabled>
+                                                        <input type="hidden" id="contact_db" name="demandeur[contact]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="lieudereisdence">Lieu de residence habituel</label>
-                                                        <input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
-                                                        <input type="hidden" name="commune_id" id='agenceid' readonly>
+                                                        <select name="demandeur[lieudereisdence]" id="lieudereisdence" class="form-control">
+                                                            <option value="">{{__('-- selectionner residence --')}}</option>
+                                                                @foreach($communes as $item)
+                                                                    <option value="{{$item->nom}}">{{$item->nom}}</option>
+                                                                @endforeach
+                                                        </select>
+                                                        {{--<input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
+                                                        <input type="hidden" name="commune_id" id='agenceid' readonly>--}}
                                                         <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="diplome">Diplôme</label>
-                                                        <input type="text" name="demandeur[diplome]" id="diplome" placeholder="Diplôme" class="form-control">
+                                                        <input disabled type="text" name="demandeur[diplome]" id="diplome" placeholder="Diplôme" class="form-control">
+                                                        <input  type="hidden" name="demandeur[diplome]" id="diplome_db">
                                                     </div>
                                                 </div>
                                             </div>
@@ -95,14 +109,21 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="specialitediplome">Spécialité du diplôme</label>
-                                                        <input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">
+                                                        <select name="demandeur[specialitediplome]" id="specialitediplome" class="form-control">
+                                                            <option value="">{{__('-- selectionner Spécialité --')}}</option>
+                                                            @foreach($specialites as $item)
+                                                                <option value="{{$item->libelle}}">{{$item->libelle}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        {{--<input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">--}}
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="anneediplome">Année d'obtention du diplôme</label>
                                                             <select name="demandeur[anneediplome]" id="anneediplome" class="form-control">
-                                                                @foreach($data as $item)
+                                                                <option value="">{{__('-- selectionner diplôme --')}}</option>
+                                                            @foreach($data as $item)
                                                                 <option value="{{$item['dateannee']}}">{{$item['dateannee']}}</option>
                                                                 @endforeach
                                                             </select>
@@ -111,7 +132,14 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="niveaudetude">Niveau d'etudes</label>
-                                                        <input type="text" name="demandeur[niveaudetude]" id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">
+                                                        <select disabled name="demandeur[niveaudetude]" id="niveaudetude" class="form-control">
+                                                            <option value="">{{__('-- selectionner Niveau --')}}</option>
+                                                                @foreach($niveauetudes as $item)
+                                                                    <option value="{{$item->libelle}}">{{$item->libelle}}</option>
+                                                                @endforeach
+                                                        </select>
+                                                       {{-- <input type="text" name="demandeur[niveaudetude]"
+                                                       id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">--}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,6 +148,25 @@
                                         <h6><i class="step-icon feather icon-settings"></i> Axe de travail</h6>
                                         <fieldset>
                                             <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="title">Duree de la rencontre</label>
+                                                        <input type="text" class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
+                                                    </div>
+                                                    <div class="form-group text-right mb-0">
+                                                        <button type="button" id="start" class="btn btn-success">
+                                                            <i class="feather icon-play"></i>
+                                                        </button>
+                                                        <button type="button" id="stop" class="btn btn-warning">
+                                                            <i class="feather icon-pause"></i>
+                                                        </button>
+                                                        {{--<button type="button" id="init" class="btn btn-info">
+                                                            <i class="feather icon-refresh-ccw"></i>
+                                                        </button>--}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{--<div class="row">
                                                 <div class="col">
                                                         <div class="form-group">
                                                             <label for="title">Duree de la rencontre</label>
@@ -133,21 +180,23 @@
                                                         <button type="button" id="init" class="btn btn-info">initialiser</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                                 <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="approche">Avez vous entretenu le demandeur avec l'approche</label>
-                                                        <select name="rencontre[approche]"  id="approche" class="form-control">
-                                                            <option value="{{__('SOFT')}}">{{__('SOFT')}}</option>
-                                                            <option value="{{__('SKILLS')}}">{{__('SKILLS')}}</option>
+                                                        <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                        <select required name="rencontre[approche]"  id="approche" class="form-control">
+                                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                            <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                            <option value="{{__('NON')}}">{{__('NON')}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="modalite">Modalite de prise en charge</label>
-                                                        <select name="rencontre[modalite]" id="modalite" class="form-control">
+                                                        <select required name="rencontre[modalite]" id="modalite" class="form-control">
+                                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                             <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
                                                             <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
                                                         </select>
@@ -156,7 +205,8 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="modalite">Axe de travail</label>
-                                                        <select name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                        <select required name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                             <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
                                                             <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
                                                             <option value="{{__('PS')}}">{{__('PS')}}</option>
@@ -172,7 +222,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="planaction">Date prochain RDV</label>
-                                                        <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control">
+                                                        <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control" required>
                                                     </div>
                                                 </div>
                                                     <div class="col-12">
@@ -235,7 +285,6 @@
                                 </button>
                             </div>
                         </div>
-
                         <div id="finder" style="text-align: center;">
                             <img class="loader" src="{{ asset('img/loader_squares.gif') }}" alt="Loader" style="display: none;">
                             <div id="results" class="row"></div>
@@ -269,9 +318,12 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
+                        <div id="result" style="display: none;" class="text-center text-success">Importation effectue avec succees</div>
+
                         <!--form control-->
                         <div class="form-group text-right mb-0">
-                        <a class="btn btn-warning" href="{{route('home')}}">retour</a>
+                            <button type="button" id="close" style="display: none;" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                            <a class="btn btn-warning" id="return" href="{{route('home')}}">retour</a>
                             <button type="button" id="aej_ok" class="btn btn-success">ok</button>
                         </div>
                     </form>
@@ -332,7 +384,7 @@
                 $('#stop').click(function(){
                      clearInterval(comptage);
                     $(this).attr('disabled','disabled')
-                    $('#start').removeAttr('disabled').text('continuer')
+                    $('#start').removeAttr('disabled')
                     $('#init').removeAttr('disabled')
                 });
 
@@ -343,7 +395,7 @@
                      heure = 0;
                     $('#dureerencontre').val('00:00:00:00');
                     $(this).attr('disabled','disabled')
-                    $('#start').removeAttr('disabled').text('Commencer')
+                    $('#start').removeAttr('disabled')
                     $('#stop').attr('disabled','disabled');
                 });
 
@@ -443,10 +495,9 @@
                 },'show');
                 var test = $("#aej_ok");
                 console.log(test);
-
                 $("#aej_ok").click(function() {
-                     $('#loader').fadeIn();
-                    var matriculeaej = $('#matriculeaej').val();
+                        $('#loader').fadeIn();
+                        var matriculeaej = $('#matriculeaej').val();
 
                     if (matriculeaej.length > 11) {
                              $.ajax({
@@ -457,20 +508,35 @@
                             _token: "{{ csrf_token() }}",
                             search: matriculeaej
                         },success: function( data ) {
+                            $('#loader').fadeOut();
+                            $('#result').fadeIn();
+                            $('#close').fadeIn();
+                            $('#aej_ok').hide();
+                            $('#return').hide();
+
                             $('#matriculeaej').val(data[0].label);
                             $('#matricule_aej').val(data[0].label);
                             $('#sexe').val(data[0].sexe);
+                            $('#sexe_db').val(data[0].sexe);
                             $('#datenaissance').val(data[0].datenaissance);
+                            $('#datenaissance_db').val(data[0].datenaissance);
                             $('#age').val(data[0].age);
+                            $('#age_db').val(data[0].age);
                             $('#naturepiece').val(data[0].typepieceidentite);
+                            $('#naturepiece_db').val(data[0].typepieceidentite);
                             $('#npiece').val(data[0].numerocni);
+                            $('#npiece_db').val(data[0].numerocni);
                             $('#nationalite').val(data[0].nationalite);
+                            $('#nationalite_db').val(data[0].nationalite);
                             $('#contact').val(data[0].telephone);
+                            $('#contact_db').val(data[0].telephone);
                             $('#diplome').val(data[0].diplome);
+                            $('#diplome_db').val(data[0].diplome);
                             $('#niveaudetude').val(data[0].niveauetude);
+                            $('#niveaudetude_db').val(data[0].niveauetude);
                             $('#nomprenom').val(data[0].nomprenom);
-                            $("#addAej").modal('hide');
-                             $('#loader').fadeOut();
+                           // $("#addAej").modal('hide');
+
                         },error: function (jqXHR, exception) {
                             alert('reessayer svp !!!');
                             $('#loader').fadeOut();
