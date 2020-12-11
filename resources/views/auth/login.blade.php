@@ -54,26 +54,15 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                <div class="login-footer">
+                                <div class="login-footer" style="background-color: #C0C0C0; margin: 30px; padding: 10px; border-radius: 30px;">
                                     <div class="divider">
-                                        <div class="divider-text"></div>
-                                        <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                            {{--<input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="agence_id" value="{{ old('code') }}"
-                                                   required autocomplete="current-password">--}}
-                                            <div class="form-control-position">
-                                               {{-- <i class="feather icon-user-minus"></i>--}}
-                                            </div>
-                                        </fieldset>
-
+                                        <div> </div>
+                                        <button type="submit" class="btn btn-ivory btn-block float-right btn-inline">
+                                            {{ __('Se connecter') }}
+                                        </button>
                                     </div>
-                                    <button type="submit"
-                                            class="btn btn-ivory btn-block float-right btn-inline">{{ __('Se connecter') }}</button>
+
                                     <div class="footer-btn d-inline">
-                                        <br>
-                                        {{--<a href="#" class="btn btn-facebook"><span class="fa fa-facebook"></span></a>
-                                        <a href="#" class="btn btn-twitter white"><span class="fa fa-twitter"></span></a>
-                                        <a href="#" class="btn btn-google"><span class="fa fa-google"></span></a>
-                                        <a href="#" class="btn btn-github"><span class="fa fa-github-alt"></span></a>--}}
                                     </div>
                                 </div>
                             </form>

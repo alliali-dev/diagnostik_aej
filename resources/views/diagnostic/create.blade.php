@@ -3,9 +3,7 @@
 @section('title') Diagnostic @endsection
 
 @section('subTitle') Post-suivie @endsection
-
 @section('content')
-
     <!-- Form wizard with icon tabs section start -->
     <section id="icon-tabs">
         <div class="row">
@@ -138,6 +136,7 @@
                                                                     <option value="{{$item->libelle}}">{{$item->libelle}}</option>
                                                                 @endforeach
                                                         </select>
+                                                        <input  type="hidden" name="demandeur[niveaudetude]" id="niveaudetude_db">
                                                        {{-- <input type="text" name="demandeur[niveaudetude]"
                                                        id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">--}}
                                                     </div>
@@ -148,10 +147,21 @@
                                         <h6><i class="step-icon feather icon-settings"></i> Axe de travail</h6>
                                         <fieldset>
                                             <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="approche" id="lbpresencede3">Presence demandeur</label>
+                                                        <select name="rencontre[presencedemandeur]"  id="presencedemandeur" class="form-control">
+                                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                            <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                            <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                            <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="title">Duree de la rencontre</label>
-                                                        <input type="text" class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
+                                                        <input type="text" readonly class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
                                                     </div>
                                                     <div class="form-group text-right mb-0">
                                                         <button type="button" id="start" class="btn btn-success">
@@ -160,27 +170,12 @@
                                                         <button type="button" id="stop" class="btn btn-warning">
                                                             <i class="feather icon-pause"></i>
                                                         </button>
-                                                        {{--<button type="button" id="init" class="btn btn-info">
+                                                        <button type="button" style="display: none;" id="init" class="btn btn-info">
                                                             <i class="feather icon-refresh-ccw"></i>
-                                                        </button>--}}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{--<div class="row">
-                                                <div class="col">
-                                                        <div class="form-group">
-                                                            <label for="title">Duree de la rencontre</label>
-                                                            <input type="text" class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
-                                                        </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group text-right mb-0">
-                                                        <button type="button" id="start" class="btn btn-success">commencer</button>
-                                                        <button type="button" id="stop" class="btn btn-warning">arreter</button>
-                                                        <button type="button" id="init" class="btn btn-info">initialiser</button>
-                                                    </div>
-                                                </div>
-                                            </div>--}}
                                                 <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
@@ -219,12 +214,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="planaction">Date prochain RDV</label>
-                                                        <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control" required>
-                                                    </div>
-                                                </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="planaction">Plan d'action</label>
@@ -239,6 +228,12 @@
                                                         </textarea>
                                                     </div>
                                                 </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="planaction">Date prochain RDV</label>
+                                                            <input type="text" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control" required>
+                                                        </div>
+                                                    </div>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -345,7 +340,33 @@
     <script type="text/javascript" src="https://daokun.webs.com/jquery.stopwatch.js"></script>
     {{--gestion des chronometre--}}
     <script>
-            $(function () {
+        $(document).ready(function() {
+            $("#dateprochainrdv").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $("#dateprochainrdv").focus(function() {
+                $("#dateprochainrdv").datepicker("show");
+            });
+            $("#dateprochainrdv").focus();
+        });
+
+        $('#dateprochainrdv').change(function () {
+            var  date = new Date($(this).val());
+            var now = Date.now();
+            var  tmp = now - date
+            if(Math.sign(tmp) !== -1){
+                $(this).datepicker({
+                    dateFormat: "yy-mm-dd"
+                }).focus(function() {
+                    $(this).val('')
+                  //  $(this).datepicker("show");
+                }).focus();
+                alert('renseignez une date valid svp');
+                return true;
+            }
+        });
+
+        $(function () {
                 var centiemeSeconde = 0;
                 var seconde = 0;
                 var minute = 0;
@@ -368,12 +389,18 @@
                             }
                         }
                     }
-                    console.log(heure);
-                    console.log(minute);
-                    console.log(seconde);
-                    console.log(centiemeSeconde);
                     $('#dureerencontre').val(heure +':'+ minute +':'+ seconde +':'+ centiemeSeconde);
                 }
+
+                $("#presencedemandeur").change(function() {
+                    if($(this).val() == 'PRESENT'){
+                        $("#start").trigger("click");
+                    }else{
+                        clearInterval(comptage);
+                        $("#init").trigger("click");
+                    }
+                });
+
                 $('#start').click(function () {
                     comptage = setInterval(chrono,10);
                    $(this).attr('disabled','disabled')

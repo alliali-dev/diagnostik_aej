@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title')4eme Rencontre@endsection
+@section('title') 4eme Rencontre @endsection
 
 @section('subTitle') par Conseil Emploie & Guichet emploi @endsection
 

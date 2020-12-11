@@ -40,8 +40,16 @@ $(".icons-tab-steps").steps({
     transitionEffect: "fade",
     titleTemplate: '<span class="step">#index#</span> #title#',
     labels: {
-        finish: 'Submit'
-    },
+        current: "étape actuelle:",
+        pagination: "Pagination",
+        finish: "Sauvegarder",
+        next: "Suivant",
+        previous: "Précédent",
+        loading: "Chargement ..."
+    }
+   /* labels: {
+        finish: 'Sauvegarder'
+    }*/,
     onStepChanging: function (event, currentIndex, newIndex) {
         // Allways allow previous action even if the current form is not valid!
         if (currentIndex > newIndex) {

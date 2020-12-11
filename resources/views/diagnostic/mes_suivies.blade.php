@@ -513,7 +513,6 @@
                     </div>
                 </div>
             </div>
-
         {{--modal rencontre 1 vers 2 --}}
             <div class="modal fade" id="traiter2rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -532,7 +531,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="approche" id="lbpresencede2">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur2" class="form-control">
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur2"  class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
                                                     <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
@@ -551,6 +550,9 @@
                                                 </button>
                                                 <button type="button" id="stop" class="btn btn-warning">
                                                     <i class="feather icon-pause"></i>
+                                                </button>
+                                                <button type="button" style="display: none;" id="init" class="btn btn-info">
+                                                    <i class="feather icon-refresh-ccw"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -599,12 +601,6 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
                                                 <label for="planaction">Plan d'action</label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
                                                 </textarea>
@@ -615,6 +611,12 @@
                                                 <label for="observation">Observation</label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
                                                 </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="planaction">Date prochain RDV</label>
+                                                <input type="text" name="rencontre[dateprochainrdv]" id="dateprochainrdv2" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -666,235 +668,7 @@
                                                 <button type="button" id="stop1" class="btn btn-warning">
                                                     <i class="feather icon-pause"></i>
                                                 </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="rencontre[suivirencontre_id]" id="suivirencontre_id" value="">
-                                    <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
-                                    <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
-                                                <select name="rencontre[approche]"  id="approche" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
-                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="modalite">Modalite de prise en charge</label>
-                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
-                                                    <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="modalite">Axe de travail</label>
-                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
-                                                    <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
-                                                    <option value="{{__('PS')}}">{{__('PS')}}</option>
-                                                    <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
-                                                    <option value="{{__('AGR')}}">{{__('AGR')}}</option>
-                                                    <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
-                                                    <option value="{{__('ED')}}">{{__('ED')}}</option>
-                                                    <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
-                                                    <option value="{{__('PC')}}">{{__('PC')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="planaction">Plan d'action</label>
-                                                <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
-                                                        </textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="observation">Observation</label>
-                                                <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
-                                                        </textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <!--form control-->
-                                <div class="form-group text-right mb-0">
-                                    <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{--modal rencontre 3 vers 4 --}}
-            <div class="modal fade" id="traiter4rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header bg-success">
-                            <h4 class="modal-title text-white" id="myModalLabel16">Renseigner 3eme Rencontre</h4>
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        <form action="{{ route('diagnostik.store2to3rencontre') }}" method="POST">
-                                @csrf
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche" id="lbpresencede4">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur4" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
-                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
-                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="title">Duree de la rencontre</label>
-                                                <input type="text" class="form-control" id="dureerencontre2" name="rencontre[dureerencontre]" required>
-                                            </div>
-                                            <div class="form-group text-right mb-0">
-                                                <button type="button" id="start2" class="btn btn-success">
-                                                    <i class="feather icon-play"></i>
-                                                </button>
-                                                <button type="button" id="stop2" class="btn btn-warning">
-                                                    <i class="feather icon-pause"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="rencontre[suivirencontre_id]" id="suivirencontre_id" value="">
-                                    <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
-                                    <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
-                                                <select name="rencontre[approche]"  id="approche" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
-                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="modalite">Modalite de prise en charge</label>
-                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
-                                                    <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="modalite">Axe de travail</label>
-                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
-                                                    <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
-                                                    <option value="{{__('PS')}}">{{__('PS')}}</option>
-                                                    <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
-                                                    <option value="{{__('AGR')}}">{{__('AGR')}}</option>
-                                                    <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
-                                                    <option value="{{__('ED')}}">{{__('ED')}}</option>
-                                                    <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
-                                                    <option value="{{__('PC')}}">{{__('PC')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="planaction">Plan d'action</label>
-                                                <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
-                                                </textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="observation">Observation</label>
-                                                <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
-                                                        </textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <!--form control-->
-                                <div class="form-group text-right mb-0">
-                                    <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{--modal rencontre 4 vers 5 --}}
-            <div class="modal fade" id="traiter5rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header bg-success">
-                            <h4 class="modal-title text-white" id="myModalLabel16">Renseigner 3eme Rencontre</h4>
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        <form action="{{ route('diagnostik.store2to3rencontre') }}" method="POST">
-                                @csrf
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="approche" id="lbpresencede5">Presence demandeur</label>
-                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur5" class="form-control">
-                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
-                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
-                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="title">Duree de la rencontre</label>
-                                                <input type="text" class="form-control" id="dureerencontre3" name="rencontre[dureerencontre]" required>
-                                            </div>
-                                            <div class="form-group text-right mb-0">
-                                                <button type="button" id="start3" class="btn btn-success">
-                                                    <i class="feather icon-play"></i>
-                                                </button>
-                                                <button type="button" id="stop3" class="btn btn-warning">
-                                                    <i class="feather icon-pause"></i>
-                                                </button>
-                                                <button type="button" id="init3" class="btn btn-info">
+                                                <button type="button" style="display: none;" id="init1" class="btn btn-info">
                                                     <i class="feather icon-refresh-ccw"></i>
                                                 </button>
                                             </div>
@@ -944,8 +718,236 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
+                                                <label for="planaction">Plan d'action</label>
+                                                <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
+                                                        </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="observation">Observation</label>
+                                                <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
+                                                        </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control">
+                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv3" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--form control-->
+                                <div class="form-group text-right mb-0">
+                                    <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--modal rencontre 3 vers 4 --}}
+            <div class="modal fade" id="traiter4rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success">
+                            <h4 class="modal-title text-white" id="myModalLabel16">Renseigner 4eme Rencontre</h4>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form action="{{ route('diagnostik.store2to3rencontre') }}" method="POST">
+                                @csrf
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche" id="lbpresencede4">Presence demandeur</label>
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur4" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="title">Duree de la rencontre</label>
+                                                <input type="text" class="form-control" id="dureerencontre2" name="rencontre[dureerencontre]" required>
+                                            </div>
+                                            <div class="form-group text-right mb-0">
+                                                <button type="button" id="start2" class="btn btn-success">
+                                                    <i class="feather icon-play"></i>
+                                                </button>
+                                                <button type="button" id="stop2" class="btn btn-warning">
+                                                    <i class="feather icon-pause"></i>
+                                                </button>
+                                                <button type="button" style="display: none;" id="init2" class="btn btn-info">
+                                                    <i class="feather icon-refresh-ccw"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="rencontre[suivirencontre_id]" id="suivirencontre_id" value="">
+                                    <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
+                                    <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                <select name="rencontre[approche]"  id="approche" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="modalite">Modalite de prise en charge</label>
+                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
+                                                    <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="modalite">Axe de travail</label>
+                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
+                                                    <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
+                                                    <option value="{{__('PS')}}">{{__('PS')}}</option>
+                                                    <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
+                                                    <option value="{{__('AGR')}}">{{__('AGR')}}</option>
+                                                    <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
+                                                    <option value="{{__('ED')}}">{{__('ED')}}</option>
+                                                    <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
+                                                    <option value="{{__('PC')}}">{{__('PC')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="planaction">Plan d'action</label>
+                                                <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="observation">Observation</label>
+                                                <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
+                                                        </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="planaction">Date prochain RDV</label>
+                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv4" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--form control-->
+                                <div class="form-group text-right mb-0">
+                                    <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--modal rencontre 4 vers 5 --}}
+            <div class="modal fade" id="traiter5rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success">
+                            <h4 class="modal-title text-white" id="myModalLabel16">Renseigner 5eme Rencontre</h4>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form action="{{ route('diagnostik.store2to3rencontre') }}" method="POST">
+                                @csrf
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche" id="lbpresencede5">Presence demandeur</label>
+                                                <select name="rencontre[presencedemandeur]"  id="presencedemandeur5" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
+                                                    <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
+                                                    <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="title">Duree de la rencontre</label>
+                                                <input type="text" class="form-control" id="dureerencontre3" name="rencontre[dureerencontre]" required>
+                                            </div>
+                                            <div class="form-group text-right mb-0">
+                                                <button type="button" id="start3" class="btn btn-success">
+                                                    <i class="feather icon-play"></i>
+                                                </button>
+                                                <button type="button" id="stop3" class="btn btn-warning">
+                                                    <i class="feather icon-pause"></i>
+                                                </button>
+                                                <button type="button" style="display: none;" id="init3" class="btn btn-info">
+                                                    <i class="feather icon-refresh-ccw"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="rencontre[suivirencontre_id]" id="suivirencontre_id" value="">
+                                    <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
+                                    <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                <select name="rencontre[approche]"  id="approche" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                                    <option value="{{__('NON')}}">{{__('NON')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="modalite">Modalite de prise en charge</label>
+                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
+                                                    <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="modalite">Axe de travail</label>
+                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                    <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                                    <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
+                                                    <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
+                                                    <option value="{{__('PS')}}">{{__('PS')}}</option>
+                                                    <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
+                                                    <option value="{{__('AGR')}}">{{__('AGR')}}</option>
+                                                    <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
+                                                    <option value="{{__('ED')}}">{{__('ED')}}</option>
+                                                    <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
+                                                    <option value="{{__('PC')}}">{{__('PC')}}</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -960,6 +962,12 @@
                                                 <label for="observation">Observation</label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
                                                 </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="planaction">Date prochain RDV</label>
+                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv5" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -1009,10 +1017,31 @@
 </section>
 @endsection
 @section('js')
+    <script src="{{asset('jqueryui/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('jqueryui/jquery-ui.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="https://daokun.webs.com/jquery.stopwatch.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
+
+        $(document).ready(function() {
+            $("#dateprochainrdv2").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $("#dateprochainrdv2").focus(function() {
+                $("#dateprochainrdv2").datepicker("show");
+            });
+            $("#dateprochainrdv2").focus();
+
+            $("#dateprochainrdv3").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $("#dateprochainrdv3").focus(function() {
+                $("#dateprochainrdv3").datepicker("show");
+            });
+            $("#dateprochainrdv3").focus();
+        });
+
         $(function () {
             $('#renTb1').DataTable({
                 "language": {
@@ -1187,6 +1216,7 @@
 
         $('#traiter2rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
+            $("#init").trigger("click");
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
@@ -1195,9 +1225,10 @@
             if(presencedemandeur){
                 modal.find('.modal-body #presencedemandeur2').hide();
                 modal.find('.modal-body #lbpresencede2').hide();
+                $('#init').attr('disabled','disabled')
                 modal.find('.modal-body #presencedemandeur2').val(presencedemandeur);
             }else{
-                modal.find('.modal-body #presencedemandeur2').show();
+                modal.find('.modal-body #presencedemandeur2').removeAttr('disabled').show();
                 modal.find('.modal-body #lbpresencede2').show();
             }
             modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
@@ -1207,7 +1238,8 @@
         });
 
         $('#traiter3rdv').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
+            var button = $(event.relatedTarget)
+            $("#init2").trigger("click");
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
@@ -1227,29 +1259,9 @@
             //modal.find('.modal-body #presencedemandeur').val(presencedemandeur);
         });
 
-         /*$('#traiter3rdv').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var typerencontre = button.data('typerencontre');
-            var suivirencontre_id = button.data('suivirencontre_id');
-            var rencontre_id = button.data('rencontre_id');
-            var presencedemandeur = button.data('presencedemandeur');
-             var modal = $(this);
-             if(presencedemandeur){
-                 modal.find('.modal-body #presencedemandeur').hide();
-                 modal.find('.modal-body #lbpresencede').hide();
-                 modal.find('.modal-body #presencedemandeur').val(presencedemandeur);
-             }else{
-                 modal.find('.modal-body #presencedemandeur').show();
-                 modal.find('.modal-body #lbpresencede').show();
-             }
-            modal.find('.modal-body #suivirencontre_id').val(suivirencontre_id);
-            modal.find('.modal-body #typerencontre').val(typerencontre);
-            modal.find('.modal-body #rencontre_id').val(rencontre_id);
-            modal.find('.modal-body #presencedemandeur').val(presencedemandeur);
-         });*/
-
          $('#traiter4rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
+             $( "#init3" ).trigger( "click" );
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
@@ -1270,6 +1282,7 @@
 
          $('#traiter5rdv').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
+             $( "#init4" ).trigger( "click" );
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
@@ -1311,9 +1324,18 @@
                         }
                     }
                 }
-
                 $('#dureerencontre').val(heure +':'+ minute +':'+ seconde +':'+ centiemeSeconde);
             }
+
+            $( "#presencedemandeur2" ).change(function() {
+                if($(this).val() == 'PRESENT'){
+                    $("#start").trigger("click");
+                }else{
+                    clearInterval(comptage);
+                    $("#init").trigger("click");
+                }
+            });
+
             $('#start').click(function () {
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
@@ -1338,7 +1360,6 @@
                 $('#start').removeAttr('disabled')
                 $('#stop').attr('disabled','disabled');
             });
-
         });
 
         $(function () {
@@ -1364,9 +1385,18 @@
                         }
                     }
                 }
-
                 $('#dureerencontre1').val(heure +':'+ minute +':'+ seconde +':'+ centiemeSeconde);
             }
+
+            $("#presencedemandeur3").change(function() {
+                if($(this).val() == 'PRESENT'){
+                    $("#start1").trigger("click");
+                }else{
+                    clearInterval(comptage);
+                    $("#init1").trigger("click");
+                }
+            });
+
             $('#start1').click(function () {
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
@@ -1416,9 +1446,18 @@
                         }
                     }
                 }
-
                 $('#dureerencontre2').val(heure +':'+ minute +':'+ seconde +':'+ centiemeSeconde);
             }
+
+            $("#presencedemandeur4").change(function() {
+                if($(this).val() == 'PRESENT'){
+                    $("#start2").trigger("click");
+                }else{
+                    clearInterval(comptage);
+                    $("#init2").trigger("click");
+                }
+            });
+
             $('#start2').click(function () {
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
@@ -1468,9 +1507,18 @@
                         }
                     }
                 }
-
                 $('#dureerencontre3').val(heure +':'+ minute +':'+ seconde +':'+ centiemeSeconde);
             }
+
+            $("#presencedemandeur5").change(function() {
+                if($(this).val() == 'PRESENT'){
+                    $("#start3").trigger("click");
+                }else{
+                    clearInterval(comptage);
+                    $("#init3").trigger("click");
+                }
+            });
+
             $('#start3').click(function () {
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
