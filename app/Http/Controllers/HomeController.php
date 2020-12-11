@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rencontre;
+use App\Models\SuiviRencontre;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,6 @@ class HomeController extends Controller
             ))
             ->groupBy('axetravail')
             ->get();
-
 
         foreach ($recaxetravail as $term) {
             $data_axt['labels'][] = $term->axetravail;
@@ -75,7 +75,7 @@ class HomeController extends Controller
             ->labels($data_md['labels'])
             ->datasets([
                 [
-                    'backgroundColor' => ['#FF6384', '#36A2EB','#37a844','#f8a602'],
+                    'backgroundColor' => ['#008080', '#0000FF'],
                     'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
                     'data' => $data_md['values']
                 ]
@@ -103,7 +103,7 @@ class HomeController extends Controller
             ->labels($data['labels'])
             ->datasets([
                 [
-                    'backgroundColor' => ['#FF6384', '#36A2EB','#37a844','#f8a602'],
+                    'backgroundColor' => ['#005C96', '#800000','rgb(6, 169, 83)','#FF00FF'],
                     'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
                     'data' => $data['values']
                 ]
@@ -111,7 +111,8 @@ class HomeController extends Controller
             ->options([]);
 
         $rencontres = Rencontre::mine();
-       // dd($rencontres->where('axetravail','FCQ')->count());
-        return view('home',compact('rencontres','prdejs','recmodalitejs','recaxetravailjs'));
+        $suivierencontres = SuiviRencontre::mine();
+
+        return view('home',compact('rencontres','prdejs','recmodalitejs','recaxetravailjs','suivierencontres'));
     }
 }

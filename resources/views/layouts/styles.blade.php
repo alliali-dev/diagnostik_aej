@@ -22,6 +22,9 @@
 <link rel="stylesheet" type="text/css" href="{{asset('jqueryui/jquery-ui.min.css')}}">
 <!-- END: Custom CSS-->
 
+{{--CSS Clock--}}
+<link rel="stylesheet" type="text/css" href="{{asset('css/clock.css')}}">
+
 
 @yield('css')
 

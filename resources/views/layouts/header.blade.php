@@ -31,6 +31,40 @@
                                     </div>
                                 </div>--}}
                             @endif
+                                {{--Start Horloge --}}
+                                <div class="col float-right">
+                                    <div class="clock clk-marker">
+                                        <span>
+                                            <svg width="300" height="400" viewBox="0 0 300 400">
+                                                <text class="th" x="150" y="200">8</text>
+                                            </svg>
+                                            <svg width="300" height="400" viewBox="0 0 300 400">
+                                                <text class="uh" x="150" y="200">8</text>
+                                            </svg>
+                                        </span>
+                                        :
+                                        <span>
+                                            <svg width="300" height="400" viewBox="0 0 300 400">
+                                                <text class="tmn" x="150" y="200">8</text>
+                                            </svg>
+                                            <svg width="300" height="400" viewBox="0 0 300 400">
+                                                <text class="umn" x="150" y="200">8</text>
+                                            </svg>
+                                        </span>
+                                        :
+                                        <span>
+                                            <svg width="300" height="400" viewBox="0 0 300 400">
+                                                <text class="ts" x="150" y="200">8</text>
+                                            </svg>
+                                            <svg width="300" height="400" viewBox="0 0 300 400">
+                                                <text class="us" x="150" y="200">8</text>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="full-clock clk-marker">00:00:00</div>
+                                </div>
+                                {{--End Horloge --}}
+
                             <li class="dropdown dropdown-user nav-item float-right">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="font-size: 14px;">

@@ -14,11 +14,12 @@
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/logo/logo_aej.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/logo/logo_aej.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap&text=0123456789" rel="stylesheet">
     @include('layouts.styles')
 </head>
 <!-- END: Head-->
 <!-- BEGIN: Body-->
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static   menu-collapsed"
+<body onload="clockCtrl();" class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static   menu-collapsed"
       data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 @include('layouts.sidebar')
 <!-- BEGIN: Content-->

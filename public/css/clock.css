@@ -1,0 +1,29 @@
+.clock {
+    font-family: 'Orbitron', 'Segoe UI', -apple-system, system-ui;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.clock span {
+    white-space: nowrap;
+}
+
+.clock svg {
+    background-color: orange;
+    box-shadow: 5px 5px 5px rgb(6, 169, 83);
+    height: 40px;
+    vertical-align: middle;
+    width: auto;
+}
+
+.clock svg text {
+    dominant-baseline: central;
+    fill: white;
+    font-size: 300px;
+    text-anchor: middle;
+}
+
+.full-clock::first-letter {
+    text-transform: uppercase;
+}
