@@ -27,6 +27,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $data_md = [
+            'labels' => [],
+            'values' => [],
+        ];
+
+        $data_axt = [
+            'labels' => [],
+            'values' => [],
+        ];
+
+        $data = [
+            'labels' => [],
+            'values' => [],
+        ];
+
         $recaxetravail = Rencontre::where('agence_id', session()->get('orig_agence'))
             ->select(array(
                 DB::raw('axetravail as `axetravail`'),

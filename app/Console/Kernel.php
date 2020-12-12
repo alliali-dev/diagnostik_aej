@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\RdvAlerteEmail;
 use App\Console\Commands\SetRencontreStatusCE;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         SetRencontreStatusCE::class,
+        RdvAlerteEmail::class
     ];
 
     /**
@@ -25,9 +27,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
         $schedule->command(SetRencontreStatusCE::class)->dailyAt('17:00')
             ->appendOutputTo(storage_path('logs/setrencontrestatusce.log'));
+
+        $schedule->command(RdvAlerteEmail::class)->dailyAt('08:00')
+            ->appendOutputTo(storage_path('logs/rdvalerteemail.log'));
     }
 
     /**
