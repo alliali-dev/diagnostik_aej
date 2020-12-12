@@ -23,16 +23,19 @@
                                         <!-- #counter -->
                                         <br>
                                         <div class="col-lg-12">
-                                            <h4 id="hours" class="txt-align-center txt-upper" style="color: white">
+                                           {{-- <h4 id="hours" class="txt-align-center txt-upper" style="color: white">
                                                 {{ date('Y/m/d H:i:s') }}
-                                            </h4>
-                                            <p class="txt-upper txt-align-center " style="color: white;font-size: 20px">Nombre Demandeur Emploi {{ $suivierencontres->count() }}</p>
+                                            </h4>--}}
+                                            <strong>
+                                                <p class="txt-upper txt-align-center " style="color: white;font-size: 20px">
+                                                    Nombre Demandeur Emploi {{ $suivierencontres->count() }}
+                                                </p>
+                                            </strong>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-2">
                                             <div class="info">
                                                 <!-- 1 -->
                                                 <div class="themeioan_counter text-center"><!-- single counter item -->
-
                                                     <h4 id="deamndeurs" class="deamndeurs"> {{$rencontres->count() }} </h4>
                                                     <p class="ttle_count">TOTAL DES SUIVIES</p>
                                                 </div><!-- end single counter item -->

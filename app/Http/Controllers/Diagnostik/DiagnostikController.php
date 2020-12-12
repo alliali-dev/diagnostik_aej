@@ -263,8 +263,8 @@ class DiagnostikController extends Controller
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
                                                                 data-rencontre_id="'.$row->id .'"
                                                                 data-typerencontre="4"
-                                                                data-presencedemandeur="SANS-RDV"
-                                                                >Edit 4e sans-rdv
+                                                                data-presencedemandeur4="SANS-RDV"
+                                                                >4e sans-rdv
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
                     }else{
@@ -387,7 +387,7 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 5 )
-                ->where('status',false);
+                ->where('status',true);
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -486,8 +486,8 @@ class DiagnostikController extends Controller
             if ($rencontre) {
                 $data = $request->rencontre;
                 $data['user_id'] = auth()->id();
-                if($data['typerencontre'] = "5"){
-                    $data['status'] = false;
+                if($data['typerencontre'] == "5"){
+                    $data['status'] = true;
                 }
                 $data['dateprochainrdv'] = $request->rencontre['dateprochainrdv'] . '06:30:08';
                 $data['agence_id'] = session()->get('orig_agence');

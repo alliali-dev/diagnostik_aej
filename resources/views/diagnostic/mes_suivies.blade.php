@@ -616,7 +616,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" id="dateprochainrdv2" class="form-control">
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -733,7 +733,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv3" class="form-control">
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv3" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -850,7 +850,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv4" class="form-control">
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -967,7 +967,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv5" class="form-control">
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -1025,6 +1025,7 @@
     <script>
 
         $(document).ready(function() {
+
             $("#dateprochainrdv2").datepicker({
                 dateFormat: "yy-mm-dd"
             });
@@ -1033,6 +1034,8 @@
             });
             $("#dateprochainrdv2").focus();
 
+            /////
+
             $("#dateprochainrdv3").datepicker({
                 dateFormat: "yy-mm-dd"
             });
@@ -1040,7 +1043,44 @@
                 $("#dateprochainrdv3").datepicker("show");
             });
             $("#dateprochainrdv3").focus();
+
+            //////
+
+            $("#dateprochainrdv4").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $("#dateprochainrdv4").focus(function() {
+                $("#dateprochainrdv4").datepicker("show");
+            });
+            $("#dateprochainrdv4").focus();
+
+            ///
+
+            $("#dateprochainrdv5").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $("#dateprochainrdv5").focus(function() {
+                $("#dateprochainrdv5").datepicker("show");
+            });
+            $("#dateprochainrdv5").focus();
         });
+
+        function checkdate(elt){
+            var elt = $(elt);
+            var  date = new Date(elt.val());
+            var now = Date.now();
+            var  tmp = now - date
+            if(Math.sign(tmp) !== -1){
+                elt.datepicker({
+                    dateFormat: "yy-mm-dd"
+                }).focus(function() {
+                    elt.val('')
+                    //  $(this).datepicker("show");
+                }).focus();
+                alert('renseignez une date valid svp');
+                return true;
+            }
+        }
 
         $(function () {
             $('#renTb1').DataTable({
@@ -1243,7 +1283,8 @@
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
-            var presencedemandeur = button.data('presencedemandeur');
+            var presencedemandeur = button.data('presencedemandeur4');
+            console.log(presencedemandeur);
             var modal = $(this);
             if(presencedemandeur){
                 modal.find('.modal-body #presencedemandeur3').hide();
@@ -1267,6 +1308,7 @@
             var rencontre_id = button.data('rencontre_id');
             var presencedemandeur = button.data('presencedemandeur4');
             var modal = $(this);
+            console.log(presencedemandeur);
              if(presencedemandeur){
                  modal.find('.modal-body #presencedemandeur4').hide();
                  modal.find('.modal-body #lbpresencede4').hide();
