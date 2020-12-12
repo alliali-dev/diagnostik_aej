@@ -192,7 +192,7 @@ class DiagnostikController extends Controller
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
                                                                 data-rencontre_id="'.$row->id .'"
                                                                 data-typerencontre="3"
-                                                                data-presencedemandeur="SANS-RDV"
+                                                                data-presencedemandeur3="SANS-RDV"
                                                                 >Edit 3e sans-rdv
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
@@ -334,7 +334,7 @@ class DiagnostikController extends Controller
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
                                                                 data-rencontre_id="'.$row->id .'"
                                                                 data-typerencontre="5"
-                                                                data-presencedemandeur="SANS-RDV"
+                                                                data-presencedemandeur5="SANS-RDV"
                                                                 >Edit 5e sans-rdv
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
@@ -459,6 +459,7 @@ class DiagnostikController extends Controller
     }
 
     public function store1to2rencontre(Request $request){
+        //dd($request->all());
         try {
 
             $rencontre = Rencontre::findOrfail($request->rencontre_id);
@@ -469,6 +470,7 @@ class DiagnostikController extends Controller
                 $data['user_id'] = auth()->id();
                 $data['dateprochainrdv'] = $request->rencontre['dateprochainrdv'] . '06:30:08';
                 $data['agence_id'] = session()->get('orig_agence');
+                $data['presencedemandeur'] = $request->presencedemandeur ? $request->presencedemandeur : $request->rencontre['presencedemandeur'];
                 Rencontre::create($data);
             }
             session()->flash('success', 'Bien ajoute');
@@ -480,6 +482,7 @@ class DiagnostikController extends Controller
     }
 
     public function store2to3rencontre(Request $request){
+
         try {
             $rencontre = Rencontre::findOrfail($request->rencontre_id);
             $rencontre->update(['status' => true]);
@@ -491,6 +494,8 @@ class DiagnostikController extends Controller
                 }
                 $data['dateprochainrdv'] = $request->rencontre['dateprochainrdv'] . '06:30:08';
                 $data['agence_id'] = session()->get('orig_agence');
+                $data['presencedemandeur'] = $request->presencedemandeur ? $request->presencedemandeur : $request->rencontre['presencedemandeur'];
+
                 Rencontre::create($data);
             }
             session()->flash('success', 'Bien ajoute');

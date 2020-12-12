@@ -537,6 +537,7 @@
                                                     <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
                                                     <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
                                                 </select>
+                                                <input type="hidden" name="presencedemandeur" id="hiddenpresencedemandeur2">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -654,6 +655,7 @@
                                                     <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
                                                     <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
                                                 </select>
+                                                <input type="hidden" name="presencedemandeur" id="hiddenpresencedemandeur3">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -771,6 +773,7 @@
                                                     <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
                                                     <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
                                                 </select>
+                                                <input type="hidden" name="presencedemandeur" id="hiddenpresencedemandeur4">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -888,6 +891,7 @@
                                                     <option value="{{__('ABSENT EXCUSE')}}">{{__('ABSENT EXCUSE')}}</option>
                                                     <option value="{{__('ABSENT NON EXCUSE')}}">{{__('ABSENT NON EXCUSE')}}</option>
                                                 </select>
+                                                <input type="hidden" name="presencedemandeur" id="hiddenpresencedemandeur5">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -1262,11 +1266,13 @@
             var rencontre_id = button.data('rencontre_id');
             var presencedemandeur = button.data('presencedemandeur');
             var modal = $(this);
+            console.log(presencedemandeur);
             if(presencedemandeur){
                 modal.find('.modal-body #presencedemandeur2').hide();
                 modal.find('.modal-body #lbpresencede2').hide();
                 $('#init').attr('disabled','disabled')
                 modal.find('.modal-body #presencedemandeur2').val(presencedemandeur);
+                modal.find('.modal-body #hiddenpresencedemandeur2').val(presencedemandeur);
             }else{
                 modal.find('.modal-body #presencedemandeur2').removeAttr('disabled').show();
                 modal.find('.modal-body #lbpresencede2').show();
@@ -1283,13 +1289,14 @@
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
-            var presencedemandeur = button.data('presencedemandeur4');
+            var presencedemandeur = button.data('presencedemandeur3');
             console.log(presencedemandeur);
             var modal = $(this);
             if(presencedemandeur){
                 modal.find('.modal-body #presencedemandeur3').hide();
                 modal.find('.modal-body #lbpresencede3').hide();
                 modal.find('.modal-body #presencedemandeur3').val(presencedemandeur);
+                modal.find('.modal-body #hiddenpresencedemandeur3').val(presencedemandeur);
             }else{
                 modal.find('.modal-body #presencedemandeur3').show();
                 modal.find('.modal-body #lbpresencede3').show();
@@ -1313,6 +1320,8 @@
                  modal.find('.modal-body #presencedemandeur4').hide();
                  modal.find('.modal-body #lbpresencede4').hide();
                  modal.find('.modal-body #presencedemandeur4').val(presencedemandeur);
+                 modal.find('.modal-body #hiddenpresencedemandeur4').val(presencedemandeur);
+
              }else{
                  modal.find('.modal-body #presencedemandeur4').show();
                  modal.find('.modal-body #lbpresencede4').show();
@@ -1328,12 +1337,13 @@
             var typerencontre = button.data('typerencontre');
             var suivirencontre_id = button.data('suivirencontre_id');
             var rencontre_id = button.data('rencontre_id');
-            var presencedemandeur = button.data('presencedemandeur');
+            var presencedemandeur = button.data('presencedemandeur5');
             var modal = $(this);
              if(presencedemandeur){
                  modal.find('.modal-body #presencedemandeur5').hide();
                  modal.find('.modal-body #lbpresencede5').hide();
                  modal.find('.modal-body #presencedemandeur5').val(presencedemandeur);
+                 modal.find('.modal-body #hiddenpresencedemandeur5').val(presencedemandeur);
              }else{
                  modal.find('.modal-body #presencedemandeur5').show();
                  modal.find('.modal-body #lbpresencede5').show();
