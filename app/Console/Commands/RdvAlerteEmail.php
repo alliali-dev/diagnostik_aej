@@ -62,7 +62,7 @@ class RdvAlerteEmail extends Command
 
         foreach ($rencontres as $renc) {
             $end_date = Carbon::parse($renc->dateprochainrdv);
-            $checkalert = $end_date->diff(\Carbon\Carbon::now())->format('%d');
+            $checkalert = $end_date->diff(\Carbon\Carbon::now())->format('%d %h');
 
             $user = User::findOrFail($renc->user_id);
 
