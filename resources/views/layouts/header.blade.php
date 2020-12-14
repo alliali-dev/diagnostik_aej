@@ -32,7 +32,7 @@
                                 </div>--}}
                             @endif
                                 {{--Start Horloge --}}
-                                <div class="col float-right">
+                                {{--<div class="col float-right">
                                     <div class="clock clk-marker">
                                         <span>
                                             <svg width="300" height="400" viewBox="0 0 300 400">
@@ -62,14 +62,14 @@
                                         </span>
                                     </div>
                                     <div class="full-clock clk-marker">00:00:00</div>
-                                </div>
+                                </div>--}}
                                 {{--End Horloge --}}
 
                             <li class="dropdown dropdown-user nav-item float-right">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="font-size: 14px;">
                                         <span class="user-name text-bold-600">{{ Auth::user()->name }}</span>
-                                        <span class="user-status">Code Agence: {{ Auth::user()->agence->name }}</span>
+                                        <span class="user-status">Agence: {{ Auth::user()->agence->name }}</span>
                                     </div>
                                     <span>
                                 <img class="round" src="{{ asset('app-assets/images/logo/logo_aej.png') }}"
