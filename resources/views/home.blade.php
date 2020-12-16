@@ -28,7 +28,7 @@
                                             </h4>--}}
                                             <strong>
                                                 <p class="txt-upper txt-align-center " style="color: white;font-size: 20px">
-                                                    Nombre Demandeur Emploi {{ $suivierencontres->count() }}
+                                                    Nombre Demandeur Entretien {{ $suivierencontres->count() }}
                                                 </p>
                                             </strong>
                                         </div>

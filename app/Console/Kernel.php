@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(SetRencontreStatusCE::class)->dailyAt('17:00')
             ->appendOutputTo(storage_path('logs/setrencontrestatusce.log'));
 
-        $schedule->command(RdvAlerteEmail::class)->dailyAt('08:00')
+        $schedule->command(RdvAlerteEmail::class)->dailyAt('07:00')
             ->appendOutputTo(storage_path('logs/rdvalerteemail.log'));
     }
 

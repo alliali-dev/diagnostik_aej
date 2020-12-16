@@ -41,11 +41,14 @@ Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'ch
     Route::get('/getagencerenct4', 'ChefagenceController@getAgenceRenct4')->name('getagencerenct4');
     Route::get('/rencontre5', 'ChefagenceController@rencontre5')->name('rencontre5');
     Route::get('/getagencerenct5', 'ChefagenceController@getAgenceRenct5')->name('getagencerenct5');
+    Route::get('/filter', 'ChefagenceController@filter')->name('filter');
+    Route::get('/details/demandeur/{id?}', 'ChefagenceController@detailDemandeur')->name('detaildemandeur');
 });
 
 //diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
     Route::get('/', 'DiagnostikController@index')->name('index');
+
     Route::get('/getRec1', 'DiagnostikController@getRec1')->name('getrec1');
     Route::get('/getRec2', 'DiagnostikController@getRec2')->name('getrec2');
     Route::get('/getRec3', 'DiagnostikController@getRec3')->name('getrec3');
