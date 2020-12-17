@@ -78,9 +78,9 @@
                             </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">
+                                  {{--  <a class="dropdown-item" href="#">
                                         <i class="feather icon-user"></i> Mon Compte
-                                    </a>
+                                    </a>--}}
                                     @if(auth()->user()->hasRole('SuperAdmin'))
                                         <a class="dropdown-item" href="{{route('users.index')}}">
                                             <i class="feather icon-user-plus"></i> Gérer Utilisateur

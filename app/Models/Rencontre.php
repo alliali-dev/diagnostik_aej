@@ -34,14 +34,12 @@ class Rencontre extends Model
     public function scopeMine(Builder $query)
     {
         if(auth()->user()->hasRole('SuperAdmin')){
-            return $query->get();
+            return $query;
         }elseif(auth()->user()->hasRole('CAgence')){
-            return $query->where('agence_id',  session()->get('orig_agence'))
-                ->get();
+            return $query->where('agence_id',  session()->get('orig_agence'));
         }elseif(auth()->user()->hasRole('CEmploi')){
             return $query->where('agence_id',  session()->get('orig_agence'))
-                ->where('user_id',  Auth::id())
-                ->get();
+                ->where('user_id',  Auth::id());
         }
     }
 

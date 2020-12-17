@@ -28,7 +28,7 @@ class ChefagenceController extends Controller
     }
 
     public function detailDemandeur($id){
-        $rencontres = Rencontre::mine()->where('suivirencontre_id',$id);
+        $rencontres = Rencontre::mine()->where('suivirencontre_id',$id)->get();
         $suivie = SuiviRencontre::find($id);
         return view('demandeur.details',compact('rencontres','suivie'));
     }

@@ -43,7 +43,7 @@ class HomeController extends Controller
             'values' => [],
         ];
 
-        $recaxetravail = Rencontre::where('agence_id', session()->get('orig_agence'))
+        $recaxetravail = Rencontre::mine()
             ->select(array(
                 DB::raw('axetravail as `axetravail`'),
                 DB::raw("count(axetravail) axetravailcount")
@@ -70,7 +70,7 @@ class HomeController extends Controller
             ])->options([]);
 
 
-        $recmodalite = Rencontre::where('agence_id', session()->get('orig_agence'))
+        $recmodalite = Rencontre::mine()
             ->select(array(
                 DB::raw('modalite as `modalite`'),
                 DB::raw("count(modalite) modalitecunt")
@@ -98,7 +98,7 @@ class HomeController extends Controller
             ])
             ->options([]);
 
-        $rencs = Rencontre::where('agence_id', session()->get('orig_agence'))
+        $rencs = Rencontre::mine()
             ->select(array(
                 DB::raw('presencedemandeur as `presencedemandeur`'),
                 DB::raw("count(presencedemandeur) prdecount")
