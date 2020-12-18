@@ -48,7 +48,7 @@ Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'ch
 //diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
     Route::get('/', 'DiagnostikController@index')->name('index');
-
+    Route::post('/autrerdv','DiagnostikController@autrerdv')->name('autrerdv');
     Route::get('/getRec1', 'DiagnostikController@getRec1')->name('getrec1');
     Route::get('/getRec2', 'DiagnostikController@getRec2')->name('getrec2');
     Route::get('/getRec3', 'DiagnostikController@getRec3')->name('getrec3');

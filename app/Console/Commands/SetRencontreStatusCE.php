@@ -50,15 +50,18 @@ class SetRencontreStatusCE extends Command
             $this->warn('Nothing to process...');
             return;
         }
-        //$item->dateprochainrdv->isFuture()
+
         $this->output->progressStart($rencontres->count());
 
         foreach ($rencontres as $renc) {
             if (!$renc->dateprochainrdv->isFuture()){
-                $rencontres->presencedemandeur = 'CE-ABSENT';
+                $renc->presencedemandeur = 'CE-ABSENT';
+                $renc->rdvmanque = $renc->rdvmanque + 1;
+                $renc->save();
             }
             $this->output->progressAdvance();
         }
+
         if ($rencontres->isNotEmpty()) {
             $this->output->progressFinish();
         }

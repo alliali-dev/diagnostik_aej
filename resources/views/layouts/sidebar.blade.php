@@ -70,10 +70,10 @@
                     <ul class="menu-content" style="">
                         <li>
                             <a href="{{ route('chefagence.rencontre1') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">1ere Rencontre</span>
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Gerer Rencontres</span>
                             </a>
                         </li>
-                        <li>
+                       {{-- <li>
                             <a href="{{ route('chefagence.rencontre2') }}">
                                 <i></i><span class="menu-item" data-i18n="Categorie create">2eme Rencontre</span>
                             </a>
@@ -92,7 +92,7 @@
                             <a href="{{ route('chefagence.rencontre5') }}">
                                 <i></i><span class="menu-item" data-i18n="Categorie create">5eme Rencontre</span>
                             </a>
-                        </li>
+                        </li>--}}
                     </ul>
                 </li>
             @endif

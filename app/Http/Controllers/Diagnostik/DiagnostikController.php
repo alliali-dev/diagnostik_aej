@@ -94,6 +94,13 @@ class DiagnostikController extends Controller
         //
     }
 
+    public function autrerdv(Request $request){
+        $rec = Rencontre::find($request->rencontre_id);
+        $rec->update(['dateprochainrdv' => $request->dateprochainrdv .'06:30:00']);
+        session()->flash('success','RDV mis a jour');
+        return back();
+    }
+
     public function getRec1(Request $request)
     {
         if ($request->ajax()) {
@@ -123,7 +130,19 @@ class DiagnostikController extends Controller
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
                     }else{
-                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                        if($row->rdvmanque !== null){
+
+                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#AutreRDV"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                >RDV Manquez Fixer Autre
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                        }else{
+
+                            $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter2rdv"
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
@@ -132,6 +151,7 @@ class DiagnostikController extends Controller
                                                                 >Traiter 2eme RDV
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
+                        }
 
                     }
                     return $actionBtn;
@@ -197,6 +217,17 @@ class DiagnostikController extends Controller
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
                     }else{
+                        if($row->rdvmanque !== null){
+
+                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#AutreRDV"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                >RDV Manquez Fixer Autre
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                        }else{
                         $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter3rdv"
@@ -205,7 +236,7 @@ class DiagnostikController extends Controller
                                                                 data-typerencontre="3"
                                                                 >Traiter 3e RDV
                                                             <i class="feather icon-edit"></i>
-                                                        </button>';
+                                                        </button>';}
 
                     }
                     return $actionBtn;
@@ -268,6 +299,17 @@ class DiagnostikController extends Controller
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
                     }else{
+                        if($row->rdvmanque !== null){
+
+                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#AutreRDV"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                >RDV Manquez Fixer Autre
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                        }else{
                         $actionBtn .=' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter4rdv"
@@ -277,6 +319,7 @@ class DiagnostikController extends Controller
                                                                 >Traiter 4eme RDV
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
+                        }
 
                     }
                     return $actionBtn;
@@ -339,15 +382,27 @@ class DiagnostikController extends Controller
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
                     }else{
-                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                        if($row->rdvmanque !== null){
+
+                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
+                                                                data-toggle="modal"
+                                                                data-target="#AutreRDV"
+                                                                data-rencontre_id="'.$row->id .'"
+                                                                >RDV Manquez Fixer Autre
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>';
+
+                        }else {
+                            $actionBtn .= ' <button class="btn btn-primary btn-rounded"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter5rdv"
-                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
-                                                                data-rencontre_id="'.$row->id .'"
+                                                                data-suivirencontre_id="' . $row->suivirencontre->id . '"
+                                                                data-rencontre_id="' . $row->id . '"
                                                                 data-typerencontre="5"
                                                                 >Traiter 5eme RDV
                                                             <i class="feather icon-edit"></i>
                                                         </button>';
+                        }
 
                     }
                     return $actionBtn;

@@ -13,7 +13,7 @@ class Rencontre extends Model
     protected $table = 'rencontres';
     protected $fillable = ['dureerencontre','approche','typerencontre','modalite', 'status',
                             'axetravail','planaction','dateprochainrdv','observation',
-                            'user_id', 'suivirencontre_id','agence_id', 'presencedemandeur'];
+                            'user_id', 'suivirencontre_id','agence_id', 'presencedemandeur','rdvmanque'];
 
     protected $casts = [
         'dureerencontre'    => 'string',
@@ -29,6 +29,7 @@ class Rencontre extends Model
         'observation'       => 'string',
         'presencedemandeur' => 'string',
         'status'            => 'boolean',
+        'rdvmanque'         => 'integer'
     ];
 
     public function scopeMine(Builder $query)

@@ -38,7 +38,9 @@ class SuiviRencontreShipped extends Mailable
      */
     public function build()
     {
-        return $this->from('t.amia@emploijeunes.ci')->markdown('emails.rencontre.shipped')->with(
+        return $this->from('t.amia@emploijeunes.ci')
+            ->subject('Alerte Mail Suivie Rencontre')
+            ->markdown('emails.rencontre.shipped')->with(
             [
                 'dureerencontre'    =>  $this->rencontre->dureerencontre,
                 'user_id'           =>  $this->rencontre->user_id,

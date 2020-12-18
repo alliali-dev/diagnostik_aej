@@ -513,6 +513,40 @@
                     </div>
                 </div>
             </div>
+            {{--FIXER AUTRE RENDEZ-VOUS--}}
+            <div class="modal fade" id="AutreRDV" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success">
+                            <h4 class="modal-title text-white" id="myModalLabel16">Fixer RDV</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('diagnostik.autrerdv') }}" method="POST">
+                                @csrf
+                                <fieldset>
+                                   <input type="hidden" name="rencontre_id" id="rencontre_id_rdv" value="">
+                                    <br>
+                                    <div class="row">
+                                       <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="planaction">Date prochain RDV</label>
+                                                <input type="text" name="dateprochainrdv" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--form control-->
+                                <div class="form-group text-right mb-0">
+                                    <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {{--modal rencontre 1 vers 2 --}}
             <div class="modal fade" id="traiter2rdv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -1256,6 +1290,14 @@
                     {data: 'action', orderable: false, searchable: false},
                 ]
             });
+        });
+
+
+        $('#AutreRDV').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var rencontre_id = button.data('rencontre_id');
+            var modal = $(this);
+            modal.find('.modal-body #rencontre_id_rdv').val(rencontre_id);
         });
 
         $('#traiter2rdv').on('show.bs.modal', function (event) {
