@@ -48,18 +48,26 @@
                             <i></i><span class="menu-item" data-i18n="Categorie create">Mes Suivies</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('diagnostik.index') }}">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">liste</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('diagnostik.diagnos') }}">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">Faire un entretien</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
+                <li class="nav-item  has-sub sidebar-group-active">
+                    <a href="#">
+                        <i class="feather icon-activity"></i>
+                        <span class="menu-title" data-i18n="Videos">Entretient</span>
+                    </a>
+                    <ul class="menu-content" style="">
+                        <li>
+                            <a href="{{ route('entretient.create') }}">
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Creation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('entretient.index') }}">
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Suives</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             @endif
             @if(auth()->user()->hasRole(['CAgence','SuperAdmin']))
                 <li class="nav-item  has-sub sidebar-group-active">

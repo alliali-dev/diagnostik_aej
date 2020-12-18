@@ -23,6 +23,13 @@ Route::group(['prefix'=>'Session','namespace'=>'Session','as'=>'session.'], func
     Route::post('/login', 'SessionController@login')->name('login');
 });
 
+
+
+Route::group(['prefix'=>'entretient','as'=>'entretient.'], function () {
+    Route::get('/create','EntretientDiagController@create')->name('create');
+    Route::get('/suivie','EntretientDiagController@index')->name('index');
+    Route::post('/store','EntretientDiagController@store')->name('store');
+});
 Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function () {
     Route::get('/', 'RoleController@index')->name('index');
     Route::post('/store', 'RoleController@store')->name('store');
