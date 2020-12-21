@@ -52,6 +52,7 @@
                                Go !
                            </button>
                        </div>
+
                    </div>
                 </div>
                 <div class="table-responsive-sm">
