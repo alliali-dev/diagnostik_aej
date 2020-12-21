@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Chefagence;
 
 use App\Http\Controllers\Controller;
+use App\Models\EntretientDiag;
 use App\Models\Rencontre;
 use App\Models\SuiviRencontre;
 use App\Models\User;
@@ -23,8 +24,22 @@ class ChefagenceController extends Controller
             ['name' => '5eme rencontre','id' => 5],
         ];
 
-        $cemplois = User::where('agence_id', session()->get('orig_agence'))->get();
-        return view('chefagence.rencontre1',compact('cemplois','typerencontres'));
+        $cemplois = User::where('agence_id', session()->get('orig_agence'))->where('id','!=',auth()->id())->get();
+        $rencontres = Rencontre::mine()->paginate(15);
+        return view('chefagence.rencontre1',compact('cemplois','typerencontres','rencontres'));
+    }
+
+    public function entretientdiag(){
+        $typerencontres = [
+            ['name' => '1ere rencontre','id' => 1],
+            ['name' => '2eme rencontre','id' => 2],
+            ['name' => '3eme rencontre','id' => 3],
+            ['name' => '4eme rencontre','id' => 4],
+            ['name' => '5eme rencontre','id' => 5],
+        ];
+        $cemplois = User::where('agence_id', session()->get('orig_agence'))->where('id','!=',auth()->id())->get();
+        $entretiens  = EntretientDiag::mine()->paginate(15);
+        return view('chefagence.entretiendiag',compact('entretiens','cemplois','typerencontres'));
     }
 
     public function detailDemandeur($id){
@@ -50,7 +65,6 @@ class ChefagenceController extends Controller
         if($datedebut != null && $datefin != null)
             $suiviedata->whereBetween('created_at', [$datedebut." 00:00:00",$datefin." 23:59:59"]);
 
-
         foreach($suiviedata->get() as $item){
             $data[]=[
                 'id'                => $item->suivirencontre_id,
@@ -63,6 +77,41 @@ class ChefagenceController extends Controller
                 'dateprochainrdv'   => Carbon::parse($item->dateprochainrdv)->format('M d, Y'),
                 'axetravail'        => $item->axetravail,
                 'conseiller'        => User::where('agence_id', session()->get('orig_agence'))->where('id',$item->user_id)->first()->name
+
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function filter_entretient(){
+        $cemploi = \request('cemploi');
+        $datedebut = \request('datedebut');
+        $datefin = \request('datefin');
+        $data = [];
+
+        $entretiendiag = EntretientDiag::where('agence_id',  session()->get('orig_agence'));
+
+        if($cemploi != null)
+            $entretiendiag->where('user_id', $cemploi);
+        if($datedebut != null && $datefin != null)
+            $entretiendiag->whereBetween('created_at', [$datedebut." 00:00:00",$datefin." 23:59:59"]);
+
+
+        foreach($entretiendiag->get() as $item){
+            $data[]=[
+                'matriculeaej'      => $item->matriculeaej,
+                'nomprenom'         => $item->nomprenom,
+                'niveauformaion'    => $item->niveauformaion,
+                'niveauexperience'  => $item->niveauexperience,
+                'adeqormaexper'     => $item->adeqormaexper,
+                'conmetieractiv'    => $item->conmetieractiv,
+                'adqformmetieractiv'=> $item->adqformmetieractiv,
+                'adqexpmetieractiv' => $item->adqexpmetieractiv,
+                'maitoutrechempl'   => $item->maitoutrechempl,
+                'conexigmarch'      => $item->conexigmarch,
+                'depdossent'        => $item->depdossent,
+                'conseiller'        => \App\Models\User::find($item->user_id)->name
 
             ];
         }

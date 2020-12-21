@@ -31,7 +31,7 @@
                     <span class="menu-title" data-i18n="">Tableau de bord</span>
                 </a>
             </li>
-            @if(!auth()->user()->hasRole(['CAgence','SuperAdmin']))
+            @if(!auth()->user()->hasRole(['CAgence']))
             <li class="nav-item  has-sub sidebar-group-active">
                 <a href="#">
                     <i class="feather icon-user-plus"></i>
@@ -77,30 +77,15 @@
                     </a>
                     <ul class="menu-content" style="">
                         <li>
+                            <a href="{{ route('chefagence.entretientdiag') }}">
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Gerer Entretient</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('chefagence.rencontre1') }}">
                                 <i></i><span class="menu-item" data-i18n="Categorie create">Gerer Rencontres</span>
                             </a>
                         </li>
-                       {{-- <li>
-                            <a href="{{ route('chefagence.rencontre2') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">2eme Rencontre</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('chefagence.rencontre3') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">3eme Rencontre</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('chefagence.rencontre4') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">4eme Rencontre</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('chefagence.rencontre5') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">5eme Rencontre</span>
-                            </a>
-                        </li>--}}
                     </ul>
                 </li>
             @endif

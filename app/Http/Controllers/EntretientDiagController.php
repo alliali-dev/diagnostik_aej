@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class EntretientDiagController extends Controller
 {
     public function index(){
-        return view('entretientdiag.index');
+        $entretiens  = EntretientDiag::mine()->paginate(15);
+        return view('entretientdiag.index',compact('entretiens'));
     }
 
     public function create(){

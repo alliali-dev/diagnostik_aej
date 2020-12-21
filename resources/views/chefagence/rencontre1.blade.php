@@ -70,6 +70,29 @@
                         </tr>
                         </thead>
                         <tbody id="rencontreRow">
+                           @forelse($rencontres as $item)
+                               <tr>
+                                   <td>{{ $item->suivirencontre->matricule_aej }}</td>
+                                   <td>{{ $item->suivirencontre->nomprenom }}</td>
+                                   <td>{{ $item->suivirencontre->sexe }}</td>
+                                   <td>{{ $item->suivirencontre->lieudereisdence }}</td>
+                                   <td>{{ $item->suivirencontre->diplome }}</td>
+                                   <td>{{ $item->dureerencontre }}</td>
+                                   <td>{{ $item->dateprochainrdv }}</td>
+                                   <td>{{ $item->axetravail }}</td>
+                                   <td>{{ \App\Models\User::find($item->user_id)->name }}</td>
+                                   <td class="float-right">
+                                       <a href="{{ route('chefagence.detaildemandeur',$item->suivirencontre->id)  }}" target="_blank"
+                                          class="btn btn-primary white waves-effect waves-light">
+                                           Details
+                                       </a>
+                                   </td>
+                               </tr>
+                           @empty
+                               <tr>
+                                   <td colspan="10" class="text-center">Pas de suivie trouvé !</td>
+                               </tr>
+                           @endforelse
                         </tbody>
                     </table>
                     <p align="center">
@@ -152,7 +175,7 @@
                     <td class="float-right">
                          <a href="${url_detailsdemandeur +'/'+ value.id }" target="_blank"
                            class="btn btn-primary white waves-effect waves-light">
-                            Preview
+                            Details
                          </a>
                     </td>
                 </tr>

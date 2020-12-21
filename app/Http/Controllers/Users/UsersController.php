@@ -153,11 +153,7 @@ class UsersController extends Controller
 
      public function update(Request $request)
     {
-
         $user = User::withTrashed()->find($request->id);
-
-        //dd($request['roles']);
-
         if (!$user) {
 
             flashy()->success('Users not found');

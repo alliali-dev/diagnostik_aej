@@ -38,6 +38,7 @@ Route::group(['prefix'=>'Roles','namespace'=>'Roles','as'=>'roles.'], function (
 });
 
 Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'chefagence.'], function () {
+    Route::get('/entretient','ChefagenceController@entretientdiag')->name('entretientdiag');
     Route::get('/rencontre1', 'ChefagenceController@rencontre1')->name('rencontre1');
     Route::get('/getagencerenct1', 'ChefagenceController@getAgenceRenct1')->name('getagencerenct1');
     Route::get('/rencontre2', 'ChefagenceController@rencontre2')->name('rencontre2');
@@ -49,6 +50,7 @@ Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'ch
     Route::get('/rencontre5', 'ChefagenceController@rencontre5')->name('rencontre5');
     Route::get('/getagencerenct5', 'ChefagenceController@getAgenceRenct5')->name('getagencerenct5');
     Route::get('/filter', 'ChefagenceController@filter')->name('filter');
+    Route::get('/filter_entretient', 'ChefagenceController@filter_entretient')->name('filter_entretient');
     Route::get('/details/demandeur/{id?}', 'ChefagenceController@detailDemandeur')->name('detaildemandeur');
 });
 
