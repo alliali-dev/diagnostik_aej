@@ -53,7 +53,7 @@
                 <li class="nav-item  has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-activity"></i>
-                        <span class="menu-title" data-i18n="Videos">Entretient</span>
+                        <span class="menu-title" data-i18n="Videos">Entretien</span>
                     </a>
                     <ul class="menu-content" style="">
                         <li>
