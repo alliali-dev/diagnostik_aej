@@ -25,28 +25,30 @@
                                         <h6><i class="step-icon feather icon-info"></i>PROFIL DE L'USAGER</h6>
                                         <fieldset>
                                             <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="matriculeaej">N° AEJ</label>
-                                                        <input type="text" name="matriculeaej" id="matriculeaej" placeholder="numero aej" class="form-control" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="matriculeaej">Nom et Prenom</label>
-                                                        <input type="text" name="nomprenom" id="nom_pnom_dem" placeholder="numero aej" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
+                                                <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="sexe">Sexe</label>
-                                                        <select name="sexe" class="form-control">
+                                                        <select name="sexe" id="sexe" class="form-control" readonly="">
                                                             <option value="MASCULIN">MASCULIN</option>
                                                             <option value="FEMININ">FEMININ</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div><br><br>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="sexe">Diplome</label>
+                                                        <input type="text" name="diplome" id="diplome" placeholder="numero aej" class="form-control" required readonly="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="matriculeaej">Nom et Prenom</label>
+                                                        <input type="text" name="nomprenom" id="nomprenom" placeholder="numero aej" class="form-control" required readonly="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <br>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
@@ -57,13 +59,13 @@
                                                             <input type="radio" name="niveauformaion" id="niveauformaion" value="non scolarisee" checked>&nbsp;&nbsp;&nbsp;non scolarisée
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="primaire">&nbsp;&nbsp;&nbsp;primaire
+                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="primaire">&nbsp;&nbsp;&nbsp;Primaire
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="secondaire">&nbsp;&nbsp;&nbsp;secondaire
+                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="secondaire">&nbsp;&nbsp;&nbsp;Secondaire
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="superieur">&nbsp;&nbsp;&nbsp;superieur
+                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="superieur">&nbsp;&nbsp;&nbsp;Superieur
                                                         </label>
                                                     </div>
                                                 </div>
@@ -94,19 +96,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;1
+                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;Médiocre
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Passable">&nbsp;&nbsp;&nbsp;2
+                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Passable">&nbsp;&nbsp;&nbsp;Passable
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Assez bien">&nbsp;&nbsp;&nbsp;3
+                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Assez bien">&nbsp;&nbsp;&nbsp;Assez bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Bien">&nbsp;&nbsp;&nbsp;4
+                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Bien">&nbsp;&nbsp;&nbsp;Bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Très bien">&nbsp;&nbsp;&nbsp;5
+                                                            <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
                                                 </div>
@@ -120,19 +122,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;1
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;Médiocre
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Passable">&nbsp;&nbsp;2
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Passable">&nbsp;&nbsp;Passable
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Assez bien">&nbsp;&nbsp;3
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Assez bien">&nbsp;&nbsp;Assez bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Bien">&nbsp;&nbsp;4
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Bien">&nbsp;&nbsp;Bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Très bien">&nbsp;&nbsp;5
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
                                                 </div>
@@ -142,19 +144,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;1
+                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;Médiocre
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Passable">&nbsp;&nbsp;2
+                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Passable">&nbsp;&nbsp;Passable
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Assez bien">&nbsp;&nbsp;3
+                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Assez bien">&nbsp;&nbsp;Assez bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Bien">&nbsp;&nbsp;4
+                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Bien">&nbsp;&nbsp;Bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Très bien">&nbsp;&nbsp;5
+                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
                                                 </div>
@@ -164,19 +166,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;1
+                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;Médiocre
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Passable">&nbsp;&nbsp;&nbsp;2
+                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Passable">&nbsp;&nbsp;&nbsp;Passable
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Assez bien">&nbsp;&nbsp;&nbsp;3
+                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Assez bien">&nbsp;&nbsp;&nbsp;Assez bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Bien">&nbsp;&nbsp;&nbsp;4
+                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Bien">&nbsp;&nbsp;&nbsp;Bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Très bien">&nbsp;&nbsp;&nbsp;5
+                                                            <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
                                                 </div>
@@ -189,19 +191,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;1
+                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;Médiocre
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Passable">&nbsp;&nbsp;&nbsp;2
+                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Passable">&nbsp;&nbsp;&nbsp;Passable
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Assez bien">&nbsp;&nbsp;&nbsp;3
+                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Assez bien">&nbsp;&nbsp;&nbsp;Assez bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Bien">&nbsp;&nbsp;&nbsp;4
+                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Bien">&nbsp;&nbsp;&nbsp;Bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Très bien">&nbsp;&nbsp;&nbsp;5
+                                                            <input type="radio" name="maitoutrechempl" id="maitoutrechempl" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
                                                 </div>
@@ -211,19 +213,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;1
+                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Médiocre" checked>&nbsp;&nbsp;&nbsp;Médiocre
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Passable">&nbsp;&nbsp;&nbsp;2
+                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Passable">&nbsp;&nbsp;&nbsp;Passable
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Assez bien">&nbsp;&nbsp;&nbsp;3
+                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Assez bien">&nbsp;&nbsp;&nbsp;Assez bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="bien">&nbsp;&nbsp;&nbsp;4
+                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="bien">&nbsp;&nbsp;&nbsp;Bien
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Très bien">&nbsp;&nbsp;&nbsp;5
+                                                            <input type="radio" name="conexigmarch" id="conexigmarch" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
                                                 </div>
@@ -233,13 +235,13 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="depdossent" id="depdossent" value="pas du tout" checked>&nbsp;&nbsp;&nbsp;pas du tout
+                                                            <input type="radio" name="depdossent" id="depdossent" value="pas du tout" checked>&nbsp;&nbsp;&nbsp;Pas du tout
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="depdossent" id="depdossent" value="souvent">&nbsp;&nbsp;&nbsp;souvent
+                                                            <input type="radio" name="depdossent" id="depdossent" value="souvent">&nbsp;&nbsp;&nbsp;Souvent
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="depdossent" id="depdossent" value="régulièrement">&nbsp;&nbsp;&nbsp;régulièrement
+                                                            <input type="radio" name="depdossent" id="depdossent" value="régulièrement">&nbsp;&nbsp;&nbsp;Régulièrement
                                                         </label>
                                                     </div>
                                                 </div>
@@ -310,11 +312,11 @@
     <script src="{{ asset('js/optin-product.js') }}"></script>
     <script>
         $(function() {
-                /*$("#addAej").modal(
+                $("#addAej").modal(
                     {
                         keyboard: false,
                         backdrop:'static'
-                    },'show');*/
+                    },'show');
                 var test = $("#aej_ok");
                 console.log(test);
                 $("#aej_ok").click(function() {

@@ -27,6 +27,6 @@ class EntretientDiagController extends Controller
         }catch (\Exception $e){
             session()->flash('success',$e->getMessage());
         }
-        return back();
+        return redirect()->route('entretient.index');
     }
 }

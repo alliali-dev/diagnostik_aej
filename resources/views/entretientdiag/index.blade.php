@@ -1,9 +1,17 @@
 @extends('layouts.master')
 
-@section('title') Roles @endsection
+@section('title') Entretien @endsection
 
-@section('subTitle') gestion des roles @endsection
+@section('subTitle') gestion des diagnostiques @endsection
 
+
+@section('css')
+    <style>
+        th{
+            font-size: 10px;
+        }
+    </style>
+@endsection
 
 @section('content')
 
@@ -16,10 +24,8 @@
             <div class="card-body">
 
                 <div class="mb-3">
-                    <a class="btn btn-primary" href=""
-                       data-toggle="modal"
-                       data-target="#addAgence">
-                        <span><i class="feather icon-plus"></i>Ajouter agence</span>
+                    <a class="btn btn-primary" href="{{ route('entretient.create') }}">
+                        <span><i class="feather icon-plus"></i>Faire un Entretien</span>
                     </a>
                 </div>
 

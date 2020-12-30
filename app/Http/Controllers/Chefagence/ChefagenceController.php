@@ -31,11 +31,11 @@ class ChefagenceController extends Controller
 
     public function entretientdiag(){
         $typerencontres = [
-            ['name' => '1ere rencontre','id' => 1],
-            ['name' => '2eme rencontre','id' => 2],
-            ['name' => '3eme rencontre','id' => 3],
-            ['name' => '4eme rencontre','id' => 4],
-            ['name' => '5eme rencontre','id' => 5],
+            ['name' => '1ere rencontre',    'id' => 1],
+            ['name' => '2eme rencontre',    'id' => 2],
+            ['name' => '3eme rencontre',    'id' => 3],
+            ['name' => '4eme rencontre',    'id' => 4],
+            ['name' => '5eme rencontre',    'id' => 5],
         ];
         $cemplois = User::where('agence_id', session()->get('orig_agence'))->where('id','!=',auth()->id())->get();
         $entretiens  = EntretientDiag::mine()->paginate(15);
@@ -63,7 +63,7 @@ class ChefagenceController extends Controller
         if($cemploi != null)
             $suiviedata->where('user_id', $cemploi);
         if($datedebut != null && $datefin != null)
-            $suiviedata->whereBetween('created_at', [$datedebut." 00:00:00",$datefin." 23:59:59"]);
+            $suiviedata->whereBetween('dateprochainrdv', [$datedebut." 00:00:00",$datefin." 23:59:59"]);
 
         foreach($suiviedata->get() as $item){
             $data[]=[
@@ -77,7 +77,6 @@ class ChefagenceController extends Controller
                 'dateprochainrdv'   => Carbon::parse($item->dateprochainrdv)->format('M d, Y'),
                 'axetravail'        => $item->axetravail,
                 'conseiller'        => User::where('agence_id', session()->get('orig_agence'))->where('id',$item->user_id)->first()->name
-
             ];
         }
 
@@ -97,7 +96,6 @@ class ChefagenceController extends Controller
         if($datedebut != null && $datefin != null)
             $entretiendiag->whereBetween('created_at', [$datedebut." 00:00:00",$datefin." 23:59:59"]);
 
-
         foreach($entretiendiag->get() as $item){
             $data[]=[
                 'matriculeaej'      => $item->matriculeaej,
@@ -112,10 +110,8 @@ class ChefagenceController extends Controller
                 'conexigmarch'      => $item->conexigmarch,
                 'depdossent'        => $item->depdossent,
                 'conseiller'        => \App\Models\User::find($item->user_id)->name
-
             ];
         }
-
         return response()->json($data);
     }
 
