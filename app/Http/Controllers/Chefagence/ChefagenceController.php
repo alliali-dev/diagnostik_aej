@@ -53,11 +53,20 @@ class ChefagenceController extends Controller
         $cemploi = \request('cemploi');
         $datedebut = \request('datedebut');
         $datefin = \request('datefin');
+        $modalite = \request('modalite');
+        $axetravail = \request('axetravail');
+        $approche = \request('approche');
 
         $data = [];
 
         $suiviedata = Rencontre::where('agence_id',  session()->get('orig_agence'));
 
+        if ($modalite != null)
+            $suiviedata->where('modalite',$modalite);
+        if ($axetravail != null)
+            $suiviedata->where('axetravail',$axetravail);
+        if ($approche != null)
+            $suiviedata->where('approche',$approche);
         if($typerencontre != null)
             $suiviedata->where('typerencontre',$typerencontre);
         if($cemploi != null)

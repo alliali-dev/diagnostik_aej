@@ -39,21 +39,54 @@
                                @endforeach
                            </select>
                        </div>
-                       <div class="col-sm-2">
+                       <div class="col-sm-3">
                            <label>Date de Debut RDV</label>
                            <input type="text" id="datedebut" name="datedebut" class="form-control">
                        </div>
-                       <div class="col-sm-2">
+                       <div class="col-sm-3">
                            <label>Date de Fin RDV</label>
                            <input type="text" id="datefin" name="datefin" class="form-control">
                        </div>
-                       <div style="margin-top: 10px">
-                           <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
-                               recherche
-                           </button>
-                       </div>
-
                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Modalite</label>
+                            <select name="modalite" id="modalite" class="form-control">
+                                <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
+                                <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="modalite">Axe de travail</label>
+                            <select name="axetravail" id="axetravail" class="form-control">
+                                <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
+                                <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
+                                <option value="{{__('PS')}}">{{__('PS')}}</option>
+                                <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
+                                <option value="{{__('AGR')}}">{{__('AGR')}}</option>
+                                <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
+                                <option value="{{__('ED')}}">{{__('ED')}}</option>
+                                <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
+                                <option value="{{__('PC')}}">{{__('PC')}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="approche">Approche SOFT SKILLS</label>
+                            <select name="approche" id="approche" class="form-control">
+                                <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                <option value="{{__('NON')}}">{{__('NON')}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
+                            recherche
+                        </button>
+                    </div>
                 </div>
                 <div class="table-responsive-sm">
                     <table class="table" id="rec" style="width: 100%;">
@@ -96,6 +129,9 @@
                            @endforelse
                         </tbody>
                     </table>
+                    <div id="resultcount">
+                        nbre de ligne  {{ $rencontres->count() }}
+                    </div>
                     <p align="center">
                     <div id="loader" class="text-center" style="display: none;">
                     <!--img src="{{ asset('img/loader_squares.gif') }}" alt="Loader"-->
@@ -144,8 +180,14 @@
             var cemploi = $('#cemploi').val();
             var datedebut = $('#datedebut').val();
             var datefin = $('#datefin').val();
+            var modalite = $('#modalite').val();
+            var axetravail = $('#axetravail').val();
+            var approche = $('#approche').val();
+            var resultcount = $('#resultcount');
 
+            resultcount.empty();
             rencontreRow.empty();
+
             $('#loader').fadeIn();
             var url_rencontre = "{{ route('chefagence.filter')  }}";
             var url_detailsdemandeur = "{{ route('chefagence.detaildemandeur')  }}";
@@ -157,13 +199,15 @@
                     'cemploi' : cemploi,
                     'datedebut' : datedebut,
                     'datefin' : datefin,
+                    'modalite' : modalite,
+                    'axetravail' : axetravail,
+                    'approche' : approche,
                     _token: "{{ csrf_token() }}"
                 }
             }).done(function( data ) {
-                console.log(data);
+                console.log(data.length);
                 $.each( data, function( key, value ) {
-                    rencontreRow.append(`
-                <tr>
+                    rencontreRow.append(`<tr>
                    <td>${value.matricule_aej}</td>
                    <td>${value.nomprenom}</td>
                    <td>${value.sexe}</td>
@@ -182,6 +226,7 @@
                 </tr>
                 `);
                 });
+                resultcount.append('nbre de ligne ' +data.length);
                 $('#loader').fadeOut();
             });
 
