@@ -2,7 +2,7 @@
 
 @section('title') Entretien Diagnostique @endsection
 
-@section('subTitle') par Conseil Emploie & Guichet emploi @endsection
+@section('subTitle') @endsection
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
@@ -30,12 +30,12 @@
                             </select>
                         </div>
                         <div class="col-sm-2">
-                            <label>Date de Debut</label>
-                            <input type="text" id="datedebut" name="datedebut" class="form-control">
+                            <label>Date Creation de Debut</label>
+                            <input type="text" id="datedebut" name="datedebut" class="form-control datepicker" data-date-format="mm/dd/yyyy">
                         </div>
                         <div class="col-sm-2">
                             <label>Date de Fin</label>
-                            <input type="text" id="datefin" name="datefin" class="form-control">
+                            <input type="text" id="datefin" name="datefin" class="form-control datepicker" data-date-format="mm/dd/yyyy">
                         </div>
                         <div style="margin-top: 10px">
                             <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
@@ -114,7 +114,7 @@
             $("#datedebut").focus(function() {
                 $("#datedebut").datepicker("show");
             });
-            $("#datedebut").focus();
+           // $("#datedebut").focus();
 
             /////
             $("#datefin").datepicker({
@@ -123,7 +123,7 @@
             $("#datefin").focus(function() {
                 $("#datefin").datepicker("show");
             });
-            $("#datefin").focus();
+           // $("#datefin").focus();
         });
     </script>
     <script>

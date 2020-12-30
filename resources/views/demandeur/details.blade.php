@@ -43,6 +43,10 @@
                             <td class="text-left">{{$suivie->created_at}}</td>
                         </tr>
                         <tr>
+                            <th>Agence</th>
+                            <td class="text-left">{{ \App\Models\Agence::find( session()->get('orig_agence'))->name }}</td>
+                        </tr>
+                        <tr>
                             <th>Conseiller Referent</th>
                             <td class="text-left">{{ App\Models\User::where('agence_id', session()->get('orig_agence'))->where('id',$suivie->user_id)->first()->name }}</td>
                         </tr>

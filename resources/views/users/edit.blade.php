@@ -158,7 +158,7 @@
             $('[name="password"], [name="password_confirm"]').on('keyup change', function () {
                 if ($('[name="password"]').val() !== $('[name="password_confirm"]').val()) {
                     $('#error-message').fadeOut().remove();
-                    $('<span id="error-message">Passwords do not match.</span>').css('color', 'red').insertAfter($('[name="password_confirm"]'));
+                    $('<span id="error-message">Les mots de passe ne correspondent pas.</span>').css('color', 'red').insertAfter($('[name="password_confirm"]'));
                     $('form').find('button[type="submit"]').attr('disabled', true);
                 } else {
                     $('#error-message').fadeOut();

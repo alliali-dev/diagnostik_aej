@@ -599,7 +599,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
@@ -717,7 +717,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
@@ -835,7 +835,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
@@ -953,7 +953,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT / SKILLS</label>
+                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
@@ -1063,7 +1063,6 @@
     <script>
 
         $(document).ready(function() {
-
             $("#dateprochainrdv2").datepicker({
                 dateFormat: "yy-mm-dd"
             });
@@ -1073,7 +1072,6 @@
             $("#dateprochainrdv2").focus();
 
             /////
-
             $("#dateprochainrdv3").datepicker({
                 dateFormat: "yy-mm-dd"
             });
@@ -1081,9 +1079,7 @@
                 $("#dateprochainrdv3").datepicker("show");
             });
             $("#dateprochainrdv3").focus();
-
             //////
-
             $("#dateprochainrdv4").datepicker({
                 dateFormat: "yy-mm-dd"
             });

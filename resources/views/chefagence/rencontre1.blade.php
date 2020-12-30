@@ -40,16 +40,16 @@
                            </select>
                        </div>
                        <div class="col-sm-2">
-                           <label>Date de Debut</label>
+                           <label>Date de Debut RDV</label>
                            <input type="text" id="datedebut" name="datedebut" class="form-control">
                        </div>
                        <div class="col-sm-2">
-                           <label>Date de Fin</label>
+                           <label>Date de Fin RDV</label>
                            <input type="text" id="datefin" name="datefin" class="form-control">
                        </div>
                        <div style="margin-top: 10px">
                            <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
-                               Go !
+                               recherche
                            </button>
                        </div>
 
@@ -125,7 +125,7 @@
             $("#datedebut").focus(function() {
                 $("#datedebut").datepicker("show");
             });
-            $("#datedebut").focus();
+            //$("#datedebut").focus();
 
             /////
             $("#datefin").datepicker({
@@ -134,7 +134,7 @@
             $("#datefin").focus(function() {
                 $("#datefin").datepicker("show");
             });
-            $("#datefin").focus();
+            //$("#datefin").focus();
         });
     </script>
     <script>

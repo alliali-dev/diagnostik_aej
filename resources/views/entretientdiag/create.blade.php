@@ -38,6 +38,7 @@
                                                     <div class="form-group">
                                                         <label for="sexe">Diplome</label>
                                                         <input type="text" name="diplome" id="diplome" placeholder="numero aej" class="form-control" required readonly="">
+                                                        <input type="hidden" name="matriculeaej" id="matricule_aej" class="form-control" required readonly="">
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -278,7 +279,9 @@
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
-                            <div id="result" style="display: none;" class="text-center text-success">Importation effectue avec succees</div>
+                            <div id="result" style="display: none;" class="text-center text-success"><strong>Importation effectue avec succees</strong></div>
+                            <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Numero aej existe deja</strong></div>
+                            <div id="resulterrorformat" style="display: none;" class="text-center text-warning"><strong>Format non conforme</strong></div>
 
                             <!--form control-->
                             <div class="form-group text-right mb-0">
@@ -321,52 +324,76 @@
                 console.log(test);
                 $("#aej_ok").click(function() {
                     $('#loader').fadeIn();
+                    $('#resulterror').fadeOut();
+                    $('#resulterrorformat').fadeOut();
+
                     var matriculeaej = $('#matriculeaej').val();
 
-                    if (matriculeaej.length > 11) {
-                        $.ajax({
-                            url:"http://localhost/diag_api/public/api/"+ matriculeaej,
-                            type: 'get',
-                            dataType: "json",
-                            data: {
-                                _token: "{{ csrf_token() }}",
-                                search: matriculeaej
-                            },success: function( data ) {
+                    $.ajax({
+                        url: "{{ route('verif.aejentretien') }}",
+                        type: 'get',
+                        dataType: "json",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            matriculeaej: matriculeaej
+                        },success: function( data ) {
+                            if(data.entretiendiag == null){
+                                /*if (matriculeaej.length > 11) {*/
+                                    $.ajax({
+                                        url:"http://localhost/diag_api/public/api/"+ matriculeaej,
+                                        type: 'get',
+                                        dataType: "json",
+                                        data: {
+                                            _token: "{{ csrf_token() }}",
+                                            search: matriculeaej
+                                        },success: function( array ) {
+                                            //console.log(array);
+                                            $('#loader').fadeOut();
+                                            $('#result').fadeIn();
+                                            $('#close').fadeIn();
+                                            $('#aej_ok').hide();
+                                            $('#return').hide();
+                                            $('#matriculeaej').val(array[0].label);
+                                            $('#matricule_aej').val(array[0].label);
+                                            $('#sexe').val(array[0].sexe);
+                                            $('#sexe_db').val(array[0].sexe);
+                                            $('#datenaissance').val(array[0].datenaissance);
+                                            $('#datenaissance_db').val(array[0].datenaissance);
+                                            $('#age').val(array[0].age);
+                                            $('#age_db').val(array[0].age);
+                                            $('#naturepiece').val(array[0].typepieceidentite);
+                                            $('#naturepiece_db').val(array[0].typepieceidentite);
+                                            $('#npiece').val(array[0].numerocni);
+                                            $('#npiece_db').val(array[0].numerocni);
+                                            $('#nationalite').val(array[0].nationalite);
+                                            $('#nationalite_db').val(array[0].nationalite);
+                                            $('#contact').val(array[0].telephone);
+                                            $('#contact_db').val(array[0].telephone);
+                                            $('#diplome').val(array[0].diplome);
+                                            $('#diplome_db').val(array[0].diplome);
+                                            $('#niveaudetude').val(array[0].niveauetude);
+                                            $('#niveaudetude_db').val(array[0].niveauetude);
+                                            $('#nomprenom').val(array[0].nomprenom);
+                                        },error: function (jqXHR, exception) {
+                                            alert('reessayer svp !!!');
+                                            $('#loader').fadeOut();
+                                        }
+                                    });
+                                /*}else{
+                                    $('#loader').fadeOut();
+                                    $('#resulterrorformat').fadeIn();
+                                }*/
+                            }else{
                                 $('#loader').fadeOut();
-                                $('#result').fadeIn();
-                                $('#close').fadeIn();
-                                $('#aej_ok').hide();
-                                $('#return').hide();
+                                $('#resulterror').fadeIn();
 
-                                $('#matriculeaej').val(data[0].label);
-                                $('#matricule_aej').val(data[0].label);
-                                $('#sexe').val(data[0].sexe);
-                                $('#sexe_db').val(data[0].sexe);
-                                $('#datenaissance').val(data[0].datenaissance);
-                                $('#datenaissance_db').val(data[0].datenaissance);
-                                $('#age').val(data[0].age);
-                                $('#age_db').val(data[0].age);
-                                $('#naturepiece').val(data[0].typepieceidentite);
-                                $('#naturepiece_db').val(data[0].typepieceidentite);
-                                $('#npiece').val(data[0].numerocni);
-                                $('#npiece_db').val(data[0].numerocni);
-                                $('#nationalite').val(data[0].nationalite);
-                                $('#nationalite_db').val(data[0].nationalite);
-                                $('#contact').val(data[0].telephone);
-                                $('#contact_db').val(data[0].telephone);
-                                $('#diplome').val(data[0].diplome);
-                                $('#diplome_db').val(data[0].diplome);
-                                $('#niveaudetude').val(data[0].niveauetude);
-                                $('#niveaudetude_db').val(data[0].niveauetude);
-                                $('#nomprenom').val(data[0].nomprenom);
-                                // $("#addAej").modal('hide');
-
-                            },error: function (jqXHR, exception) {
-                                alert('reessayer svp !!!');
-                                $('#loader').fadeOut();
                             }
-                        });
-                    }
+                           console.log();
+                        },error: function (jqXHR, exception) {
+
+                        }
+                    });
+
                 });
 
             if ($('#videoSource').val() === 'youtube') {
