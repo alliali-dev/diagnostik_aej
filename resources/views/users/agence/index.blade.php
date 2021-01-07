@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Roles @endsection
+@section('title') Agence @endsection
 
-@section('subTitle') gestion des roles @endsection
+@section('subTitle') Gestion d'agences @endsection
 
 
 @section('content')

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Manage users @endsection
+@section('title') Gérer les utilisateurs @endsection
 
-@section('subTitle') Active @endsection
+@section('subTitle') Actif @endsection
 
 @section('content')
 

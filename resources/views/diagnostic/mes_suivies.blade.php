@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') Gestion de rencontre @endsection
-@section('subTitle') Suivie 1 | 2 | 3 | 4 | 5 @endsection
+@section('subTitle') Rencontre 1 | 2 | 3 | 4 | 5 @endsection
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
@@ -22,7 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" id="twitter-icon-pill" data-toggle="pill" href="#twitterPIll"
                                role="tab"
-                               aria-controls="twitterPIll" aria-selected="false">1ere RENCONTRE</a>
+                               aria-controls="twitterPIll" aria-selected="false">1ère RENCONTRE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="reddit-icon-pill" data-toggle="pill" href="#redditPIll"
@@ -42,7 +42,7 @@
                         <li class="nav-item">
                             <a class="nav-link" id="pinterest-icon-pill" data-toggle="pill" href="#pinterestPIll"
                                role="tab"
-                               aria-controls="pinterestPIll" aria-selected="false">5e & LISTE COMPLETE</a>
+                               aria-controls="pinterestPIll" aria-selected="false">5e & LISTE COMPLÈTE</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -72,11 +72,11 @@
                                             <thead>
                                             <tr>
                                                 <th>N AEJ</th>
-                                                <th>NOM PRENOM</th>
+                                                <th>NOM PRÉNOM</th>
                                                 <th>SEXE</th>
                                                 <th>COMMUNE</th>
-                                                <th>DIPLOME</th>
-                                                <th>DUREE (h:m:s:ms)</th>
+                                                <th>DIPLÔME</th>
+                                                <th>DURÉE (h:m:s:ms)</th>
                                                 <th>DATE RDV</th>
                                                 <th>AXE TRAVAIL</th>
                                                 <th>Action</th>

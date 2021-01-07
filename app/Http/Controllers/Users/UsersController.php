@@ -240,7 +240,7 @@ class UsersController extends Controller
         $user = User::find($userId);
         session()->put( 'orig_user', Auth::user() );
         Auth::login( $user );
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
     public function logoutAs()
@@ -248,7 +248,7 @@ class UsersController extends Controller
         $orig_user = session()->pull( 'orig_user' );
         $user = User::find( $orig_user->id );
         Auth::login( $user );
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
     public function activeUsersTable()

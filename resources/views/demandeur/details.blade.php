@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title') Manage Users @endsection
+@section('title') Details @endsection
 
-@section('subTitle') Show User @endsection
+@section('subTitle') Afficher demandeur @endsection
 
 @section('content')
-    <section id="users" class="card">
+    <section class="card">
         <div class="card-header">
             <h4 class="card-title"></h4>
         </div>
@@ -15,15 +15,20 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="mb-3 float-right">
+                        <div class="mb-3 float-left">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('chefagence.rencontre1') }}" class="btn btn-outline-warning btn-rounded">&larr; Retour</a>
+                            </div>
+                        </div>
+                        <div class="mb-3 float-right">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button id="imprimer" class="btn btn-success btn-rounded">Imprimer</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="table-responsive-sm">
+                <div class="table-responsive-sm" id="target">
                     <table id="users-table" class="table table-hover table-striped">
                         <tbody class="">
                         <tr>
@@ -98,4 +103,35 @@
     </section>
 
 
+@endsection
+@section('js')
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>--}}
+    <script src="{{ asset('js/jspdf.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var specialElementHandlers ={
+                "#editor":function (element,renderer) {
+                    return true;
+                }
+            }
+
+            $('#imprimer').click(function () {
+                var doc = new jsPDF('l', 'mm', [297, 210]);
+                doc.fromHTML($("#target").get(0),15,15,{
+                    "width" : 180,
+                    "elementHandlers" : specialElementHandlers
+                });
+                //doc.setFont("courier", "italic");
+                doc.setFontSize(8);
+                doc.save('details-demandeur.pdf');
+            });
+        });
+
+      /*  doc.fromHTML($('body').get(0), 15, 15, {
+            'width': 170,
+            'elementHandlers': specialElementHandlers
+        });*/
+
+
+    </script>
 @endsection

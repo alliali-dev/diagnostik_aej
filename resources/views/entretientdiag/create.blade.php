@@ -188,7 +188,7 @@
 
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="contact" style="font-size: large;">Maîtrise de l'outils de recherche d'emploi</label>
+                                                        <label for="contact" style="font-size: large;">Maîtrise de l'outil de recherche d'emploi</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
@@ -210,7 +210,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="lieudereisdence" style="font-size: large;">Connaissance des exigence du marché</label>
+                                                        <label for="lieudereisdence" style="font-size: large;">Connaissance des exigences du marché</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
@@ -232,7 +232,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="diplome" style="font-size: large;">Dépôtde dossier en entreprise</label>
+                                                        <label for="diplome" style="font-size: large;">Dépôt de dossier en entreprise</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
@@ -279,9 +279,9 @@
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
-                            <div id="result" style="display: none;" class="text-center text-success"><strong>Importation effectue avec succees</strong></div>
-                            <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Numero aej existe deja</strong></div>
-                            <div id="resulterrorformat" style="display: none;" class="text-center text-warning"><strong>Format non conforme</strong></div>
+                            <div id="result" style="display: none;" class="text-center text-success"><strong>Importation réalisée avec succès</strong></div>
+                            <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Numéro existe déjà</strong></div>
+                            <div id="resulterrorformat" style="display: none;" class="text-center text-warning"><strong>Format non-conforme</strong></div>
 
                             <!--form control-->
                             <div class="form-group text-right mb-0">

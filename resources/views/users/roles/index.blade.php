@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Roles @endsection
+@section('title') Rôles @endsection
 
-@section('subTitle') gestion des roles @endsection
+@section('subTitle') la gestion des rôles @endsection
 
 
 @section('content')
@@ -19,7 +19,7 @@
                     <a class="btn btn-primary" href=""
                        data-toggle="modal"
                        data-target="#addRole">
-                        <span><i class="feather icon-plus"></i>Ajouter role</span>
+                        <span><i class="feather icon-plus"></i>Ajouter rôle</span>
                     </a>
                 </div>
 
@@ -65,7 +65,7 @@
                         @endforeach
                         @if(count($roles) < 1)
                             <tr>
-                                <td colspan="10" class="text-center">Pas d'role trouvé !</td>
+                                <td colspan="10" class="text-center">Pas de rôle trouvé !</td>
                             </tr>
                         @endif
                         </tbody>
@@ -87,7 +87,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white" id="myModalLabel16">Ajouter role</h4>
+                    <h4 class="modal-title text-white" id="myModalLabel16">Ajouter rôle</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -121,7 +121,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white" id="myModalLabel16">Modifier role</h4>
+                    <h4 class="modal-title text-white" id="myModalLabel16">Modifier rôle</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

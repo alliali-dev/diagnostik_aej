@@ -39,7 +39,7 @@
                         </div>
                         <div style="margin-top: 10px">
                             <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
-                                Go !
+                                Recherche
                             </button>
                         </div>
                     </div>
@@ -85,6 +85,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                     <div id="resultcount">
+                        nbre de ligne  {{ $entretiens->count() }}
+                    </div>
                     <p align="center">
                     <div id="loader" class="text-center" style="display: none;">
                     <!--img src="{{ asset('img/loader_squares.gif') }}" alt="Loader"-->
@@ -133,8 +136,10 @@
             var cemploi = $('#cemploi').val();
             var datedebut = $('#datedebut').val();
             var datefin = $('#datefin').val();
+            var resultcount = $('#resultcount');
 
             rencontreRow.empty();
+            resultcount.empty();
             $('#loader').fadeIn();
             var url_rencontre = "{{ route('chefagence.filter_entretient')  }}";
            // var url_detailsdemandeur = "{{ route('chefagence.filter_entretient')  }}";
@@ -151,8 +156,7 @@
             }).done(function( data ) {
                 console.log(data);
                 $.each( data, function( key, value ) {
-                    rencontreRow.append(`
-                <tr>
+                    rencontreRow.append(`<tr>
                    <td>${value.matriculeaej}</td>
                    <td>${value.nomprenom}</td>
                    <td>${value.niveauformaion}</td>
@@ -167,6 +171,7 @@
                    <td>${value.conseiller}</td>
                 </tr>`);
                 });
+                 resultcount.append('nbre de ligne ' +data.length);
                 $('#loader').fadeOut();
             });
 

@@ -40,7 +40,7 @@
                 <ul class="menu-content" style="">
                     <li>
                         <a href="{{ route('diagnostik.create') }}">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">1ere Rencontre</span>
+                            <i></i><span class="menu-item" data-i18n="Categorie create">1ère Rencontre</span>
                         </a>
                     </li>
                     <li>
@@ -58,12 +58,12 @@
                     <ul class="menu-content" style="">
                         <li>
                             <a href="{{ route('entretient.create') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Creation</span>
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Création</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('entretient.index') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Suives</span>
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Suivies</span>
                             </a>
                         </li>
                     </ul>
@@ -73,17 +73,17 @@
                 <li class="nav-item  has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-user"></i>
-                        <span class="menu-title" data-i18n="Videos">Chef d'agence</span>
+                        <span class="menu-title" data-i18n="Videos">Chef d'Agence</span>
                     </a>
                     <ul class="menu-content" style="">
                         <li>
                             <a href="{{ route('chefagence.entretientdiag') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Gerer Entretient</span>
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Gérer Entretien</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('chefagence.rencontre1') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Gerer Rencontres</span>
+                                <i></i><span class="menu-item" data-i18n="Categorie create">Gérer Rencontre</span>
                             </a>
                         </li>
                     </ul>

@@ -2,7 +2,7 @@
 
 @section('title') Entretien @endsection
 
-@section('subTitle') gestion des diagnostiques @endsection
+@section('subTitle') Liste des entretiens @endsection
 
 
 @section('css')
@@ -36,14 +36,14 @@
                             <th>#n aej</th>
                             <th>nom</th>
                             <th>niveau formaion</th>
-                            <th>niveau experience</th>
+                            <th>niveau expérience</th>
                             <th>adéquation formation expérience</th>
                             <th>Connaissance du métier / activité</th>
                             <th>Adéquation formation métier / activité</th>
                             <th>Adéquation expérience métier / activité</th>
-                            <th>Maîtrise de l'outils de recherche d'emploi</th>
+                            <th>Maîtrise de l'outil de recherche d'emploi</th>
                             <th>Connaissance des exigence du marché</th>
-                            <th>Dépôtde dossier en entreprise</th>
+                            <th>Dépôt de dossier en entreprise</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                                 <td> {{ $item->maitoutrechempl }}</td>
                                 <td> {{ $item->conexigmarch }}</td>
                                 <td> {{ $item->depdossent }}</td>
-                                <td class="float-right">
+                                {{--<td class="float-right">
                                     <button type="button"
                                             data-toggle="modal"
                                             data-target="#editAgence"
@@ -73,7 +73,7 @@
                                             class="btn btn-icon btn-icon rounded-circle btn-danger mr-0 waves-effect waves-light">
                                         <i class="feather icon-trash"></i>
                                     </button>
-                                </td>
+                                </td>--}}
                             </tr>
                         @endforeach
                         @if(count($entretiens) < 1)

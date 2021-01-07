@@ -2,9 +2,9 @@
 
 @extends('layouts.master')
 
-@section('title') Manage users @endsection
+@section('title') Gérer les utilisateurs @endsection
 
-@section('subTitle') Create User @endsection
+@section('subTitle') Créer un utilisateur @endsection
 
 @section('content')
 
@@ -18,11 +18,10 @@
                     <div class="col-12">
                         <div class="mb-3 float-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('users.index') }}" class="btn btn-primary btn-rounded">All Users</a>
-                                <a href="{{ route('users.create') }}" class="btn btn-success">Create User</a>
-                                <a href="{{ route('users.disabled') }}" class="btn btn-warning">Deactivated Users</a>
-                                <a href="{{ route('users.deleted') }}" class="btn btn-danger btn-rounded">Deleted
-                                    Users</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-primary btn-rounded">Tous utilisateurs</a>
+                                <a href="{{ route('users.create') }}" class="btn btn-success">Creer utilisateur</a>
+                                <a href="{{ route('users.disabled') }}" class="btn btn-warning">Utilisateur désactivé</a>
+                                <a href="{{ route('users.deleted') }}" class="btn btn-danger btn-rounded">Utilisateur Supprimé</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +109,7 @@
                                                 <i class="vs-icon feather icon-check"></i>
                                               </span>
                                             </span>
-                                        <span class="">Send Confirmation E-mail (If confirmed is off)</span>
+                                        <span class="">Envoyer un e-mail de confirmation (Si confirmé est désactivé)</span>
                                     </div>
                                 </fieldset>
                             </div>
@@ -210,7 +209,7 @@
             $('[name="password"], [name="password_confirm"]').on('keyup change', function () {
                 if ($('[name="password"]').val() !== $('[name="password_confirm"]').val()) {
                     $('#error-message').fadeOut().remove();
-                    $('<span id="error-message">Passwords do not match.</span>').css('color', 'red').insertAfter($('[name="password_confirm"]'));
+                    $('<span id="error-message">Les mots de passe ne correspondent pas.</span>').css('color', 'red').insertAfter($('[name="password_confirm"]'));
                     $('form').find('button[type="submit"]').attr('disabled', true);
                 } else {
                     $('#error-message').fadeOut();

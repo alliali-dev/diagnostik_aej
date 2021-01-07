@@ -314,8 +314,8 @@
                             </div>
                         </div>
 
-                        <div id="result" style="display: none;" class="text-center text-success"><strong>Importation effectue avec succees</strong></div>
-                        <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Veuillez faire un entretien diagnostic!!</strong></div>
+                        <div id="result" style="display: none;" class="text-center text-success"><strong>Importation réalisée avec succès</strong></div>
+                        <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Veuillez realiser un entretien diagnostic !</strong></div>
 
                         <!--form control-->
                         <div class="form-group text-right mb-0">

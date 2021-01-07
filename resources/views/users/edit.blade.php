@@ -21,7 +21,7 @@
                     <div class="col-12">
                         <div class="mb-3 float-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('users.index') }}" class="btn btn-primary btn-rounded">&larr; Back</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-primary btn-rounded">&larr; Retour</a>
                             </div>
                         </div>
                     </div>
@@ -95,8 +95,6 @@
                                 </fieldset>
                             </div>
                         </div>
-
-
                         <div class="col-12">
                             <div class="form-group">
                                 <fieldset class="checkbox">
@@ -107,7 +105,7 @@
                                         <i class="vs-icon feather icon-check"></i>
                                       </span>
                                     </span>
-                                        <span class="">Send Confirmation E-mail (If confirmed is off)</span>
+                                        <span class="">Envoyer un e-mail de confirmation (Si confirmé est désactivé)</span>
                                     </div>
                                 </fieldset>
                             </div>
@@ -141,11 +139,8 @@
                     </div>
                 </div>
                 {{Form::hidden('_method','PUT')}}
-
                 {{ Form::close() }}
-
             </div>
-
         </div>
 
     </section>
