@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use MercurySeries\Flashy\Flashy;
 
 class SessionController extends Controller
@@ -26,22 +28,37 @@ class SessionController extends Controller
 
     public function login()
     {
-        request()->validate([
+
+        $data = \request()->all();
+
+        $messages = [
+            'required' => 'Le champ :attribute est obligatoire',
+        ];
+
+        $data_src = [
             'email' => 'required|string',
             'password' => 'required|string',
-        ]);
+        ];
+
+        $validator = Validator::make($data, $data_src, $messages);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
 
         $user = User::where('email', request(['email']))->first();
 
         if(!$user){
-            Flashy::error('Aucun compte ne correspond à cet utilisateur. Veuillez contacter l\'administrateur');
+            //Flashy::error('Aucun compte ne correspond à cet utilisateur. Veuillez contacter l\'administrateur');
+            session()->flash('warning','Aucun compte ne correspond à cet utilisateur. Veuillez contacter l\'administrateur');
             return back();
         }else{
 
             $agence = Agence::where('code',$user->agence_id)->first();
 
             if (!$agence){
-                Flashy::error('Verifier votre code agence');
+               // Flashy::error('Verifier votre code agence');
+                session()->flash('warning','Verifier votre code agence');
                 return back();
             }else{
                 session()->put('orig_agence',$agence->id);
@@ -50,10 +67,11 @@ class SessionController extends Controller
         }
 
         $data = request(['email', 'password']);
-        $data['agence_id'] = $agence->id;
+        //$data['agence_id'] = $agence->id;
 
         if(!auth()->attempt($data)){
-            Flashy::error('Votre adresse électronique ou votre mot de passe est incorrecte');
+            //Flashy::error('Votre adresse électronique ou votre mot de passe est incorrecte');
+            session()->flash('warning','Votre adresse électronique ou votre mot de passe est incorrecte');
             return back();
         }
 

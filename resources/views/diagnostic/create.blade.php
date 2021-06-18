@@ -540,13 +540,14 @@
                             if (data.entretiendiag !== null) {
                                 if (matriculeaej.length > 11) {
                                     $.ajax({
-                                        url:"http://localhost/diag_api/public/api/"+ matriculeaej,
-                                        type: 'get',
-                                        dataType: "json",
+                                        url: "{{ route('diagnostik.apimatricule') }}",
                                         data: {
                                             _token: "{{ csrf_token() }}",
-                                            search: matriculeaej
-                                        },success: function( data ) {
+                                            matricule_aej: n_aej
+                                        },
+                                        type: 'get',
+                                        dataType: "json",
+                                        success: function( data ) {
                                             $('#loader').fadeOut();
                                             $('#result').fadeIn();
                                             $('#close').fadeIn();

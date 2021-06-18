@@ -1,6 +1,7 @@
-<?php
+ <?php
 
-use Illuminate\Support\Facades\Auth;
+ use App\Http\Controllers\Diagnostik\DiagnostikController;
+ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'Session','namespace'=>'Session','as'=>'session.'], function () {
-    Route::post('/login', 'SessionController@login')->name('login');
+    Route::post('/login', 'SessionController@login')->name('connexion');
 });
 
 Route::group(['prefix'=>'entretient','as'=>'entretient.'], function () {
@@ -77,7 +77,10 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::post('/store2to3rencontre', 'DiagnostikController@store2to3rencontre')->name('store2to3rencontre');
     Route::post('autocomspecialite', 'DiagnostikController@autocomSpecialite')->name('autocomspecialite');
     Route::post('autocomniveautude', 'DiagnostikController@autocomNiveauEtude')->name('autocomniveautude');
+    Route::get('/apimatricule', [DiagnostikController::class,'apiGetMatricule'])->name('apimatricule');
 });
+
+
 
 Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], function () {
 

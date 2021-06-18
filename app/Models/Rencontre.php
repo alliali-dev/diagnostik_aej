@@ -34,14 +34,15 @@ class Rencontre extends Model
 
     public function scopeMine(Builder $query)
     {
-        if(auth()->user()->hasRole('SuperAdmin')){
-            return $query;
-        }elseif(auth()->user()->hasRole('CAgence')){
-            return $query->where('agence_id',  session()->get('orig_agence'));
-        }elseif(auth()->user()->hasRole('CEmploi')){
-            return $query->where('agence_id',  session()->get('orig_agence'))
-                ->where('user_id',  Auth::id());
-        }
+        // if(auth()->user()->hasRole('SuperAdmin')){
+        //     return $query;
+        // }elseif(auth()->user()->hasRole('CAgence')){
+        //     return $query->where('agence_id',  session()->get('orig_agence'));
+        // }elseif(auth()->user()->hasRole('CEmploi')){
+        //     return $query->where('agence_id',  session()->get('orig_agence'))
+        //         ->where('user_id',  Auth::id());
+        // }
+        return $query->where('user_id',  Auth::id());
     }
 
     public function suivirencontre(){

@@ -12,6 +12,7 @@ use App\Models\SuiviRencontre;
 use Carbon\Carbon;
 use Database\Seeders\NiveauetudeSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 use MercurySeries\Flashy\Flashy;
 use Yajra\DataTables\Facades\DataTables;
@@ -26,6 +27,14 @@ class DiagnostikController extends Controller
     public function index()
     {
         //
+    }
+
+    public function apiGetMatricule(){
+        $matricule = \request('matricule_aej');
+        $url =  "http://160.154.48.106:8081/aejplateformsite/demandeur_info/{$matricule}" ;
+        $response = Http::get($url);
+        $data = $response->collect();
+        return response()->json($data);
     }
 
     public function autocomVille(Request $request){

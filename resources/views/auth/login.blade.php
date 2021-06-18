@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="wrap-login100 p-t-190 p-b-30">
-        <form class="login100-form validate-form" method="POST" action="{{ route('session.login') }}">
+        <form class="login100-form validate-form" method="POST" action="{{ route('session.connexion') }}">
             @csrf
             {{--<div class="login100-form-avatar">
             </div>--}}
@@ -22,12 +22,22 @@
             <span class="login100-form-title p-t-20 p-b-45">
                 Espace de Connexion
             </span>
+            <span>
+                @include('layouts.inc.flash')
+                @include('layouts.inc.message')
+            </span>
             <div class="wrap-input100 validate-input m-b-10" data-validate="Le nom d'utilisateur est requis">
                 <input class="input100 @error('email') is-invalid @enderror" type="text" name="email" placeholder="Email">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
                     <i class="fa fa-user"></i>
                 </span>
+                @error('email')
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <div class="wrap-input100 validate-input m-b-10" data-validate="Le mot de passe est requis">
                 <input class="input100" type="password" name="password" placeholder="Mot de passe">
@@ -35,8 +45,15 @@
                 <span class="symbol-input100">
                     <i class="fa fa-lock"></i>
                 </span>
+                @error('password')
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
-            <button type="submit" style="border-radius:25px;width:100%;height:50px; background-color: #039F61" class="btn btn-info btn-block btn-ivory float-right btn-round">
+            <button type="submit" style="border-radius:25px;width:100%;height:50px; background-color: #039F61"
+                    class="btn btn-info btn-block btn-ivory float-right btn-round">
                 {{ __('Se connecter') }}
             </button>
         </form>
