@@ -540,10 +540,10 @@
                             if (data.entretiendiag !== null) {
                                 if (matriculeaej.length > 11) {
                                     $.ajax({
-                                        url: "{{ route('diagnostik.apimatricule') }}",
+                                        url: "{{ route('api') }}",
                                         data: {
                                             _token: "{{ csrf_token() }}",
-                                            matricule_aej: n_aej
+                                            matricule_aej: matriculeaej
                                         },
                                         type: 'get',
                                         dataType: "json",
@@ -574,7 +574,7 @@
                                             $('#diplome_db').val(data[0].diplome);
                                             $('#niveaudetude').val(data[0].niveauetude);
                                             $('#niveaudetude_db').val(data[0].niveauetude);
-                                            $('#nomprenom').val(data[0].nomprenom);
+                                            $('#nomprenom').val(data[0].nom +' '+ data[0].prenom);
                                             // $("#addAej").modal('hide');
 
                                         },error: function (jqXHR, exception) {

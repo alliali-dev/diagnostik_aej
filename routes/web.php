@@ -77,12 +77,13 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::post('/store2to3rencontre', 'DiagnostikController@store2to3rencontre')->name('store2to3rencontre');
     Route::post('autocomspecialite', 'DiagnostikController@autocomSpecialite')->name('autocomspecialite');
     Route::post('autocomniveautude', 'DiagnostikController@autocomNiveauEtude')->name('autocomniveautude');
-    Route::get('/apimatricule', [DiagnostikController::class,'apiGetMatricule'])->name('apimatricule');
+
 });
 
-
+ Route::get('/api', [DiagnostikController::class,'apiGetMatricule'])->name('api');
 
 Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], function () {
+
 
     Route::post('autocomplete', 'AgenceController@autocomplete')->name('autocomplete');
     Route::get('/agence', 'AgenceController@index')->name('agenceindex');

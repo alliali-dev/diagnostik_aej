@@ -129,6 +129,10 @@ class HomeController extends Controller
         $rencontres = Rencontre::mine();
         $suivierencontres = SuiviRencontre::mine();
 
+        //dd(session()->get('orig_agence'));
+
+       // dd(auth()->user()->hasRole('SuperAdmin'));
+
         return view('home',compact('rencontres','prdejs','recmodalitejs','recaxetravailjs','suivierencontres'));
     }
 }

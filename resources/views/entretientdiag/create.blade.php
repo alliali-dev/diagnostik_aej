@@ -337,15 +337,16 @@
                             _token: "{{ csrf_token() }}",
                             matriculeaej: matriculeaej
                         },success: function( data ) {
+                            console.log(data);
                             if(data.entretiendiag == null){
                                 /*if (matriculeaej.length > 11) {*/
                                     $.ajax({
-                                        url:"http://localhost/diag_api/public/api/"+ matriculeaej,
+                                        url:"{{ route('api') }}",
                                         type: 'get',
                                         dataType: "json",
                                         data: {
                                             _token: "{{ csrf_token() }}",
-                                            search: matriculeaej
+                                            matricule_aej: matriculeaej
                                         },success: function( array ) {
                                             //console.log(array);
                                             $('#loader').fadeOut();
@@ -373,7 +374,7 @@
                                             $('#diplome_db').val(array[0].diplome);
                                             $('#niveaudetude').val(array[0].niveauetude);
                                             $('#niveaudetude_db').val(array[0].niveauetude);
-                                            $('#nomprenom').val(array[0].nomprenom);
+                                            $('#nomprenom').val(array[0].nom +' '+ array[0].prenom);
                                         },error: function (jqXHR, exception) {
                                             alert('reessayer svp !!!');
                                             $('#loader').fadeOut();
