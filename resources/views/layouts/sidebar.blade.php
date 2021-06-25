@@ -1,6 +1,5 @@
 <!-- BEGIN: Main Menu-->
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
-
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
@@ -20,7 +19,6 @@
             </li>
         </ul>
     </div>
-
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
@@ -32,28 +30,10 @@
                 </a>
             </li>
             @if(!auth()->user()->hasRole(['CAgence']))
-            <li class="nav-item  has-sub sidebar-group-active">
-                <a href="#">
-                    <i class="feather icon-user-plus"></i>
-                    <span class="menu-title" data-i18n="Videos">Diagnostique</span>
-                </a>
-                <ul class="menu-content" style="">
-                    <li>
-                        <a href="{{ route('diagnostik.create') }}">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">1ère Rencontre</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('diagnostik.mes_suivies') }}">
-                            <i></i><span class="menu-item" data-i18n="Categorie create">Mes Suivies</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
                 <li class="nav-item  has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-activity"></i>
-                        <span class="menu-title" data-i18n="Videos">Entretien</span>
+                        <span class="menu-title" data-i18n="Videos">Diagnostique</span>
                     </a>
                     <ul class="menu-content" style="">
                         <li>
@@ -68,6 +48,25 @@
                         </li>
                     </ul>
                 </li>
+            <li class="nav-item  has-sub sidebar-group-active">
+                <a href="#">
+                    <i class="feather icon-user-plus"></i>
+                    <span class="menu-title" data-i18n="Videos">Rencontre</span>
+                </a>
+                <ul class="menu-content" style="">
+                    <li>
+                        <a href="{{ route('diagnostik.create') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">1ère Rencontre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('diagnostik.mes_suivies') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">Mes Suivies</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             @endif
             @if(auth()->user()->hasRole(['CAgence','SuperAdmin']))
                 <li class="nav-item  has-sub sidebar-group-active">
