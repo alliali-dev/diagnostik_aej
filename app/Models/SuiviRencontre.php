@@ -28,13 +28,14 @@ class SuiviRencontre extends Model
         'npiece'        => 'string',
         'nationalite'   => 'string',
         'contact'       => 'string',
+        'diplome'       => 'string',
+        'user_id'       => 'string',
+        'agence_id'     => 'integer',
+        'anneediplome'  => 'string',
+        'niveaudetude'  => 'string',
         'lieudereisdence'   => 'string',
-        'diplome'           => 'string',
         'specialitediplome' => 'string',
-        'anneediplome'      => 'string',
-        'niveaudetude'      => 'string',
-        'user_id'           => 'string',
-        'agence_id'         => 'integer',
+
     ];
 
     public function scopeMine(Builder $query)

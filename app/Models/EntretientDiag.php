@@ -38,9 +38,9 @@ class EntretientDiag extends Model
     {
         if(auth()->user()->hasRole('SuperAdmin')){
             return $query;
-        }elseif(auth()->user()->hasRole('CAgence')){
+        } elseif(auth()->user()->hasRole('CAgence')){
             return $query->where('agence_id',  session()->get('orig_agence'));
-        }elseif(auth()->user()->hasRole('CEmploi')){
+        } elseif(auth()->user()->hasRole('CEmploi')){
             return $query->where('agence_id',  session()->get('orig_agence'))
                 ->where('user_id',  Auth::id());
         }

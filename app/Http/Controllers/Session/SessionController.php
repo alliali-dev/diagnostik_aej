@@ -28,7 +28,6 @@ class SessionController extends Controller
 
     public function login()
     {
-
         $data = \request()->all();
 
         $messages = [
@@ -49,7 +48,6 @@ class SessionController extends Controller
         $user = User::where('email', request(['email']))->first();
 
         if(!$user){
-            //Flashy::error('Aucun compte ne correspond à cet utilisateur. Veuillez contacter l\'administrateur');
             session()->flash('warning','Aucun compte ne correspond à cet utilisateur. Veuillez contacter l\'administrateur');
             return back();
         }else{
@@ -57,20 +55,16 @@ class SessionController extends Controller
             $agence = Agence::where('code',$user->agence_id)->first();
 
             if (!$agence){
-               // Flashy::error('Verifier votre code agence');
                 session()->flash('warning','Verifier votre code agence');
                 return back();
             }else{
                 session()->put('orig_agence',$agence->id);
-               // dd(session()->get('orig_agence'));
             }
         }
 
         $data = request(['email', 'password']);
-        //$data['agence_id'] = $agence->id;
 
         if(!auth()->attempt($data)){
-            //Flashy::error('Votre adresse électronique ou votre mot de passe est incorrecte');
             session()->flash('warning','Votre adresse électronique ou votre mot de passe est incorrecte');
             return back();
         }
@@ -82,10 +76,8 @@ class SessionController extends Controller
     public function destroy()
     {
         $this->guard()->logout();
-
         request()->session()->flush();
         request()->session()->regenerate();
-
         return redirect()->login();
     }
 

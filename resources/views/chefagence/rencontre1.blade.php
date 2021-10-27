@@ -189,8 +189,8 @@
             rencontreRow.empty();
 
             $('#loader').fadeIn();
-            var url_rencontre = "{{ route('chefagence.filter')  }}";
-            var url_detailsdemandeur = "{{ route('chefagence.detaildemandeur')  }}";
+            var url_rencontre = "{{route('chefagence.filter')}}";
+            var url_detailsdemandeur = "{{route('chefagence.detaildemandeur')}}";
             $.ajax({
                 method: "GET",
                 url: url_rencontre,

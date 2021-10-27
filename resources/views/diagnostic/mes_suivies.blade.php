@@ -651,7 +651,8 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
+                                                {{--<input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>--}}
                                             </div>
                                         </div>
                                     </div>
