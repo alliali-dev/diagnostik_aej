@@ -10,6 +10,13 @@ use Spatie\Permission\Models\Role;
 
 class AgenceController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role:Admin')->except(['logoutAs']);
+    }
+
     public function autocomplete(Request $request){
         $search = $request->search;
         if($search == ''){

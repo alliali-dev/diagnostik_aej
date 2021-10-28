@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Diagnostik;
 
+use App\Exports\Rencontre1Export;
+use App\Exports\Rencontre2Export;
+use App\Exports\Rencontre3Export;
+use App\Exports\Rencontre4Export;
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
 use App\Models\Commune;
@@ -15,10 +19,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 use MercurySeries\Flashy\Flashy;
+use PhpOffice\PhpSpreadsheet\Writer\Exception;
 use Yajra\DataTables\Facades\DataTables;
+use Maatwebsite\Excel\Exporter;
 
 class DiagnostikController extends Controller
 {
+    private $exporter;
+
+    public function __construct(Exporter $exporter)
+    {
+        $this->middleware('auth');
+        $this->exporter = $exporter;
+        // $this->middleware('role:Admin')->except(['logoutAs']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,10 +43,47 @@ class DiagnostikController extends Controller
         //
     }
 
+    //Exportion to Excell
+
+    public function exportRencontre1()
+    {
+        try {
+            return $this->exporter->download(
+                new Rencontre1Export,
+                'suivierencontre_1'.date('Y-m-d-s').'.xlsx');
+        } catch (Exception $e) {
+            print($e->getMessage());
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+            print($e->getMessage());
+        }
+    }
+
+    public function exportRencontre2()
+    {
+        return Excel::download(new Rencontre2Export, 'suivierencontre_2_'.date('Y-m-d').'.xlsx');
+    }
+
+    public function exportRencontre3()
+    {
+        return Excel::download(new Rencontre3Export, 'suivierencontre_3_'.date('Y-m-d').'.xlsx');
+    }
+
+    public function exportRencontre4()
+    {
+        return Excel::download(new Rencontre4Export, 'suivierencontre_4_'.date('Y-m-d').'.xlsx');
+    }
+
+    public function exportRencontre5()
+    {
+        return Excel::download(new Rencontre5Export, 'suivierencontre_5_'.date('Y-m-d').'.xlsx');
+    }
+
     public function apiGetMatricule(){
         $matricule = \request('matricule_aej');
         $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-        $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
+      //  $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
+        $url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
+      //  dd($url);
         $response = Http::get($url);
         $data = json_decode($response->body());
         return response()->json($data);

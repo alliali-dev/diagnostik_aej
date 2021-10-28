@@ -64,6 +64,9 @@
                         <div class="tab-pane fade  show active" id="twitterPIll" role="tabpanel" aria-labelledby="twitter-icon-pill">
                             <div class="d-flex align-items-end flex-column">
                                 <div class="mb-4">
+                                    {{--{{ route('diagnostik.getrec3') }}--}}
+                                    <a class="btn btn-warning" href="{{ route('diagnostik.export_rc1') }}">Export</a>
+                                    {{--<a class="btn btn-warning" href="{{ url('Diagnostik/export/recontre1') }}">Export</a>--}}
                                 </div>
                             </div>
                             <div class="col-sm-12">

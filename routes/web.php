@@ -61,11 +61,21 @@ Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'ch
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
     Route::get('/', 'DiagnostikController@index')->name('index');
     Route::post('/autrerdv','DiagnostikController@autrerdv')->name('autrerdv');
+
+    // tous les suivies ici
     Route::get('/getRec1', 'DiagnostikController@getRec1')->name('getrec1');
     Route::get('/getRec2', 'DiagnostikController@getRec2')->name('getrec2');
     Route::get('/getRec3', 'DiagnostikController@getRec3')->name('getrec3');
     Route::get('/getRec4', 'DiagnostikController@getRec4')->name('getrec4');
     Route::get('/getRec5', 'DiagnostikController@getRec5')->name('getrec5');
+
+    // route d'exportation in excell  {{route('diagnostik.export_rc1)}}
+    Route::get('/export/recontre1','DiagnostikController@exportRencontre1')->name('export_rc1');
+    Route::get('/export/recontre2','DiagnostikController@exportRencontre2')->name('export_rc2');
+    Route::get('/export/recontre3','DiagnostikController@exportRencontre3')->name('export_rc3');
+    Route::get('/export/recontre4','DiagnostikController@exportRencontre4')->name('export_rc4');
+    Route::get('/export/recontre5','DiagnostikController@exportRencontre5')->name('export_rc5');
+
     Route::get('/create', 'DiagnostikController@create')->name('create');
     Route::post('/store', 'DiagnostikController@store')->name('store');
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');

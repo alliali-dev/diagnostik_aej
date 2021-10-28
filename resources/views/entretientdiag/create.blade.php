@@ -18,13 +18,133 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <form id="videoForm" action="{{ route('entretient.store') }}" class="icons-tab-steps wizard-circle"
+                                    <form id="videoForm" action="{{ route('entretient.store') }}"
+                                          class="icons-tab-steps wizard-circle"
                                           method="post" enctype="multipart/form-data">
                                     @csrf
                                     <!-- Step 1 -->
                                         <h6><i class="step-icon feather icon-info"></i>PROFIL DE L'USAGER</h6>
                                         <fieldset>
                                             <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="sexe">Sexe</label>
+                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]" disabled>
+                                                        <input type="hidden" id="sexe_db" name="demandeur[sexe]">
+                                                    </div>
+                                                    <input type="hidden" id="nomprenom" name="demandeur[nomprenom]">
+                                                    <input type="hidden" id="matricule_aej" name="demandeur[matricule_aej]">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="datenaisance">Date naissance</label>
+                                                        <input type="date" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance" disabled>
+                                                        <input type="hidden" id="datenaissance_db" name="demandeur[datenaisance]">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="age">Age</label>
+                                                        <input type="text" class="form-control" id="age" name="demandeur[age]" placeholder="age" disabled>
+                                                        <input type="hidden" id="age_db" name="demandeur[age]">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="naturepiece">Nature Piece</label>
+                                                        <input type="text" name="demandeur[naturepiece]" id="naturepiece" placeholder="nature pieces" class="form-control" disabled>
+                                                        <input type="hidden" id="naturepiece_db" name="demandeur[naturepiece]">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="numpiece">N° Piece</label>
+                                                        <input type="text" name="demandeur[npiece]" id="npiece" placeholder="N° piece" class="form-control" disabled>
+                                                        <input type="hidden" id="npiece_db" name="demandeur[npiece]">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="nationalite">Nationalite</label>
+                                                        <input type="text" name="demandeur[nationalite]" id="nationalite" placeholder="nationalite" class="form-control" disabled>
+                                                        <input type="hidden" id="nationalite_db" name="demandeur[nationalite]">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="contact">Contact</label>
+                                                        <input type="text" name="demandeur[contact]" id="contact" placeholder="contact" class="form-control" disabled>
+                                                        <input type="hidden" id="contact_db" name="demandeur[contact]">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="lieudereisdence">Lieu de residence habituel</label>
+                                                        <select name="demandeur[lieudereisdence]" id="lieudereisdence" class="form-control">
+                                                            <option value="">{{__('-- selectionner residence --')}}</option>
+                                                            @foreach($communes as $item)
+                                                                <option value="{{$item->nom}}">{{$item->nom}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    {{--<input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
+                                                    <input type="hidden" name="commune_id" id='agenceid' readonly>--}}
+                                                    <!-- For displaying selected option value from autocomplete suggestion -->
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="diplome">Diplôme</label>
+                                                        <input disabled type="text" name="demandeur[diplome]" id="diplome" placeholder="Diplôme" class="form-control">
+                                                        <input  type="hidden" name="demandeur[diplome]" id="diplome_db">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="specialitediplome">Spécialité du diplôme</label>
+                                                        <select name="demandeur[specialitediplome]" id="specialitediplome" class="form-control">
+                                                            <option value="">{{__('-- selectionner Spécialité --')}}</option>
+                                                            @foreach($specialites as $item)
+                                                                <option value="{{$item->libelle}}">{{$item->libelle}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        {{--<input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">--}}
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="anneediplome">Année d'obtention du diplôme</label>
+                                                        <select name="demandeur[anneediplome]" id="anneediplome" class="form-control">
+                                                            <option value="">{{__('-- selectionner diplôme --')}}</option>
+                                                            @foreach($data as $item)
+                                                                <option value="{{$item['dateannee']}}">{{$item['dateannee']}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="niveaudetude">Niveau d'etudes</label>
+                                                        <select disabled name="demandeur[niveaudetude]" id="niveaudetude" class="form-control">
+                                                            <option value="">{{__('-- selectionner Niveau --')}}</option>
+                                                            @foreach($niveauetudes as $item)
+                                                                <option value="{{$item->libelle}}">{{$item->libelle}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <input  type="hidden" name="demandeur[niveaudetude]" id="niveaudetude_db">
+                                                        {{-- <input type="text" name="demandeur[niveaudetude]"
+                                                        id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">--}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{--<div class="row">
                                                 <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="sexe">Sexe</label>
@@ -47,7 +167,7 @@
                                                         <input type="text" name="nomprenom" id="nomprenom" placeholder="numero aej" class="form-control" required readonly="">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                             <hr>
                                             <br>
                                             <div class="row">
@@ -362,6 +482,7 @@
                                             $('#datenaissance_db').val(array[0].datenaissance);
                                             $('#age').val(array[0].age);
                                             $('#age_db').val(array[0].age);
+                                            $('#lieudereisdence').val(array[0].domicile);
                                             $('#naturepiece').val(array[0].typepieceidentite);
                                             $('#naturepiece_db').val(array[0].typepieceidentite);
                                             $('#npiece').val(array[0].numerocni);

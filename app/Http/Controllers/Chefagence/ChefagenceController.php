@@ -14,6 +14,12 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ChefagenceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role:Admin')->except(['logoutAs']);
+    }
+
     public function rencontre1()
     {
         $typerencontres = [

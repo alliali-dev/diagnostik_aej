@@ -10,6 +10,12 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role:Admin')->except(['logoutAs']);
+    }
+
     public function index(){
         $roles = Role::get();
         return view('users.roles.index',compact('roles'));
