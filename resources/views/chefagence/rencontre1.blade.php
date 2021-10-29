@@ -88,6 +88,26 @@
                         </button>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-9">
+                    </div>
+                    <div class="col-md-3">
+                        <form action="{{ route('chefagence.exportFilter') }}" method="POST">
+                            @csrf()
+                            <input type="hidden" name="typerencontre" id="typerencontre_e" value="{{\request('typerencontre')}}">
+                            <input type="hidden" name="cemploi" id="cemploi_e" value="{{\request('cemploi')}}">
+                            <input type="hidden" name="datedebut" id="datedebut_e"  value="{{\request('datedebut')}}">
+                            <input type="hidden" name="datefin" id="datefin_e" value="{{\request('datefin')}}">
+                            <input type="hidden" name="modalite" id="modalite_e" value="{{\request('modalite')}}">
+                            <input type="hidden" name="axetravail" id="axetravail_e" value="{{\request('axetravail')}}">
+                            <input type="hidden" name="approche" id="approche_e" value="{{\request('approche')}}">
+                            <button type="submit" class="btn btn-success">
+                                Export Excel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <br>
                 <div class="table-responsive-sm">
                     <table class="table" id="rec" style="width: 100%;">
                         <thead>
@@ -174,6 +194,36 @@
         });
     </script>
     <script>
+
+        $('#typerencontre').change(function() {
+            $('#typerencontre_e').val($('#typerencontre').val());
+        });
+
+        $('#cemploi').change(function() {
+            $('#cemploi_e').val($('#cemploi').val());
+        });
+
+        $('#datedebut').change(function() {
+            $('#datedebut_e').val($('#datedebut').val());
+        });
+
+        $('#datefin').change(function() {
+            $('#datefin_e').val($('#datefin').val());
+        });
+
+        $('#modalite').change(function() {
+            $('#modalite_e').val($('#modalite').val());
+        });
+
+        $('#axetravail').change(function() {
+            $('#axetravail_e').val($('#axetravail').val());
+        });
+
+        $('#approche').change(function() {
+            $('#approche_e').val($('#approche').val());
+        });
+
+
         $('#search').on('click', function (e) {
             var rencontreRow = $('#rencontreRow')
             var typerencontre = $('#typerencontre').val();

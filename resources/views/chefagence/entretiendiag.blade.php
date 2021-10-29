@@ -44,6 +44,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-9">
+                    </div>
+                    <div class="col-md-3">
+                        <form action="{{ route('chefagence.exportFilterEntretient') }}" method="POST">
+                            @csrf()
+                            <input type="hidden" name="cemploi" id="cemploi_e" value="{{\request('cemploi')}}">
+                            <input type="hidden" name="datedebut" id="datedebut_e"  value="{{\request('datedebut')}}">
+                            <input type="hidden" name="datefin" id="datefin_e" value="{{\request('datefin')}}">
+                            <button type="submit" class="btn btn-success">
+                                Export Excel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <br>
                 <div class="table-responsive-sm">
                     <table class="table" id="rec" style="width: 100%;">
                         <thead>
@@ -127,6 +143,19 @@
                 $("#datefin").datepicker("show");
             });
            // $("#datefin").focus();
+        });
+    </script>
+    <script>
+        $('#cemploi').change(function() {
+            $('#cemploi_e').val($('#cemploi').val());
+        });
+
+        $('#datedebut').change(function() {
+            $('#datedebut_e').val($('#datedebut').val());
+        });
+
+        $('#datefin').change(function() {
+            $('#datefin_e').val($('#datefin').val());
         });
     </script>
     <script>

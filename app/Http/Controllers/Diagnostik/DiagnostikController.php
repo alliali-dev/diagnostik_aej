@@ -22,6 +22,7 @@ use MercurySeries\Flashy\Flashy;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
 use Yajra\DataTables\Facades\DataTables;
 use Maatwebsite\Excel\Exporter;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DiagnostikController extends Controller
 {
@@ -48,9 +49,14 @@ class DiagnostikController extends Controller
     public function exportRencontre1()
     {
         try {
-            return $this->exporter->download(
+            return Excel::download(
                 new Rencontre1Export,
-                'suivierencontre_1'.date('Y-m-d-s').'.xlsx');
+                date('Ymd').'suivierencontre.xlsx',\Maatwebsite\Excel\Excel::XLSX,
+                [
+                    'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                    //'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                ]
+            );
         } catch (Exception $e) {
             print($e->getMessage());
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {

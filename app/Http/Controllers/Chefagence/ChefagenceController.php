@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Chefagence;
 
+use App\Exports\RencontreFilterByEntretient;
+use App\Exports\RencontreFilterByRencontre;
 use App\Http\Controllers\Controller;
 use App\Models\EntretientDiag;
 use App\Models\Rencontre;
@@ -98,6 +100,27 @@ class ChefagenceController extends Controller
         return response()->json($data);
     }
 
+    public function exportFilter(Request $request){
+
+        $typerencontre = \request('typerencontre');
+        $cemploi = \request('cemploi');
+        $datedebut = \request('datedebut');
+        $datefin = \request('datefin');
+        $modalite = \request('modalite');
+        $axetravail = \request('axetravail');
+        $approche = \request('approche');
+
+        return (new RencontreFilterByRencontre)
+            ->forTyperencontre($typerencontre)
+            ->forModalite($modalite)
+            ->forAxetravail($axetravail)
+            ->forApproche($approche)
+            ->forUserId($cemploi)
+            ->forDateDebut($datedebut)
+            ->forDateFin($datefin)
+            ->download('rencontre.xlsx');
+    }
+
     public function filter_entretient(){
         $cemploi = \request('cemploi');
         $datedebut = \request('datedebut');
@@ -128,6 +151,19 @@ class ChefagenceController extends Controller
             ];
         }
         return response()->json($data);
+    }
+
+    public function exportFilterEntretient(Request $request){
+
+        $cemploi = \request('cemploi');
+        $datedebut = \request('datedebut');
+        $datefin = \request('datefin');
+
+        return (new RencontreFilterByEntretient)
+            ->forUserId($cemploi)
+            ->forDateDebut($datedebut)
+            ->forDateFin($datefin)
+            ->download('entretient_diag.csv');
     }
 
 

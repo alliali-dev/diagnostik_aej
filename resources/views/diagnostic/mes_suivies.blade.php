@@ -65,7 +65,7 @@
                             <div class="d-flex align-items-end flex-column">
                                 <div class="mb-4">
                                     {{--{{ route('diagnostik.getrec3') }}--}}
-                                    <a class="btn btn-warning" href="{{ route('diagnostik.export_rc1') }}">Export</a>
+                                    <a class="btn btn-success" href="{{ route('diagnostik.export_rc1') }}">Export Excel</a>
                                     {{--<a class="btn btn-warning" href="{{ url('Diagnostik/export/recontre1') }}">Export</a>--}}
                                 </div>
                             </div>
@@ -163,6 +163,7 @@
                         <div class="tab-pane fade" id="redditPIll" role="tabpanel" aria-labelledby="reddit-icon-pill">
                             <div class="d-flex align-items-end flex-column">
                                 <div class="mb-4">
+                                    <a class="btn btn-success" href="{{ route('diagnostik.export_rc2') }}">Export Excel</a>
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -260,6 +261,7 @@
                              aria-labelledby="linkedin-icon-pill">
                              <div class="d-flex align-items-end flex-column">
                                 <div class="mb-4">
+                                    <a class="btn btn-success" href="{{ route('diagnostik.export_rc3') }}">Export Excel</a>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -353,12 +355,12 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="tab-pane fade" id="tumblrPIll" role="tabpanel"
                              aria-labelledby="tumblr-icon-pill">
                             <div class="d-flex align-items-end flex-column">
-                                    <div class="mb-4">
-                                    </div>
+                                <div class="mb-4">
+                                    <a class="btn btn-success" href="{{ route('diagnostik.export_rc4') }}">Export Excel</a>
+                                </div>
                             </div>
                              <div>
                                 <div class="table-responsive-sm">
@@ -454,8 +456,9 @@
                         <div class="tab-pane fade" id="pinterestPIll" role="tabpanel"
                              aria-labelledby="pinterest-icon-pill">
                             <div class="d-flex align-items-end flex-column">
-                                    <div class="mb-4">
-                                    </div>
+                                <div class="mb-4">
+                                    <a class="btn btn-success" href="{{ route('diagnostik.export_rc5') }}">Export Excel</a>
+                                </div>
                             </div>
                            <div>
                                 <div class="table-responsive-sm">

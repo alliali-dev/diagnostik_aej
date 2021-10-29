@@ -14,6 +14,6 @@ class Rencontre4Export implements FromCollection
     {
         return Rencontre::mine()
             ->where('typerencontre', 4)
-            ->where('status',false);
+            ->where('status',false)->get();
     }
 }
