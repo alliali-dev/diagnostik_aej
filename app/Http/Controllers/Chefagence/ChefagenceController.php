@@ -213,7 +213,6 @@ class ChefagenceController extends Controller
         return view('chefagence.rencontre2');
     }
 
-
     public function getAgenceRenct2(Request $request){
         if ($request->ajax()) {
             $data = Rencontre::mine()

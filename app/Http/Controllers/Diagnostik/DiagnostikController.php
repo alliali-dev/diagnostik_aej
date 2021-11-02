@@ -49,19 +49,12 @@ class DiagnostikController extends Controller
     public function exportRencontre1()
     {
         try {
-            return Excel::download(
-                new Rencontre1Export,
-                date('Ymd').'suivierencontre.xlsx',\Maatwebsite\Excel\Excel::XLSX,
-                [
-                    'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                    //'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                ]
-            );
-        } catch (Exception $e) {
-            print($e->getMessage());
-        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+             Excel::download(new Rencontre1Export, date('Ymd').'_suivierencontre.xlsx');
+        } catch (\Exception $e) {
             print($e->getMessage());
         }
+
+        return null;
     }
 
     public function exportRencontre2()
