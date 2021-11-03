@@ -27,6 +27,7 @@ Route::group(['prefix'=>'entretient','as'=>'entretient.'], function () {
     Route::get('/create','EntretientDiagController@create')->name('create');
     Route::get('/suivie','EntretientDiagController@index')->name('index');
     Route::post('/store','EntretientDiagController@store')->name('store');
+    Route::get('/export','EntretientDiagController@export')->name('export');
 });
 
 Route::group(['prefix'=>'verif','namespace'=>'Verif','as'=>'verif.'], function () {

@@ -20,13 +20,16 @@
             <h4 class="card-title"></h4>
         </div>
         <div class="card-content">
-
             <div class="card-body">
-
                 <div class="mb-3">
                     <a class="btn btn-primary" href="{{ route('entretient.create') }}">
                         <span><i class="feather icon-plus"></i>Faire un Entretien</span>
                     </a>
+                    <div class="text-right">
+                        <a class="btn btn-info" href="{{ route('entretient.export') }}">
+                            <span><i class="feather icon-download"></i>Exporter</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="table-responsive-sm">
@@ -44,6 +47,8 @@
                             <th>Maîtrise de l'outil de recherche d'emploi</th>
                             <th>Connaissance des exigence du marché</th>
                             <th>Dépôt de dossier en entreprise</th>
+                            <th>Grille Diagnostique</th>
+                            <th>Guide Entretient</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,6 +65,22 @@
                                 <td> {{ $item->maitoutrechempl }}</td>
                                 <td> {{ $item->conexigmarch }}</td>
                                 <td> {{ $item->depdossent }}</td>
+                                <td>
+                                    @if($item->file_grille_diagnostic )
+                                        <a type="button" href="{{ asset('fichiers/diagnostic/'.$item->file_grille_diagnostic) }}"
+                                                class="btn btn-info mr-0 waves-effect waves-light">
+                                            <i class="feather icon-eye"></i>
+                                        </a>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($item->file_guide_entretient)
+                                        <a type="button" href="{{ asset('fichiers/entretient/'.$item->file_guide_entretient) }}"
+                                           class="btn btn-primary mr-0 waves-effect waves-light">
+                                            <i class="feather icon-eye"></i>
+                                        </a>
+                                    @endif
+                                </td>
                                 {{--<td class="float-right">
                                     <button type="button"
                                             data-toggle="modal"

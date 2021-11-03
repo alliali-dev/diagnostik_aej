@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EntretientDiagExport;
 use App\Models\Commune;
 use App\Models\EntretientDiag;
 use App\Models\Niveauetude;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 
 class EntretientDiagController extends Controller
@@ -33,6 +35,12 @@ class EntretientDiagController extends Controller
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
         return view('entretientdiag.create',compact('niveauetudes','specialites','communes','data'));
+    }
+
+    public function export(){
+        ob_end_clean(); // this
+        ob_start();
+        return Excel::download(new EntretientDiagExport, 'entretient_'.time().'.xlsx');
     }
 
     public function store(Request $request){
@@ -80,7 +88,7 @@ class EntretientDiagController extends Controller
             EntretientDiag::create($data);
             session()->flash('success','Entretien bien ajoute');
 
-        }catch (\Exception $e){
+        } catch (\Exception $e){
             session()->flash('success',$e->getMessage());
         }
         return redirect()->route('entretient.index');
