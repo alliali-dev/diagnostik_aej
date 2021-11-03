@@ -48,32 +48,36 @@ class DiagnostikController extends Controller
 
     public function exportRencontre1()
     {
-        try {
-             Excel::download(new Rencontre1Export, date('Ymd').'_suivierencontre.xlsx');
-        } catch (\Exception $e) {
-            print($e->getMessage());
-        }
-
-        return null;
+        ob_end_clean(); // this
+        ob_start();
+        return Excel::download(new Rencontre1Export, date('Ymd').'_suivierencontre.xlsx');
     }
 
     public function exportRencontre2()
     {
+        ob_end_clean(); // this
+        ob_start();
         return Excel::download(new Rencontre2Export, 'suivierencontre_2_'.date('Y-m-d').'.xlsx');
     }
 
     public function exportRencontre3()
     {
+        ob_end_clean(); // this
+        ob_start();
         return Excel::download(new Rencontre3Export, 'suivierencontre_3_'.date('Y-m-d').'.xlsx');
     }
 
     public function exportRencontre4()
     {
+        ob_end_clean(); // this
+        ob_start();
         return Excel::download(new Rencontre4Export, 'suivierencontre_4_'.date('Y-m-d').'.xlsx');
     }
 
     public function exportRencontre5()
     {
+        ob_end_clean(); // this
+        ob_start();
         return Excel::download(new Rencontre5Export, 'suivierencontre_5_'.date('Y-m-d').'.xlsx');
     }
 

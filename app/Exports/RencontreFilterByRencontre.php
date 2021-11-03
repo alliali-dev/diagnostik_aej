@@ -8,8 +8,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class RencontreFilterByRencontre implements FromQuery
+class RencontreFilterByRencontre implements FromQuery,WithHeadings
 {
     use Exportable;
 
@@ -102,5 +103,10 @@ class RencontreFilterByRencontre implements FromQuery
         }
 
         return collect($data);
+    }
+
+    public function headings(): array
+    {
+        return array_keys($this->query()->first()->toArray());
     }
 }

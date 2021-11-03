@@ -6,8 +6,9 @@ use App\Models\EntretientDiag;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class RencontreFilterByEntretient implements FromQuery
+class RencontreFilterByEntretient implements FromQuery,WithHeadings
 {
     use Exportable;
     public function forUserId($user_id)
@@ -58,5 +59,10 @@ class RencontreFilterByEntretient implements FromQuery
         }
 
         return collect($data);
+    }
+
+    public function headings(): array
+    {
+        return array_keys($this->query()->first()->toArray());
     }
 }

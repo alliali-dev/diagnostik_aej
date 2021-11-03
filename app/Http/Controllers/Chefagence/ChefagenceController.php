@@ -110,6 +110,9 @@ class ChefagenceController extends Controller
         $axetravail = \request('axetravail');
         $approche = \request('approche');
 
+        ob_end_clean(); // this
+        ob_start();
+
         return (new RencontreFilterByRencontre)
             ->forTyperencontre($typerencontre)
             ->forModalite($modalite)
@@ -159,11 +162,14 @@ class ChefagenceController extends Controller
         $datedebut = \request('datedebut');
         $datefin = \request('datefin');
 
+        ob_end_clean();
+        ob_start();
+
         return (new RencontreFilterByEntretient)
             ->forUserId($cemploi)
             ->forDateDebut($datedebut)
             ->forDateFin($datefin)
-            ->download('entretient_diag.csv');
+            ->download('entretient_diag.xlsx');
     }
 
 
