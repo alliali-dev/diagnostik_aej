@@ -107,6 +107,17 @@ class RencontreFilterByRencontre implements FromQuery,WithHeadings
 
     public function headings(): array
     {
-        return array_keys($this->query()->first()->toArray());
+        return [
+            'id',
+            'matricule_aej',
+            'nomprenom',
+            'sexe',
+            'lieudereisdence',
+            'diplome',
+            'dureerencontre',
+            'dateprochainrdv',
+            'axetravail',
+            'conseiller'
+            ];
     }
 }

@@ -21,7 +21,7 @@
                                     <form id="videoForm" action="{{ route('entretient.store') }}"
                                           class="icons-tab-steps wizard-circle"
                                           method="post" enctype="multipart/form-data">
-                                    @csrf
+                                         @csrf
                                     <!-- Step 1 -->
                                         <h6><i class="step-icon feather icon-info"></i>PROFIL DE L'USAGER</h6>
                                         <fieldset>
@@ -368,7 +368,23 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-
+                                             <h6><i class="step-icon feather icon-settings"></i>Fichier à joindre</h6>
+                                             <fieldset>
+                                                 <div class="row">
+                                                     <div class="col-6">
+                                                         <div class="form-group">
+                                                             <label>Guide d'Entretient</label>
+                                                             <input type="file" name="entretient" class="form-control">
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-6">
+                                                         <div class="form-group">
+                                                             <label>Grille Diagnostic</label>
+                                                             <input type="file" name="diagnostic" class="form-control">
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </fieldset>
                                     </form>
                                 </div>
                             </div>

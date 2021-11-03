@@ -57,12 +57,24 @@ class RencontreFilterByEntretient implements FromQuery,WithHeadings
                 'conseiller'        => \App\Models\User::find($item->user_id)->name
             ];
         }
-
         return collect($data);
     }
 
     public function headings(): array
     {
-        return array_keys($this->query()->first()->toArray());
+        return [
+            'matriculeaej',
+            'nomprenom',
+            'niveauformaion',
+            'niveauexperience',
+            'adeqormaexper',
+            'conmetieractiv',
+            'adqformmetieractiv',
+            'adqexpmetieractiv',
+            'maitoutrechempl',
+            'conexigmarch',
+            'depdossent',
+            'conseiller'
+        ];
     }
 }

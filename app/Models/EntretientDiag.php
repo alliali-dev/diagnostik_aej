@@ -14,7 +14,8 @@ class EntretientDiag extends Model
     protected $table = 'entretient_diags';
     protected $fillable = ['matriculeaej','nomprenom','sexe','niveauformaion','niveauexperience',
                             'adeqormaexper', 'conmetieractiv', 'adqformmetieractiv', 'adqexpmetieractiv',
-                            'maitoutrechempl', 'conexigmarch', 'depdossent', 'user_id', 'agence_id'
+                            'maitoutrechempl', 'conexigmarch', 'depdossent', 'user_id', 'agence_id',
+                            'file_guide_entretient','file_grille_diagnostic'
                             ];
 
     protected $casts = [
@@ -31,7 +32,9 @@ class EntretientDiag extends Model
         'conexigmarch' => 'string',
         'depdossent' => 'string',
         'user_id' => 'integer',
-        'agence_id' => 'integer'
+        'agence_id' => 'integer',
+        'file_guide_entretient' => 'string',
+        'file_grille_diagnostic' => 'string'
         ];
 
     public function scopeMine(Builder $query)
