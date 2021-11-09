@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Chefagence;
 
+use App\Exports\EntretientDiagChefAgence;
+use App\Exports\RencontreChefAgence;
 use App\Exports\RencontreFilterByEntretient;
 use App\Exports\RencontreFilterByRencontre;
 use App\Http\Controllers\Controller;
@@ -12,6 +14,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class ChefagenceController extends Controller
@@ -113,7 +116,7 @@ class ChefagenceController extends Controller
         ob_end_clean(); // this
         ob_start();
 
-        return (new RencontreFilterByRencontre)
+        /*return (new RencontreFilterByRencontre)
             ->forTyperencontre($typerencontre)
             ->forModalite($modalite)
             ->forAxetravail($axetravail)
@@ -121,7 +124,9 @@ class ChefagenceController extends Controller
             ->forUserId($cemploi)
             ->forDateDebut($datedebut)
             ->forDateFin($datefin)
-            ->download('rencontre.xlsx');
+            ->download('rencontre.xlsx');*/
+
+        return  Excel::download(new RencontreChefAgence(), 'rencontre_chef_agence'.time().'.xlsx');
     }
 
     public function filter_entretient(){
@@ -161,15 +166,14 @@ class ChefagenceController extends Controller
         $cemploi = \request('cemploi');
         $datedebut = \request('datedebut');
         $datefin = \request('datefin');
-
         ob_end_clean();
         ob_start();
-
-        return (new RencontreFilterByEntretient)
-            ->forUserId($cemploi)
-            ->forDateDebut($datedebut)
-            ->forDateFin($datefin)
-            ->download('entretient_diag.xlsx');
+        return  Excel::download(new EntretientDiagChefAgence(), 'entretient_chef_agence'.time().'.xlsx');
+        /* return (new RencontreFilterByEntretient)
+             ->forUserId($cemploi)
+             ->forDateDebut($datedebut)
+             ->forDateFin($datefin)
+             ->download('entretient_diag.xlsx');*/
     }
 
 

@@ -39,7 +39,7 @@ class RencontreFilterByEntretient implements FromQuery,WithHeadings
         if($this->user_id != null)
             $entretiendiag->where('user_id', $this->user_id);
         if($this->datedebut != null && $this->datefin != null)
-            $entretiendiag->whereBetween('dateprochainrdv', [$this->datedebut." 00:00:00",$this->datefin." 23:59:59"]);
+            $entretiendiag->whereBetween('created_at', [$this->datedebut." 00:00:00",$this->datefin." 23:59:59"]);
 
         foreach($entretiendiag->get() as $item){
             $data[]=[

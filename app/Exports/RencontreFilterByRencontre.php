@@ -102,7 +102,7 @@ class RencontreFilterByRencontre implements FromQuery,WithHeadings
             ];
         }
 
-        return collect($data);
+        return $suiviedata->get();
     }
 
     public function headings(): array
