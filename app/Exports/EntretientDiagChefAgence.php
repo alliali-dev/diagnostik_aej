@@ -14,8 +14,8 @@ class EntretientDiagChefAgence implements FromCollection,WithHeadings
     public function collection()
     {
         $entretiendiag = EntretientDiag::mine()->get();
-
-        foreach($entretiendiag->get() as $item){
+        $data = [];
+        foreach($entretiendiag as $item){
             $data[]=[
                 'matriculeaej'      => $item->matriculeaej,
                 'nomprenom'         => $item->nomprenom,
