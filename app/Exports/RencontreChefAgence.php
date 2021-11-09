@@ -19,7 +19,6 @@ class RencontreChefAgence implements FromCollection,WithHeadings
         $data = [];
         foreach($entretiendiag as $item){
             $data[]=[
-                'id'                => $item->suivirencontre_id,
                 'matricule_aej'     => $item->suivirencontre->matricule_aej,
                 'nomprenom'         => $item->suivirencontre->nomprenom,
                 'sexe'              => $item->suivirencontre->sexe,
@@ -38,19 +37,17 @@ class RencontreChefAgence implements FromCollection,WithHeadings
     public function headings(): array
     {
         return [
-            'matriculeaej',
-            'nomprenom',
-            'niveauformaion',
-            'niveauexperience',
-            'adeqormaexper',
-            'conmetieractiv',
-            'adqformmetieractiv',
-            'adqexpmetieractiv',
-            'maitoutrechempl',
-            'conexigmarch',
-            'depdossent',
-            'conseiller'
+            'Matricule AEJ',
+            'NOM PRENOM',
+            'SEXE',
+            'COMMUNE',
+            'DIPLOME',
+            'DUREE (h:m:s:ms)',
+            'DATE RDV',
+            'AXE TRAVAIL',
+            'CONSEILLER REFERENT'
         ];
+
     }
 
     /*public function headings(): array
