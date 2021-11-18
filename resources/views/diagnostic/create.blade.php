@@ -26,6 +26,12 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
+                                                        <label for="sexe">Nom & Prénoms (s)</label>
+                                                        <input type="text" class="form-control" placeholder="sexe" id="nomprenom" name="demandeur[nomprenom]" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
                                                         <label for="sexe">Sexe</label>
                                                         <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]" disabled>
                                                         <input type="hidden" id="sexe_db" name="demandeur[sexe]">

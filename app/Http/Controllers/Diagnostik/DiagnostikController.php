@@ -84,9 +84,9 @@ class DiagnostikController extends Controller
     public function apiGetMatricule(){
         $matricule = \request('matricule_aej');
         $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-      //  $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
+        $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
         //$url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
-        $url =  "http://160.154.48.106:8081/aejtechnologie/demandeur_info/{$matricule}/{$token}";
+        //$url =  "http://160.154.48.106:8081/aejtechnologie/demandeur_info/{$matricule}/{$token}";
       //  dd($url);
         $response = Http::get($url);
         $data = json_decode($response->body());
