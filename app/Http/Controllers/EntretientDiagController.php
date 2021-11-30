@@ -44,6 +44,12 @@ class EntretientDiagController extends Controller
     }
 
     public function store(Request $request){
+
+        $validated = $request->validate([
+            'entretient' => 'required|file',
+            'diagnostic' => 'required|file',
+        ]);
+
         $data = $request->all();
 
         $data['user_id'] = auth()->id();
@@ -63,7 +69,7 @@ class EntretientDiagController extends Controller
                 if(!File::isDirectory($path)){
                     File::makeDirectory($path, 0777, true, true);
                 }
-                $file = $request->file('entretient');
+                //$file = $request->file('entretient');
                 // enregistre le fichier sur l'emplacement $pach definit sous le nom $filename
                 $file->move($path, $filename);
                 $data['file_guide_entretient'] = $filename;
@@ -78,7 +84,7 @@ class EntretientDiagController extends Controller
                 if(!File::isDirectory($path)){
                     File::makeDirectory($path, 0777, true, true);
                 }
-                $file = $request->file('diagnostic');
+                //$file = $request->file('diagnostic');
                 // enregistre le fichier sur l'emplacement $pach definit sous le nom $filename
                 $file->move($path, $filename);
 

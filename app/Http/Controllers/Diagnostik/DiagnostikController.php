@@ -154,9 +154,7 @@ class DiagnostikController extends Controller
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
 
-
         return view('diagnostic.create',compact('data','niveauetudes','specialites','communes'));
-        //
     }
 
     public function autrerdv(Request $request){
@@ -197,20 +195,15 @@ class DiagnostikController extends Controller
                     }else{
                         if($row->rdvmanque !== null){
 
-                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#AutreRDV"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                >RDV Manquez Fixer Autre
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                            $actionBtn .=' <button class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#AutreRDV" data-rencontre_id="'.$row->id .'">
+                                                RDV Manquez Fixer Autre
+                                                <i class="feather icon-edit"></i>
+                                           </button>';
 
                         }else{
 
                             $actionBtn .=' <button class="btn btn-primary btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#traiter2rdv"
-                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                                               data-toggle="modal" data-target="#traiter2rdv" data-suivirencontre_id="'.$row->suivirencontre->id.'"
                                                                 data-rencontre_id="'.$row->id .'"
                                                                 data-typerencontre="2"
                                                                 >Traiter 2eme RDV

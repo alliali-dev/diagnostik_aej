@@ -188,32 +188,26 @@ class ChefagenceController extends Controller
                     $user = User::where('agence_id', session()->get('orig_agence'))->where('id',$row->user_id)->first();
                     $conseillerreferent = $user->name;
                     return $conseillerreferent;
-                })
-                ->editColumn('matricule_aej', function ($row){
+                })->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
                     return $matricule_aej;
                 })
                 ->editColumn('nomprenom', function ($row){
                     $nomprenom = $row->suivirencontre->nomprenom ;
                     return $nomprenom;
-                })
-                ->editColumn('sexe', function ($row){
+                })->editColumn('sexe', function ($row){
                     $sexe = $row->suivirencontre->sexe ;
                     return $sexe;
-                })
-                ->editColumn('lieudereisdence', function ($row){
+                })->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;
                     return $lieudereisdence;
-                })
-                ->editColumn('diplome', function ($row){
+                })->editColumn('diplome', function ($row){
                     $diplome = $row->suivirencontre->diplome ;
                     return $diplome;
-                })
-                ->editColumn('dateprochainrdv', function ($row){
+                })->editColumn('dateprochainrdv', function ($row){
                     $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
                     return $dateprochainrdv->format('M d, Y');
-                })
-                ->rawColumns(['conseillerreferent'])
+                })->rawColumns(['conseillerreferent'])
                 ->make(true);
         }
     }
@@ -234,33 +228,25 @@ class ChefagenceController extends Controller
                     $user = User::where('agence_id', session()->get('orig_agence'))->where('id',$row->user_id)->first();
                     $conseillerreferent = $user->name;
                     return $conseillerreferent;
-                })
-                ->editColumn('matricule_aej', function ($row){
+                })->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
                     return $matricule_aej;
-                })
-                ->editColumn('nomprenom', function ($row){
+                })->editColumn('nomprenom', function ($row){
                     $nomprenom = $row->suivirencontre->nomprenom ;
                     return $nomprenom;
-                })
-                ->editColumn('sexe', function ($row){
+                })->editColumn('sexe', function ($row){
                     $sexe = $row->suivirencontre->sexe ;
                     return $sexe;
-                })
-                ->editColumn('lieudereisdence', function ($row){
+                })->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;
                     return $lieudereisdence;
-                })
-                ->editColumn('diplome', function ($row){
+                })->editColumn('diplome', function ($row){
                     $diplome = $row->suivirencontre->diplome ;
                     return $diplome;
-                })
-                ->editColumn('dateprochainrdv', function ($row){
+                })->editColumn('dateprochainrdv', function ($row){
                     $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
                     return $dateprochainrdv->format('M d, Y');
-                })
-                ->rawColumns(['conseillerreferent'])
-                ->make(true);
+                })->rawColumns(['conseillerreferent'])->make(true);
         }
     }
 
@@ -280,32 +266,25 @@ class ChefagenceController extends Controller
                     $user = User::where('agence_id', session()->get('orig_agence'))->where('id',$row->user_id)->first();
                     $conseillerreferent = $user->name;
                     return $conseillerreferent;
-                })
-                ->editColumn('matricule_aej', function ($row){
+                })->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
                     return $matricule_aej;
-                })
-                ->editColumn('nomprenom', function ($row){
+                })->editColumn('nomprenom', function ($row){
                     $nomprenom = $row->suivirencontre->nomprenom ;
                     return $nomprenom;
-                })
-                ->editColumn('sexe', function ($row){
+                })->editColumn('sexe', function ($row){
                     $sexe = $row->suivirencontre->sexe ;
                     return $sexe;
-                })
-                ->editColumn('lieudereisdence', function ($row){
+                })->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;
                     return $lieudereisdence;
-                })
-                ->editColumn('diplome', function ($row){
+                })->editColumn('diplome', function ($row){
                     $diplome = $row->suivirencontre->diplome ;
                     return $diplome;
-                })
-                ->editColumn('dateprochainrdv', function ($row){
+                })->editColumn('dateprochainrdv', function ($row){
                     $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
                     return $dateprochainrdv->format('M d, Y');
-                })
-                ->rawColumns(['conseillerreferent'])
+                })->rawColumns(['conseillerreferent'])
                 ->make(true);
         }
     }
@@ -326,32 +305,26 @@ class ChefagenceController extends Controller
                     $user = User::where('agence_id', session()->get('orig_agence'))->where('id',$row->user_id)->first();
                     $conseillerreferent = $user->name;
                     return $conseillerreferent;
-                })
-                ->editColumn('matricule_aej', function ($row){
+                })->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
                     return $matricule_aej;
-                })
-                ->editColumn('nomprenom', function ($row){
+                })->editColumn('nomprenom', function ($row){
                     $nomprenom = $row->suivirencontre->nomprenom ;
                     return $nomprenom;
-                })
-                ->editColumn('sexe', function ($row){
+                })->editColumn('sexe', function ($row){
                     $sexe = $row->suivirencontre->sexe ;
                     return $sexe;
-                })
-                ->editColumn('lieudereisdence', function ($row){
+                })->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;
                     return $lieudereisdence;
                 })
                 ->editColumn('diplome', function ($row){
                     $diplome = $row->suivirencontre->diplome ;
                     return $diplome;
-                })
-                ->editColumn('dateprochainrdv', function ($row){
+                })->editColumn('dateprochainrdv', function ($row){
                     $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
                     return $dateprochainrdv->format('M d, Y');
-                })
-                ->rawColumns(['conseillerreferent'])
+                })->rawColumns(['conseillerreferent'])
                 ->make(true);
         }
     }
@@ -372,32 +345,25 @@ class ChefagenceController extends Controller
                     $user = User::where('agence_id', session()->get('orig_agence'))->where('id',$row->user_id)->first();
                     $conseillerreferent = $user->name;
                     return $conseillerreferent;
-                })
-                ->editColumn('matricule_aej', function ($row){
+                })->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
                     return $matricule_aej;
-                })
-                ->editColumn('nomprenom', function ($row){
+                })->editColumn('nomprenom', function ($row){
                     $nomprenom = $row->suivirencontre->nomprenom ;
                     return $nomprenom;
-                })
-                ->editColumn('sexe', function ($row){
+                })->editColumn('sexe', function ($row){
                     $sexe = $row->suivirencontre->sexe ;
                     return $sexe;
-                })
-                ->editColumn('lieudereisdence', function ($row){
+                })->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;
                     return $lieudereisdence;
-                })
-                ->editColumn('diplome', function ($row){
+                })->editColumn('diplome', function ($row){
                     $diplome = $row->suivirencontre->diplome ;
                     return $diplome;
-                })
-                ->editColumn('dateprochainrdv', function ($row){
+                })->editColumn('dateprochainrdv', function ($row){
                     $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
                     return $dateprochainrdv->format('M d, Y');
-                })
-                ->rawColumns(['conseillerreferent'])
+                })->rawColumns(['conseillerreferent'])
                 ->make(true);
         }
     }

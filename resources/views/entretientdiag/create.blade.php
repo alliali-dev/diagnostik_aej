@@ -25,6 +25,17 @@
                                     <!-- Step 1 -->
                                         <h6><i class="step-icon feather icon-info"></i>PROFIL DE L'USAGER</h6>
                                         <fieldset>
+                                            <div class="row justify-content-md-center" id="msgupdate_profil" style="display: none">
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-dismissible alert-warning">
+                                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                        <p class="mb-0">
+                                                            Veuillez effectuer la mise à jour du profil du demandeur
+                                                            concerné par l'entretien diagnostique que vous allez démarrer !!!, <a href="https://www.agenceemploijeunes.ci/site/01aej18/backend/auth/signin"> Cliquez-ici </a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
@@ -57,7 +68,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="naturepiece">Nature Piece</label>
@@ -336,7 +346,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="lieudereisdence" style="font-size: large;">Connaissance des exigences du marché</label>
+                                                        <label for="" style="font-size: large;">Connaissance des exigences du marché</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
@@ -358,7 +368,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="diplome" style="font-size: large;">Dépôt de dossier en entreprise</label>
+                                                        <label for="" style="font-size: large;">Dépôt de dossier en entreprise</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
@@ -456,6 +466,14 @@
     <script src="{{ asset('js/optin-player.js') }}"></script>
     <script src="{{ asset('js/optin-product.js') }}"></script>
     <script>
+       /* $(document).ready(function () {
+            window.setTimeout(function() {
+                $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                    $(this).remove();
+                });
+            }, 5000);
+        });*/
+
         $(function() {
                 $("#addAej").modal(
                     {
@@ -463,7 +481,6 @@
                         backdrop:'static'
                     },'show');
                 var test = $("#aej_ok");
-                console.log(test);
                 $("#aej_ok").click(function() {
                     $('#loader').fadeIn();
                     $('#resulterror').fadeOut();
@@ -471,17 +488,21 @@
 
                     var matriculeaej = $('#matriculeaej').val();
 
-                    $.ajax({
-                        url: "{{ route('verif.aejentretien') }}",
-                        type: 'get',
-                        dataType: "json",
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                            matriculeaej: matriculeaej
-                        },success: function( data ) {
-                            console.log(data);
-                            if(data.entretiendiag == null){
-                                /*if (matriculeaej.length > 11) {*/
+                    if(matriculeaej == ""){
+                        $('#loader').fadeOut();
+                        $('#resulterrorformat').fadeIn();
+                    } else {
+                        $.ajax({
+                            url: "{{ route('verif.aejentretien') }}",
+                            type: 'get',
+                            dataType: "json",
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                                matriculeaej: matriculeaej
+                            },success: function( data ) {
+
+                                if(data.entretiendiag == null){
+                                    /*if (matriculeaej.length > 11) {*/
                                     $.ajax({
                                         url:"{{ route('api') }}",
                                         type: 'get',
@@ -518,6 +539,7 @@
                                                 $('#niveaudetude').val(array[0].niveauetude);
                                                 $('#niveaudetude_db').val(array[0].niveauetude);
                                                 $('#nomprenom').val(array[0].nom +' '+ array[0].prenom);
+                                                $('#msgupdate_profil').fadeIn();
                                             } else {
                                                 $('#loader').fadeOut();
                                                 $('#resulterror').fadeIn();
@@ -526,24 +548,24 @@
                                         },error: function (jqXHR, exception) {
                                             alert('reessayer svp !!!');
                                             $('#loader').fadeOut();
-                                            $('#resulterror').fadeIn();
+                                            $('#resulterrorformat').fadeIn();
                                         }
                                     });
-                                /*}else{
+                                    /*}else{
+                                        $('#loader').fadeOut();
+                                        $('#resulterrorformat').fadeIn();
+                                    }*/
+                                }else{
                                     $('#loader').fadeOut();
-                                    $('#resulterrorformat').fadeIn();
-                                }*/
-                            }else{
-                                $('#loader').fadeOut();
-                                $('#resulterror').fadeIn();
+                                    $('#resulterror').fadeIn();
+
+                                }
+                                console.log();
+                            },error: function (jqXHR, exception) {
 
                             }
-                           console.log();
-                        },error: function (jqXHR, exception) {
-
-                        }
-                    });
-
+                        });
+                    }
                 });
 
             if ($('#videoSource').val() === 'youtube') {
@@ -554,6 +576,12 @@
             $(window).on('resize', function() {
                 makeResizing()
             });
+
+            window.setTimeout(function() {
+                $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                    $(this).remove();
+                });
+            }, 50000);
 
             $('#btnSearch').on('click', function() {
                 $('#results').empty();
