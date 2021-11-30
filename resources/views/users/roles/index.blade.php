@@ -73,7 +73,7 @@
                 </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center mt-2">
-                       {{-- {{ $ecoles->links() }}--}}
+                        {{ $roles->links('pagination::bootstrap-4') }}
                     </ul>
                 </nav>
             </div>
@@ -94,26 +94,25 @@
                 </div>
                 <div class="modal-body">
                 {{ Form::open(['route'=>'roles.store', 'files'=>true , 'method' => 'POST']) }}
-                {{csrf_field()}}
-                <!-- Form Group -->
-                    <div class="form-group">
-                        <label for="email-1">Name</label>
-                        <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
-                    </div>
-                    <div class="form-group">
-                        <label for="email-1">Description</label>
-                        <input type="text" name="guard_name" class="form-control" aria-describedby="emailHelp1">
-                    </div>
-                    <div class="form-group text-right mb-0">
-                        <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
-                    </div>
+                    {{csrf_field()}}
+                    <!-- Form Group -->
+                        <div class="form-group">
+                            <label for="email-1">Name</label>
+                            <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
+                        </div>
+                        <div class="form-group">
+                            <label for="email-1">Description</label>
+                            <input type="text" name="guard_name" class="form-control" aria-describedby="emailHelp1">
+                        </div>
+                        <div class="form-group text-right mb-0">
+                            <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
+                        </div>
                     <!-- /form group -->
-                    {{ Form::close() }}
+                {{ Form::close() }}
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Modal New Social Viewer -->
     <div class="modal fade" id="editRole" tabindex="-1" role="dialog"

@@ -70,7 +70,7 @@
                 </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center mt-2">
-                        {{ $agences->links() }}
+                        {{ $agences->links('pagination::bootstrap-4') }}
                     </ul>
                 </nav>
             </div>

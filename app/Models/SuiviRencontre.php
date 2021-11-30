@@ -16,8 +16,7 @@ class SuiviRencontre extends Model
 
     protected $fillable = ['sexe','datenaisance','nomprenom','matricule_aej','age','naturepiece','npiece','nationalite','contact',
                             'lieudereisdence','diplome','specialitediplome','anneediplome','niveaudetude','user_id',
-                            'agence_id'
-        ];
+                            'agence_id'];
     protected $casts = [
         'sexe'          => 'string',
         'nomprenom'     => 'string',
