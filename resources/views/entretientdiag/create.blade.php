@@ -25,17 +25,18 @@
                                     <!-- Step 1 -->
                                         <h6><i class="step-icon feather icon-info"></i>PROFIL DE L'USAGER</h6>
                                         <fieldset>
-                                            <div class="row justify-content-md-center" id="msgupdate_profil" style="display: none">
+                                           {{-- <div class="row justify-content-md-center" id="msgupdate_profil" style="display: none">
                                                 <div class="col-md-12">
                                                     <div class="alert alert-dismissible alert-warning">
                                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                         <p class="mb-0">
                                                             Veuillez effectuer la mise à jour du profil du demandeur
-                                                            concerné par l'entretien diagnostique que vous allez démarrer !!!, <a href="https://www.agenceemploijeunes.ci/site/01aej18/backend/auth/signin"> Cliquez-ici </a>
+                                                            concerné par l'entretien diagnostique que vous allez démarrer !!!,
+                                                            <a href="https://www.agenceemploijeunes.ci/site/01aej18/backend/auth/signin" target="_blank"> Cliquez-ici </a>
                                                         </p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
@@ -155,35 +156,9 @@
                                                             @endforeach
                                                         </select>
                                                         <input  type="hidden" name="demandeur[niveaudetude]" id="niveaudetude_db">
-                                                        {{-- <input type="text" name="demandeur[niveaudetude]"
-                                                        id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">--}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{--<div class="row">
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <label for="sexe">Sexe</label>
-                                                        <select name="sexe" id="sexe" class="form-control" readonly="">
-                                                            <option value="MASCULIN">MASCULIN</option>
-                                                            <option value="FEMININ">FEMININ</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <label for="sexe">Diplome</label>
-                                                        <input type="text" name="diplome" id="diplome" placeholder="numero aej" class="form-control" required readonly="">
-                                                        <input type="hidden" name="matriculeaej" id="matricule_aej" class="form-control" required readonly="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <label for="matriculeaej">Nom et Prenom</label>
-                                                        <input type="text" name="nomprenom" id="nomprenom" placeholder="numero aej" class="form-control" required readonly="">
-                                                    </div>
-                                                </div>
-                                            </div>--}}
                                             <hr>
                                             <br>
                                             <div class="row">
@@ -421,6 +396,11 @@
                     <div class="modal-body">
                         <form>
                             @csrf
+                            <h3 style="color: orangered" align="justify">
+                                Veuillez effectuer la mise à jour du profil du demandeur
+                                concerné par l'entretien diagnostique que vous allez démarrer !!!
+                            </h3>
+                            <br>
                             <div class="form-group">
                                 <label for="matriculeaej">N° AEJ</label>
                                 <input type="text" name="matriculeaej" id="matriculeaej" placeholder="numero aej" class="form-control" required>
@@ -431,7 +411,11 @@
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
-                            <div id="result" style="display: none;" class="text-center text-success"><strong>Importation réalisée avec succès</strong></div>
+                            <div id="result" style="display: none;" class="text-center text-success">
+                                {{--<strong>Importation réalisée avec succès</strong> --}}
+                                {{--https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/preview/50548--}}
+                                <strong>Mise à jour profil  <a style="color: deepskyblue;" id="urlprofile" href="#" target="_blank">ici</a></strong>
+                            </div>
                             <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Numéro existe déjà</strong></div>
                             <div id="resulterrorformat" style="display: none;" class="text-center text-warning"><strong>Format non-conforme</strong></div>
 
@@ -517,6 +501,7 @@
                                                 $('#close').fadeIn();
                                                 $('#aej_ok').hide();
                                                 $('#return').hide();
+                                                $('#urlprofile').attr('href','https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/preview/'+array[0].value)
                                                 $('#matriculeaej').val(array[0].label);
                                                 $('#matricule_aej').val(array[0].label);
                                                 $('#sexe').val(array[0].sexe);

@@ -8,9 +8,9 @@ use App\Models\EntretientDiag;
 use App\Models\Niveauetude;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class EntretientDiagController extends Controller
 {
