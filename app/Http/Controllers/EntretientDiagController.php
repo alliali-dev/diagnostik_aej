@@ -43,8 +43,8 @@ class EntretientDiagController extends Controller
             session()->flash('warning','Numéro existe déjà');
         } else {
             $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-           // $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
-            $url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
+            $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
+           // $url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
             $response = Http::get($url);
             $demandeur = json_decode($response->body())[0];
         }
