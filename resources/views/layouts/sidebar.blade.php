@@ -37,7 +37,7 @@
                     </a>
                     <ul class="menu-content" style="">
                         <li>
-                            <a href="{{ route('entretient.create') }}">
+                            <a href="{{ route('entretient.msg_profile') }}">
                                 <i></i><span class="menu-item" data-i18n="Categorie create">Création</span>
                             </a>
                         </li>

@@ -22,7 +22,7 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="mb-3">
-                    <a class="btn btn-primary" href="{{ route('entretient.create') }}">
+                    <a class="btn btn-primary" href="{{ route('entretient.msg_profile') }}">
                         <span><i class="feather icon-plus"></i>Faire un Entretien</span>
                     </a>
                     <div class="text-right">

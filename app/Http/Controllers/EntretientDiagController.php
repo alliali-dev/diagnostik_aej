@@ -8,6 +8,7 @@ use App\Models\EntretientDiag;
 use App\Models\Niveauetude;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -20,21 +21,38 @@ class EntretientDiagController extends Controller
         // $this->middleware('role:Admin')->except(['logoutAs']);
     }
 
+    public function msg_profile(){
+        return view('entretientdiag.msg_profile');
+    }
+
     public function index(){
         $entretiens  = EntretientDiag::mine()->paginate(15);
         return view('entretientdiag.index',compact('entretiens'));
     }
 
-    public function create(){
+    public function create($matricule = null ){
+        $demandeur = null;
         $date_now = date('Y');
         for($i = 1960; $i <= $date_now ;$i ++){
             $data[] = ['dateannee'=> $i];
         }
 
+        $entretiendiag = EntretientDiag::where('matriculeaej',$matricule)->first();
+
+        if($entretiendiag){
+            session()->flash('warning','Numéro existe déjà');
+        } else {
+            $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+           // $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
+            $url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
+            $response = Http::get($url);
+            $demandeur = json_decode($response->body())[0];
+        }
+
         $niveauetudes = Niveauetude::orderby('libelle','asc')->select('id','libelle')->get();
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
-        return view('entretientdiag.create',compact('niveauetudes','specialites','communes','data'));
+        return view('entretientdiag.create',compact('niveauetudes','specialites','communes','data','demandeur','matricule'));
     }
 
     public function export(){
@@ -46,8 +64,8 @@ class EntretientDiagController extends Controller
     public function store(Request $request){
 
         $validated = $request->validate([
-            'entretient' => 'required|file',
-            'diagnostic' => 'required|file',
+            'entretient' => 'required',
+            'diagnostic' => 'required',
         ]);
 
         $data = $request->all();
