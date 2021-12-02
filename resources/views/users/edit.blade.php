@@ -37,6 +37,16 @@
 
                         <div class="col-12">
                             <div class="form-group">
+                                <label for="name">Agence Aej</label>
+                                <!-- For defining autocomplete -->
+                                <input type="text"  id="agence" placeholder="Agence AEJ" class="form-control">
+                                <!-- For displaying selected option value from autocomplete suggestion -->
+                                <input type="hidden" name="agence_id" id='agenceid' readonly>
+                            </div><!--form control-->
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
                                 <label for="name">Nom</label>
                                 {{ Form::text('name', null, ['class'=>'form-control', 'required'=>true]) }}
                                 {{ Form::hidden('id', $user->id) }}
@@ -148,6 +158,35 @@
 @section('js')
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('jqueryui/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('jqueryui/jquery-ui.min.js')}}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#agence" ).autocomplete({
+                source: function( request, response ) {
+                    // Fetch data
+                    $.ajax({
+                        url:"{{route('users.autocomplete')}}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            search: request.term
+                        },
+                        success: function( data ) {
+                            response( data );
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    // Set selection
+                    $('#agence').val(ui.item.label); // display the selected text
+                    $('#agenceid').val(ui.item.value); // save selected id to input
+                    return false;
+                }
+            });
+        });
+    </script>
     <script>
         $(function () {
             $('[name="password"], [name="password_confirm"]').on('keyup change', function () {

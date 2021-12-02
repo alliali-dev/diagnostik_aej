@@ -185,7 +185,7 @@ class UsersController extends Controller
         $user->update();
 
         if (isset($roles)) {
-        	if(Auth::user()->hasRole('Admin'))
+        	if(Auth::user()->hasRole('Super Admin'))
                 $user->roles()->sync($roles);
         }
 
@@ -194,7 +194,7 @@ class UsersController extends Controller
 	    if(Auth::user()->can('Reseller') || Auth::user()->can('Reseller Pro') || Auth::user()->can('Bundle'))
 		    return redirect(route('users.myClients'));
 
-        return back();
+        return redirect(route('users.index'));
     }
 
     public function delete(Request $request)
@@ -236,10 +236,9 @@ class UsersController extends Controller
         /*if ( ! Auth::Users()->hasRole('Admin') ) {
             abort(401, 'You can not access to this section');
         }*/
-
         $user = User::find($userId);
         session()->put( 'orig_user', Auth::user() );
-        Auth::login( $user );
+        Auth::login($user);
         return redirect()->route('home');
     }
 
@@ -247,7 +246,7 @@ class UsersController extends Controller
     {
         $orig_user = session()->pull( 'orig_user' );
         $user = User::find( $orig_user->id );
-        Auth::login( $user );
+        Auth::login($user);
         return redirect()->route('home');
     }
 
@@ -258,7 +257,7 @@ class UsersController extends Controller
         return DataTables::of($users)
             ->addColumn('actions', function ($model) {
                 $actions = '';
-                if(auth()->user()->hasRole('SuperAdmin')){
+                if(auth()->user()->hasRole('Super Admin')){
                 if($model->id != Auth::id())
                     $actions .= '<a href="'. route('users.login-as', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-success mr-0 waves-effect waves-light"><i class="feather icon-lock"></i></a>';
                 $actions .= '<a href="'. route('users.view', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-info  waves-effect waves-light"><i class="feather icon-search"></i></a>';

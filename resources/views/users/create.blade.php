@@ -120,7 +120,7 @@
                                 <label for="role">Roles</label>
                                 <ul class="list-unstyled">
 
-                                        @if(auth()->user()->hasRole('SuperAdmin'))
+                                        @if(auth()->user()->hasRole('Super Admin'))
                                             @foreach ($roles as $role)
                                                 <li class="d-inline-block mr-2">
                                                     <fieldset class="form-group">
@@ -136,9 +136,9 @@
                                                     </fieldset>
                                                 </li>
                                             @endforeach
-                                        @elseif( auth()->user()->hasRole('CAgence') )
+                                        @elseif( auth()->user()->hasRole('Chef Agence') )
                                             @foreach ($roles as $role)
-                                                @if( in_array($role->name, ['CEmploi']) )
+                                                @if( in_array($role->name, ['Conseiller Emploi']) )
                                                     <li class="d-inline-block mr-2">
                                                         <fieldset class="form-group">
                                                             <div class="vs-checkbox-con vs-checkbox-primary">

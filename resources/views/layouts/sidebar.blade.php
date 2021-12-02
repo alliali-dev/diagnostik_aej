@@ -29,7 +29,7 @@
                     <span class="menu-title" data-i18n="">Tableau de bord</span>
                 </a>
             </li>
-            @if(!auth()->user()->hasRole(['CAgence']))
+            @if(!auth()->user()->hasRole(['Chef Agence']))
                 <li class="nav-item  has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-activity"></i>
@@ -68,7 +68,7 @@
             </li>
 
             @endif
-            @if(auth()->user()->hasRole(['CAgence','SuperAdmin']))
+            @if(auth()->user()->hasRole(['Chef Agence','Super Admin']))
                 <li class="nav-item  has-sub sidebar-group-active">
                     <a href="#">
                         <i class="feather icon-user"></i>

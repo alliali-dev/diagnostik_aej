@@ -39,12 +39,12 @@ class SuiviRencontre extends Model
 
     public function scopeMine(Builder $query)
     {
-        if(auth()->user()->hasRole('SuperAdmin')){
+        if(auth()->user()->hasRole('Super Admin')){
             return $query->get();
-        }elseif(auth()->user()->hasRole('CAgence')){
+        }elseif(auth()->user()->hasRole('Chef Agence')){
             return $query->where('agence_id',  session()->get('orig_agence'))
                 ->get();
-        }elseif(auth()->user()->hasRole('CEmploi')){
+        }elseif(auth()->user()->hasRole('Conseiller Emploi')){
             return $query->where('agence_id',  session()->get('orig_agence'))
                 ->where('user_id',  Auth::id())
                 ->get();

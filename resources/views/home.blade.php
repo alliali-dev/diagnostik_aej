@@ -9,13 +9,13 @@
 @section('content')
     <!-- Dashboard Analytics Start -->
     <section id="dashboard-analytics">
-        @if(auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasRole('CAgence'))
+        @if(auth()->user()->hasRole('Super Admin') || auth()->user()->hasRole('Chef Agence'))
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex flex-column align-items-center pb-0">
                             <div class="row">
-                                @if(auth()->user()->hasRole('SuperAdmin'))
+                                @if(auth()->user()->hasRole('Super Admin'))
                                     <div class="col-lg-12">
                                         <h4 style="text-align: center;color: #f84702;text-transform: uppercase"> PILOTAGE POUR ADMINISTRATEUR</h4>
                                     </div>
@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-        @elseif(auth()->user()->hasRole('CEmploi'))
+        @elseif(auth()->user()->hasRole('Conseiller Emploi'))
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">

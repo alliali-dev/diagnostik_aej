@@ -22,7 +22,7 @@
                 <ul class="nav navbar-nav ">
                     @if (Route::has('login'))
                         @auth
-                            @if(auth()->user()->hasRole('SuperAdmin'))
+                            @if(auth()->user()->hasRole('Super Admin'))
                                 {{--<div class="col float-right">
                                     <div class="form-group">
                                         <label for="name"><span class="custom-control-indicator" style="font-size: 14px;">Année Acedemic</span></label>
@@ -81,7 +81,7 @@
                                   {{--  <a class="dropdown-item" href="#">
                                         <i class="feather icon-user"></i> Mon Compte
                                     </a>--}}
-                                    @if(auth()->user()->hasRole('SuperAdmin'))
+                                    @if(auth()->user()->hasRole('Super Admin'))
                                         <a class="dropdown-item" href="{{route('users.index')}}">
                                             <i class="feather icon-user-plus"></i> Gérer Utilisateur
                                         </a>
@@ -91,7 +91,7 @@
                                         <a class="dropdown-item" href="{{ route('users.agenceindex') }}">
                                             <i class="feather icon-activity"></i> Gérer Agences
                                         </a>
-                                    @elseif(auth()->user()->hasRole('CAgence'))
+                                    @elseif(auth()->user()->hasRole('Chef Agence'))
                                         <a class="dropdown-item" href="{{route('users.index')}}">
                                             <i class="feather icon-user-plus"></i> Gérer Utilisateur
                                         </a>
