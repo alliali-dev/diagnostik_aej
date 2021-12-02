@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div id="result" style="display: none;" class="text-center text-success">
-                            <strong>Importation réalisée avec succès</strong>
+                           {{-- <strong>Importation réalisée avec succès</strong>--}}
                             {{--https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/preview/50548--}}
                             {{--<strong>Mise à jour profil  <a style="color: deepskyblue;" id="urlprofile" href="#" target="_blank">ici</a></strong>--}}
                         </div>
