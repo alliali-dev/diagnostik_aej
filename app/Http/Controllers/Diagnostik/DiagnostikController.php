@@ -6,9 +6,11 @@ use App\Exports\Rencontre1Export;
 use App\Exports\Rencontre2Export;
 use App\Exports\Rencontre3Export;
 use App\Exports\Rencontre4Export;
+use App\Exports\Rencontre5Export;
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
 use App\Models\Commune;
+use App\Models\EntretientDiag;
 use App\Models\Niveauetude;
 use App\Models\Rencontre;
 use App\Models\Specialite;
@@ -41,9 +43,49 @@ class DiagnostikController extends Controller
      */
     public function index()
     {
-        //
+        $entretients = EntretientDiag::mine()->paginate(15);
+        return view('diagnostic.enattende_diagnostique',compact('entretients'));
     }
 
+    public function listeentretient(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = EntretientDiag::mine()->with('conseiller')->get();
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                   // $end_date = Carbon::parse($row->dateprochainrdv);
+                   // $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
+
+                    $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
+                                    <i class="feather icon-fast-forward"></i>
+                                   </a>';
+
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->matriculeaej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('conseiller', function ($row){
+                    $conseiller = $row->conseiller->name ;
+                    return $conseiller;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
     //Exportion to Excell
 
     public function exportRencontre1()
@@ -84,10 +126,10 @@ class DiagnostikController extends Controller
     public function apiGetMatricule(){
         $matricule = \request('matricule_aej');
         $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-        $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}" ;
+        $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matricule}/{$token}";
         //$url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
         //$url =  "http://160.154.48.106:8081/aejtechnologie/demandeur_info/{$matricule}/{$token}";
-      //  dd($url);
+        //dd($url);
         $response = Http::get($url);
         $data = json_decode($response->body());
         return response()->json($data);
@@ -141,20 +183,26 @@ class DiagnostikController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create($matriculeaej)
     {
         $date_now = date('Y');
         for($i = 1960; $i <= $date_now ;$i ++){
             $data[] = ['dateannee'=> $i];
         }
 
+        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+        $url =  "https://www.agenceemploijeunes.ci/site/demandeur_info/{$matriculeaej}/{$token}" ;
+        // $url =  "http://localhost:8888/aejtechnologie/demandeur_info/{$matricule}/{$token}";
+        $response = Http::get($url);
+        $demandeur = json_decode($response->body())[0];
+
         $niveauetudes = Niveauetude::orderby('libelle','asc')->select('id','libelle')->get();
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
 
-        return view('diagnostic.create',compact('data','niveauetudes','specialites','communes'));
+        return view('diagnostic.create',compact('data','niveauetudes','specialites','communes','demandeur'));
     }
 
     public function autrerdv(Request $request){

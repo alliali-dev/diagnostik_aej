@@ -48,4 +48,8 @@ class EntretientDiag extends Model
                 ->where('user_id',  Auth::id());
         }
     }
+
+    public function conseiller(){
+       return $this->belongsTo(User::class,'user_id','id');
+    }
 }

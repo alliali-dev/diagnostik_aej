@@ -73,7 +73,8 @@ class HomeController extends Controller
         $recmodalite = Rencontre::mine()
             ->select(array(
                 DB::raw('modalite as `modalite`'),
-                DB::raw("count(modalite) modalitecunt")
+                DB::raw("count(modalite) modalitecunt"),
+                //DB::raw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")
             ))
             ->groupBy('modalite')
             ->get();

@@ -48,7 +48,7 @@
 
                         <!--form control-->
                         <div class="form-group text-right mb-0">
-                            <a href="{{ route('entretient.create') }}" id="close" style="display: none;" class="btn btn-secondary">Passer à l'entretien </a>
+                            {{--<a href="{{ route('entretient.create') }}" id="close" style="display: none;" class="btn btn-secondary">Passer à l'entretien </a>--}}
                             <a href="#" id="profile" style="display: none;" target="_blank" class="btn btn-outline-info">Mise à jour profil</a>
                             <a class="btn btn-warning" id="return" href="{{route('home')}}">retour</a>
                             <button type="button" id="aej_ok" class="btn btn-success">ok</button>

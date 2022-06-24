@@ -22,7 +22,8 @@
         "mercuryseries/flashy": "^1.0",
         "spatie/laravel-permission": "^3.18",
         "wildbit/swiftmailer-postmark": "^3.3",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "~9.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

@@ -1,10 +1,14 @@
 @extends('layouts.master')
 
-@section('title') Rôles @endsection
+@section('title') Ma liste de demandeur @endsection
 
-@section('subTitle') la gestion des rôles @endsection
+@section('subTitle') Liste de demandeur ayant été évalué @endsection
 
-
+@section('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+@endsection
 @section('content')
 
     <section class="card">
@@ -24,59 +28,21 @@
                 </div>
 
                 <div class="table-responsive-sm">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped"  id="attenteDiagnostic">
                         <thead>
                         <tr>
-                            {{--  @if(auth()->user()->hasRole('Admin'))
-                                  <th>Etablissement</th>
-                              @endif--}}
                             <th>#</th>
-                            <th>name</th>
-                            <th>description</th>
-                            <th>date creation</th>
+                            <th>Matricule</th>
+                            <th>Nom & prenom (s)</th>
+                            <th>Sexe</th>
+                            <th>Conseiller affecte</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($roles as $item)
-                            <tr>
-                                <td> {{ $item->id }}</td>
-                                <td> {{ $item->name }}</td>
-                                <td> {{ $item->guard_name }}</td>
-                                <td> {{ $item->created_at }}</td>
-                                <td class="float-right">
-                                    <button type="button"
-                                            data-id="{{$item->id}}"
-                                            data-name="{{$item->name}}"
-                                            data-guard_name="{{$item->guard_name}}"
-                                            data-toggle="modal"
-                                            data-target="#editRole"
-                                            class="btn btn-icon btn-icon rounded-circle btn-primary mr-0 waves-effect waves-light">
-                                        <i class="feather icon-edit"></i>
-                                    </button>
-                                    <button type="button"
-                                            data-id="{{$item->id}}"
-                                            data-toggle="modal"
-                                            data-target="#deletedRole"
-                                            class="btn btn-icon btn-icon rounded-circle btn-danger mr-0 waves-effect waves-light">
-                                        <i class="feather icon-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                        @if(count($roles) < 1)
-                            <tr>
-                                <td colspan="10" class="text-center">Pas de rôle trouvé !</td>
-                            </tr>
-                        @endif
                         </tbody>
                     </table>
                 </div>
-
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center mt-2">
-                        {{ $roles->links('pagination::bootstrap-4') }}
-                    </ul>
-                </nav>
 
             </div>
         </div>
@@ -96,21 +62,21 @@
                 </div>
                 <div class="modal-body">
                 {{ Form::open(['route'=>'roles.store', 'files'=>true , 'method' => 'POST']) }}
-                    {{csrf_field()}}
-                    <!-- Form Group -->
-                        <div class="form-group">
-                            <label for="email-1">Name</label>
-                            <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
-                        </div>
-                        <div class="form-group">
-                            <label for="email-1">Description</label>
-                            <input type="text" name="guard_name" class="form-control" aria-describedby="emailHelp1">
-                        </div>
-                        <div class="form-group text-right mb-0">
-                            <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
-                        </div>
+                {{csrf_field()}}
+                <!-- Form Group -->
+                    <div class="form-group">
+                        <label for="email-1">Name</label>
+                        <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
+                    </div>
+                    <div class="form-group">
+                        <label for="email-1">Description</label>
+                        <input type="text" name="guard_name" class="form-control" aria-describedby="emailHelp1">
+                    </div>
+                    <div class="form-group text-right mb-0">
+                        <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
+                    </div>
                     <!-- /form group -->
-                {{ Form::close() }}
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -182,7 +148,42 @@
 
 @endsection
 @section('js')
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
+        $(function () {
+            $('#attenteDiagnostic').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('diagnostik.datatable-attente-diagnostic') }}'
+                },
+                columns: [
+                    {data: 'id' , orderable: false, searchable: false},
+                    {data: 'matricule_aej' , orderable: false, searchable: false},
+                    {data: 'nomprenom' , orderable: false, searchable: false},
+                    {data: 'sexe' , orderable: false, searchable: false},
+                    {data: 'conseiller', orderable: false, searchable: false},
+                    {data: 'action', orderable: false, searchable: false},
+                ]
+            });
+        });
+
         $('#deletedRole').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');

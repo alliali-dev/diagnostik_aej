@@ -1,6 +1,7 @@
  <?php
 
  use App\Http\Controllers\Diagnostik\DiagnostikController;
+ use App\Http\Controllers\EntretientDiagController;
  use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -83,7 +84,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/export/recontre4','DiagnostikController@exportRencontre4')->name('export_rc4');
     Route::get('/export/recontre5','DiagnostikController@exportRencontre5')->name('export_rc5');
 
-    Route::get('/create', 'DiagnostikController@create')->name('create');
+    Route::get('/create/{matriculeaej}', [DiagnostikController::class,'create'])->name('create');
     Route::post('/store', 'DiagnostikController@store')->name('store');
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');
     Route::get('/mes_suivies', 'DiagnostikController@mes_suivies')->name('mes_suivies');
@@ -94,7 +95,8 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::post('/store2to3rencontre', 'DiagnostikController@store2to3rencontre')->name('store2to3rencontre');
     Route::post('autocomspecialite', 'DiagnostikController@autocomSpecialite')->name('autocomspecialite');
     Route::post('autocomniveautude', 'DiagnostikController@autocomNiveauEtude')->name('autocomniveautude');
-
+    Route::get('datatable-attente-diagnostic', [DiagnostikController::class,'listeentretient'])->name('datatable-attente-diagnostic');
+    Route::get('liste-attente-diagnostic', [DiagnostikController::class,'index'])->name('liste-attente-diagnostic');
 });
 
  Route::get('/api', [DiagnostikController::class,'apiGetMatricule'])->name('api');

@@ -27,30 +27,30 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="sexe">Nom & Prénoms (s)</label>
-                                                        <input type="text" class="form-control" placeholder="sexe" id="nomprenom" name="demandeur[nomprenom]" disabled>
+                                                        <input type="text" class="form-control" value="{{ $demandeur->nom .' '.$demandeur->prenom }}" placeholder="sexe" id="nomprenom" name="demandeur[nomprenom]" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="sexe">Sexe</label>
-                                                        <input type="text" class="form-control" placeholder="sexe" id="sexe" name="demandeur[sexe]" disabled>
+                                                        <input type="text" class="form-control" value="{{ $demandeur->sexe }}" placeholder="sexe" id="sexe" name="demandeur[sexe]" disabled>
                                                         <input type="hidden" id="sexe_db" name="demandeur[sexe]">
                                                     </div>
-                                                    <input type="hidden" id="nomprenom" name="demandeur[nomprenom]">
-                                                    <input type="hidden" id="matricule_aej" name="demandeur[matricule_aej]">
+                                                    <input type="hidden" id="nomprenom" name="demandeur[nomprenom]" value="{{ $demandeur->nom .' '.$demandeur->prenom }}">
+                                                    <input type="hidden" id="matricule_aej" value="{{ request('matricule') }}" name="demandeur[matricule_aej]" >
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance">Date naissance</label>
-                                                        <input type="date" class="form-control" id="datenaissance" name="demandeur[datenaissance]" placeholder="date de naissance" disabled>
-                                                        <input type="hidden" id="datenaissance_db" name="demandeur[datenaisance]">
+                                                        <input type="date" class="form-control" id="datenaissance" value="{{ $demandeur->datenaissance }}" name="demandeur[datenaissance]" placeholder="date de naissance" disabled>
+                                                        <input type="hidden" id="datenaissance_db" value="{{ $demandeur->datenaissance }}" name="demandeur[datenaisance]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="age">Age</label>
-                                                        <input type="text" class="form-control" id="age" name="demandeur[age]" placeholder="age" disabled>
-                                                        <input type="hidden" id="age_db" name="demandeur[age]">
+                                                        <input type="text" class="form-control" id="age" value="{{ $demandeur->age }}" name="demandeur[age]" placeholder="age" disabled>
+                                                        <input type="hidden" id="age_db" value="{{ $demandeur->age }}" name="demandeur[age]">
                                                     </div>
                                                 </div>
                                             </div>
@@ -59,22 +59,22 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="naturepiece">Nature Piece</label>
-                                                        <input type="text" name="demandeur[naturepiece]" id="naturepiece" placeholder="nature pieces" class="form-control" disabled>
-                                                        <input type="hidden" id="naturepiece_db" name="demandeur[naturepiece]">
+                                                        <input type="text" name="demandeur[naturepiece]" value="{{ $demandeur->typepieceidentite }}" id="naturepiece" placeholder="nature pieces" class="form-control" disabled>
+                                                        <input type="hidden" id="naturepiece_db" value="{{ $demandeur->typepieceidentite }}" name="demandeur[naturepiece]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="numpiece">N° Piece</label>
-                                                        <input type="text" name="demandeur[npiece]" id="npiece" placeholder="N° piece" class="form-control" disabled>
-                                                        <input type="hidden" id="npiece_db" name="demandeur[npiece]">
+                                                        <input type="text" name="demandeur[npiece]"  value="{{ $demandeur->numerocni }}" id="npiece" placeholder="N° piece" class="form-control" disabled>
+                                                        <input type="hidden" id="npiece_db" value="{{ $demandeur->numerocni }}" name="demandeur[npiece]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite">Nationalite</label>
-                                                        <input type="text" name="demandeur[nationalite]" id="nationalite" placeholder="nationalite" class="form-control" disabled>
-                                                        <input type="hidden" id="nationalite_db" name="demandeur[nationalite]">
+                                                        <input type="text" name="demandeur[nationalite]" value="{{ $demandeur->nationalite }}" id="nationalite" placeholder="nationalite" class="form-control" disabled>
+                                                        <input type="hidden"  value="{{ $demandeur->nationalite }}" id="nationalite_db" name="demandeur[nationalite]">
                                                     </div>
                                                 </div>
                                             </div>
@@ -83,29 +83,29 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="contact">Contact</label>
-                                                        <input type="text" name="demandeur[contact]" id="contact" placeholder="contact" class="form-control" disabled>
-                                                        <input type="hidden" id="contact_db" name="demandeur[contact]">
+                                                        <input type="text" value="{{ $demandeur->telephone }}" name="demandeur[contact]" id="contact" placeholder="contact" class="form-control" disabled>
+                                                        <input type="hidden" value="{{ $demandeur->telephone }}" id="contact_db" name="demandeur[contact]">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="lieudereisdence">Lieu de residence habituel</label>
-                                                        <select name="demandeur[lieudereisdence]" id="lieudereisdence" class="form-control">
+                                                        {{--<select name="demandeur[lieudereisdence]" id="lieudereisdence" class="form-control" disabled>
                                                             <option value="">{{__('-- selectionner residence --')}}</option>
                                                                 @foreach($communes as $item)
                                                                     <option value="{{$item->nom}}">{{$item->nom}}</option>
                                                                 @endforeach
-                                                        </select>
-                                                        {{--<input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
-                                                        <input type="hidden" name="commune_id" id='agenceid' readonly>--}}
+                                                        </select>--}}
+                                                        <input type="text" value="{{ $demandeur->lieuhabitation }}" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" disabled>
+                                                        <input type="hidden" value="{{ $demandeur->lieuhabitation }}" name="demandeur[lieudereisdence]" id='lieudereisdence_db' readonly>--}}
                                                         <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="diplome">Diplôme</label>
-                                                        <input disabled type="text" name="demandeur[diplome]" id="diplome" placeholder="Diplôme" class="form-control">
-                                                        <input  type="hidden" name="demandeur[diplome]" id="diplome_db">
+                                                        <input type="text" name="demandeur[diplome]" value="{{ $demandeur->diplome }}" id="diplome" placeholder="Diplôme" class="form-control" disabled>
+                                                        <input  type="hidden" name="demandeur[diplome]" value="{{ $demandeur->diplome }}" id="diplome_db">
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,16 +113,18 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="specialitediplome">Spécialité du diplôme</label>
-                                                        <select name="demandeur[specialitediplome]" id="specialitediplome" class="form-control">
+                                                        <input type="text" name="demandeur[specialitediplome]" value="{{ $demandeur->specialite }}" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control" disabled>
+                                                        <input  type="hidden"  value="{{ $demandeur->specialite }}" name="demandeur[specialitediplome]" id="specialitediplome_db" >
+                                                        {{--<select name="demandeur[specialitediplome]" id="specialitediplome" class="form-control" disabled>
                                                             <option value="">{{__('-- selectionner Spécialité --')}}</option>
-                                                            @foreach($specialites as $item)
-                                                                <option value="{{$item->libelle}}">{{$item->libelle}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                                @foreach($specialites as $item)
+                                                                    <option value="{{$item->libelle}}">{{$item->libelle}}</option>
+                                                                @endforeach
+                                                        </select>--}}
                                                         {{--<input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">--}}
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                              {{--  <div class="col">
                                                     <div class="form-group">
                                                         <label for="anneediplome">Année d'obtention du diplôme</label>
                                                             <select name="demandeur[anneediplome]" id="anneediplome" class="form-control">
@@ -132,17 +134,12 @@
                                                                 @endforeach
                                                             </select>
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="niveaudetude">Niveau d'etudes</label>
-                                                        <select disabled name="demandeur[niveaudetude]" id="niveaudetude" class="form-control">
-                                                            <option value="">{{__('-- selectionner Niveau --')}}</option>
-                                                                @foreach($niveauetudes as $item)
-                                                                    <option value="{{$item->libelle}}">{{$item->libelle}}</option>
-                                                                @endforeach
-                                                        </select>
-                                                        <input  type="hidden" name="demandeur[niveaudetude]" id="niveaudetude_db">
+                                                        <input type="text" name="demandeur[niveaudetude]" value="{{ $demandeur->niveauetude }}" id="niveaudetude" placeholder="Spécialité du diplôme" class="form-control" disabled>
+                                                        <input  type="hidden" name="demandeur[niveaudetude]" value="{{ $demandeur->niveauetude }}" id="niveaudetude_db">
                                                        {{-- <input type="text" name="demandeur[niveaudetude]"
                                                        id="niveaudetude" placeholder="Niveau d'etudes" class="form-control">--}}
                                                     </div>
@@ -524,11 +521,11 @@
     </script>
     <script>
         $(document).ready(function(){
-            $("#addAej").modal(
+            /*$("#addAej").modal(
                 {
                     keyboard: false,
                     backdrop:'static'
-                },'show');
+                },'show');*/
                 var test = $("#aej_ok");
                 console.log(test);
                 $("#aej_ok").click(function() {
@@ -544,6 +541,7 @@
                             _token: "{{ csrf_token() }}",
                             matriculeaej: matriculeaej
                         },success: function( data ) {
+                            console.log(data.entretiendiag !== null);
                             if (data.entretiendiag !== null) {
                                 if (matriculeaej.length > 11) {
                                     $.ajax({
@@ -555,6 +553,9 @@
                                         type: 'get',
                                         dataType: "json",
                                         success: function( data ) {
+
+                                            console.log(data);
+
                                             $('#loader').fadeOut();
                                             $('#result').fadeIn();
                                             $('#close').fadeIn();
@@ -581,6 +582,8 @@
                                             $('#diplome_db').val(data[0].diplome);
                                             $('#niveaudetude').val(data[0].niveauetude);
                                             $('#niveaudetude_db').val(data[0].niveauetude);
+                                            $('#lieudereisdence').val(data[0].niveauetude);
+                                            $('#lieudereisdence_db').val(data[0].niveauetude);
                                             $('#nomprenom').val(data[0].nom +' '+ data[0].prenom);
                                             // $("#addAej").modal('hide');
 

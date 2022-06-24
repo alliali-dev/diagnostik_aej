@@ -38,6 +38,7 @@ class RencontreShipped extends Mailable
      */
     public function build()
     {
+
         return $this->from('t.amia@emploijeunes.ci')->view('rencontre.mail')->with(
             [
                 'dureerencontre'    =>  $this->rencontre->dureerencontre,

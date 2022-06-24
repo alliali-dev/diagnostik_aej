@@ -381,7 +381,9 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-                                    {{--<table class="table table-hover table-striped">
+
+                                </div>
+                                 {{--<table class="table table-hover table-striped">
                                         <thead>
                                         <tr>
                                             <th>N AEJ</th>
@@ -450,7 +452,6 @@
                                         @endif
                                         </tbody>
                                     </table>--}}
-                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pinterestPIll" role="tabpanel"

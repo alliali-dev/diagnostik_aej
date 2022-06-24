@@ -39,6 +39,7 @@ class EntretientDiagController extends Controller
 
         $entretiendiag = EntretientDiag::where('matriculeaej',$matricule)->first();
 
+
         if($entretiendiag){
             session()->flash('warning','Numéro existe déjà');
         } else {
@@ -52,6 +53,7 @@ class EntretientDiagController extends Controller
         $niveauetudes = Niveauetude::orderby('libelle','asc')->select('id','libelle')->get();
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
+        //dd($demandeur);
         return view('entretientdiag.create',compact('niveauetudes','specialites','communes','data','demandeur','matricule'));
     }
 

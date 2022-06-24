@@ -60,6 +60,9 @@
                                                         <input type="hidden" id="datenaissance_db" value="{{ $demandeur->datenaissance }}" name="demandeur[datenaisance]">
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="age">Age</label>
@@ -67,8 +70,7 @@
                                                         <input type="hidden" id="age_db" value="{{ $demandeur->age }}" name="demandeur[age]">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="naturepiece">Nature Piece</label>
@@ -83,6 +85,9 @@
                                                         <input type="hidden" value="{{ $demandeur->numerocni }}" id="npiece_db" name="demandeur[npiece]">
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite">Nationalite</label>
@@ -90,8 +95,6 @@
                                                         <input type="hidden"  value="{{ $demandeur->nationalite }}" id="nationalite_db" name="demandeur[nationalite]">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
 
                                                 <div class="col">
                                                     <div class="form-group">
@@ -103,7 +106,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="lieudereisdence">Lieu de residence habituel</label>
-                                                        <select name="demandeur[lieudereisdence]" id="lieudereisdence" class="form-control">
+                                                       {{-- <select name="demandeur[lieudereisdence]" id="lieudereisdence" class="form-control">
                                                             @if($demandeur->lieuhabitation)
                                                                 <option value="{{ $demandeur->lieuhabitation }}">{{ $demandeur->lieuhabitation }}</option>
                                                             @else
@@ -112,25 +115,31 @@
                                                                     <option value="{{$item->nom}}">{{$item->nom}}</option>
                                                                 @endforeach
                                                             @endif
-                                                        </select>
-                                                    {{--<input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" required>
-                                                    <input type="hidden" name="commune_id" id='agenceid' readonly>--}}
+                                                        </select>--}}
+                                                    <input type="text" name="demandeur[lieudereisdence]" id="lieudereisdence" value="{{ $demandeur->lieuhabitation }}" placeholder="Lieu de Residence" class="form-control" disabled>
+                                                    <input type="hidden" name="demandeur[lieudereisdence]" value="{{ $demandeur->lieuhabitation }}" id='lieudereisdence_db'>
                                                     <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
+
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="diplome">Diplôme</label>
                                                         <input disabled type="text" value="{{ $demandeur->diplome }}" name="demandeur[diplome]" id="diplome" placeholder="Diplôme" class="form-control">
-                                                        <input  type="hidden"   value="{{ $demandeur->diplome }}" name="demandeur[diplome]" id="diplome_db">
+                                                        <input  type="hidden"  value="{{ $demandeur->diplome }}" name="demandeur[diplome]" id="diplome_db">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="specialitediplome">Spécialité du diplôme</label>
-                                                        <select name="demandeur[specialitediplome]" id="specialitediplome" class="form-control">
+                                                        <input type="text" name="demandeur[specialitediplome]" value="{{ $demandeur->specialite }}" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control" disabled>
+                                                        <input  type="hidden"  value="{{ $demandeur->specialite }}" name="demandeur[specialitediplome]" id="specialitediplome_db" >
+
+                                                        {{--<select name="demandeur[specialitediplome]" id="specialitediplome" class="form-control">
                                                             @if($demandeur->specialite)
                                                                 <option value="{{ $demandeur->specialite }}">{{ $demandeur->specialite }}</option>
                                                             @else
@@ -139,25 +148,26 @@
                                                                     <option value="{{$item->libelle}}">{{$item->libelle}}</option>
                                                                 @endforeach
                                                             @endif
-                                                        </select>
-                                                        {{--<input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Spécialité du diplôme" class="form-control">--}}
+                                                        </select>--}}
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                               {{-- <div class="col">
                                                     <div class="form-group">
                                                         <label for="anneediplome">Année d'obtention du diplôme</label>
-                                                        <select name="demandeur[anneediplome]" id="anneediplome" class="form-control">
+                                                        <input type="text" name="demandeur[specialitediplome]" id="specialitediplome" placeholder="Année d'obtention du diplôme" class="form-control">
+                                                        <input  type="hidden"  value="{{ $demandeur->specialite }}" name="demandeur[specialitediplome]" id="specialitediplome_db" disabled>
+                                                        --}}{{--<select name="demandeur[anneediplome]" id="anneediplome" class="form-control">
                                                             <option value="">{{__('-- selectionner diplôme --')}}</option>
                                                             @foreach($data as $item)
                                                                 <option value="{{$item['dateannee']}}">{{$item['dateannee']}}</option>
                                                             @endforeach
-                                                        </select>
+                                                        </select>--}}{{--
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="niveaudetude">Niveau d'etudes</label>
-                                                        <select disabled name="demandeur[niveaudetude]" id="niveaudetude" class="form-control">
+                                                        {{--<select disabled name="demandeur[niveaudetude]" id="niveaudetude" class="form-control">
                                                             @if($demandeur->niveauetude)
                                                                 <option value="{{ $demandeur->niveauetude }}">{{ $demandeur->niveauetude }}</option>
                                                             @else
@@ -166,8 +176,9 @@
                                                                     <option value="{{$item->libelle}}">{{$item->libelle}}</option>
                                                                 @endforeach
                                                             @endif
-                                                        </select>
-                                                        <input  type="hidden" name="demandeur[niveaudetude]" id="niveaudetude_db">
+                                                        </select>--}}
+                                                        <input type="text" name="demandeur[niveaudetude]" value="{{ $demandeur->niveauetude }}" id="niveaudetude" placeholder="Spécialité du diplôme" class="form-control" disabled>
+                                                        <input  type="hidden" name="demandeur[niveaudetude]" value="{{ $demandeur->niveauetude }}" id="niveaudetude_db">
                                                     </div>
                                                 </div>
                                             </div>

@@ -55,7 +55,7 @@
                 </a>
                 <ul class="menu-content" style="">
                     <li>
-                        <a href="{{ route('diagnostik.create') }}">
+                        <a href="{{ route('diagnostik.liste-attente-diagnostic') }}">
                             <i></i><span class="menu-item" data-i18n="Categorie create">1ère Rencontre</span>
                         </a>
                     </li>

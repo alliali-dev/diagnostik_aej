@@ -260,9 +260,9 @@ class UsersController extends Controller
                 if(auth()->user()->hasRole('Super Admin')){
                 if($model->id != Auth::id())
                     $actions .= '<a href="'. route('users.login-as', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-success mr-0 waves-effect waves-light"><i class="feather icon-lock"></i></a>';
-                $actions .= '<a href="'. route('users.view', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-info  waves-effect waves-light"><i class="feather icon-search"></i></a>';
-                $actions .= '<a href="'. route('users.edit', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-primary  waves-effect waves-light"><i class="feather icon-edit"></i></a>';
-                $actions .= '<a href="'. route('users.passwordReset', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-success  waves-effect waves-light"><i class="feather icon-refresh-ccw"></i></a>';
+                    $actions .= '<a href="'. route('users.view', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-info  waves-effect waves-light"><i class="feather icon-search"></i></a>';
+                    $actions .= '<a href="'. route('users.edit', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-primary  waves-effect waves-light"><i class="feather icon-edit"></i></a>';
+                    $actions .= '<a href="'. route('users.passwordReset', [$model->id]) .'" class="btn btn-icon btn-icon rounded-circle btn-success  waves-effect waves-light"><i class="feather icon-refresh-ccw"></i></a>';
 
                 if($model->id != Auth::id()) {
 
