@@ -37,7 +37,7 @@
                                                         <input type="hidden" id="sexe_db" name="demandeur[sexe]">
                                                     </div>
                                                     <input type="hidden" id="nomprenom" name="demandeur[nomprenom]" value="{{ $demandeur->nom .' '.$demandeur->prenom }}">
-                                                    <input type="hidden" id="matricule_aej" value="{{ request('matricule') }}" name="demandeur[matricule_aej]" >
+                                                    <input type="hidden" id="matricule_aej" value="{{ $demandeur->label }}" name="demandeur[matricule_aej]" >
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
