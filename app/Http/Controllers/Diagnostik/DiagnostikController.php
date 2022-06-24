@@ -61,7 +61,8 @@ class DiagnostikController extends Controller
                    // $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
-                                    <i class="feather icon-fast-forward"></i>
+                                    <i class="feather icon-arrow-right"></i>
+                                    Passe entretient
                                    </a>';
 
                     return $actionBtn;

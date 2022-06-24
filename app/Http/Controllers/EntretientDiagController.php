@@ -72,6 +72,8 @@ class EntretientDiagController extends Controller
 
         $data = $request->all();
 
+        //dd($data);
+
         $data['user_id'] = auth()->id();
         $data['agence_id'] = auth()->user()->agence_id;
         $data['matriculeaej'] = $request->demandeur["matricule_aej"];
@@ -117,6 +119,6 @@ class EntretientDiagController extends Controller
         } catch (\Exception $e){
             session()->flash('success',$e->getMessage());
         }
-        return redirect()->route('entretient.index');
+        return redirect()->route('diagnostik.liste-attente-diagnostic');
     }
 }

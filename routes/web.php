@@ -28,7 +28,7 @@ Route::group(['prefix'=>'entretient','as'=>'entretient.'], function () {
     Route::get('/create/{matricule?}','EntretientDiagController@create')->name('create');
     Route::get('/msg_profile','EntretientDiagController@msg_profile')->name('msg_profile');
     Route::get('/suivie','EntretientDiagController@index')->name('index');
-    Route::post('/store','EntretientDiagController@store')->name('store');
+    Route::post('/store',[EntretientDiagController::class ,'store'])->name('store');
     Route::get('/export','EntretientDiagController@export')->name('export');
 });
 

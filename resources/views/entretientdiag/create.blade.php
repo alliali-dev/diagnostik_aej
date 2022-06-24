@@ -51,7 +51,7 @@
                                                         <input type="hidden" id="sexe_db" name="demandeur[sexe]" value="{{ $demandeur->sexe }}">
                                                     </div>
                                                     <input type="hidden" id="nomprenom" name="demandeur[nomprenom]" value="{{ $demandeur->nom .' '.$demandeur->prenom }}">
-                                                    <input type="hidden" id="matricule_aej" value="{{ $matricule }}" name="demandeur[matricule_aej]" >
+                                                    <input type="hidden" id="matricule_aej" value="{{ $demandeur->label }}" name="demandeur[matricule_aej]" >
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
@@ -189,19 +189,28 @@
                                                     <div class="form-group">
                                                         <label for="niveauformation" style="font-size: large;">Niveau de Formation</label>
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="non scolarisee" checked>&nbsp;&nbsp;&nbsp;non scolarisée
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="primaire">&nbsp;&nbsp;&nbsp;Primaire
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="secondaire">&nbsp;&nbsp;&nbsp;Secondaire
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="niveauformaion" id="niveauformaion" value="superieur">&nbsp;&nbsp;&nbsp;Superieur
-                                                        </label>
+                                                            @if (in_array($demandeur->niveauetude,['AUCUN','INDIFFERENT']))
+                                                                <label>
+                                                                    <input type="radio" name="niveauformaion" id="niveauformaion" value="non scolarisee" checked>&nbsp;&nbsp;&nbsp;non scolarisée
+                                                                </label>
+                                                            @endif
+                                                            @if (in_array($demandeur->niveauetude,['CP1','CP2','CE1','CE2','CM1','CM2']))
+                                                                <label>
+                                                                    <input type="radio" name="niveauformaion" id="niveauformaion" value="primaire" checked>&nbsp;&nbsp;&nbsp;Primaire
+                                                                </label>
+                                                            @endif
+                                                            @if (in_array($demandeur->niveauetude,['6EME','5EME','4EME','3EME','2NDE','1ERE','TERMINALE']))
+                                                                <label>
+                                                                    <input type="radio" name="niveauformaion" id="niveauformaion" value="secondaire" checked>&nbsp;&nbsp;&nbsp;Secondaire
+                                                                </label>
+                                                            @endif
+                                                            @if (in_array($demandeur->niveauetude,['BAC+1','BAC+2','BAC+3','BAC+4','BAC+5','BAC+6 et plus']))
+                                                                <label>
+                                                                    <input type="radio" name="niveauformaion" id="niveauformaion" value="superieur" checked>&nbsp;&nbsp;&nbsp;Superieur
+                                                                </label>
+                                                            @endif
                                                     </div>
                                                 </div>
 -
@@ -210,18 +219,39 @@
                                                         <label for="niveauexperience" style="font-size: large;">Niveau d'expérience</label>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>
-                                                            <input type="radio" name="niveauexperience" id="niveauexperience" value="0 à 6 mois" checked>&nbsp;&nbsp;&nbsp;0 à 6 mois
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="niveauexperience" id="niveauexperience" value="6 mois à 1 an">&nbsp;&nbsp;&nbsp;6 mois à 1 an
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="niveauexperience" id="niveauexperience" value="1 à 2 ans">&nbsp;&nbsp;&nbsp;1 à 2 ans
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="niveauexperience" id="niveauexperience" value="2 ans et plus">&nbsp;&nbsp;&nbsp;2 ans et plus
-                                                        </label>
+                                                       {{-- @php
+                                                            dd($demandeur->uniteexperience);
+                                                            in_array((int)$demandeur->nombreexperience,[1,2])
+                                                        @endphp--}}
+                                                        @if($demandeur->uniteexperience == "AUCUN")
+                                                            <label>
+                                                                <input type="radio" name="niveauexperience" id="niveauexperience" value="aucune" checked>
+                                                                Aucune
+                                                            </label>
+                                                        @endif
+                                                        @if ($demandeur->uniteexperience == "MOIS")
+                                                            @if( in_array((int)$demandeur->nombreexperience,[0,1,2,3,4,5,6]))
+                                                                <label>
+                                                                    <input type="radio" name="niveauexperience" id="niveauexperience" value="0 à 6 mois" checked>&nbsp;&nbsp;&nbsp;0 à 6 mois
+                                                                </label>
+                                                            @elseif ((int)$demandeur->nombreexperience > 6)
+                                                                <label>
+                                                                    <input type="radio" name="niveauexperience" id="niveauexperience" value="6 mois à 1 an" checked>&nbsp;&nbsp;&nbsp;6 mois à 1 an
+                                                                </label>
+                                                            @endif
+                                                        @endif
+                                                        @if ($demandeur->uniteexperience == "ANNEE")
+
+                                                            @if(in_array((int)$demandeur->nombreexperience,[1,2]))
+                                                                <label>
+                                                                    <input type="radio" name="niveauexperience" id="niveauexperience" value="1 à 2 ans" checked>1 à 2 ans
+                                                                </label>
+                                                            @else
+                                                                <label>
+                                                                    <input type="radio" name="niveauexperience" id="niveauexperience" value="2 ans et plus" checked>&nbsp;&nbsp;&nbsp;2 ans et plus
+                                                                </label>
+                                                            @endif
+                                                        @endif
                                                     </div>
                                                 </div>
 

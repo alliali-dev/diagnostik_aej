@@ -19,13 +19,13 @@
 
             <div class="card-body">
 
-                <div class="mb-3">
+              {{--  <div class="mb-3">
                     <a class="btn btn-primary" href=""
                        data-toggle="modal"
                        data-target="#addRole">
                         <span><i class="feather icon-plus"></i>Ajouter rôle</span>
                     </a>
-                </div>
+                </div>--}}
 
                 <div class="table-responsive-sm">
                     <table class="table table-hover table-striped"  id="attenteDiagnostic">
