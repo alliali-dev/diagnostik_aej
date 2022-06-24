@@ -97,7 +97,7 @@
                                                                 @endforeach
                                                         </select>--}}
                                                         <input type="text" value="{{ $demandeur->lieuhabitation }}" name="demandeur[lieudereisdence]" id="lieudereisdence" placeholder="Lieu de Residence" class="form-control" disabled>
-                                                        <input type="hidden" value="{{ $demandeur->lieuhabitation }}" name="demandeur[lieudereisdence]" id='lieudereisdence_db' readonly>--}}
+                                                        <input type="hidden" value="{{ $demandeur->lieuhabitation }}" name="demandeur[lieudereisdence]" id='lieudereisdence_db' readonly>
                                                         <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
                                                 </div>
