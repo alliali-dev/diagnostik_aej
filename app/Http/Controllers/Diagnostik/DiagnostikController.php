@@ -52,8 +52,7 @@ class DiagnostikController extends Controller
     public function listeentretient(Request $request)
     {
         if ($request->ajax()) {
-
-            $data = EntretientDiag::mine()->with('conseiller')->get();
+            $data = EntretientDiag::mine()->where('state',true)->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
