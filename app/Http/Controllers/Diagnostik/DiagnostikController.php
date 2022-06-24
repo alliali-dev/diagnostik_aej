@@ -51,9 +51,7 @@ class DiagnostikController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = EntretientDiag::mine()->with('conseiller')->whereHas('rencontre', function ($q) {
-                $q->where('matricule_aej',null);
-            })->get();
+            $data = EntretientDiag::mine()->with('conseiller')->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
