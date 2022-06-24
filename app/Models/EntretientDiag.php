@@ -52,4 +52,8 @@ class EntretientDiag extends Model
     public function conseiller(){
        return $this->belongsTo(User::class,'user_id','id');
     }
+
+    public function rencontre(){
+        return $this->belongsTo(Rencontre::class,'matriculeaej','matricule_aej');
+    }
 }
