@@ -205,7 +205,11 @@ class DiagnostikController extends Controller
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
 
-        return view('diagnostic.create',compact('data','niveauetudes','specialites','communes','demandeur'));
+        $entretientdiag = EntretientDiag::where('matricule_aej',$matriculeaej)->first();
+
+        $id_entretiendiag = $entretientdiag->id;
+
+        return view('diagnostic.create',compact('data','niveauetudes','specialites','communes','demandeur','id_entretiendiag'));
     }
 
     public function autrerdv(Request $request){
@@ -598,6 +602,7 @@ class DiagnostikController extends Controller
     public function store(Request $request)
     {
         try {
+
         $data_demandeur = $request->demandeur;
         $data_demandeur['user_id']= auth()->id();
         $data_demandeur['agence_id']= session()->get('orig_agence');
@@ -608,9 +613,14 @@ class DiagnostikController extends Controller
         $data_rencontre['typerencontre']= 1;
         $data_rencontre['agence_id']= session()->get('orig_agence');
 
+            //state
+
         //dd($data_demandeur,$data_rencontre);
         $suivierencontre =  SuiviRencontre::create($data_demandeur);
             if ($suivierencontre){
+                $entretientdiag = EntretientDiag::find($request->id_entretiendiag);
+                $entretientdiag->state = true;
+                $entretientdiag->save();
                 $data_rencontre['suivirencontre_id'] = $suivierencontre->id;
                 $rencontre = Rencontre::create($data_rencontre);
                 session()->flash('success','Bien ajoute');

@@ -85,7 +85,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/export/recontre5','DiagnostikController@exportRencontre5')->name('export_rc5');
 
     Route::get('/create/{matriculeaej}', [DiagnostikController::class,'create'])->name('create');
-    Route::post('/store', 'DiagnostikController@store')->name('store');
+    Route::post('/store',[DiagnostikController::class,'store'])->name('store');
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');
     Route::get('/mes_suivies', 'DiagnostikController@mes_suivies')->name('mes_suivies');
     Route::put('/update/{id}', 'DiagnostikController@update')->name('update');

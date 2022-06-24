@@ -30,6 +30,7 @@
                                                         <input type="text" class="form-control" value="{{ $demandeur->nom .' '.$demandeur->prenom }}" placeholder="sexe" id="nomprenom" name="demandeur[nomprenom]" disabled>
                                                     </div>
                                                 </div>
+                                                <input type="hidden" value="{{ $id_entretiendiag }}" name="id_entretiendiag">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="sexe">Sexe</label>
