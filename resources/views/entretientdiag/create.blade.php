@@ -524,7 +524,7 @@
                                                 $('#close').fadeIn();
                                                 $('#aej_ok').hide();
                                                 $('#return').hide();
-                                                $('#urlprofile').attr('href','https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/preview/'+array[0].value)
+                                                $('#urlprofile').attr('href','https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/update/'+array[0].value)
                                                 $('#matriculeaej').val(array[0].label);
                                                 $('#matricule_aej').val(array[0].label);
                                                 $('#sexe').val(array[0].sexe);
