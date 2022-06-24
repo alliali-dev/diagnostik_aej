@@ -269,35 +269,32 @@
                                                             <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
-                                                </div>--}}
+                                                </div
 
-                                            </div><br><br>
-                                            <div class="row">
+                                            </div><br><br><div class="row">
 
-
-                                                {{--<div class="col">
-                                                    <div class="form-group">
-                                                        <label for="numpiece" style="font-size: large;">Adéquation formation métier / activité</label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;Médiocre
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Passable">&nbsp;&nbsp;Passable
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Assez bien">&nbsp;&nbsp;Assez bien
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Bien">&nbsp;&nbsp;Bien
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
-                                                        </label>
-                                                    </div>
-                                                </div>--}}
-                                                {{--<div class="col">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="numpiece" style="font-size: large;">Adéquation formation métier / activité</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;Médiocre
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Passable">&nbsp;&nbsp;Passable
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Assez bien">&nbsp;&nbsp;Assez bien
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Bien">&nbsp;&nbsp;Bien
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
+                                                </label>
+                                            </div>
+                                        </div><div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite" style="font-size: large;">Adéquation expérience métier / activité</label>
                                                     </div>
@@ -320,6 +317,7 @@
                                                     </div>
                                                 </div>--}}
                                             </div><br><br><br>
+
                                             <div class="row">
 
                                                 <div class="col">
