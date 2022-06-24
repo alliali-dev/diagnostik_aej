@@ -15,7 +15,7 @@ class EntretientDiag extends Model
     protected $fillable = ['matriculeaej','nomprenom','sexe','niveauformaion','niveauexperience',
                             'adeqormaexper', 'conmetieractiv', 'adqformmetieractiv', 'adqexpmetieractiv',
                             'maitoutrechempl', 'conexigmarch', 'depdossent', 'user_id', 'agence_id',
-                            'file_guide_entretient','file_grille_diagnostic'
+                            'file_guide_entretient','file_grille_diagnostic','state'
                             ];
 
     protected $casts = [

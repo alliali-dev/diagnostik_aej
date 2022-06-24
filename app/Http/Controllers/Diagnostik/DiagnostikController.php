@@ -204,7 +204,7 @@ class DiagnostikController extends Controller
         $specialites = Specialite::orderby('libelle','asc')->select('id','libelle')->get();
         $communes = Commune::orderby('nom','asc')->select('id','nom')->get();
 
-        $entretientdiag = EntretientDiag::where('matricule_aej',$matriculeaej)->first();
+        $entretientdiag = EntretientDiag::where('matriculeaej',$matriculeaej)->first();
 
         $id_entretiendiag = $entretientdiag->id;
 
