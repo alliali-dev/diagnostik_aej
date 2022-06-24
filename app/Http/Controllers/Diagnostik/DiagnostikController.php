@@ -43,7 +43,9 @@ class DiagnostikController extends Controller
      */
     public function index()
     {
-        $entretients = EntretientDiag::mine()->paginate(15);
+        $entretients = EntretientDiag::mine()->whereHas('suivi', function ($q) {
+            $q->where('matricule_aej',null);
+        })->paginate(15);
         return view('diagnostic.enattende_diagnostique',compact('entretients'));
     }
 
