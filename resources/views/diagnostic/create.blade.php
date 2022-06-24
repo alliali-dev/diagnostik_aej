@@ -46,6 +46,9 @@
                                                         <input type="hidden" id="datenaissance_db" value="{{ $demandeur->datenaissance }}" name="demandeur[datenaisance]">
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="age">Age</label>
@@ -53,9 +56,6 @@
                                                         <input type="hidden" id="age_db" value="{{ $demandeur->age }}" name="demandeur[age]">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="naturepiece">Nature Piece</label>
@@ -70,6 +70,10 @@
                                                         <input type="hidden" id="npiece_db" value="{{ $demandeur->numerocni }}" name="demandeur[npiece]">
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
+
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite">Nationalite</label>
@@ -77,8 +81,6 @@
                                                         <input type="hidden"  value="{{ $demandeur->nationalite }}" id="nationalite_db" name="demandeur[nationalite]">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
 
                                                 <div class="col">
                                                     <div class="form-group">
@@ -101,6 +103,9 @@
                                                         <!-- For displaying selected option value from autocomplete suggestion -->
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="diplome">Diplôme</label>
@@ -108,8 +113,6 @@
                                                         <input  type="hidden" name="demandeur[diplome]" value="{{ $demandeur->diplome }}" id="diplome_db">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="specialitediplome">Spécialité du diplôme</label>
