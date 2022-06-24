@@ -204,7 +204,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-
+-
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="niveauexperience" style="font-size: large;">Niveau d'expérience</label>
@@ -225,7 +225,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col">
+                                               {{-- <div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance" style="font-size: large;">Adéquation formation expérience</label>
                                                     </div>
@@ -246,7 +246,7 @@
                                                             <input type="radio" name="adeqormaexper" id="adeqormaexper" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div>--}}
 
                                             </div><br><br>
                                             <div class="row">
@@ -273,7 +273,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col">
+                                                {{--<div class="col">
                                                     <div class="form-group">
                                                         <label for="numpiece" style="font-size: large;">Adéquation formation métier / activité</label>
                                                     </div>
@@ -294,8 +294,8 @@
                                                             <input type="radio" name="adqformmetieractiv" id="adqformmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
-                                                </div>
-                                                <div class="col">
+                                                </div>--}}
+                                                {{--<div class="col">
                                                     <div class="form-group">
                                                         <label for="nationalite" style="font-size: large;">Adéquation expérience métier / activité</label>
                                                     </div>
@@ -316,7 +316,7 @@
                                                             <input type="radio" name="adqexpmetieractiv" id="adqexpmetieractiv" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                             </div><br><br><br>
                                             <div class="row">
 
