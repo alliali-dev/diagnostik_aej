@@ -225,6 +225,29 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="datenaisance" style="font-size: large;">Connaissance du métier / activité</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;Médiocre
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Passable">&nbsp;&nbsp;Passable
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Assez bien">&nbsp;&nbsp;Assez bien
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Bien">&nbsp;&nbsp;Bien
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
+                                                        </label>
+                                                    </div>
+                                                </div>
+
                                                {{-- <div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance" style="font-size: large;">Adéquation formation expérience</label>
@@ -251,28 +274,7 @@
                                             </div><br><br>
                                             <div class="row">
 
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="datenaisance" style="font-size: large;">Connaissance du métier / activité</label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Médiocre" checked>&nbsp;&nbsp;Médiocre
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Passable">&nbsp;&nbsp;Passable
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Assez bien">&nbsp;&nbsp;Assez bien
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Bien">&nbsp;&nbsp;Bien
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
-                                                        </label>
-                                                    </div>
-                                                </div>
+
                                                 {{--<div class="col">
                                                     <div class="form-group">
                                                         <label for="numpiece" style="font-size: large;">Adéquation formation métier / activité</label>
