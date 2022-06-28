@@ -642,7 +642,7 @@
                                                 <label for="planaction">
                                                     Date prochain RDV <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -783,7 +783,7 @@
                                                     Date prochain RDV
                                                     <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -828,6 +828,33 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal modal-danger fade" id="Terminer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger white">
+                            <h4 class="modal-title" id="myModalLabel16">Terminer l'Entretien</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ Form::open(['route'=>'diagnostik.updateterminer', 'files'=>true , 'methode' => 'POST']) }}
+                                <div class="modal-body">
+                                    <p class="text-center">
+                                        Êtes-vous sûr terminer la procédure d'entretien?
+                                    </p>
+                                    <input type="hidden" name="id" id="id" value="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">Non, Annuler</button>
+                                    <button type="submit" class="btn btn-warning">Oui, Terminer</button>
+                                </div>
+                            {{ Form::close() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -840,6 +867,15 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script>
+
+        $('#Terminer').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            console.log(id);
+            var modal = $(this);
+            modal.find('.modal-body #id').val(id);
+        });
+
         function checkdate(elt){
             var elt = $(elt);
             var a = moment( Date.now());
@@ -1044,7 +1080,6 @@
                 ]
             });
         });
-
 
         $('#AutreRDV').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);

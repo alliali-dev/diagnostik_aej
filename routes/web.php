@@ -68,6 +68,7 @@ Route::group(['prefix' => 'chefagence', 'namespace' => 'Chefagence', 'as' => 'ch
 
 //diagnostik.mes_suivies
 Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik.'], function () {
+
     Route::get('/', 'DiagnostikController@index')->name('index');
     Route::post('/autrerdv','DiagnostikController@autrerdv')->name('autrerdv');
 
@@ -92,12 +93,13 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::put('/update/{id}', 'DiagnostikController@update')->name('update');
     Route::get('/diagnos','DiagnostikController@diagnos')->name('diagnos');///autocomSpecialite autocomNiveauEtude
     Route::post('autocomville', 'DiagnostikController@autocomVille')->name('autocomville');
-    Route::post('/store1to2rencontre', 'DiagnostikController@store1to2rencontre')->name('store1to2rencontre');
+    Route::post('/store1to2rencontre', [DiagnostikController::class, 'store1to2rencontre'])->name('store1to2rencontre');
     Route::post('/store2to3rencontre', 'DiagnostikController@store2to3rencontre')->name('store2to3rencontre');
     Route::post('autocomspecialite', 'DiagnostikController@autocomSpecialite')->name('autocomspecialite');
     Route::post('autocomniveautude', 'DiagnostikController@autocomNiveauEtude')->name('autocomniveautude');
     Route::get('datatable-attente-diagnostic', [DiagnostikController::class,'listeentretient'])->name('datatable-attente-diagnostic');
     Route::get('liste-attente-diagnostic', [DiagnostikController::class,'index'])->name('liste-attente-diagnostic');
+    Route::post('/update-terminer', [DiagnostikController::class,'updateTerminer'])->name('updateterminer');
 });
 
  Route::get('/api', [DiagnostikController::class,'apiGetMatricule'])->name('api');

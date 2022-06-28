@@ -9,6 +9,7 @@ use App\Models\Niveauetude;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -42,7 +43,7 @@ class EntretientDiagController extends Controller
                     $actionBtn = '';
                     $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
                                     <i class="feather icon-arrow-right"></i>
-                                    Passe entretient
+                                    Passer entretien
                                    </a>';
 
                     return $actionBtn;
@@ -136,15 +137,25 @@ class EntretientDiagController extends Controller
 
     public function store(Request $request){
 
-        $validated = $request->validate([
-            'entretient' => 'required',
-            'diagnostic' => 'required',
-        ]);
+
+        $validatedData_Step1 = Validator::make(
+            [
+                'entretient' => $request->entretient,
+                'diagnostic' => $request->diagnostic,
+            ],
+            [
+                'entretient' => 'required_if:entretient,mimes:doc,docx,pdf|max:1024',
+                'diagnostic' => 'required_if:diagnostic,mimes:doc,docx,pdf|max:1024',
+            ],
+            [
+                'entretient.mimes'          => 'la fiche d\'entretien doit être un fichier de type : pdf,doc,docx.',
+                'diagnostic.mimes'          => 'la fiche d\'entretien doit être un fichier de type : pdf,doc,docx.',
+                'entretient.max'            => 'Ce fichier a une taille supérieure à 1Mo.',
+                'diagnostic.max'            => 'Ce fichier a une taille supérieure à 1Mo.',
+            ]
+        )->validate();
 
         $data = $request->all();
-
-        //dd($data);
-
         $data['user_id'] = auth()->id();
         $data['agence_id'] = auth()->user()->agence_id;
         $data['matriculeaej'] = $request->demandeur["matricule_aej"];

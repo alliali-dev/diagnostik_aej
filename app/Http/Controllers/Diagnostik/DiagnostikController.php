@@ -175,7 +175,9 @@ class DiagnostikController extends Controller
         }else{
             $specialites = Niveauetude::orderby('libelle','asc')->select('id','libelle')->where('libelle', 'like', '%' .$search . '%')->limit(10)->get();
         }
+
         $response = array();
+
         foreach($specialites as $specialite){
             $response[] = array("value"=> $specialite->id,"label"=> strtoupper($specialite->libelle) );
         }
@@ -218,55 +220,73 @@ class DiagnostikController extends Controller
         return back();
     }
 
+    public function updateTerminer(Request $request){
+        $rencontre = Rencontre::find($request->id);
+        $rencontre->update(['findrdv' => true]);
+        session()->flash('success','Terminer la procédure d\'entretien ?');
+        return back();
+    }
+
     public function getRec1(Request $request)
     {
         if ($request->ajax()) {
-            $data = Rencontre::mine()
-                ->where('typerencontre', 1)
-                ->where('status',false);
+
+            $data = Rencontre::mine()->where('typerencontre', 1)->where('status',false)->where('findrdv',false);
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
+                    $actionText = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
                     $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
-                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+
+                        $actionText .= '<span class="badge badge-info" style="font-size: small">
                                             '.$endOutput.'
                                             </span>';
-                        $actionBtn .= ' <button class="btn btn-info btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#traiter2rdv"
-                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                data-typerencontre="2"
-                                                                data-presencedemandeur="SANS-RDV"
-                                                                >Edit 2eme sans-rdv
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                        $actionBtn .= '<a class="dropdown-item"
+                                           data-toggle="modal"
+                                           data-target="#traiter2rdv"
+                                           data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                           data-rencontre_id="'.$row->id .'"
+                                           data-typerencontre="2"
+                                           data-presencedemandeur="SANS-RDV">
+                                           Edit 2eme sans-rdv
+                                            <i class="feather icon-edit"></i>
+                                            </a>';
                     }else{
                         if($row->rdvmanque !== null){
-
-                            $actionBtn .=' <button class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#AutreRDV" data-rencontre_id="'.$row->id .'">
+                            $actionBtn .='<a class="dropdown-item"  data-toggle="modal" data-target="#AutreRDV" data-rencontre_id="'.$row->id .'">
                                                 RDV Manquez Fixer Autre
                                                 <i class="feather icon-edit"></i>
-                                           </button>';
-
+                                           </a>';
                         }else{
-
-                            $actionBtn .=' <button class="btn btn-primary btn-rounded"
-                                                               data-toggle="modal" data-target="#traiter2rdv" data-suivirencontre_id="'.$row->suivirencontre->id.'"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                data-typerencontre="2"
-                                                                >Traiter 2eme RDV
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                            $actionBtn .='<a class="dropdown-item" data-toggle="modal"
+                                            data-target="#traiter2rdv"
+                                            data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                            data-rencontre_id="'.$row->id .'"
+                                            data-typerencontre="2">
+                                            Traiter 2eme RDV
+                                            i class="feather icon-edit"></i></a>';
                         }
-
                     }
-                    return $actionBtn;
+                    $actionBtn .='<a class="dropdown-item" data-id="'.$row->id .'"
+                                            data-toggle="modal"
+                                            data-target="#Terminer">
+                                            Terminer
+                                      <i class="feather icon-check"></i>
+                                  </a>';
+
+                    $actionBtnFull = '<div class="dropdown">
+                                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow waves-effect waves-float waves-light" data-toggle="dropdown" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="">'.$actionBtn.'
+                                                    </div>
+                                                </div>';
+                    return '<div class="row">'.$actionText .'<br>'. $actionBtnFull.'</div>';
                 })
                 ->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
@@ -300,28 +320,28 @@ class DiagnostikController extends Controller
         }
     }
 
-
-
     public function getRec2(Request $request)
     {
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 2)
-                ->where('status',false);
+                ->where('status',false)
+                ->where('findrdv',false);
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
+                    $actionText = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
                     $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
-                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                        $actionText .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
 
-                        $actionBtn .= '<button class="btn btn-info btn-rounded"
+                        $actionBtn .= '<a class="dropdown-item"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter3rdv"
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
@@ -330,31 +350,46 @@ class DiagnostikController extends Controller
                                                                 data-presencedemandeur3="SANS-RDV"
                                                                 >Edit 3e sans-rdv
                                                             <i class="feather icon-edit"></i>
-                                                        </button>';
+                                                        </a>';
                     }else{
                         if($row->rdvmanque !== null){
-
-                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#AutreRDV"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                >RDV Manquez Fixer Autre
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                            $actionBtn .='<a class="dropdown-item"
+                                           data-toggle="modal"
+                                           data-target="#AutreRDV"
+                                           data-rencontre_id="'.$row->id .'">
+                                           RDV Manquez Fixer Autre
+                                            <i class="feather icon-edit"></i>
+                                            </button>';
 
                         }else{
-                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#traiter3rdv"
-                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                data-typerencontre="3"
-                                                                >Traiter 3e RDV
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';}
+                            $actionBtn .='<a class="dropdown-item"
+                                       data-toggle="modal"
+                                       data-target="#traiter3rdv"
+                                       data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                       data-rencontre_id="'.$row->id .'"
+                                       data-typerencontre="3">
+                                       Traiter 3e RDV
+                                       <i class="feather icon-edit"></i>
+                                        </button>';
+                        }
 
                     }
-                    return $actionBtn;
+
+                    $actionBtn .='<a class="dropdown-item" data-id="'.$row->id .'"
+                                            data-toggle="modal"
+                                            data-target="#Terminer">
+                                      Terminer
+                                      <i class="feather icon-check"></i>
+                                  </a>';
+
+                    $actionBtnFull = '<div class="dropdown">
+                                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow waves-effect waves-float waves-light" data-toggle="dropdown" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="">'.$actionBtn.'
+                                                    </div>
+                                                </div>';
+                    return '<div class="row">'.$actionText .'<br>'. $actionBtnFull.'</div>';
                 })
                 ->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
@@ -390,20 +425,22 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 3)
-                ->where('status',false);
+                ->where('status',false)
+                ->where('findrdv',false);
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
+                    $actionText = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
                     $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
-                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                        $actionText .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
-                        $actionBtn .= '<button class="btn btn-info btn-rounded"
+                        $actionBtn .= '<a class="dropdown-item"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter4rdv"
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
@@ -412,20 +449,20 @@ class DiagnostikController extends Controller
                                                                 data-presencedemandeur4="SANS-RDV"
                                                                 >4e sans-rdv
                                                             <i class="feather icon-edit"></i>
-                                                        </button>';
+                                                        </a>';
                     }else{
                         if($row->rdvmanque !== null){
 
-                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
+                            $actionBtn .='<a class="dropdown-item"
                                                                 data-toggle="modal"
                                                                 data-target="#AutreRDV"
                                                                 data-rencontre_id="'.$row->id .'"
                                                                 >RDV Manquez Fixer Autre
                                                             <i class="feather icon-edit"></i>
-                                                        </button>';
+                                                        </a>';
 
                         }else{
-                        $actionBtn .=' <button class="btn btn-primary btn-rounded"
+                        $actionBtn .='<a class="dropdown-item"
                                                                 data-toggle="modal"
                                                                 data-target="#traiter4rdv"
                                                                 data-suivirencontre_id="'.$row->suivirencontre->id.'"
@@ -433,11 +470,25 @@ class DiagnostikController extends Controller
                                                                 data-typerencontre="4"
                                                                 >Traiter 4eme RDV
                                                             <i class="feather icon-edit"></i>
-                                                        </button>';
+                                                        </a>';
                         }
 
                     }
-                    return $actionBtn;
+                    $actionBtn .='<a class="dropdown-item" data-id="'.$row->id .'"
+                                            data-toggle="modal"
+                                            data-target="#Terminer">
+                                      Terminer
+                                      <i class="feather icon-check"></i>
+                                  </a>';
+
+                    $actionBtnFull = '<div class="dropdown">
+                                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow waves-effect waves-float waves-light" data-toggle="dropdown" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="">'.$actionBtn.'
+                                                    </div>
+                                                </div>';
+                    return '<div class="row">'.$actionText .'<br>'. $actionBtnFull.'</div>';
                 })
                 ->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
@@ -473,54 +524,70 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 4)
-                ->where('status',false);
+                ->where('status',false)
+                ->where('findrdv',false);
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
+                    $actionText = '';
                     $end_date = Carbon::parse($row->dateprochainrdv);
                     $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
 
                     if($row->dateprochainrdv->isFuture()){
-                        $actionBtn .= '<span class="badge badge-success mr-1" style="font-size: small;">
+                        $actionText .= '<span class="badge badge-success mr-1" style="font-size: small;">
                                             '.$endOutput.'
                                             </span>';
-                        $actionBtn .= '<button class="btn btn-info btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#traiter5rdv"
-                                                                data-suivirencontre_id="'.$row->suivirencontre->id.'"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                data-typerencontre="5"
-                                                                data-presencedemandeur5="SANS-RDV"
-                                                                >Edit 5e sans-rdv
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                        $actionBtn .= '<a class="dropdown-item"
+                                         data-toggle="modal"
+                                         data-target="#traiter5rdv"
+                                         data-suivirencontre_id="'.$row->suivirencontre->id.'"
+                                         data-rencontre_id="'.$row->id .'"
+                                         data-typerencontre="5"
+                                         data-presencedemandeur5="SANS-RDV"
+                                         >Edit 5e sans-rdv
+                                          <i class="feather icon-edit"></i>
+                                         </a>';
                     }else{
                         if($row->rdvmanque !== null){
 
-                            $actionBtn .=' <button class="btn btn-warning btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#AutreRDV"
-                                                                data-rencontre_id="'.$row->id .'"
-                                                                >RDV Manquez Fixer Autre
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                            $actionBtn .='<a class="dropdown-item"
+                                           data-toggle="modal"
+                                           data-target="#AutreRDV"
+                                           data-rencontre_id="'.$row->id .'">
+                                           RDV Manquez Fixer Autre
+                                           <i class="feather icon-edit"></i>
+                                            </a>';
 
                         }else {
-                            $actionBtn .= ' <button class="btn btn-primary btn-rounded"
-                                                                data-toggle="modal"
-                                                                data-target="#traiter5rdv"
-                                                                data-suivirencontre_id="' . $row->suivirencontre->id . '"
-                                                                data-rencontre_id="' . $row->id . '"
-                                                                data-typerencontre="5"
-                                                                >Traiter 5eme RDV
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>';
+                            $actionBtn .= '<a class="dropdown-item"
+                                            data-toggle="modal"
+                                            data-target="#traiter5rdv"
+                                            data-suivirencontre_id="' . $row->suivirencontre->id . '"
+                                            data-rencontre_id="' . $row->id . '"
+                                            data-typerencontre="5">
+                                            Traiter 5eme RDV
+                                            <i class="feather icon-edit"></i>
+                                          </a>';
                         }
-
                     }
-                    return $actionBtn;
+
+                    $actionBtn .='<a class="dropdown-item" data-id="'.$row->id .'"
+                                            data-toggle="modal"
+                                            data-target="#Terminer">
+                                      Terminer
+                                      <i class="feather icon-check"></i>
+                                  </a>';
+
+                    $actionBtnFull = '<div class="dropdown">
+                                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow waves-effect waves-float waves-light" data-toggle="dropdown" aria-expanded="false">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="">'.$actionBtn.'
+                                                    </div>
+                                                </div>';
+                    return '<div class="row">'.$actionText .'<br>'. $actionBtnFull.'</div>';
                 })
                 ->editColumn('matricule_aej', function ($row){
                     $matricule_aej = $row->suivirencontre->matricule_aej ;
@@ -557,7 +624,8 @@ class DiagnostikController extends Controller
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 5 )
-                ->where('status',true);
+                ->where('status',true)
+                ->where('findrdv',false);
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -653,7 +721,6 @@ class DiagnostikController extends Controller
         } catch (\Exception $e) {
             session()->flash('warning', $e->getMessage());
         }
-
         return back();
     }
 
