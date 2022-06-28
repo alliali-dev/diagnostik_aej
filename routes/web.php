@@ -30,6 +30,7 @@ Route::group(['prefix'=>'entretient','as'=>'entretient.'], function () {
     Route::get('/suivie','EntretientDiagController@index')->name('index');
     Route::post('/store',[EntretientDiagController::class ,'store'])->name('store');
     Route::get('/export','EntretientDiagController@export')->name('export');
+    Route::get('/loadalldemandeur','EntretientDiagController@loadAllDemandeur')->name('loadalldemandeur');
 });
 
 Route::group(['prefix'=>'verif','namespace'=>'Verif','as'=>'verif.'], function () {
@@ -71,11 +72,11 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::post('/autrerdv','DiagnostikController@autrerdv')->name('autrerdv');
 
     // tous les suivies ici
-    Route::get('/getRec1', 'DiagnostikController@getRec1')->name('getrec1');
-    Route::get('/getRec2', 'DiagnostikController@getRec2')->name('getrec2');
-    Route::get('/getRec3', 'DiagnostikController@getRec3')->name('getrec3');
-    Route::get('/getRec4', 'DiagnostikController@getRec4')->name('getrec4');
-    Route::get('/getRec5', 'DiagnostikController@getRec5')->name('getrec5');
+    Route::get('/getRec1', [DiagnostikController::class,'getRec1'])->name('getrec1');
+    Route::get('/getRec2', [DiagnostikController::class,'getRec2'])->name('getrec2');
+    Route::get('/getRec3', [DiagnostikController::class,'getRec3'])->name('getrec3');
+    Route::get('/getRec4', [DiagnostikController::class,'getRec4'])->name('getrec4');
+    Route::get('/getRec5', [DiagnostikController::class,'getRec5'])->name('getrec5');
 
     // route d'exportation in excell  {{route('diagnostik.export_rc1)}}
     Route::get('/export/recontre1','DiagnostikController@exportRencontre1')->name('export_rc1');

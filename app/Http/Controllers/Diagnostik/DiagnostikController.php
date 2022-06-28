@@ -279,6 +279,9 @@ class DiagnostikController extends Controller
                 ->editColumn('sexe', function ($row){
                     $sexe = $row->suivirencontre->sexe ;
                     return $sexe;
+                })->editColumn('modalite', function ($row){
+                    $modalite = $row->modalite;
+                    return $modalite;
                 })
                 ->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;

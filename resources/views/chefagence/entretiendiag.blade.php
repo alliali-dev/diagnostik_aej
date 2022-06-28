@@ -68,13 +68,13 @@
                             <th>nom</th>
                             <th>niveau formaion</th>
                             <th>niveau experience</th>
-                            <th>adéquation formation expérience</th>
-                            <th>Connaissance du métier / activité</th>
-                            <th>Adéquation formation métier / activité</th>
-                            <th>Adéquation expérience métier / activité</th>
+                           {{-- <th>adéquation formation expérience</th>--}}
+                            {{--<th>Connaissance du métier / activité</th>--}}
+                            {{--<th>Adéquation formation métier / activité</th>
+                            <th>Adéquation expérience métier / activité</th>--}}
                             <th>Maîtrise de l'outils de recherche d'emploi</th>
-                            <th>Connaissance des exigence du marché</th>
-                            <th>Dépôtde dossier en entreprise</th>
+                            {{--<th>Connaissance des exigence du marché</th>--}}
+                            <th>Dépôt de dossier en entreprise</th>
                             <th>conseiller referent</th>
                         </tr>
                         </thead>
@@ -85,12 +85,12 @@
                                 <td> {{ $item->nomprenom }}</td>
                                 <td> {{ $item->niveauformaion }}</td>
                                 <td> {{ $item->niveauexperience }}</td>
-                                <td> {{ $item->adeqormaexper }}</td>
-                                <td> {{ $item->conmetieractiv }}</td>
-                                <td> {{ $item->adqformmetieractiv }}</td>
-                                <td> {{ $item->adqexpmetieractiv }}</td>
+                               {{-- <td> {{ $item->adeqormaexper }}</td>--}}
+                                {{--<td> {{ $item->conmetieractiv }}</td>--}}
+                                {{--<td> {{ $item->adqformmetieractiv }}</td>--}}
+                                {{--<td> {{ $item->adqexpmetieractiv }}</td>--}}
                                 <td> {{ $item->maitoutrechempl }}</td>
-                                <td> {{ $item->conexigmarch }}</td>
+                                {{--<td> {{ $item->conexigmarch }}</td>--}}
                                 <td> {{ $item->depdossent }}</td>
                                 <td> {{  \App\Models\User::find($item->user_id)->name }}</td>
                             </tr>

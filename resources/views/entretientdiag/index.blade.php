@@ -22,9 +22,9 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="mb-3">
-                    <a class="btn btn-primary" href="{{ route('entretient.msg_profile') }}">
+                   {{-- <a class="btn btn-primary" href="{{ route('entretient.msg_profile') }}">
                         <span><i class="feather icon-plus"></i>Faire un Entretien</span>
-                    </a>
+                    </a>--}}
                     <div class="text-right">
                         <a class="btn btn-info" href="{{ route('entretient.export') }}">
                             <span><i class="feather icon-download"></i>Exporter</span>
@@ -37,18 +37,19 @@
                         <thead>
                         <tr>
                             <th>#n aej</th>
-                            <th>nom</th>
-                            <th>niveau formaion</th>
-                            <th>niveau expérience</th>
-                            <th>adéquation formation expérience</th>
-                            <th>Connaissance du métier / activité</th>
-                            <th>Adéquation formation métier / activité</th>
-                            <th>Adéquation expérience métier / activité</th>
+                            <th>Nom et Prenom</th>
+                            <th>Niveau formaion</th>
+                            <th>Niveau expérience</th>
+                           {{-- <th>adéquation formation expérience</th>--}}
+                           {{-- <th>Connaissance du métier / activité</th>--}}
+                            {{--<th>Adéquation formation métier / activité</th>--}}
+                            {{--<th>Adéquation expérience métier / activité</th>--}}
                             <th>Maîtrise de l'outil de recherche d'emploi</th>
-                            <th>Connaissance des exigence du marché</th>
+                            {{--<th>Connaissance des exigence du marché</th>--}}
                             <th>Dépôt de dossier en entreprise</th>
                             <th>Grille Diagnostique</th>
-                            <th>Guide Entretient</th>
+                            <th>Guide Entretien</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,28 +59,34 @@
                                 <td> {{ $item->nomprenom }}</td>
                                 <td> {{ $item->niveauformaion }}</td>
                                 <td> {{ $item->niveauexperience }}</td>
-                                <td> {{ $item->adeqormaexper }}</td>
+                                {{--<td> {{ $item->adeqormaexper }}</td>
                                 <td> {{ $item->conmetieractiv }}</td>
                                 <td> {{ $item->adqformmetieractiv }}</td>
-                                <td> {{ $item->adqexpmetieractiv }}</td>
+                                <td> {{ $item->adqexpmetieractiv }}</td>--}}
                                 <td> {{ $item->maitoutrechempl }}</td>
-                                <td> {{ $item->conexigmarch }}</td>
+                                {{--<td> {{ $item->conexigmarch }}</td>--}}
                                 <td> {{ $item->depdossent }}</td>
                                 <td>
                                     @if($item->file_grille_diagnostic )
-                                        <a type="button" href="{{ asset('fichiers/diagnostic/'.$item->file_grille_diagnostic) }}"
-                                                class="btn btn-info mr-0 waves-effect waves-light">
+                                        <a href="{{ asset('fichiers/diagnostic/'.$item->file_grille_diagnostic) }}" style="font-size: 16px;"
+                                                class="badge badge-info mr-1" target="_blank">
                                             <i class="feather icon-eye"></i>
                                         </a>
                                     @endif
                                 </td>
                                 <td>
                                     @if($item->file_guide_entretient)
-                                        <a type="button" href="{{ asset('fichiers/entretient/'.$item->file_guide_entretient) }}"
-                                           class="btn btn-primary mr-0 waves-effect waves-light">
+                                        <a href="{{ asset('fichiers/entretient/'.$item->file_guide_entretient) }}" style="font-size: 16px;" target="_blank"
+                                           class="badge badge-primary mr-1">
                                             <i class="feather icon-eye"></i>
                                         </a>
                                     @endif
+                                </td>
+                                <td>
+                                    <a class="badge badge-success mr-1" href="{{ route('diagnostik.create',$item->matriculeaej) }}" style="font-size: small;">
+                                        <i class="feather icon-arrow-right"></i>
+                                        Passer un entretien.
+                                    </a>
                                 </td>
                                 {{--<td class="float-right">
                                     <button type="button"
@@ -113,8 +120,6 @@
             </div>
         </div>
     </section>
-
-
     <!-- Modal New Social Viewer -->
     <div class="modal fade" id="addAgence" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel16" aria-hidden="true">

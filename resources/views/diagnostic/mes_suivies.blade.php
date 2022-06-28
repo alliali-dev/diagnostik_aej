@@ -81,6 +81,7 @@
                                                 <th>DIPLÔME</th>
                                                 <th>DURÉE (h:m:s:ms)</th>
                                                 <th>DATE RDV</th>
+                                                <th>MODALITE</th>
                                                 <th>AXE TRAVAIL</th>
                                                 <th>Action</th>
                                             </tr>
@@ -88,75 +89,6 @@
                                             <tbody>
                                             </tbody>
                                         </table>
-                                        {{-- <table class="table table-hover table-striped">
-                                             <thead>
-                                             <tr>
-                                                 <th>N AEJ</th>
-                                                 <th>NOM PRENOM</th>
-                                                 <th>SEXE</th>
-                                                 <th>COMMUNE</th>
-                                                 <th>DIPLOME</th>
-                                                 <th>DUREE (h:m:s:ms)</th>
-                                                 <th>DATE RDV</th>
-                                                 <th>AXE TRAVAIL</th>
-                                                 <th></th>
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             @foreach($rencontres1 as $item)
-                                                 @if($item->dateprochainrdv->isFuture())
-                                                     <tr>
-                                                         <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                         <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                         <td>{{ $item->suivirencontre->sexe }}</td>
-                                                         <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                         <td>{{ $item->suivirencontre->diplome }}</td>
-                                                         <td>{{ $item->dureerencontre }}</td>
-                                                         <td>{{ $item->dateprochainrdv }}</td>
-                                                         <td>{{ $item->axetravail }}</td>
-                                                         @php
-                                                             $output = '';
-                                                             $now = Carbon\Carbon::now();
-                                                             $end_date = Carbon\Carbon::parse($item->dateprochainrdv);
-                                                             $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
-                                                         @endphp
-                                                         <td class="float-right">
-                                                             <span class="badge badge-success mr-1" style="font-size: small;">
-                                                                 {{$endOutput}}
-                                                             </span>
-                                                         </td>
-                                                     </tr>
-                                                 @else
-                                                     <tr>
-                                                         <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                         <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                         <td>{{ $item->suivirencontre->sexe }}</td>
-                                                         <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                         <td>{{ $item->suivirencontre->diplome }}</td>
-                                                         <td>{{ $item->dureerencontre }}</td>
-                                                         <td>{{ $item->dateprochainrdv }}</td>
-                                                         <td>{{ $item->axetravail }}</td>
-                                                         <td class="float-right">
-                                                             <button class="btn btn-primary btn-rounded"
-                                                                     data-toggle="modal"
-                                                                     data-target="#traiter2rdv"
-                                                                     data-suivirencontre_id="{{ $item->suivirencontre->id }}"
-                                                                     data-rencontre_id="{{ $item->id }}"
-                                                                     data-typerencontre="2"
-                                                                     >Traiter 2eme RDV
-                                                                 <i class="feather icon-edit"></i>
-                                                             </button>
-                                                         </td>
-                                                     </tr>
-                                                 @endif
-                                             @endforeach
-                                             @if(count($rencontres1) < 1)
-                                                 <tr>
-                                                     <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
-                                                 </tr>
-                                             @endif
-                                             </tbody>
-                                         </table>--}}
                                     </div>
                             </div>
                         </div>
@@ -178,6 +110,7 @@
                                             <th>DIPLOME</th>
                                             <th>DUREE (h:m:s:ms)</th>
                                             <th>DATE RDV</th>
+                                            <th>MODALITE</th>
                                             <th>AXE TRAVAIL</th>
                                             <th>Action</th>
                                         </tr>
@@ -185,75 +118,6 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-                                    {{--<table class="table table-hover table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>N AEJ</th>
-                                            <th>NOM PRENOM</th>
-                                            <th>SEXE</th>
-                                            <th>COMMUNE</th>
-                                            <th>DIPLOME</th>
-                                            <th>DUREE RENCONTRE (h:m:s:ms)</th>
-                                            <th>DATE RENDEZ-VOUS</th>
-                                            <th>AXE TRAVAIL</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($rencontres2 as $item)
-                                            @if($item->dateprochainrdv->isFuture())
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                    @php
-                                                        $output = '';
-                                                        $now = Carbon\Carbon::now();
-                                                        $end_date = Carbon\Carbon::parse($item->dateprochainrdv);
-                                                        $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
-                                                    @endphp
-                                                    <td class="float-right">
-                                                        <span class="badge badge-success mr-1" style="font-size: small;">
-                                                            {{$endOutput}}
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                    <td class="float-right">
-                                                        <button class="btn btn-primary btn-rounded"
-                                                                 data-toggle="modal"
-                                                                data-target="#traiter3rdv"
-                                                                data-suivirencontre_id="{{ $item->suivirencontre->id }}"
-                                                                data-rencontre_id="{{ $item->id }}"
-                                                                data-typerencontre="3">
-                                                                Traiter 3eme RDV
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                        @if(count($rencontres2) < 1)
-                                            <tr>
-                                            <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
-                                            </tr>
-                                        @endif
-                                        </tbody>
-                                    </table>--}}
                                 </div>
                             </div>
                         </div>
@@ -276,6 +140,7 @@
                                             <th>DIPLOME</th>
                                             <th>DUREE (h:m:s:ms)</th>
                                             <th>DATE RDV</th>
+                                            <th>MODALITE</th>
                                             <th>AXE TRAVAIL</th>
                                             <th>Action</th>
                                         </tr>
@@ -283,75 +148,6 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-                                    {{--<table class="table table-hover table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>N AEJ</th>
-                                            <th>NOM PRENOM</th>
-                                            <th>SEXE</th>
-                                            <th>COMMUNE</th>
-                                            <th>DIPLOME</th>
-                                            <th>DUREE RENCONTRE (h:m:s:ms)</th>
-                                            <th>DATE RENDEZ-VOUS</th>
-                                            <th>AXE TRAVAIL</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($rencontres3 as $item)
-                                            @if($item->dateprochainrdv->isFuture())
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                    @php
-                                                        $output = '';
-                                                        $now = Carbon\Carbon::now();
-                                                        $end_date = Carbon\Carbon::parse($item->dateprochainrdv);
-                                                        $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
-                                                    @endphp
-                                                    <td class="float-right">
-                                                        <span class="badge badge-success mr-1" style="font-size: small;">
-                                                            {{$endOutput}}
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                    <td class="float-right">
-                                                        <button class="btn btn-primary btn-rounded"
-                                                                 data-toggle="modal"
-                                                                data-target="#traiter4rdv"
-                                                                data-suivirencontre_id="{{ $item->suivirencontre->id }}"
-                                                                data-rencontre_id="{{ $item->id }}"
-                                                                data-typerencontre="4">
-                                                                Traiter 4eme RDV
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                        @if(count($rencontres3) < 1)
-                                            <tr>
-                                            <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
-                                            </tr>
-                                        @endif
-                                        </tbody>
-                                    </table>--}}
                                 </div>
                             </div>
                         </div>
@@ -374,6 +170,7 @@
                                             <th>DIPLOME</th>
                                             <th>DUREE (h:m:s:ms)</th>
                                             <th>DATE RDV</th>
+                                            <th>MODALITE</th>
                                             <th>AXE TRAVAIL</th>
                                             <th>Action</th>
                                         </tr>
@@ -381,77 +178,7 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-
                                 </div>
-                                 {{--<table class="table table-hover table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>N AEJ</th>
-                                            <th>NOM PRENOM</th>
-                                            <th>SEXE</th>
-                                            <th>COMMUNE</th>
-                                            <th>DIPLOME</th>
-                                            <th>DUREE RENCONTRE (h:m:s:ms)</th>
-                                            <th>DATE RENDEZ-VOUS</th>
-                                            <th>AXE TRAVAIL</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($rencontres4 as $item)
-                                            @if($item->dateprochainrdv->isFuture())
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                    @php
-                                                        $output = '';
-                                                        $now = Carbon\Carbon::now();
-                                                        $end_date = Carbon\Carbon::parse($item->dateprochainrdv);
-                                                        $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jour');
-                                                    @endphp
-                                                    <td class="float-right">
-                                                        <span class="badge badge-success mr-1" style="font-size: small;">
-                                                            {{$endOutput}}
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                    <td class="float-right">
-                                                        <button class="btn btn-primary btn-rounded"
-                                                                 data-toggle="modal"
-                                                                data-target="#traiter5rdv"
-                                                                data-suivirencontre_id="{{ $item->suivirencontre->id }}"
-                                                                data-rencontre_id="{{ $item->id }}"
-                                                                data-typerencontre="5">
-                                                                Traiter 5eme RDV
-                                                            <i class="feather icon-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                        @if(count($rencontres4) < 1)
-                                            <tr>
-                                            <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
-                                            </tr>
-                                        @endif
-                                        </tbody>
-                                    </table>--}}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pinterestPIll" role="tabpanel"
@@ -473,6 +200,7 @@
                                             <th>DIPLOME</th>
                                             <th>DUREE (h:m:s:ms)</th>
                                             <th>DATE RDV</th>
+                                            <th>MODALITE</th>
                                             <th>AXE TRAVAIL</th>
                                             <th>Action</th>
                                         </tr>
@@ -480,40 +208,6 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-                                   {{-- <table class="table table-hover table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>N AEJ</th>
-                                            <th>NOM PRENOM</th>
-                                            <th>SEXE</th>
-                                            <th>COMMUNE</th>
-                                            <th>DIPLOME</th>
-                                            <th>DUREE RENCONTRE (h:m:s:ms)</th>
-                                            <th>DATE RENDEZ-VOUS</th>
-                                            <th>AXE TRAVAIL</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($rencontres5 as $item)
-                                                <tr>
-                                                    <td>{{ $item->suivirencontre->matricule_aej }}</td>
-                                                    <td>{{ $item->suivirencontre->nomprenom }}</td>
-                                                    <td>{{ $item->suivirencontre->sexe }}</td>
-                                                    <td>{{ $item->suivirencontre->lieudereisdence }}</td>
-                                                    <td>{{ $item->suivirencontre->diplome }}</td>
-                                                    <td>{{ $item->dureerencontre }}</td>
-                                                    <td>{{ $item->dateprochainrdv }}</td>
-                                                    <td>{{ $item->axetravail }}</td>
-                                                </tr>
-                                        @endforeach
-                                        @if(count($rencontres5) < 1)
-                                            <tr>
-                                            <td colspan="10" class="text-center">Pas d'suivie trouvé !</td>
-                                            </tr>
-                                        @endif
-                                        </tbody>
-                                    </table>--}}
                                 </div>
                             </div>
                         </div>
@@ -571,7 +265,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche" id="lbpresencede2">Presence demandeur</label>
+                                                <label for="approche" id="lbpresencede2">
+                                                    Présence demandeur <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[presencedemandeur]"  id="presencedemandeur2"  class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
@@ -583,7 +279,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="title">Duree de la rencontre</label>
+                                                <label for="title">Durée de la rencontre</label>
                                                 <input type="text" class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
                                             </div>
                                             <div class="form-group text-right mb-0">
@@ -603,10 +299,14 @@
                                     <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
                                     <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
                                     <br>
-                                    <div class="row">
+
+                                    <div class="row" id="rec_1">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
+                                                <label for="approche">
+                                                    Avez vous entretenu le demandeur avec l'approche SOFT SKILLS
+                                                    <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[approche]"  id="approche" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
@@ -616,7 +316,9 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Modalite de prise en charge</label>
+                                                <label for="modalite">
+                                                    Modalité de prise en charge <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[modalite]" id="modalite" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
@@ -626,7 +328,9 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Axe de travail</label>
+                                                <label for="modalite">
+                                                    Axe de travail <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[axetravail]" id="axetravail" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
@@ -643,21 +347,27 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Plan d'action</label>
+                                                <label for="planaction">
+                                                    Plan d'action <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
                                                 </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="observation">Observation</label>
+                                                <label for="observation">
+                                                    Observation <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
                                                 </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
+                                                <label for="planaction">
+                                                    Date prochain RDV <span style="color: red">*</span>
+                                                </label>
                                                 <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
                                                 {{--<input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>--}}
                                             </div>
@@ -665,7 +375,7 @@
                                     </div>
                                 </fieldset>
                                 <!--form control-->
-                                <div class="form-group text-right mb-0">
+                                <div class="form-group text-right mb-0" id="valide" style="display: none;">
                                     <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
                                 </div>
                             </form>
@@ -690,7 +400,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche" id="lbpresencede3">Presence demandeur</label>
+                                                <label for="approche" id="lbpresencede3">
+                                                    Présence demandeur <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[presencedemandeur]"  id="presencedemandeur3" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
@@ -702,7 +414,9 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="title">Duree de la rencontre</label>
+                                                <label for="title">
+                                                    Durée de la rencontre <span style="color: red">*</span>
+                                                </label>
                                                 <input type="text" class="form-control" id="dureerencontre1" name="rencontre[dureerencontre]" required>
                                             </div>
                                             <div class="form-group text-right mb-0">
@@ -722,11 +436,14 @@
                                     <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
                                     <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
                                     <br>
-                                    <div class="row">
+                                    <div class="row" id="rec_2">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
-                                                <select name="rencontre[approche]"  id="approche" class="form-control">
+                                                <label for="approche">
+                                                    Avez vous entretenu le demandeur avec l'approche SOFT SKILLS
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[approche]"  id="approche_2" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
                                                     <option value="{{__('NON')}}">{{__('NON')}}</option>
@@ -735,8 +452,11 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Modalite de prise en charge</label>
-                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
+                                                <label for="modalite">
+                                                    Modalité de prise en charge
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[modalite]" id="modalite_2" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
                                                     <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
@@ -745,8 +465,11 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Axe de travail</label>
-                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                <label for="modalite">
+                                                    Axe de travail
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[axetravail]" id="axetravail_2" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
                                                     <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
@@ -762,28 +485,34 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Plan d'action</label>
+                                                <label for="planaction">
+                                                    Plan d'action <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
                                                         </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="observation">Observation</label>
+                                                <label for="observation">
+                                                    Observation <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
                                                         </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
+                                                <label for="planaction">
+                                                    Date prochain RDV <span style="color: red">*</span>
+                                                </label>
                                                 <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv3" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                 </fieldset>
                                 <!--form control-->
-                                <div class="form-group text-right mb-0">
+                                <div class="form-group text-right mb-0" id="valide_2" style="display: none;">
                                     <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
                                 </div>
                             </form>
@@ -808,7 +537,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche" id="lbpresencede4">Presence demandeur</label>
+                                                <label for="approche" id="lbpresencede4">
+                                                    Présence demandeur <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[presencedemandeur]"  id="presencedemandeur4" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
@@ -820,7 +551,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="title">Duree de la rencontre</label>
+                                                <label for="title">Durée de la rencontre <span style="color: red">*</span></label>
                                                 <input type="text" class="form-control" id="dureerencontre2" name="rencontre[dureerencontre]" required>
                                             </div>
                                             <div class="form-group text-right mb-0">
@@ -840,11 +571,14 @@
                                     <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
                                     <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
                                     <br>
-                                    <div class="row">
+                                    <div class="row" id="rec_3">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
-                                                <select name="rencontre[approche]"  id="approche" class="form-control">
+                                                <label for="approche">
+                                                    Avez vous entretenu le demandeur avec l'approche SOFT SKILLS
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[approche]"  id="approche_3" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
                                                     <option value="{{__('NON')}}">{{__('NON')}}</option>
@@ -853,8 +587,11 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Modalite de prise en charge</label>
-                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
+                                                <label for="modalite">
+                                                    Modalité de prise en charge
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[modalite]" id="modalite_3" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
                                                     <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
@@ -863,8 +600,11 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Axe de travail</label>
-                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                <label for="modalite">
+                                                    Axe de travail
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[axetravail]" id="axetravail_3" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
                                                     <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
@@ -880,28 +620,35 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Plan d'action</label>
+                                                <label for="planaction">
+                                                    Plan d'action
+                                                    <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
                                                 </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="observation">Observation</label>
+                                                <label for="observation">
+                                                    Observation <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
                                                         </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
+                                                <label for="planaction">
+                                                    Date prochain RDV <span style="color: red">*</span>
+                                                </label>
                                                 <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                 </fieldset>
                                 <!--form control-->
-                                <div class="form-group text-right mb-0">
+                                <div class="form-group text-right mb-0" id="valide_3" style="display: none;">
                                     <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
                                 </div>
                             </form>
@@ -926,7 +673,10 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche" id="lbpresencede5">Presence demandeur</label>
+                                                <label for="approche" id="lbpresencede5">
+                                                    Présence demandeur
+                                                    <span style="color: red">*</span>
+                                                </label>
                                                 <select name="rencontre[presencedemandeur]"  id="presencedemandeur5" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
@@ -938,7 +688,9 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="title">Duree de la rencontre</label>
+                                                <label for="title">
+                                                    Durée de la rencontre <span style="color: red">*</span>
+                                                </label>
                                                 <input type="text" class="form-control" id="dureerencontre3" name="rencontre[dureerencontre]" required>
                                             </div>
                                             <div class="form-group text-right mb-0">
@@ -958,11 +710,14 @@
                                     <input type="hidden" name="rencontre[typerencontre]" id="typerencontre" value="">
                                     <input type="hidden" name="rencontre_id" id="rencontre_id" value="">
                                     <br>
-                                    <div class="row">
+                                    <div class="row" id="rec_4">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="approche">Avez vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
-                                                <select name="rencontre[approche]"  id="approche" class="form-control">
+                                                <label for="approche">
+                                                    Avez vous entretenu le demandeur avec l'approche SOFT SKILLS
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[approche]"  id="approche_4" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('OUI')}}">{{__('OUI')}}</option>
                                                     <option value="{{__('NON')}}">{{__('NON')}}</option>
@@ -971,8 +726,11 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Modalite de prise en charge</label>
-                                                <select name="rencontre[modalite]" id="modalite" class="form-control">
+                                                <label for="modalite">
+                                                    Modalité de prise en charge
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[modalite]" id="modalite_4" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
                                                     <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
@@ -981,8 +739,11 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="modalite">Axe de travail</label>
-                                                <select name="rencontre[axetravail]" id="axetravail" class="form-control">
+                                                <label for="modalite">
+                                                    Axe de travail
+                                                    <span style="color: red">*</span>
+                                                </label>
+                                                <select name="rencontre[axetravail]" id="axetravail_4" class="form-control">
                                                     <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                     <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
                                                     <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
@@ -998,28 +759,37 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Plan d'action</label>
+                                                <label for="planaction">
+                                                    Plan d'action
+                                                    <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[planaction]" id="planaction" rows="1" class="form-control" required="">
                                                 </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="observation">Observation</label>
+                                                <label for="observation">
+                                                    Observation
+                                                    <span style="color: red">*</span>
+                                                </label>
                                                 <textarea name="rencontre[observation]" id="observation" rows="1" class="form-control" required="">
                                                 </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="planaction">Date prochain RDV</label>
+                                                <label for="planaction">
+                                                    Date prochain RDV
+                                                    <span style="color: red">*</span>
+                                                </label>
                                                 <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                 </fieldset>
                                 <!--form control-->
-                                <div class="form-group text-right mb-0">
+                                <div class="form-group text-right mb-0" id="valide_4" style="display: none;">
                                     <button type="submit" id="aej_ok" class="btn btn-success">valider</button>
                                 </div>
                             </form>
@@ -1066,49 +836,23 @@
     <script src="{{asset('jqueryui/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('jqueryui/jquery-ui.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="https://daokun.webs.com/jquery.stopwatch.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script>
-
-        $(document).ready(function() {
-            $("#dateprochainrdv2").datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-            $("#dateprochainrdv2").focus(function() {
-                $("#dateprochainrdv2").datepicker("show");
-            });
-            $("#dateprochainrdv2").focus();
-
-            /////
-            $("#dateprochainrdv3").datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-            $("#dateprochainrdv3").focus(function() {
-                $("#dateprochainrdv3").datepicker("show");
-            });
-            $("#dateprochainrdv3").focus();
-            //////
-            $("#dateprochainrdv4").datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-            $("#dateprochainrdv4").focus(function() {
-                $("#dateprochainrdv4").datepicker("show");
-            });
-            $("#dateprochainrdv4").focus();
-
-            ///
-
-            $("#dateprochainrdv5").datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-            $("#dateprochainrdv5").focus(function() {
-                $("#dateprochainrdv5").datepicker("show");
-            });
-            $("#dateprochainrdv5").focus();
-        });
-
         function checkdate(elt){
             var elt = $(elt);
+            var a = moment( Date.now());
+            var b = moment(new Date(elt.val()));
+            var years = b.diff(a,'years');
+            var nbrjour =  b.diff(a, 'days');
+
+            if(nbrjour < 0) {
+                elt.focus();
+                alert('renseignez une date valid svp');
+                return true;
+            }
+           /* var elt = $(elt);
             var  date = new Date(elt.val());
             var now = Date.now();
             var  tmp = now - date
@@ -1121,7 +865,7 @@
                 }).focus();
                 alert('renseignez une date valid svp');
                 return true;
-            }
+            }*/
         }
 
         $(function () {
@@ -1154,6 +898,7 @@
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre' , orderable: false, searchable: false},
                     {data: 'dateprochainrdv' , orderable: false, searchable: false},
+                    {data: 'modalite' , orderable: false, searchable: false},
                     {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
@@ -1188,6 +933,7 @@
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'modalite' , orderable: false, searchable: false},
                     {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
@@ -1222,6 +968,7 @@
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'modalite' , orderable: false, searchable: false},
                     {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
@@ -1256,6 +1003,7 @@
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'modalite' , orderable: false, searchable: false},
                     {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
@@ -1290,6 +1038,7 @@
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
+                    {data: 'modalite' , orderable: false, searchable: false},
                     {data: 'axetravail', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]
@@ -1361,7 +1110,6 @@
             var rencontre_id = button.data('rencontre_id');
             var presencedemandeur = button.data('presencedemandeur4');
             var modal = $(this);
-            console.log(presencedemandeur);
              if(presencedemandeur){
                  modal.find('.modal-body #presencedemandeur4').hide();
                  modal.find('.modal-body #lbpresencede4').hide();
@@ -1438,7 +1186,12 @@
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
                 $('#init').attr('disabled','disabled')
-                $('#stop').removeAttr('disabled')
+                $('#stop').removeAttr('disabled');
+                $('#rec_1 :input').removeAttr('readonly');
+                $('#approche').removeAttr('disabled');
+                $('#modalite').removeAttr('disabled');
+                $('#axetravail').removeAttr('disabled');
+                $('#valide').fadeIn();
             });
 
             $('#stop').click(function(){
@@ -1446,6 +1199,12 @@
                 $(this).attr('disabled','disabled')
                 $('#start').removeAttr('disabled')
                 $('#init').removeAttr('disabled')
+                $('#rec_1').attr('disabled','disabled');
+                $('#rec_1 :input').attr('readonly','readonly');
+                $('#approche').attr('disabled','disabled');
+                $('#modalite').attr('disabled','disabled');
+                $('#axetravail').attr('disabled','disabled');
+                $('#valide').fadeOut();
             });
 
             $('#init').click(function(){
@@ -1500,13 +1259,23 @@
                 $(this).attr('disabled','disabled')
                 $('#init1').attr('disabled','disabled')
                 $('#stop1').removeAttr('disabled')
+                $('#rec_2 :input').removeAttr('readonly');
+                $('#approche_2').removeAttr('disabled');
+                $('#modalite_2').removeAttr('disabled');
+                $('#axetravail_2').removeAttr('disabled');
+                $('#valide_2').fadeIn();
             });
 
             $('#stop1').click(function(){
                 clearInterval(comptage);
                 $(this).attr('disabled','disabled')
                 $('#start1').removeAttr('disabled')
-                $('#init1').removeAttr('disabled')
+                $('#init1').removeAttr('disabled');
+                $('#rec_2 :input').attr('readonly','readonly');
+                $('#approche_2').attr('disabled','disabled');
+                $('#modalite_2').attr('disabled','disabled');
+                $('#axetravail_2').attr('disabled','disabled');
+                $('#valide_2').fadeOut();
             });
 
             $('#init1').click(function(){
@@ -1560,14 +1329,24 @@
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
                 $('#init2').attr('disabled','disabled')
-                $('#stop2').removeAttr('disabled')
+                $('#stop2').removeAttr('disabled');
+                $('#rec_3 :input').removeAttr('readonly');
+                $('#approche_3').removeAttr('disabled');
+                $('#modalite_3').removeAttr('disabled');
+                $('#axetravail_3').removeAttr('disabled');
+                $('#valide_3').fadeIn();
             });
 
             $('#stop2').click(function(){
                 clearInterval(comptage);
                 $(this).attr('disabled','disabled')
                 $('#start2').removeAttr('disabled')
-                $('#init2').removeAttr('disabled')
+                $('#init2').removeAttr('disabled');
+                $('#rec_3 :input').attr('readonly','readonly');
+                $('#approche_3').attr('disabled','disabled');
+                $('#modalite_3').attr('disabled','disabled');
+                $('#axetravail_3').attr('disabled','disabled');
+                $('#valide_3').fadeOut();
             });
 
             $('#init2').click(function(){
@@ -1621,14 +1400,28 @@
                 comptage = setInterval(chrono,10);
                 $(this).attr('disabled','disabled')
                 $('#init3').attr('disabled','disabled')
-                $('#stop3').removeAttr('disabled')
+                $('#stop3').removeAttr('disabled');
+
+                $('#rec_4 :input').removeAttr('readonly');
+                $('#approche_4').removeAttr('disabled');
+                $('#modalite_4').removeAttr('disabled');
+                $('#axetravail_4').removeAttr('disabled');
+
+                $('#valide_4').fadeIn();
             });
 
             $('#stop3').click(function(){
                 clearInterval(comptage);
                 $(this).attr('disabled','disabled')
                 $('#start3').removeAttr('disabled')
-                $('#init3').removeAttr('disabled')
+                $('#init3').removeAttr('disabled');
+
+                $('#rec_4 :input').attr('readonly','readonly');
+                $('#approche_4').attr('disabled','disabled');
+                $('#modalite_4').attr('disabled','disabled');
+                $('#axetravail_4').attr('disabled','disabled');
+
+                $('#valide_4').fadeOut();
             });
 
             $('#init3').click(function(){

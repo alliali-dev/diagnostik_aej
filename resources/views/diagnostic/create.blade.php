@@ -19,8 +19,8 @@
                                     <form id="videoForm" action="{{ route('diagnostik.store') }}" class="icons-tab-steps wizard-circle"
                                           method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="template" value="optin">
-                                    @csrf
-                                    <!-- Step 1 -->
+                                            @csrf
+                                        <!-- Step 1 -->
                                         <h6><i class="step-icon feather icon-info"></i>Information Demandeur</h6>
                                         <fieldset>
                                             <div class="row">
@@ -156,7 +156,10 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="approche" id="lbpresencede3">Presence demandeur</label>
+                                                        <label for="approche" id="lbpresencede3">
+                                                            Présence demandeur
+                                                            <span style="color: red">*</span>
+                                                        </label>
                                                         <select name="rencontre[presencedemandeur]"  id="presencedemandeur" class="form-control">
                                                             <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                             <option value="{{__('PRESENT')}}">{{__('PRESENT')}}</option>
@@ -167,7 +170,10 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="title">Duree de la rencontre</label>
+                                                        <label for="title">
+                                                            Durée de la rencontre
+                                                            <span style="color: red">*</span>
+                                                        </label>
                                                         <input type="text" readonly class="form-control" id="dureerencontre" name="rencontre[dureerencontre]" required>
                                                     </div>
                                                     <div class="form-group text-right mb-0">
@@ -183,10 +189,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                <div class="row">
+                                            <div class="row" id="form-pause">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="approche">Avez-vous entretenu le demandeur avec l'approche SOFT SKILLS</label>
+                                                        <label for="approche">
+                                                            Avez-vous entretenu le demandeur avec l'approche SOFT SKILLS
+                                                            <span style="color: red">*</span>
+                                                        </label>
                                                         <select required name="rencontre[approche]"  id="approche" class="form-control">
                                                             <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                             <option value="{{__('OUI')}}">{{__('OUI')}}</option>
@@ -196,7 +205,10 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="modalite">Modalite de prise en charge</label>
+                                                        <label for="modalite">
+                                                            Modalité de prise en charge
+                                                            <span style="color: red">*</span>
+                                                        </label>
                                                         <select required name="rencontre[modalite]" id="modalite" class="form-control">
                                                             <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                             <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
@@ -206,7 +218,10 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="modalite">Axe de travail</label>
+                                                        <label for="modalite">
+                                                            Axe de travail
+                                                            <span style="color: red">*</span>
+                                                        </label>
                                                         <select required name="rencontre[axetravail]" id="axetravail" class="form-control">
                                                             <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
                                                             <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
@@ -223,23 +238,32 @@
                                                 </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="planaction">Plan d'action</label>
+                                                            <label for="planaction">
+                                                                Plan d'action
+                                                                <span style="color: red">*</span>
+                                                            </label>
                                                             <textarea name="rencontre[planaction]" id="planaction" rows="3" class="form-control" required="">
                                                         </textarea>
                                                         </div>
                                                     </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label for="observation">Observation</label>
+                                                        <label for="observation">
+                                                            Observation
+                                                            <span style="color: red">*</span>
+                                                        </label>
                                                         <textarea name="rencontre[observation]" id="observation" rows="3" class="form-control" required="">
                                                         </textarea>
                                                     </div>
                                                 </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="planaction">Date prochain RDV</label>
-                                                           {{-- <input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control" required>--}}
-                                                            <input type="date" name="rencontre[dateprochainrdv]" class="form-control" required>
+                                                            <label for="planaction">
+                                                                Date prochain RDV
+                                                                <span style="color: red">*</span>
+                                                            </label>
+                                                           {{--<input type="date" name="rencontre[dateprochainrdv]" id="dateprochainrdv" class="form-control" required>--}}
+                                                            <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate1(this)" class="form-control" required>
                                                         </div>
                                                     </div>
                                             </div>
@@ -252,6 +276,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="searchVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -297,8 +322,8 @@
             </div>
         </div>
     </section>
-    <!-- Form wizard with icon tabs section end -->
 
+     <!-- Form wizard with icon tabs section end -->
      <div class="modal fade" id="addAej" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -348,19 +373,43 @@
     <script src="{{ asset('app-assets/js/scripts/forms/wizard-steps.js') }}"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://daokun.webs.com/jquery.stopwatch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     {{--gestion des chronometre--}}
     <script>
-        $(document).ready(function() {
-            $("#dateprochainrdv").datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-            $("#dateprochainrdv").focus(function() {
-                $("#dateprochainrdv").datepicker("show");
-            });
-            $("#dateprochainrdv").focus();
-        });
 
-        $('#dateprochainrdv').change(function () {
+       function checkdate1(elt){
+           var elt = $(elt);
+           var a = moment( Date.now());
+           var b = moment(new Date(elt.val()));
+           var years = b.diff(a,'years');
+           var nbrjour =  b.diff(a, 'days');
+
+           if(nbrjour < 0) {
+               elt.focus();
+               alert('renseignez une date valid svp');
+               return true;
+           }
+
+       }
+
+        function checkdate(elt){
+            var elt = $(elt);
+            var  date = new Date(elt.val());
+            var now = Date.now();
+            var  tmp = now - date
+            if(Math.sign(tmp) !== -1){
+                elt.datepicker({
+                    dateFormat: "yy-mm-dd"
+                }).focus(function() {
+                    elt.val('')
+                    //  $(this).datepicker("show");
+                }).focus();
+                alert('renseignez une date valid svp');
+                return true;
+            }
+        }
+
+        /*$('#dateprochainrdv').change(function () {
             var  date = new Date($(this).val());
             var now = Date.now();
             var  tmp = now - date
@@ -374,7 +423,7 @@
                 alert('renseignez une date valid svp');
                 return true;
             }
-        });
+        });*/
 
         $(function () {
                 var centiemeSeconde = 0;
@@ -413,16 +462,26 @@
 
                 $('#start').click(function () {
                     comptage = setInterval(chrono,10);
-                   $(this).attr('disabled','disabled')
-                   $('#init').attr('disabled','disabled')
-                    $('#stop').removeAttr('disabled')
+                   $(this).attr('disabled','disabled');
+                   $('#init').attr('disabled','disabled');
+                   $('#stop').removeAttr('disabled');
+                   //$("input").attr("disabled", true);
+                    $('#form-pause :input').removeAttr('readonly');
+                    $('#approche').removeAttr('disabled');
+                    $('#modalite').removeAttr('disabled');
+                    $('#axetravail').removeAttr('disabled');
                 });
 
                 $('#stop').click(function(){
                      clearInterval(comptage);
                     $(this).attr('disabled','disabled')
-                    $('#start').removeAttr('disabled')
-                    $('#init').removeAttr('disabled')
+                    $('#start').removeAttr('disabled');
+                    $('#init').removeAttr('disabled');
+                    //$('#approche').attr('disabled','disabled');
+                    $('#form-pause :input').attr('readonly','readonly');
+                    $('#approche').attr('disabled','disabled');
+                    $('#modalite').attr('disabled','disabled');
+                    $('#axetravail').attr('disabled','disabled');
                 });
 
                 $('#init').click(function(){
@@ -817,7 +876,6 @@
         .brandLink, .brandImage {
             display: none;
         }
-
 
         .app-content .wizard > .actions > ul > li.disabled > a[href='#previous'] {
             display: none;

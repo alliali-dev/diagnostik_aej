@@ -255,7 +255,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col">
+                                                {{--<div class="col">
                                                     <div class="form-group">
                                                         <label for="datenaisance" style="font-size: large;">Connaissance du métier / activité</label>
                                                     </div>
@@ -276,7 +276,7 @@
                                                             <input type="radio" name="conmetieractiv" id="conmetieractiv" value="Très bien">&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div>--}}
 
                                                {{-- <div class="col">
                                                     <div class="form-group">
@@ -372,7 +372,8 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col">
+
+                                               {{-- <div class="col">
                                                     <div class="form-group">
                                                         <label for="" style="font-size: large;">Connaissance des exigences du marché</label>
                                                     </div>
@@ -393,7 +394,7 @@
                                                             <input type="radio" name="conexigmarch" id="conexigmarch" value="Très bien">&nbsp;&nbsp;&nbsp;Très bien
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="" style="font-size: large;">Dépôt de dossier en entreprise</label>
@@ -417,13 +418,19 @@
                                                  <div class="row">
                                                      <div class="col-6">
                                                          <div class="form-group">
-                                                             <label>Guide d'Entretient</label>
+                                                             <label>
+                                                                 Guide d'Entretien
+                                                                 <span style="color: red">*</span>
+                                                             </label>
                                                              <input type="file" name="entretient" class="form-control">
                                                          </div>
                                                      </div>
                                                      <div class="col-6">
                                                          <div class="form-group">
-                                                             <label>Grille Diagnostic</label>
+                                                             <label>
+                                                                 Grille Diagnostic
+                                                                 <span style="color: red">*</span>
+                                                             </label>
                                                              <input type="file" name="diagnostic" class="form-control">
                                                          </div>
                                                      </div>

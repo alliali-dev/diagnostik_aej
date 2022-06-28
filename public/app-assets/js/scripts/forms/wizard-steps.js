@@ -79,7 +79,8 @@ $(".icons-tab-steps").steps({
     },
     onFinished: function (event, currentIndex) {
         // alert("Submitted!");
-        form[0].submit();
+        //console.log(form[0]);
+       form[0].submit();
     }
 });
 

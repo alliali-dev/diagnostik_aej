@@ -119,6 +119,7 @@
                             <th>DIPLOME</th>
                             <th>DUREE (h:m:s:ms)</th>
                             <th>DATE RDV</th>
+                            <th>MODALITE</th>
                             <th>AXE TRAVAIL</th>
                             <th>CONSEILLER REFERENT</th>
                         </tr>
@@ -133,11 +134,12 @@
                                    <td>{{ $item->suivirencontre->diplome }}</td>
                                    <td>{{ $item->dureerencontre }}</td>
                                    <td>{{ $item->dateprochainrdv }}</td>
+                                   <td>{{ $item->modalite }}</td>
                                    <td>{{ $item->axetravail }}</td>
                                    <td>{{ \App\Models\User::find($item->user_id)->name }}</td>
                                    <td class="float-right">
                                        <a href="{{ route('chefagence.detaildemandeur',$item->suivirencontre->id)  }}" target="_blank"
-                                          class="btn btn-primary white waves-effect waves-light">
+                                          class="badge badge-primary white waves-effect waves-light">
                                            Details
                                        </a>
                                    </td>

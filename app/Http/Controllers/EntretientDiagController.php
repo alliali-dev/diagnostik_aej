@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Yajra\DataTables\Facades\DataTables;
 
 class EntretientDiagController extends Controller
 {
@@ -21,8 +22,78 @@ class EntretientDiagController extends Controller
         // $this->middleware('role:Admin')->except(['logoutAs']);
     }
 
-    public function msg_profile(){
+    public function msg_profile(Request $request){
+        /*$url        =  "http://localhost:8888/aejtechnologie/all_demandeur";
+        $response   =   Http::get($url);
+        $data       =   json_decode($response->body());*/
         return view('entretientdiag.msg_profile');
+    }
+
+    public function loadAllDemandeur(Request $request){
+        if ($request->ajax()) {
+            $url =  "http://localhost:8888/aejtechnologie/all_demandeur";
+            $response   =   Http::get($url);
+            $data       =   json_decode($response->body());
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+
+                    $actionBtn = '';
+                    $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
+                                    <i class="feather icon-arrow-right"></i>
+                                    Passe entretient
+                                   </a>';
+
+                    return $actionBtn;
+                })
+                ->editColumn('matriculeaej', function ($row){
+                    $matricule_aej = $row->matriculeaej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->nom ? $row->nom : ' '.' '. $row->prenoms ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    return $row->sexe->libelle;
+                })
+                ->editColumn('lieuhabitation', function ($row){
+                    $lieuhabitation = '';
+                    if($row->tlieuhabitation){
+                        $lieuhabitation = $row->tlieuhabitation->nom;
+                    }
+                    return $lieuhabitation;
+                })
+                ->editColumn('niveauetude', function ($row){
+                    $niveauetude = "";
+                     if($row->niveauetude){
+                         $niveauetude = $row->niveauetude->libelle;
+                     }
+                    return $niveauetude;
+                })
+                ->editColumn('uniteexperience', function ($row){
+                    $uniteexperience = "";
+                    if($row->uniteexperience){
+                        $uniteexperience = $row->uniteexperience->libelle;
+                    }
+                    return $uniteexperience;
+                })
+                ->editColumn('nombreexperience', function ($row){
+                    $nombreexperience = $row->nombreexperience;
+                    return $nombreexperience;
+                })
+                ->editColumn('conseiller', function ($row){
+                    $conseiller = "";
+                    if($row->conseilleremploi){
+                        $conseiller = $row->conseilleremploi->last_name .' '. $row->conseilleremploi->first_name ;
+                    }
+                    return $conseiller;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
     }
 
     public function index(){
