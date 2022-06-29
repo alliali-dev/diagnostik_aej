@@ -318,6 +318,7 @@
       <workItem from="1656062632833" duration="12752000" />
       <workItem from="1656343172416" duration="23183000" />
       <workItem from="1656428330754" duration="11642000" />
+      <workItem from="1656494004374" duration="368000" />
     </task>
     <task id="LOCAL-00001" summary="after test local">
       <created>1624379200013</created>
@@ -592,7 +593,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656449848563</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Correction du 29 juin 2022">
+      <created>1656494282033</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1656494282033</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Correction du 29 juin 2022">
+      <created>1656494470258</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1656494470258</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +635,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="entretien diagnostique" />
     <MESSAGE value="mise a jour desse en cour" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise a jour desse en cour" />
+    <MESSAGE value="Correction du 29 juin 2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction du 29 juin 2022" />
   </component>
   <component name="WindowStateProjectService">
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656434974116">

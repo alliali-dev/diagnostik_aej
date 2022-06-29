@@ -148,6 +148,8 @@ class EntretientDiagController extends Controller
                 'diagnostic' => 'required|mimes:doc,docx,pdf|max:1024',
             ],
             [
+                'entretient.required'       => 'la fiche d\'entretien est obligatoire',
+                'diagnostic.required'       => 'la fiche diagnostic est obligatoire',
                 'entretient.mimes'          => 'la fiche d\'entretien doit être un fichier de type : pdf,doc,docx.',
                 'diagnostic.mimes'          => 'la fiche d\'entretien doit être un fichier de type : pdf,doc,docx.',
                 'entretient.max'            => 'Ce fichier a une taille supérieure à 1Mo.',
