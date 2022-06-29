@@ -269,7 +269,7 @@ class DiagnostikController extends Controller
                                             data-rencontre_id="'.$row->id .'"
                                             data-typerencontre="2">
                                             Traiter 2eme RDV
-                                            i class="feather icon-edit"></i></a>';
+                                            <i class="feather icon-edit"></i></a>';
                         }
                     }
                     $actionBtn .='<a class="dropdown-item" data-id="'.$row->id .'"
