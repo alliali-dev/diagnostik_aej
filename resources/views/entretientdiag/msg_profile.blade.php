@@ -3,7 +3,7 @@
 @section('subTitle') Mise à jour profil @endsection
 @section('content')
     <h2 style="color: orangered" align="center">
-        Veuillez effectuer la mise à jour du profil du demandeur concerné par l'entretien, diagnostique que vous allez démarrer !!!
+        Veuillez, effectuer la mise à jour du profil du demandeur concerné par l'entretien.
     </h2>
    {{-- <a align="center" class="btn btn-primary" href="{{ route('entretient.create') }}">
         <span><i class="feather icon-plus"></i>Effectuer la mise à jour</span>
