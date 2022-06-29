@@ -71,6 +71,7 @@
                             <th>Plan Action</th>
                             <th>Duree Rencontre</th>
                             <th>Status</th>
+                            <th>Status RDV</th>
                             <th>Date de Creation</th>
                         </tr>
                         </thead>
