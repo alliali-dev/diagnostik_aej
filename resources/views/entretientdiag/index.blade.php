@@ -85,7 +85,7 @@
                                 <td>
                                     <a class="badge badge-success mr-1" href="{{ route('diagnostik.create',$item->matriculeaej) }}" style="font-size: small;">
                                         <i class="feather icon-arrow-right"></i>
-                                        Passer un entretien.
+                                        Effectuer un entretien
                                     </a>
                                 </td>
                                 {{--<td class="float-right">
