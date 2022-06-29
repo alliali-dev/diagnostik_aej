@@ -144,8 +144,8 @@ class EntretientDiagController extends Controller
                 'diagnostic' => $request->diagnostic,
             ],
             [
-                'entretient' => 'required,mimes:doc,docx,pdf|max:1024',
-                'diagnostic' => 'required,mimes:doc,docx,pdf|max:1024',
+                'entretient' => 'required|mimes:doc,docx,pdf|max:1024',
+                'diagnostic' => 'required|mimes:doc,docx,pdf|max:1024',
             ],
             [
                 'entretient.mimes'          => 'la fiche d\'entretien doit être un fichier de type : pdf,doc,docx.',
