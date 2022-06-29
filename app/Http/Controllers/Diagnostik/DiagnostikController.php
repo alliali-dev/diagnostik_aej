@@ -222,7 +222,7 @@ class DiagnostikController extends Controller
 
     public function updateTerminer(Request $request){
         $rencontre = Rencontre::find($request->id);
-        $rencontre->update(['findrdv' => true]);
+        $rencontre->update(['findrdv' => true,'status' => true]);
         session()->flash('success','Terminer la procédure d\'entretien ?');
         return back();
     }

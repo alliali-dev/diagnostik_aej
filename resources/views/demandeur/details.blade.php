@@ -63,35 +63,48 @@
                     <table class="table" id="rec" style="width: 100%;">
                         <thead>
                         <tr>
-                            <th>Date Rendez-Vous</th>
+
                             <th>Type Rencontre</th>
                             <th>Modalite</th>
                             <th>Axe Travail</th>
                             <th>Approche Skill</th>
                             <th>Plan Action</th>
                             <th>Duree Rencontre</th>
-                            <th>Status</th>
-                            <th>Status RDV</th>
+                            <th>Date Rendez-Vous</th>
+                            <th>Statut Entretien</th>
+                            <th>Statut RDV</th>
                             <th>Date de Creation</th>
                         </tr>
                         </thead>
                         <tbody id="rencontreRow">
                         @forelse($rencontres as $item)
                             <tr>
-                                <th>{{ \Carbon\Carbon::parse($item->dateprochainrdv)->format('M d, Y')}}</th>
                                 <th>Rencontre {{ $item->typerencontre }}</th>
                                 <th>{{ $item->modalite }}</th>
                                 <th>{{ $item->axetravail }}</th>
                                 <th>{{ $item->approche }}</th>
                                 <th>{{ $item->planaction }}</th>
                                 <th>{{ $item->dureerencontre }}</th>
+                                <th>{{ \Carbon\Carbon::parse($item->dateprochainrdv)->format('M d, Y')}}</th>
                                 @if($item->status)
-                                    <th><span class="badge badge-success">valide</span></th>
+                                    <th>
+                                        <span class="badge badge-success">
+                                            valide
+                                        </span>
+                                    </th>
                                 @else
-                                    <th><span class="badge badge-warning">en cour</span></th>
+                                    <th>
+                                        <span class="badge badge-warning">
+                                            en cour
+                                        </span>
+                                    </th>
                                 @endif
                                 @if($item->findrdv)
-                                    <th><span class="badge badge-secondary">terminer</span></th>
+                                    <th>
+                                        <span class="badge badge-secondary">
+                                            terminer
+                                        </span>
+                                    </th>
                                 @endif
                                 <th>{{  \Carbon\Carbon::parse($item->created_at)->format('M d, Y')}}</th>
                             </tr>
