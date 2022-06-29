@@ -63,7 +63,7 @@ class DiagnostikController extends Controller
 
                     $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
                                     <i class="feather icon-arrow-right"></i>
-                                    Passe entretient
+                                    Effectuer un entretien
                                    </a>';
 
                     return $actionBtn;
