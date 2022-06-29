@@ -401,13 +401,13 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>
-                                                            <input type="radio" name="depdossent" id="depdossent" value="pas du tout" checked>&nbsp;&nbsp;&nbsp;Pas du tout
+                                                            <input type="radio" name="depdossent" id="depdossent" value="pas du tout" checked>Pas du tout
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="depdossent" id="depdossent" value="souvent">&nbsp;&nbsp;&nbsp;Souvent
+                                                            <input type="radio" name="depdossent" id="depdossent" value="souvent">Souvent
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="depdossent" id="depdossent" value="régulièrement">&nbsp;&nbsp;&nbsp;Régulièrement
+                                                            <input type="radio" name="depdossent" id="depdossent" value="régulièrement">Régulièrement
                                                         </label>
                                                     </div>
                                                 </div>

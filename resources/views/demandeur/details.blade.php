@@ -89,6 +89,9 @@
                                 @else
                                     <th><span class="badge badge-warning">en cour</span></th>
                                 @endif
+                                @if($item->findrdv)
+                                    <th><span class="badge badge-secondary">terminer</span></th>
+                                @endif
                                 <th>{{  \Carbon\Carbon::parse($item->created_at)->format('M d, Y')}}</th>
                             </tr>
                         @empty
