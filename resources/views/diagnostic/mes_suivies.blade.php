@@ -842,7 +842,7 @@
                             {{ Form::open(['route'=>'diagnostik.updateterminer', 'files'=>true , 'methode' => 'POST']) }}
                                 <div class="modal-body">
                                     <p class="text-center">
-                                        Voulez vous terminer la procédure d'entretien?
+                                        Voulez-vous terminer la procédure d'entretien ?
                                     </p>
                                     <input type="hidden" name="id" id="id" value="">
                                 </div>
