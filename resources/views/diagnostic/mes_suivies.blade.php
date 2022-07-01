@@ -368,8 +368,8 @@
                                                 <label for="planaction">
                                                     Date prochain RDV <span style="color: red">*</span>
                                                 </label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
-                                                {{--<input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>--}}
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
+                                                {{--<input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -642,7 +642,7 @@
                                                 <label for="planaction">
                                                     Date prochain RDV <span style="color: red">*</span>
                                                 </label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -783,7 +783,7 @@
                                                     Date prochain RDV
                                                     <span style="color: red">*</span>
                                                 </label>
-                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
+                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -878,30 +878,31 @@
 
         function checkdate(elt){
             var elt = $(elt);
-            var a = moment( Date.now());
+           /* var a = moment( Date.now());
             var b = moment(new Date(elt.val()));
             var years = b.diff(a,'years');
             var nbrjour =  b.diff(a, 'days');
 
-            if(nbrjour < 0) {
+            if(nbrjour <= 0) {
                 elt.focus();
                 alert('renseignez une date valid svp');
                 return true;
-            }
-           /* var elt = $(elt);
+            }*/
+            var elt = $(elt);
             var  date = new Date(elt.val());
             var now = Date.now();
             var  tmp = now - date
             if(Math.sign(tmp) !== -1){
                 elt.datepicker({
-                    dateFormat: "yy-mm-dd"
+                    dateFormat: "yy-mm-dd",
+                    minDate: +1
                 }).focus(function() {
                     elt.val('')
                     //  $(this).datepicker("show");
                 }).focus();
                 alert('renseignez une date valid svp');
                 return true;
-            }*/
+            }
         }
 
         $(function () {
