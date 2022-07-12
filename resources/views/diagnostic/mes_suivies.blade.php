@@ -234,7 +234,7 @@
                                        <div class="col-12">
                                             <div class="form-group">
                                                 <label for="planaction">Date prochain RDV</label>
-                                                <input type="text" name="dateprochainrdv" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
+                                                <input type="date" name="dateprochainrdv" onchange="checkdate1(this)" id="dateprochainrdv2" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -368,7 +368,7 @@
                                                 <label for="planaction">
                                                     Date prochain RDV <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate1(this)" id="dateprochainrdv2" class="form-control" required>
                                                 {{--<input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv2" class="form-control" required>--}}
                                             </div>
                                         </div>
@@ -506,7 +506,7 @@
                                                 <label for="planaction">
                                                     Date prochain RDV <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv3" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate1(this)" id="dateprochainrdv3" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -642,7 +642,7 @@
                                                 <label for="planaction">
                                                     Date prochain RDV <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv4" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate1(this)" id="dateprochainrdv4" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -783,7 +783,7 @@
                                                     Date prochain RDV
                                                     <span style="color: red">*</span>
                                                 </label>
-                                                <input type="text" name="rencontre[dateprochainrdv]" onchange="checkdate(this)" id="dateprochainrdv5" class="form-control" required>
+                                                <input type="date" name="rencontre[dateprochainrdv]" onchange="checkdate1(this)" id="dateprochainrdv5" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -875,6 +875,20 @@
             var modal = $(this);
             modal.find('.modal-body #id').val(id);
         });
+
+        function checkdate1(elt){
+            var elt = $(elt);
+            var a = moment( Date.now());
+            var b = moment(new Date(elt.val()));
+            var years = b.diff(a,'years');
+            var nbrjour =  b.diff(a, 'days');
+
+            if(nbrjour < 0) {
+                elt.focus();
+                alert('renseignez une date valid svp');
+                return true;
+            }
+        }
 
         function checkdate(elt){
             var elt = $(elt);

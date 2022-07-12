@@ -389,7 +389,6 @@
                alert('renseignez une date valid svp');
                return true;
            }
-
        }
 
         function checkdate(elt){

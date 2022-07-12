@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/demandeur/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/demandeur/details.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,13 +323,7 @@
       <workItem from="1656494004374" duration="3981000" />
       <workItem from="1656665795812" duration="756000" />
       <workItem from="1656783758476" duration="1399000" />
-    </task>
-    <task id="LOCAL-00006" summary="excel export">
-      <created>1635502292606</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1635502292607</updated>
+      <workItem from="1657624814055" duration="1391000" />
     </task>
     <task id="LOCAL-00007" summary="160 aejtechnologie">
       <created>1635502431282</created>
@@ -668,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656665900504</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="init fix bug">
+      <created>1657625130340</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1657625130341</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +698,8 @@
     <MESSAGE value="mise a jour desse en cour" />
     <MESSAGE value="Correction du 29 juin 2022" />
     <MESSAGE value="mise a jour" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise a jour" />
+    <MESSAGE value="init fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="init fix bug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656434974116">
@@ -710,12 +711,12 @@
       <screen x="0" y="25" width="1680" height="958" />
     </state>
     <state x="349" y="140" key="SettingsEditor/0.25.1680.958@0.25.1680.958" timestamp="1650615026521" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2" timestamp="1656665903335">
+    <state x="440" y="226" key="Vcs.Push.Dialog.v2" timestamp="1657625134983">
       <screen x="0" y="25" width="1680" height="956" />
     </state>
     <state x="440" y="225" key="Vcs.Push.Dialog.v2/0.25.1680.950@0.25.1680.950" timestamp="1656433316236" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.953@0.25.1680.953" timestamp="1656449850178" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.954@0.25.1680.954" timestamp="1656496340287" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1656665903335" />
+    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1657625134983" />
   </component>
 </project>
