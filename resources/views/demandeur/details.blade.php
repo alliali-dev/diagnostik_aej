@@ -105,6 +105,12 @@
                                             terminer
                                         </span>
                                     </th>
+                                @else
+                                    <th>
+                                        <span class="badge badge-secondary">
+                                            ...
+                                        </span>
+                                    </th>
                                 @endif
                                 <th>{{  \Carbon\Carbon::parse($item->created_at)->format('M d, Y')}}</th>
                             </tr>
