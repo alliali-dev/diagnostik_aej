@@ -819,4 +819,8 @@ class DiagnostikController extends Controller
     {
         //
     }
+
+    public function modif(){
+        return view('diagnostic.modif');
+    }
 }
