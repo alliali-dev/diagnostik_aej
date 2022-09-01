@@ -51,6 +51,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-motifinscription" name="motifinscription" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="false">
                                                                 <option value="">sélectionnez</option>
+                                                                @foreach ($demandeur_parameter->motifinscription as $motifinscription)
+                                                                    <option value="{{$motifinscription->id}}">{{$motifinscription->libelle}}</option>
+                                                                @endforeach
                                                             </select>
 
                                                         </div>
@@ -69,7 +72,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-typesituationhandicap" name="typesituationhandicap" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->typesituationhandicap as $typesituationhandicap)
+                                                                    <option value="{{$typesituationhandicap->id}}">{{$typesituationhandicap->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -91,7 +96,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-categoriedemandeur" name="categoriedemandeur" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->categoriedemandeur as $categoriedemandeur)
+                                                                  <option value="{{$categoriedemandeur->id}}">{{$categoriedemandeur->libelle}}</option>  
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -174,7 +181,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-paysnationalite" name="paysnationalite" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->pays as $pays)
+                                                                    <option value="{{$pays->id}}">{{$pays->nom}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -204,11 +213,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-situationmatrimoniale" name="situationmatrimoniale" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-                                                                <option value="1">Marie(e)</option>
-                                                                <option selected="selected" value="2">En concubinage</option>
-                                                                <option value="3">Celibataire</option>
-                                                                <option value="4">Veuf ou Veuve</option>
-                                                                <option value="5">Divorce(e)</option>
+                                                                @foreach ($demandeur_parameter->situationamatrimoniale as $situationamatrimoniale)
+                                                                    <option value="{{$situationamatrimoniale->id}}">{{$situationamatrimoniale->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -221,10 +228,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-typepieceidentite" name="typepieceidentite" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-                                                                <option selected="selected" value="1">CNI</option>
-                                                                <option value="2">Attestation</option>
-                                                                <option value="3">Passeport</option>
-                                                                <option value="4">Permis de conduire</option>
+                                                                @foreach ($demandeur_parameter->typepieceidentite as $typepieceidentite)
+                                                                    <option value="{{$typepieceidentite->id}}">{{$typepieceidentite->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -235,7 +241,7 @@
                                                             Numéro de pièce </label>
 
                                                         <!-- Text -->
-                                                        <input type="text" name="numerocni" id="Form-field-DemandeurEmploiModel-numerocni" value="C0071513137" placeholder="" class="form-control" autocomplete="off" maxlength="255" required="">
+                                                        <input type="text" name="numerocni" id="Form-field-DemandeurEmploiModel-numerocni" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255" required="">
                                                     </div>
                                                     <div class="form-group widget-field span-right col-6"></div>
                                                 </div>
@@ -253,7 +259,7 @@
 
 
                                                         <!-- Text -->
-                                                        <input type="text" name="divisionregionale" id="Form-field-DemandeurEmploiModel-divisionregionale" value="YOPOUGON" placeholder="" class="form-control" autocomplete="off" maxlength="255" disabled="disabled">
+                                                        <input type="text" name="divisionregionale" id="Form-field-DemandeurEmploiModel-divisionregionale" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255" disabled="disabled">
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6  " data-field-name="paysresidence" id="Form-field-DemandeurEmploiModel-paysresidence-group"><label for="Form-field-DemandeurEmploiModel-paysresidence">
                                                             Pays residence </label>
@@ -264,7 +270,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-paysresidence" name="paysresidence" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->pays as $pays)
+                                                                    <option value="{{$pays->id}}">{{$pays->nom}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -279,7 +287,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-villeresidence" name="villeresidence" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->ville as $ville)
+                                                                    <option value="$ville->id">{{$ville->nom}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -292,7 +302,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-agencecnps" name="agencecnps" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->agencecnps as $agencecnps)
+                                                                    <option value="{{$agencecnps->id}}">{{$agencecnps->nom}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -307,7 +319,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-tlieuhabitation" name="tlieuhabitation" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->ville as $ville)
+                                                                    <option value="$ville->id">{{$ville->nom}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -326,14 +340,14 @@
 
 
                                                         <!-- Text -->
-                                                        <input type="text" name="nomdupere" id="Form-field-DemandeurEmploiModel-nomdupere" value="Ani gbalou Félix" placeholder="" class="form-control" autocomplete="off" maxlength="255">
+                                                        <input type="text" name="nomdupere" id="Form-field-DemandeurEmploiModel-nomdupere" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255">
                                                     </div>
                                                     <div class="form-group  text-field span-right col-6  " data-field-name="nomdelamere" id="Form-field-DemandeurEmploiModel-nomdelamere-group"><label for="Form-field-DemandeurEmploiModel-nomdelamere">
                                                             Nom et prénoms de la mère </label>
 
 
                                                         <!-- Text -->
-                                                        <input type="text" name="nomdelamere" id="Form-field-DemandeurEmploiModel-nomdelamere" value="Gnepo zrohonon Martine" placeholder="" class="form-control" autocomplete="off" maxlength="255">
+                                                        <input type="text" name="nomdelamere" id="Form-field-DemandeurEmploiModel-nomdelamere" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255">
                                                     </div>
                                                 </div>
                                                 <div class="form-group  section-field span-full   " data-field-name="section2" id="Form-field-DemandeurEmploiModel-section2-group">
@@ -353,7 +367,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-niveauetude" name="niveauetude" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->niveauetude as $niveauetude)
+                                                                    <option value="{{$niveauetude->id}}">{{$niveauetude->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -366,7 +382,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-diplome" name="diplome" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->diplome as $diplome)
+                                                                    <option value="{{$diplome->id}}">{{$diplome->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -381,7 +399,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-paysdiplome" name="paysdiplome" class="form-control custom-select select2--accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->pays as $pays)
+                                                                    <option value="{{$pays->id}}">{{$pays->nom}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -403,7 +423,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-typeenseignement" name="typeenseignement" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->typeenseignement as $typeenseignement)
+                                                                    <option value="{{$typeenseignement->id}}">{{$typeenseignement->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -416,7 +438,7 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-typeetablissement" name="typeetablissement" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-                                                                <option value="1">EFQ</option>
+                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -451,7 +473,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-specialite" name="specialite" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->specialite as $specialite)
+                                                                    <option value="{{$specialite->id}}">{{$specialite->libelle}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -474,7 +498,9 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-uniteexperience" name="uniteexperience" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
+                                                                @foreach ($demandeur_parameter->uniteexperience as $uniteexperience)
+                                                                   <option value="{{$uniteexperience->id}}">{{$uniteexperience->libelle}}</option> 
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
