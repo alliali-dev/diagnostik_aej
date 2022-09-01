@@ -824,6 +824,7 @@ class DiagnostikController extends Controller
         $response = Http::get($url);
         $demandeur_parameter = json_decode($response->body());
 
+
         /*$ville                = $demandeur_parameter->ville;
         $sexe                   = $demandeur_parameter->sexe;
         $statutdemandeur        = $demandeur_parameter->statutdemandeur;
@@ -844,9 +845,21 @@ class DiagnostikController extends Controller
         $situationamatrimoniale = $demandeur_parameter->situationamatrimoniale;
         $commune                = $demandeur_parameter->commune;*/
 
-       // dd($commune,$ville,$soussecteuractivite,$divisionregionaleaej,$typeenseignement,$typesituationhandicap);
+        //$ville,$soussecteuractivite,$divisionregionaleaej,$typeenseignement,$typesituationhandicap
+
+        //dd($demandeur_parameter->sexe);
+
+        $sexes = [];
+        foreach($demandeur_parameter->sexe as $item){
+            $sexes[$item->id] = $item->libelle;
+        }
+
+        $pays = [];
+        foreach($demandeur_parameter->pays as $item){
+            $pays[$item->id] = $item->nom;
+        }
 
 
-        return view('diagnostic.modif',compact('demandeur_parameter'));
+        return view('diagnostic.modif',compact('demandeur_parameter','sexes','pays'));
     }
 }

@@ -97,7 +97,7 @@
                                                             <select id="Form-field-DemandeurEmploiModel-categoriedemandeur" name="categoriedemandeur" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
                                                                 @foreach ($demandeur_parameter->categoriedemandeur as $categoriedemandeur)
-                                                                  <option value="{{$categoriedemandeur->id}}">{{$categoriedemandeur->libelle}}</option>  
+                                                                  <option value="{{$categoriedemandeur->id}}">{{$categoriedemandeur->libelle}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -162,7 +162,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTlieunaissance-tlieunaissance">
                                                             <!-- Dropdown -->
-                                                            <select name="tlieunaissance" class="form-control" data-placeholder="">
+                                                           <select name="tlieunaissance" class="form-control" data-placeholder="">
                                                                 <option value="">sélectionnez</option>
                                                                 @foreach($demandeur_parameter->commune as $commune)
                                                                     <option value="{{$commune->id}}">{{ $commune->nom }}</option>
@@ -179,12 +179,13 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formPaysnationalite-paysnationalite">
                                                             <!-- Dropdown -->
-                                                            <select id="Form-field-DemandeurEmploiModel-paysnationalite" name="paysnationalite" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
+                                                            {!! Form::select('paysnationalite', $pays, null, ['placeholder' => 'sélectionnez','class' => 'form-control select2-pays']) !!}
+                                                            {{--<select id="Form-field-DemandeurEmploiModel-paysnationalite" name="paysnationalite" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
                                                                 @foreach ($demandeur_parameter->pays as $pays)
                                                                     <option value="{{$pays->id}}">{{$pays->nom}}</option>
                                                                 @endforeach
-                                                            </select>
+                                                            </select>--}}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6  " data-field-name="sexe" id="Form-field-DemandeurEmploiModel-sexe-group"><label for="Form-field-DemandeurEmploiModel-sexe">
@@ -193,21 +194,21 @@
 
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formSexe-sexe">
+                                                            {!! Form::select('sexe', $sexes, null, ['placeholder' => 'sélectionnez','class' => 'form-control select2-sexe']) !!}
                                                             <!-- Dropdown -->
-                                                            <select id="Form-field-DemandeurEmploiModel-sexe" name="sexe" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
+                                                           {{-- <select id="Form-field-DemandeurEmploiModel-sexe" name="sexe" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-                                                                @foreach($demandeur_parameter->sexe as $sexe)
+                                                                --}}{{--{!! Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Pick a size...']) !!}--}}{{--
+                                                               @foreach($demandeur_parameter->sexe as $sexe)
                                                                     <option value="{{$sexe->id}}">{{ $sexe->libelle }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                                @endforeach--}}{{--
+                                                           </select>--}}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group  widget-field span-left col-6  " data-field-name="situationmatrimoniale" id="Form-field-DemandeurEmploiModel-situationmatrimoniale-group"><label for="Form-field-DemandeurEmploiModel-situationmatrimoniale">
                                                             Situation matrimoniale </label>
-
-
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formSituationmatrimoniale-situationmatrimoniale">
                                                             <!-- Dropdown -->
@@ -438,7 +439,7 @@
                                                             <!-- Dropdown -->
                                                             <select id="Form-field-DemandeurEmploiModel-typeetablissement" name="typeetablissement" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-                                                
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -499,7 +500,7 @@
                                                             <select id="Form-field-DemandeurEmploiModel-uniteexperience" name="uniteexperience" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
                                                                 @foreach ($demandeur_parameter->uniteexperience as $uniteexperience)
-                                                                   <option value="{{$uniteexperience->id}}">{{$uniteexperience->libelle}}</option> 
+                                                                   <option value="{{$uniteexperience->id}}">{{$uniteexperience->libelle}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -533,4 +534,12 @@
             </div>
         </div>
     </section>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.select2-sexe').select2();
+            $('.select2-pays').select2();
+        });
+    </script>
 @endsection
