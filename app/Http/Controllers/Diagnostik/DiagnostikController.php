@@ -618,7 +618,6 @@ class DiagnostikController extends Controller
         }
     }
 
-
     public function getRec5(Request $request)
     {
         if ($request->ajax()) {
@@ -661,8 +660,6 @@ class DiagnostikController extends Controller
                 ->make(true);
         }
     }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -823,6 +820,33 @@ class DiagnostikController extends Controller
     }
 
     public function modif(){
-        return view('diagnostic.modif');
+        $url =  "https://agenceemploijeunes.ci/site/demandeur/parameter";
+        $response = Http::get($url);
+        $demandeur_parameter = json_decode($response->body());
+
+        /*$ville                = $demandeur_parameter->ville;
+        $sexe                   = $demandeur_parameter->sexe;
+        $statutdemandeur        = $demandeur_parameter->statutdemandeur;
+        $pays                   = $demandeur_parameter->pays;
+        $motifinscription       = $demandeur_parameter->motifinscription;
+        $typepieceidentite      = $demandeur_parameter->typepieceidentite;
+        $niveauetude            = $demandeur_parameter->niveauetude;
+        $diplome                = $demandeur_parameter->diplome;
+        $specialite             = $demandeur_parameter->specialite;
+        $secteuractivite        = $demandeur_parameter->secteuractivite;
+        $soussecteuractivite    = $demandeur_parameter->soussecteuractivite;
+        $divisionregionaleaej   = $demandeur_parameter->divisionregionaleaej;
+        $typeenseignement       = $demandeur_parameter->typeenseignement;
+        $typesituationhandicap  = $demandeur_parameter->typesituationhandicap;
+        $uniteexperience        = $demandeur_parameter->uniteexperience;
+        $categoriedemandeur     = $demandeur_parameter->categoriedemandeur;
+        $agencecnps             = $demandeur_parameter->agencecnps;
+        $situationamatrimoniale = $demandeur_parameter->situationamatrimoniale;
+        $commune                = $demandeur_parameter->commune;*/
+
+       // dd($commune,$ville,$soussecteuractivite,$divisionregionaleaej,$typeenseignement,$typesituationhandicap);
+
+
+        return view('diagnostic.modif',compact('demandeur_parameter'));
     }
 }
