@@ -819,11 +819,14 @@ class DiagnostikController extends Controller
         //
     }
 
-    public function modif(){
-        $url =  "https://agenceemploijeunes.ci/site/demandeur/parameter";
-        $response = Http::get($url);
-        $demandeur_parameter = json_decode($response->body());
+    public function modif($matricule){
 
+        $url_demandeur_edit     = "https://agenceemploijeunes.ci/site/demandeur/edit/".$matricule;
+        $response_edit          = Http::get($url_demandeur_edit);
+        $demandeur_edit         = json_decode($response_edit->body());
+        $url                    =  "https://agenceemploijeunes.ci/site/demandeur/parameter";
+        $response               = Http::get($url);
+        $demandeur_parameter    = json_decode($response->body());
 
         /*$ville                = $demandeur_parameter->ville;
         $sexe                   = $demandeur_parameter->sexe;
@@ -859,7 +862,11 @@ class DiagnostikController extends Controller
             $pays[$item->id] = $item->nom;
         }
 
+        //dd($demandeur_edit->sexe_id,$sexes);
 
-        return view('diagnostic.modif',compact('demandeur_parameter','sexes','pays'));
+        //dd($sexes);
+
+
+        return view('diagnostic.modif',compact('demandeur_parameter','sexes','pays','demandeur_edit'));
     }
 }

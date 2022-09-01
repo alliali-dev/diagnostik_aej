@@ -80,7 +80,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/getRec5', [DiagnostikController::class,'getRec5'])->name('getrec5');
     // la route modification
 
-    Route::get('/modif', [DiagnostikController::class,'modif'])->name('modif');
+    Route::get('/modif/{matricule?}', [DiagnostikController::class,'modif'])->name('modif');
 
     // route d'exportation in excell  {{route('diagnostik.export_rc1)}}
     Route::get('/export/recontre1','DiagnostikController@exportRencontre1')->name('export_rc1');

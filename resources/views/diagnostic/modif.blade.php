@@ -194,7 +194,7 @@
 
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formSexe-sexe">
-                                                            {!! Form::select('sexe', $sexes, null, ['placeholder' => 'sélectionnez','class' => 'form-control select2-sexe']) !!}
+                                                            {!! Form::select('sexe_id', $sexes, $demandeur_edit->sexe_id, ['class' => 'form-control select2-sexe']) !!}
                                                             <!-- Dropdown -->
                                                            {{-- <select id="Form-field-DemandeurEmploiModel-sexe" name="sexe" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>

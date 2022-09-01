@@ -19,18 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="diagnostic">
-      <change afterPath="$PROJECT_DIR$/public/select2/select2.full.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/select2/select2.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/diagnostik_aej.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/diagnostik_aej.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="diagnostic select 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/modif.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/modif.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/styles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/styles.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,14 +338,7 @@
       <workItem from="1659533565300" duration="565000" />
       <workItem from="1661168684821" duration="581000" />
       <workItem from="1661246098279" duration="569000" />
-      <workItem from="1662040955576" duration="7545000" />
-    </task>
-    <task id="LOCAL-00010" summary="test">
-      <created>1635930706420</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1635930706420</updated>
+      <workItem from="1662040955576" duration="9612000" />
     </task>
     <task id="LOCAL-00011" summary="test">
       <created>1636455905174</created>
@@ -689,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662045664621</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="diagnostic select 2">
+      <created>1662051170561</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1662051170562</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -722,7 +716,8 @@
     <MESSAGE value="init fix bug" />
     <MESSAGE value="date in diagnostik suivie" />
     <MESSAGE value="diagnostic" />
-    <option name="LAST_COMMIT_MESSAGE" value="diagnostic" />
+    <MESSAGE value="diagnostic select 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="diagnostic select 2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656434974116">
@@ -730,14 +725,14 @@
     </state>
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.950@0.25.1680.950" timestamp="1656434974116" />
     <state x="578" y="262" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.956@0.25.1680.956" timestamp="1656364840259" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1662045666421">
+    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1662051188861">
       <screen x="0" y="25" width="1680" height="959" />
     </state>
     <state x="440" y="225" key="Vcs.Push.Dialog.v2/0.25.1680.950@0.25.1680.950" timestamp="1656433316236" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.953@0.25.1680.953" timestamp="1656449850178" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.954@0.25.1680.954" timestamp="1656496340287" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1657637130052" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.959@0.25.1680.959" timestamp="1662045666421" />
+    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.959@0.25.1680.959" timestamp="1662051188861" />
     <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1662045043704">
       <screen x="0" y="25" width="1680" height="959" />
     </state>
