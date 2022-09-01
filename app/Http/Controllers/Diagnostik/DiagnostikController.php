@@ -793,6 +793,8 @@ class DiagnostikController extends Controller
     {
         //
     }
+
+
     public function diagnos (){
         return view('diagnostic.diagnos');
     }
