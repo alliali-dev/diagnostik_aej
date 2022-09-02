@@ -862,11 +862,6 @@ class DiagnostikController extends Controller
             $pays[$item->id] = $item->nom;
         }
 
-        //dd($demandeur_edit->sexe_id,$sexes);
-
-        //dd($sexes);
-
-
         return view('diagnostic.modif',compact('demandeur_parameter','sexes','pays','demandeur_edit'));
     }
 }
