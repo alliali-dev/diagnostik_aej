@@ -913,12 +913,13 @@ class DiagnostikController extends Controller
             $typesituationhandicaps[$item->id] = $item->libelle;
         }
 
-        $lieunaissances = [];
-<<<<<<< HEAD
+        $villes = [];
         foreach($demandeur_parameter->ville as $item){
-=======
+            $villes[$item->id] = $item->nom;
+        }
+         $lieunaissances = [];
         foreach($demandeur_parameter->commune as $item){
->>>>>>> 6571a202f92eff73e1a286d702c8d3d272a5d354
+
             $lieunaissances[$item->id] = $item->nom;
         }
 

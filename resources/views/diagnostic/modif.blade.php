@@ -132,7 +132,17 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="form-group  widget-field span-right col-6 " data-field-name="conseilleremploi" id="conseilleremploi-group">
+                                                    <div class="form-group  text-field span-right col-6" data-field-name="nocnps" id="nocnps-group">
+                                                        <label for="nocnps">
+                                                            Numéro CNPS
+                                                        </label>
+                                                        <!-- Text -->
+                                                        <input type="text" name="nocnps" id="nocnps" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                   
+                                                    <div class="form-group  widget-field span-right col-6 d-none " data-field-name="conseilleremploi" id="conseilleremploi-group">
                                                         <label for="conseilleremploi">
                                                             Conseiller emploi </label>
                                                         <!-- Widget -->
@@ -142,15 +152,6 @@
                                                                 <option value="">sélectionnez</option>
                                                             </select>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group  text-field span-left col-6" data-field-name="nocnps" id="nocnps-group">
-                                                        <label for="nocnps">
-                                                            Numéro CNPS
-                                                        </label>
-                                                        <!-- Text -->
-                                                        <input type="text" name="nocnps" id="nocnps" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255">
                                                     </div>
                                                     <div class="form-group text-field span-right col-6"></div>
                                                 </div>
@@ -410,18 +411,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group  widget-field span-left col-6" data-field-name="competence" id="competence-group">
-                                                        <label for="competence">
-                                                            Competence
-                                                        </label>
-                                                        <!-- Widget -->
-                                                        <div class="relation-widget" id="Relation-formCompetence-competence">
-                                                            <!-- Dropdown -->
-                                                            <select id="competence" name="competence" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="form-group  widget-field span-right col-6 " data-field-name="specialite" id="specialite-group">
                                                         <label for="specialite">
                                                             Specialite
@@ -432,8 +422,6 @@
                                                             {!! Form::select('specialite', $specialites, $demandeur_edit->specialite_id, ['class' => 'form-control select2-specialite']) !!}
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
                                                     <div class="form-group  number-field span-left col-6" data-field-name="nombreexperience" id="nombreexperience-group">
                                                         <label for="nombreexperience">
                                                             durée d'expérience
@@ -441,6 +429,9 @@
                                                         <!-- Number -->
                                                         <input type="number" step="any" name="nombreexperience" id="nombreexperience" value="{{ $demandeur_edit->nombreexperience }}" placeholder="" class="form-control" autocomplete="off" pattern="-?\d+(\.\d+)?" maxlength="255">
                                                     </div>
+                                                </div>
+                                                <div class="row">
+                                                    
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="uniteexperience" id="uniteexperience-group">
                                                         <label for="uniteexperience">
                                                             Unité durée
@@ -451,8 +442,6 @@
                                                             {!! Form::select('uniteexperience', $uniteexperiences, $demandeur_edit->uniteexperience_id, ['class' => 'form-control select2-uniteexperience']) !!}
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
                                                     <div class="form-group  text-field span-left col-6" data-field-name="expertise" id="expertise-group">
                                                         <label for="expertise">
                                                             Expertise
@@ -460,15 +449,33 @@
                                                         <!-- Text -->
                                                         <input type="text" name="expertise" id="expertise" value="{{ $demandeur_edit->expertise }}" placeholder="" class="form-control" autocomplete="off" maxlength="255">
                                                     </div>
+                                                </div>
+                                                <div class="row">
+                                                   
                                                     <div class="form-group  widget-field span-left  col-6 " data-field-name="curriculum" id="curriculum-group">
                                                         <label for="curriculum">
                                                             cv
                                                         </label>
                                                         <input type="file" class="form-control" name="curriculum">
                                                     </div>
-                                                    <div class="d-flex">
-                                                        <input type="submit" value="Valider" class="form-control bg-dark text-white m-25">
-                                                        <input type="reset" value="Annuler" class="form-control m-25">
+                                                    <div class="form-group  widget-field span-right  col-6 "></div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="d-flex form-group  widget-field span-left  col-3">
+                                                        <input type="submit" value="Valider" class="form-control bg-dark text-white m-25 w-2">
+                                                        <input type="reset" value="Annuler" class="form-control m-25 w-5">
+                                                    </div>
+                                                <div class="form-group  widget-field span-right col-6 d-none" data-field-name="competence" id="competence-group">
+                                                        <label for="competence">
+                                                            Competence
+                                                        </label>
+                                                        <!-- Widget -->
+                                                        <div class="relation-widget" id="Relation-formCompetence-competence">
+                                                            <!-- Dropdown -->
+                                                            <select id="competence" name="competence" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
+                                                                <option value="">sélectionnez</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
