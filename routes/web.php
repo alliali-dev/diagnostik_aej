@@ -81,6 +81,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     // la route modification
 
     Route::get('/modif/{matricule?}', [DiagnostikController::class,'modif'])->name('modif');
+    Route::post('/update/demandeur', [DiagnostikController::class,'update_demandeur'])->name('updatedemandeur');
 
     // route d'exportation in excell  {{route('diagnostik.export_rc1)}}
     Route::get('/export/recontre1','DiagnostikController@exportRencontre1')->name('export_rc1');
@@ -148,6 +149,4 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     /* Agency */
     Route::get('/agencies-clients', 'UsersController@agenciesClients')->name('agenciesClients');
     Route::get('/agencies-clients-table', 'UsersController@agenciesClientsTable')->name('agenciesClientsTable');
-
-
 });
