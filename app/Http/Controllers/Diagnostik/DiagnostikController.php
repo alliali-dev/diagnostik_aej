@@ -808,6 +808,16 @@ class DiagnostikController extends Controller
         //
     }
 
+    public function update_demandeur(Request $request){
+
+        $data = $request->all();
+        //dd($data);
+        $response = Http::get('http://localhost:8888/aejtechnologie/update/demandeur/', $data);
+        $body = json_decode($response->body());
+        dd($response->body());
+        return redirect()->route('entretient.create',$request->matriculeaej);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -851,6 +861,12 @@ class DiagnostikController extends Controller
         //$ville,$soussecteuractivite,$divisionregionaleaej,$typeenseignement,$typesituationhandicap
 
         //dd($demandeur_parameter->sexe);
+
+        $statutdemandeur = [];
+
+        foreach ($demandeur_parameter->statutdemandeur as $item) {
+            $statutdemandeur[$item->id] = $item->libelle;
+        }
 
         $sexes = [];
         foreach($demandeur_parameter->sexe as $item){
@@ -898,7 +914,7 @@ class DiagnostikController extends Controller
         }
 
         $lieunaissances = [];
-        foreach($demandeur_parameter->lieunaissance as $item){
+        foreach($demandeur_parameter->commune as $item){
             $lieunaissances[$item->id] = $item->nom;
         }
 
@@ -916,7 +932,7 @@ class DiagnostikController extends Controller
         foreach($demandeur_parameter->agencecnps as $item){
             $agencecnps[$item->id] = $item->nom;
         }
-        
+
         $typeenseignements = [];
         foreach($demandeur_parameter->typeenseignement as $item){
             $typeenseignements[$item->id] = $item->libelle;
@@ -926,7 +942,7 @@ class DiagnostikController extends Controller
         foreach($demandeur_parameter->uniteexperience as $item){
             $uniteexperiences[$item->id] = $item->libelle;
         }
-        
-        return view('diagnostic.modif',compact('demandeur_parameter','agencecnps','uniteexperiences','typeenseignements','categoriedemandeurs','situationamatrimoniales','niveauetudes','specialites','typepieceidentites','sexes','pays','diplomes','motifinscriptions','typesituationhandicaps','lieunaissances','villes','demandeur_edit'));
+
+        return view('diagnostic.modif',compact('demandeur_parameter','statutdemandeur','agencecnps','uniteexperiences','typeenseignements','categoriedemandeurs','situationamatrimoniales','niveauetudes','specialites','typepieceidentites','sexes','pays','diplomes','motifinscriptions','typesituationhandicaps','lieunaissances','villes','demandeur_edit'));
     }
 }

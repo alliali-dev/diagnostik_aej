@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Formulaire d'édition @endsection
+@section('title')
+    Formulaire d'édition
+@endsection
 @section('content')
 
     <section id="icon-tabs">
@@ -16,10 +18,61 @@
                                 <div class="col-12">
                                     <div class="tab-content layout-row">
                                         <div class="tab-pane layout-cell active" id="tabs1498-tab-01661944692659">
-                                            <form action="" method="post">
+                                            <form action="{{ route('diagnostik.updatedemandeur') }}" method="post" enctype="multipart/form-data">
+                                                @csrf
                                                 <div class="field-section">
                                                     <h4>Détail demandeur</h4>
+                                                </div>
+                                                <hr>
+                                                <div id="Form-outsideTabs" class="form-tabless-fields ">
+                                                    <div class="form-group widget-field span-left  col-6 " data-field-name="curriculum" id="curriculum-group">
+                                                        <label for="curriculum">
+                                                            Photo
+                                                        </label>
+                                                        <input type="file" class="form-control" name="photo">
+                                                    </div>
+                                                    <div class="row">
 
+                                                    <div class="form-group form-group-preview text-field col-6" data-field-name="nom" id="nom-group">
+                                                        <label for="nom">
+                                                            Nom
+                                                        </label>
+                                                        <!-- Text -->
+                                                        <input type="text" name="nom" id="nom" value="{{ $demandeur_edit->nom }}" placeholder="" class="form-control" autocomplete="off" maxlength="255">
+                                                    </div>
+                                                    <div class="form-group form-group-preview text-field col-6" data-field-name="prenoms" id="prenoms-group">
+                                                        <label for="prenoms">
+                                                            Prénoms
+                                                        </label>
+                                                        <!-- Text -->
+                                                        <input type="text" name="prenoms" id="prenoms" value="{{ $demandeur_edit->prenoms }}" placeholder="" class="form-control" autocomplete="off" maxlength="255">
+
+                                                    </div>
+                                                    <div class="form-group form-group-preview text-field col-6" data-field-name="matriculeaej" id="matriculeaej-group">
+                                                        <label for="matriculeaej">
+                                                            Matricule AEJ
+                                                        </label>
+                                                        <!-- Text -->
+                                                        <input type="text" name="matriculeaej" id="matriculeaej" value="{{ $demandeur_edit->matriculeaej }}" placeholder="" class="form-control" autocomplete="off" maxlength="255" disabled>
+                                                        <input type="hidden" value="{{ $demandeur_edit->matriculeaej }}" name="matriculeaej">
+                                                        {{--<span class="form-control">
+                                                            150100018612
+                                                        </span>--}}
+                                                    </div>
+                                                    <div class="form-group form-group-preview widget-field col-6" data-field-name="statutdemandeur" id="statutdemandeur-group">
+                                                        <label for="statutdemandeur">
+                                                            Statut
+                                                        </label>
+                                                        <!-- Widget -->
+                                                        <div class="relation-widget" id="Relation-formTypesituationhandicap-typesituationhandicap">
+                                                            <!-- Dropdown -->
+                                                            {!! Form::select('typesituationhandicap', $statutdemandeur, $demandeur_edit->statudemandeur_id, ['class' => 'form-control select2-statudemandeur']) !!}
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="field-section">
+                                                    <h4>Détail demandeur</h4>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
@@ -34,28 +87,16 @@
                                                                 <i class="icon icon-calendar-o"></i>
                                                                 <input type="date" id="" name="datedebutchomage" value="{{ $demandeur_edit->datedebutchomage }}" class="form-control align-right">
                                                             </div>
-
-                                                            <!-- Data locker -->
-                                                         {{--   <input type="hidden" name="datedebutchomage" id="datedebutchomage" value="" data-datetime-value="">--}}
-
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="motifinscription" id="motifinscription-group">
                                                         <label for="motifinscription">
                                                             Motif inscription
                                                         </label>
-
-
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('motifinscription_id', $motifinscriptions, $demandeur_edit->motifinscription_id, ['class' => 'form-control select2-motifinscription']) !!}
-                                                            <!-- <select id="motifinscription" name="motifinscription" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="false">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->motifinscription as $motifinscription)
-                                                                    <option value="{{$motifinscription->id}}">{{$motifinscription->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
 
                                                         </div>
                                                     </div>
@@ -66,24 +107,15 @@
                                                         <label for="typesituationhandicap">
                                                             Type situation handicap
                                                         </label>
-
-
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTypesituationhandicap-typesituationhandicap">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('typesituationhandicap', $typesituationhandicaps, $demandeur_edit->typesituationhandicap_id, ['class' => 'form-control select2-typesituationhandicap']) !!}
-                                                            <!-- <select id="typesituationhandicap" name="typesituationhandicap" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->typesituationhandicap as $typesituationhandicap)
-                                                                    <option value="{{$typesituationhandicap->id}}">{{$typesituationhandicap->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                          <div class="form-group  text-field span-right col-6" data-field-name="handicapdemandeur" id="handicapdemandeur-group"><label for="handicapdemandeur">
                                                             Handicap demandeur
                                                         </label>
-
                                                         <!-- Text -->
                                                         <input type="text" name="handicapdemandeur" id="handicapdemandeur" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255">
                                                     </div>
@@ -97,24 +129,17 @@
                                                         <div class="relation-widget" id="Relation-formCategoriedemandeur-categoriedemandeur">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('categoriedemandeur_id', $categoriedemandeurs, $demandeur_edit->categoriedemandeur_id, ['class' => 'form-control select2-categoriedemandeur']) !!}
-                                                            <!-- <select id="categoriedemandeur" name="categoriedemandeur" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->categoriedemandeur as $categoriedemandeur)
-                                                                  <option value="{{$categoriedemandeur->id}}">{{$categoriedemandeur->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
+
                                                         </div>
                                                     </div>
-                                                    <div class="form-group  widget-field span-right col-6 " data-field-name="conseilleremploi" id="conseilleremploi-group"><label for="conseilleremploi">
+                                                    <div class="form-group  widget-field span-right col-6 " data-field-name="conseilleremploi" id="conseilleremploi-group">
+                                                        <label for="conseilleremploi">
                                                             Conseiller emploi </label>
-
-
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formConseilleremploi-conseilleremploi">
                                                             <!-- Dropdown -->
                                                             <select id="conseilleremploi" name="conseilleremploi" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
                                                                 <option value="">sélectionnez</option>
-
                                                             </select>
                                                         </div>
                                                     </div>
@@ -162,7 +187,7 @@
                                                         <div class="relation-widget" id="Relation-formTlieunaissance-tlieunaissance">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('lieunaissance', $lieunaissances, $demandeur_edit->lieunaissance_id, ['class' => 'form-control select2-lieunaissance_id']) !!}
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,13 +211,6 @@
                                                         <div class="relation-widget" id="Relation-formSexe-sexe">
                                                             {!! Form::select('sexe_id', $sexes, $demandeur_edit->sexe_id, ['class' => 'form-control select2-sexe']) !!}
                                                             <!-- Dropdown -->
-                                                           {{-- <select id="sexe" name="sexe" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                --}}{{--{!! Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Pick a size...']) !!}--}}{{--
-                                                               @foreach($demandeur_parameter->sexe as $sexe)
-                                                                    <option value="{{$sexe->id}}">{{ $sexe->libelle }}</option>
-                                                                @endforeach--}}{{--
-                                                           </select>--}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,13 +220,8 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formSituationmatrimoniale-situationmatrimoniale">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('situationamatrimoniale', $situationamatrimoniales, $demandeur_edit->situationamatrimoniale_id, ['class' => 'form-control select2-situationamatrimoniale']) !!}
-                                                            <!-- <select id="situationmatrimoniale" name="situationmatrimoniale" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->situationamatrimoniale as $situationamatrimoniale)
-                                                                    <option value="{{$situationamatrimoniale->id}}">{{$situationamatrimoniale->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
+                                                            {!! Form::select('situationamatrimoniale', $situationamatrimoniales, $demandeur_edit->situationmatrimoniale_id, ['class' => 'form-control select2-situationamatrimoniale']) !!}
+
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-left col-6" data-field-name="typepieceidentite" id="typepieceidentite-group">
@@ -219,13 +232,6 @@
                                                         <div class="relation-widget" id="Relation-formTypepieceidentite-typepieceidentite">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('typepieceidentite', $typepieceidentites, $demandeur_edit->typepieceidentite_id, ['class' => 'form-control select2-typepieceidentite']) !!}
-                                                            
-                                                            <!-- <select id="typepieceidentite" name="typepieceidentite" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->typepieceidentite as $typepieceidentite)
-                                                                    <option value="{{$typepieceidentite->id}}">{{$typepieceidentite->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -249,10 +255,10 @@
                                                 <div class="row">
                                                     <div class="form-group  text-field span-left col-6" data-field-name="divisionregionale" id="divisionregionale-group">
                                                         <label for="divisionregionale">
-                                                            Division régionale AEJ
+                                                            Agence Régionale
                                                         </label>
                                                         <!-- Text -->
-                                                        <input type="text" name="divisionregionale" id="divisionregionale" value="" placeholder="" class="form-control" autocomplete="off" maxlength="255" disabled="disabled">
+                                                        <input type="text" id="divisionregionale" value="{{ $demandeur_edit->dup_divisionregional }}" placeholder="" class="form-control" autocomplete="off" maxlength="255" disabled="disabled">
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="paysresidence" id="paysresidence-group">
                                                         <label for="paysresidence">
@@ -262,12 +268,6 @@
                                                         <div class="relation-widget" id="Relation-formPaysresidence-paysresidence">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('paysnationalite', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
-                                                            <!-- <select id="paysresidence" name="paysresidence" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->pays as $pays)
-                                                                    <option value="{{$pays->id}}">{{$pays->nom}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,12 +280,6 @@
                                                         <div class="relation-widget" id="Relation-formVilleresidence-villeresidence">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('villeresidence', $villes, $demandeur_edit->villeresidence_id, ['class' => 'form-control select2-ville']) !!}
-                                                            <!-- <select id="villeresidence" name="villeresidence" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->ville as $ville)
-                                                                    <option value="$ville->id">{{$ville->nom}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="agencecnps" id="agencecnps-group">
@@ -296,12 +290,6 @@
                                                         <div class="relation-widget" id="Relation-formAgencecnps-agencecnps">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('agencecnps', $agencecnps, $demandeur_edit->agencecnps_id, ['class' => 'form-control select2-agencecnps']) !!}
-                                                            <!-- <select id="agencecnps" name="agencecnps" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->agencecnps as $agencecnps)
-                                                                    <option value="{{$agencecnps->id}}">{{$agencecnps->nom}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -314,12 +302,6 @@
                                                         <div class="relation-widget" id="Relation-formTlieuhabitation-tlieuhabitation">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('villeresidence', $villes, $demandeur_edit->villeresidence_id, ['class' => 'form-control select2-ville']) !!}
-                                                            <!-- <select id="tlieuhabitation" name="tlieuhabitation" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->ville as $ville)
-                                                                    <option value="$ville->id">{{$ville->nom}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                     <div class="form-group widget-field col-6"></div>
@@ -363,12 +345,6 @@
                                                         <div class="relation-widget" id="niveauetude">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('niveauetude', $niveauetudes, $demandeur_edit->niveauetude_id, ['class' => 'form-control select2-niveauetude']) !!}
-                                                            <!-- <select id="niveauetude" name="niveauetude" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->niveauetude as $niveauetude)
-                                                                    <option value="{{$niveauetude->id}}">{{$niveauetude->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="diplome" id="diplome-group">
@@ -379,12 +355,6 @@
                                                         <div class="relation-widget" id="Relation-formDiplome-diplome">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('diplome', $diplomes, $demandeur_edit->diplome_id, ['class' => 'form-control select2-diplome']) !!}
-                                                            <!-- <select id="diplome" name="diplome" class="form-control custom-select select2-accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->diplome as $diplome)
-                                                                    <option value="{{$diplome->id}}">{{$diplome->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -397,12 +367,6 @@
                                                         <div class="relation-widget" id="Relation-formPaysdiplome-paysdiplome">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('paysnationalite', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
-                                                            <!-- <select id="paysdiplome" name="paysdiplome" class="form-control custom-select select2--accessible" data-placeholder="" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->pays as $pays)
-                                                                    <option value="{{$pays->id}}">{{$pays->nom}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                     <div class="form-group  text-field span-right col-6" data-field-name="etablissementfrequente" id="etablissementfrequente-group">
@@ -422,12 +386,6 @@
                                                         <div class="relation-widget" id="Relation-formTypeenseignement-typeenseignement">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('typeenseignement', $typeenseignements, $demandeur_edit->typeenseignement_id, ['class' => 'form-control select2-typeenseignement']) !!}
-                                                            <!-- <select id="typeenseignement" name="typeenseignement" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->typeenseignement as $typeenseignement)
-                                                                    <option value="{{$typeenseignement->id}}">{{$typeenseignement->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="typeetablissement" id="typeetablissement-group">
@@ -472,12 +430,6 @@
                                                         <div class="relation-widget" id="Relation-formSpecialite-specialite">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('specialite', $specialites, $demandeur_edit->specialite_id, ['class' => 'form-control select2-specialite']) !!}
-                                                            <!-- <select id="specialite" name="specialite" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->specialite as $specialite)
-                                                                    <option value="{{$specialite->id}}">{{$specialite->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -497,12 +449,6 @@
                                                         <div class="relation-widget" id="Relation-formUniteexperience-uniteexperience">
                                                             <!-- Dropdown -->
                                                             {!! Form::select('uniteexperience', $uniteexperiences, $demandeur_edit->uniteexperience_id, ['class' => 'form-control select2-uniteexperience']) !!}
-                                                            <!-- <select id="uniteexperience" name="uniteexperience" class="form-control custom-select select2-accessible" data-placeholder="sélectionnez" data-disposable="data-disposable" tabindex="-1" aria-hidden="true">
-                                                                <option value="">sélectionnez</option>
-                                                                @foreach ($demandeur_parameter->uniteexperience as $uniteexperience)
-                                                                   <option value="{{$uniteexperience->id}}">{{$uniteexperience->libelle}}</option>
-                                                                @endforeach
-                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -518,7 +464,7 @@
                                                         <label for="curriculum">
                                                             cv
                                                         </label>
-                                                        <input type="file" class="form-control">
+                                                        <input type="file" class="form-control" name="curriculum">
                                                     </div>
                                                     <div class="d-flex">
                                                         <input type="submit" value="Valider" class="form-control bg-dark text-white m-25">
@@ -554,8 +500,7 @@
             $('.select2-diplome').select2();
             $('.select2-niveauetude').select2();
             $('.select2-uniteexperience').select2();
-            $('.select2-uniteexperience').select2();
-            
+            $('.select2-statudemandeur').select2();
         });
     </script>
 @endsection
