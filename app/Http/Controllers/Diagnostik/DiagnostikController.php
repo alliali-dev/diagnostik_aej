@@ -898,7 +898,7 @@ class DiagnostikController extends Controller
         }
 
         $lieunaissances = [];
-        foreach($demandeur_parameter->lieunaissance as $item){
+        foreach($demandeur_parameter->ville as $item){
             $lieunaissances[$item->id] = $item->nom;
         }
 
