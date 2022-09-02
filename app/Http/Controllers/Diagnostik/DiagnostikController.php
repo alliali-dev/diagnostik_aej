@@ -862,6 +862,71 @@ class DiagnostikController extends Controller
             $pays[$item->id] = $item->nom;
         }
 
-        return view('diagnostic.modif',compact('demandeur_parameter','sexes','pays','demandeur_edit'));
+        $motifinscriptions = [];
+        foreach($demandeur_parameter->motifinscription as $item){
+            $motifinscriptions[$item->id] = $item->libelle;
+        }
+
+        $typepieceidentites = [];
+        foreach($demandeur_parameter->typepieceidentite as $item){
+            $typepieceidentites[$item->id] = $item->libelle;
+        }
+
+        $niveauetudes = [];
+        foreach($demandeur_parameter->niveauetude as $item){
+            $niveauetudes[$item->id] = $item->libelle;
+        }
+
+        $diplomes = [];
+        foreach($demandeur_parameter->diplome as $item){
+            $diplomes[$item->id] = $item->libelle;
+        }
+
+        $specialites = [];
+        foreach($demandeur_parameter->specialite as $item){
+            $specialites[$item->id] = $item->libelle;
+        }
+
+        $villes = [];
+        foreach($demandeur_parameter->ville as $item){
+            $villes[$item->id] = $item->nom;
+        }
+
+        $typesituationhandicaps = [];
+        foreach($demandeur_parameter->typesituationhandicap as $item){
+            $typesituationhandicaps[$item->id] = $item->libelle;
+        }
+
+        $lieunaissances = [];
+        foreach($demandeur_parameter->lieunaissance as $item){
+            $lieunaissances[$item->id] = $item->nom;
+        }
+
+        $situationamatrimoniales = [];
+        foreach($demandeur_parameter->situationamatrimoniale as $item){
+            $situationamatrimoniales[$item->id] = $item->libelle;
+        }
+
+        $categoriedemandeurs = [];
+        foreach($demandeur_parameter->categoriedemandeur as $item){
+            $categoriedemandeurs[$item->id] = $item->libelle;
+        }
+
+        $agencecnps = [];
+        foreach($demandeur_parameter->agencecnps as $item){
+            $agencecnps[$item->id] = $item->nom;
+        }
+        
+        $typeenseignements = [];
+        foreach($demandeur_parameter->typeenseignement as $item){
+            $typeenseignements[$item->id] = $item->libelle;
+        }
+
+        $uniteexperiences = [];
+        foreach($demandeur_parameter->uniteexperience as $item){
+            $uniteexperiences[$item->id] = $item->libelle;
+        }
+        
+        return view('diagnostic.modif',compact('demandeur_parameter','agencecnps','uniteexperiences','typeenseignements','categoriedemandeurs','situationamatrimoniales','niveauetudes','specialites','typepieceidentites','sexes','pays','diplomes','motifinscriptions','typesituationhandicaps','lieunaissances','villes','demandeur_edit'));
     }
 }
