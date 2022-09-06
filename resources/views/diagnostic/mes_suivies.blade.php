@@ -942,16 +942,16 @@
                     url: '{{ route('diagnostik.getrec1') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej' , orderable: false, searchable: false},
-                    {data: 'nomprenom' , orderable: false, searchable: false},
+                    {data: 'matricule_aej' , orderable: false, searchable: true},
+                    {data: 'nomprenom' , orderable: false, searchable: true},
                     {data: 'sexe' , orderable: false, searchable: false},
                     {data: 'lieudereisdence' , orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre' , orderable: false, searchable: false},
                     {data: 'dateprochainrdv' , orderable: false, searchable: false},
                     {data: 'modalite' , orderable: false, searchable: false},
-                    {data: 'axetravail', orderable: false, searchable: false},
-                    {data: 'action', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: true},
+                    {data: 'action', orderable: false, searchable: true},
                 ]
             });
 
@@ -977,16 +977,16 @@
                     url: '{{ route('diagnostik.getrec2') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej', orderable: false, searchable: false},
-                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'matricule_aej', orderable: false, searchable: true},
+                    {data: 'nomprenom', orderable: false, searchable: true},
                     {data: 'sexe', orderable: false, searchable: false},
                     {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
                     {data: 'modalite' , orderable: false, searchable: false},
-                    {data: 'axetravail', orderable: false, searchable: false},
-                    {data: 'action', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: true},
+                    {data: 'action', orderable: false, searchable: true},
                 ]
             });
 
@@ -1012,16 +1012,16 @@
                     url: '{{ route('diagnostik.getrec3') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej', orderable: false, searchable: false},
-                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'matricule_aej', orderable: false, searchable: true},
+                    {data: 'nomprenom', orderable: false, searchable: true},
                     {data: 'sexe', orderable: false, searchable: false},
                     {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
                     {data: 'modalite' , orderable: false, searchable: false},
-                    {data: 'axetravail', orderable: false, searchable: false},
-                    {data: 'action', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: true},
+                    {data: 'action', orderable: false, searchable: true},
                 ]
             });
 
@@ -1047,16 +1047,16 @@
                     url: '{{ route('diagnostik.getrec4') }}'
                 },
                 columns: [
-                    {data: 'matricule_aej', orderable: false, searchable: false},
-                    {data: 'nomprenom', orderable: false, searchable: false},
+                    {data: 'matricule_aej', orderable: false, searchable: true},
+                    {data: 'nomprenom', orderable: false, searchable: true},
                     {data: 'sexe', orderable: false, searchable: false},
                     {data: 'lieudereisdence', orderable: false, searchable: false},
                     {data: 'diplome', orderable: false, searchable: false},
                     {data: 'dureerencontre', orderable: false, searchable: false},
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
                     {data: 'modalite' , orderable: false, searchable: false},
-                    {data: 'axetravail', orderable: false, searchable: false},
-                    {data: 'action', orderable: false, searchable: false},
+                    {data: 'axetravail', orderable: false, searchable: true},
+                    {data: 'action', orderable: false, searchable: true},
                 ]
             });
 
