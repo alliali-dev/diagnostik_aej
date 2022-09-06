@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-        @elseif(auth()->user()->hasRole('Conseiller Emploi'))
+        @elseif(auth()->user()->hasRole('Conseiller') || auth()->user()->hasRole('Assistant Conseiller') || auth()->user()->hasRole('Conseiller Emploi Junior'))
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
