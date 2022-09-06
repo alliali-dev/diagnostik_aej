@@ -52,7 +52,8 @@ class DiagnostikController extends Controller
     public function listeentretient(Request $request)
     {
         if ($request->ajax()) {
-            $data = EntretientDiag::mine()->where('state',false)->get();
+            //old $data = EntretientDiag::mine()->where('state',false)->get();
+            $data = EntretientDiag::mine()->where('state',true)->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -624,7 +625,7 @@ class DiagnostikController extends Controller
             $data = Rencontre::mine()
                 ->where('typerencontre', 5 )
                 ->where('status',true)
-                ->where('findrdv',false);
+                ->orWhere('findrdv',true);
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -812,9 +813,9 @@ class DiagnostikController extends Controller
 
         $data = $request->all();
         //dd($data);
-        $response = Http::get('http://localhost:8888/aejtechnologie/update/demandeur/', $data);
+        $response = Http::post('http://localhost:8888/aejtechnologie/update/demandeur/', $data);
         $body = json_decode($response->body());
-        dd($response->body());
+        //dd($response->body());
         return redirect()->route('entretient.create',$request->matriculeaej);
     }
 
