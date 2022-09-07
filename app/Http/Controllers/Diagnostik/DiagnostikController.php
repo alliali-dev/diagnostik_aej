@@ -813,9 +813,8 @@ class DiagnostikController extends Controller
 
         $data = $request->all();
         //dd($data);
-        $response = Http::post('http://localhost:8888/aejtechnologie/update/demandeur/', $data);
+        $response = Http::post('https://agenceemploijeunes.ci/site/update/demandeur/', $data);
         $body = json_decode($response->body());
-        dd($body);
         return redirect()->route('entretient.create',$request->matriculeaej);
     }
 
