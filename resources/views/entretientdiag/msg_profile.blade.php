@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Message @endsection
+@section('title') Entretient diagnostique @endsection
 @section('subTitle') Mise à jour profil @endsection
 @section('content')
     <h2 style="color: orangered" align="center">

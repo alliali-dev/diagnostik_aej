@@ -109,7 +109,7 @@
                         @endforeach
                         @if(count($entretiens) < 1)
                             <tr>
-                                <td colspan="10" class="text-center">Pas d'agence trouvé !</td>
+                                <td colspan="10" class="text-center">Pas d'entretien trouvé !</td>
                             </tr>
                         @endif
                         </tbody>

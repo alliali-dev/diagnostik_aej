@@ -54,7 +54,7 @@ class EntretientDiag extends Model
     }
 
     public function suivi(){
-        return $this->hasMany(SuiviRencontre::class,'matriculeaej','matricule_aej');
+        return $this->hasMany(SuiviRencontre::class,'matricule_aej','matriculeaej');
     }
 
     public function user(){

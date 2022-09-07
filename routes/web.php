@@ -2,6 +2,7 @@
 
  use App\Http\Controllers\Diagnostik\DiagnostikController;
  use App\Http\Controllers\EntretientDiagController;
+ use App\Http\Controllers\Users\UsersController;
  use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -136,7 +137,7 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     Route::get('/disabledTable', 'UsersController@disabledUsersTable')->name('disabledUsersTable');
     Route::get('/deletedTable', 'UsersController@deletedUsersTable')->name('deletedUsersTable');
 
-    Route::get('/profile', 'UsersController@profile')->name('profile');
+    Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
 
     /* Users's Clients */
     Route::get('/manage-clients', 'UsersController@myClients')->name('myClients');

@@ -66,7 +66,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTypesituationhandicap-typesituationhandicap">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('typesituationhandicap', $statutdemandeur, $demandeur_edit->statudemandeur_id, ['class' => 'form-control select2-statudemandeur']) !!}
+                                                            {!! Form::select('statudemandeur_id', $statutdemandeur, $demandeur_edit->statudemandeur_id, ['class' => 'form-control select2-statudemandeur']) !!}
                                                         </div>
                                                     </div>
                                                     </div>
@@ -110,7 +110,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTypesituationhandicap-typesituationhandicap">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('typesituationhandicap', $typesituationhandicaps, $demandeur_edit->typesituationhandicap_id, ['class' => 'form-control select2-typesituationhandicap']) !!}
+                                                            {!! Form::select('typesituationhandicap_id', $typesituationhandicaps, $demandeur_edit->typesituationhandicap_id, ['class' => 'form-control select2-typesituationhandicap']) !!}
                                                         </div>
                                                     </div>
                                                          <div class="form-group  text-field span-right col-6" data-field-name="handicapdemandeur" id="handicapdemandeur-group"><label for="handicapdemandeur">
@@ -141,7 +141,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                   
+
                                                     <div class="form-group  widget-field span-right col-6 d-none " data-field-name="conseilleremploi" id="conseilleremploi-group">
                                                         <label for="conseilleremploi">
                                                             Conseiller emploi </label>
@@ -181,13 +181,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="tlieunaissance" id="tlieunaissance-group"><label for="tlieunaissance">
-                                                            Lieu naissance </label>
-
-
+                                                            Lieu naissance
+                                                        </label>
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTlieunaissance-tlieunaissance">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('lieunaissance', $lieunaissances, $demandeur_edit->lieunaissance_id, ['class' => 'form-control select2-lieunaissance_id']) !!}
+                                                            {!! Form::select('lieunaissance_id', $lieunaissances, $demandeur_edit->lieunaissance_id, ['class' => 'form-control select2-lieunaissance_id']) !!}
 
                                                         </div>
                                                     </div>
@@ -201,7 +200,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formPaysnationalite-paysnationalite">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('paysnationalite', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
+                                                            {!! Form::select('paysnationalite_id', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="sexe" id="sexe-group">
@@ -221,7 +220,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formSituationmatrimoniale-situationmatrimoniale">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('situationamatrimoniale', $situationamatrimoniales, $demandeur_edit->situationmatrimoniale_id, ['class' => 'form-control select2-situationamatrimoniale']) !!}
+                                                            {!! Form::select('situationmatrimoniale_id', $situationamatrimoniales, $demandeur_edit->situationmatrimoniale_id, ['class' => 'form-control select2-situationamatrimoniale']) !!}
 
                                                         </div>
                                                     </div>
@@ -232,7 +231,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTypepieceidentite-typepieceidentite">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('typepieceidentite', $typepieceidentites, $demandeur_edit->typepieceidentite_id, ['class' => 'form-control select2-typepieceidentite']) !!}
+                                                            {!! Form::select('typepieceidentite_id', $typepieceidentites, $demandeur_edit->typepieceidentite_id, ['class' => 'form-control select2-typepieceidentite']) !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -268,7 +267,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formPaysresidence-paysresidence">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('paysnationalite', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
+                                                            {!! Form::select('paysnationalite_id', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,7 +279,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formVilleresidence-villeresidence">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('villeresidence', $villes, $demandeur_edit->villeresidence_id, ['class' => 'form-control select2-ville']) !!}
+                                                            {!! Form::select('villeresidence_id', $villes, $demandeur_edit->villeresidence_id, ['class' => 'form-control select2-ville']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="agencecnps" id="agencecnps-group">
@@ -290,7 +289,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formAgencecnps-agencecnps">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('agencecnps', $agencecnps, $demandeur_edit->agencecnps_id, ['class' => 'form-control select2-agencecnps']) !!}
+                                                            {!! Form::select('agencecnps_id', $agencecnps, $demandeur_edit->agencecnps_id, ['class' => 'form-control select2-agencecnps']) !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,7 +301,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTlieuhabitation-tlieuhabitation">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('villeresidence', $villes, $demandeur_edit->villeresidence_id, ['class' => 'form-control select2-ville']) !!}
+                                                            {!! Form::select('villeresidence_id', $lieuhabitations, $demandeur_edit->villeresidence_id, ['class' => 'form-control select2-ville']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group widget-field col-6"></div>
@@ -345,7 +344,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="niveauetude">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('niveauetude', $niveauetudes, $demandeur_edit->niveauetude_id, ['class' => 'form-control select2-niveauetude']) !!}
+                                                            {!! Form::select('niveauetude_id', $niveauetudes, $demandeur_edit->niveauetude_id, ['class' => 'form-control select2-niveauetude']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="diplome" id="diplome-group">
@@ -355,7 +354,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formDiplome-diplome">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('diplome', $diplomes, $demandeur_edit->diplome_id, ['class' => 'form-control select2-diplome']) !!}
+                                                            {!! Form::select('diplome_id', $diplomes, $demandeur_edit->diplome_id, ['class' => 'form-control select2-diplome']) !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -367,7 +366,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formPaysdiplome-paysdiplome">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('paysnationalite', $pays, $demandeur_edit->paysnationalite_id, ['class' => 'form-control select2-pays']) !!}
+                                                            {!! Form::select('paysdiplome_id', $pays, $demandeur_edit->paysdiplome_id, ['class' => 'form-control select2-pays']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  text-field span-right col-6" data-field-name="etablissementfrequente" id="etablissementfrequente-group">
@@ -386,7 +385,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formTypeenseignement-typeenseignement">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('typeenseignement', $typeenseignements, $demandeur_edit->typeenseignement_id, ['class' => 'form-control select2-typeenseignement']) !!}
+                                                            {!! Form::select('typeenseignement_id', $typeenseignements, $demandeur_edit->typeenseignement_id, ['class' => 'form-control select2-typeenseignement']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="typeetablissement" id="typeetablissement-group">
@@ -411,7 +410,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    
                                                     <div class="form-group  widget-field span-right col-6 " data-field-name="specialite" id="specialite-group">
                                                         <label for="specialite">
                                                             Specialite
@@ -419,7 +417,7 @@
                                                         <!-- Widget -->
                                                         <div class="relation-widget" id="Relation-formSpecialite-specialite">
                                                             <!-- Dropdown -->
-                                                            {!! Form::select('specialite', $specialites, $demandeur_edit->specialite_id, ['class' => 'form-control select2-specialite']) !!}
+                                                            {!! Form::select('specialite_id', $specialites, $demandeur_edit->specialite_id, ['class' => 'form-control select2-specialite']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group  number-field span-left col-6" data-field-name="nombreexperience" id="nombreexperience-group">
@@ -431,7 +429,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    
+
                                                     <div class="form-group  widget-field span-right col-6" data-field-name="uniteexperience" id="uniteexperience-group">
                                                         <label for="uniteexperience">
                                                             Unité durée
@@ -451,7 +449,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                   
+
                                                     <div class="form-group  widget-field span-left  col-6 " data-field-name="curriculum" id="curriculum-group">
                                                         <label for="curriculum">
                                                             cv

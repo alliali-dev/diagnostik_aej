@@ -37,9 +37,10 @@ class UsersController extends Controller
         return view('users.index');
     }
 
-    private function profile()
+    public function profile()
     {
-        return view('profile.index');
+        $profil = auth()->user();
+        return view('users.profile',compact('profil'));
     }
 
     public function disabledUsers()
@@ -155,10 +156,7 @@ class UsersController extends Controller
     {
         $user = User::withTrashed()->find($request->id);
         if (!$user) {
-
             flashy()->success('Users not found');
-
-
             return redirect(route('users.index'));
         }
 
@@ -189,10 +187,11 @@ class UsersController extends Controller
                 $user->roles()->sync($roles);
         }
 
-        session()->flash('success','Users updated successfully.');
+        session()->flash('success','Utilisateur a été mis à jour avec succès.');
 
-	    if(Auth::user()->can('Reseller') || Auth::user()->can('Reseller Pro') || Auth::user()->can('Bundle'))
-		    return redirect(route('users.myClients'));
+        if($request->has('profile')){
+            return back();
+        }
 
         return redirect(route('users.index'));
     }

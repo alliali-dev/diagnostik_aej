@@ -52,7 +52,7 @@
                                                 <!-- 2 -->
                                                 <div class="themeioan_counter text-center"><!-- single counter item -->
 
-                                                    <h4 id="entreprise" class="entreprise">{{$rencontres->where('typerencontre',1)->count() }}</h4>
+                                                    <h4 id="entreprise" class="entreprise">{{  $data['rec1_count']  }}</h4>
                                                     <p class="ttle_count">1ere RENCONTRE</p>
                                                 </div>
                                             </div>
@@ -61,7 +61,7 @@
                                             <div class="info">
                                                 <!-- 3 -->
                                                 <div class="themeioan_counter text-center"><!-- single counter item -->
-                                                    <h4 id="total_number" class="total_number">{{$rencontres->where('typerencontre',2)->count() }}</h4>
+                                                    <h4 id="total_number" class="total_number">{{ $data['rec2_count']  }}</h4>
                                                     <p class="ttle_count">2eme RENCONTRE</p>
                                                 </div><!-- end single counter item -->
                                             </div>
@@ -70,7 +70,7 @@
                                             <div class="info">
                                                 <!-- 3 -->
                                                 <div class="themeioan_counter text-center"><!-- single counter item -->
-                                                    <h4 id="total_number" class="total_number">{{$rencontres->where('typerencontre',3)->count() }}</h4>
+                                                    <h4 id="total_number" class="total_number">{{ $data['rec3_count']   }}</h4>
                                                     <p class="ttle_count">3eme RENCONTRE</p>
                                                 </div><!-- end single counter item -->
                                             </div>
@@ -79,7 +79,7 @@
                                             <div class="info">
                                                 <!-- 3 -->
                                                 <div class="themeioan_counter text-center"><!-- single counter item -->
-                                                    <h4 id="total_number" class="total_number">{{$rencontres->where('typerencontre',4)->count() }}</h4>
+                                                    <h4 id="total_number" class="total_number">{{  $data['rec4_count']  }}</h4>
                                                     <p class="ttle_count">4eme RENCONTRE</p>
                                                 </div><!-- end single counter item -->
                                             </div>
@@ -88,7 +88,7 @@
                                             <div class="info">
                                                 <!-- 3 -->
                                                 <div class="themeioan_counter text-center"><!-- single counter item -->
-                                                    <h4 id="total_number" class="total_number">{{$rencontres->where('typerencontre',5)->count() }}</h4>
+                                                    <h4 id="total_number" class="total_number">{{ $data['rec5_count']   }}</h4>
                                                     <p class="ttle_count">5eme RENCONTRE</p>
                                                 </div><!-- end single counter item -->
                                             </div>

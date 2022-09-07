@@ -46,11 +46,11 @@
                                 <i></i><span class="menu-item" data-i18n="Categorie create">Suivies</span>
                             </a>
                         </li>
-                        <li>
+                        {{--<li>
                             <a href="{{ route('diagnostik.modif') }}">
                                 <i></i><span class="menu-item" data-i18n="">Modification</span>
                             </a>
-                        </li>
+                        </li>--}}
                     </ul>
                 </li>
             <li class="nav-item  has-sub sidebar-group-active">

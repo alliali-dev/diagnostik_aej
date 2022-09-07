@@ -91,11 +91,14 @@
                                         <a class="dropdown-item" href="{{ route('users.agenceindex') }}">
                                             <i class="feather icon-activity"></i> Gérer Agences
                                         </a>
-                                    @elseif(auth()->user()->hasRole('Chef Agence'))
+                                    @elseif(auth()->user()->hasRole('Chef Agence') )
                                         <a class="dropdown-item" href="{{route('users.index')}}">
                                             <i class="feather icon-user-plus"></i> Gérer Utilisateur
                                         </a>
                                     @endif
+                                    <a class="dropdown-item" href="{{ route('users.profile') }}">
+                                        <i class="feather icon-user-plus"></i> Profile
+                                    </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="icon icon-login-page icon-fw mr-2 mr-sm-1"></i>{{ __('Déconnexion') }}
