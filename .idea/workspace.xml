@@ -21,17 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="diagnostic select 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/modif.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/modif.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,13 +339,7 @@
       <workItem from="1662384169101" duration="249000" />
       <workItem from="1662454465411" duration="1802000" />
       <workItem from="1662475321566" duration="310000" />
-    </task>
-    <task id="LOCAL-00015" summary="add">
-      <created>1638289132126</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1638289132126</updated>
+      <workItem from="1662551829660" duration="346000" />
     </task>
     <task id="LOCAL-00016" summary="test">
       <created>1638433305568</created>
@@ -694,7 +677,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662456356779</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="amelioration du module diagnostique">
+      <created>1662540859516</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1662540859516</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -729,7 +719,8 @@
     <MESSAGE value="diagnostic" />
     <MESSAGE value="diagnostic select 2" />
     <MESSAGE value="fix bug formation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug formation" />
+    <MESSAGE value="amelioration du module diagnostique" />
+    <option name="LAST_COMMIT_MESSAGE" value="amelioration du module diagnostique" />
   </component>
   <component name="WindowStateProjectService">
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656434974116">
@@ -737,14 +728,14 @@
     </state>
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.950@0.25.1680.950" timestamp="1656434974116" />
     <state x="578" y="262" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.956@0.25.1680.956" timestamp="1656364840259" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1662456359097">
+    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1662540863155">
       <screen x="0" y="25" width="1680" height="958" />
     </state>
     <state x="440" y="225" key="Vcs.Push.Dialog.v2/0.25.1680.950@0.25.1680.950" timestamp="1656433316236" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.953@0.25.1680.953" timestamp="1656449850178" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.954@0.25.1680.954" timestamp="1656496340287" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1657637130052" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.958@0.25.1680.958" timestamp="1662456359097" />
+    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.958@0.25.1680.958" timestamp="1662540863155" />
     <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.959@0.25.1680.959" timestamp="1662053440903" />
     <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1662045043704">
       <screen x="0" y="25" width="1680" height="959" />
