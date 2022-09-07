@@ -41,11 +41,6 @@
                                 <i></i><span class="menu-item" data-i18n="Categorie create">Création</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ route('entretient.index') }}">
-                                <i></i><span class="menu-item" data-i18n="Categorie create">Suivies</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             <li class="nav-item  has-sub sidebar-group-active">
