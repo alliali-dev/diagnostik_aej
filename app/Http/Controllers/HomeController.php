@@ -130,10 +130,14 @@ class HomeController extends Controller
         $rencontres = Rencontre::mine();
         $suivierencontres = SuiviRencontre::mine();
 
-        //dd(session()->get('orig_agence'));
+        $data = [
+            'rec1_count' => Rencontre::mine()->where('typerencontre',1)->count(),
+            'rec2_count' => Rencontre::mine()->where('typerencontre',2)->count(),
+            'rec3_count' => Rencontre::mine()->where('typerencontre',3)->count(),
+            'rec4_count' => Rencontre::mine()->where('typerencontre',4)->count(),
+            'rec5_count' => Rencontre::mine()->where('typerencontre',5)->count(),
+        ];
 
-       // dd(auth()->user()->hasRole('SuperAdmin'));
-
-        return view('home',compact('rencontres','prdejs','recmodalitejs','recaxetravailjs','suivierencontres'));
+        return view('home',compact('rencontres','prdejs','recmodalitejs','recaxetravailjs','suivierencontres','data'));
     }
 }

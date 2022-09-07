@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Message @endsection
+@section('title') Entretient diagnostique @endsection
 @section('subTitle') Mise à jour profil @endsection
 @section('content')
     <h2 style="color: orangered" align="center">
@@ -44,6 +44,7 @@
                             {{--<strong>Mise à jour profil  <a style="color: deepskyblue;" id="urlprofile" href="#" target="_blank">ici</a></strong>--}}
                         </div>
                         <div id="resulterror" style="display: none;" class="text-center text-warning"><strong>Numéro existe déjà</strong></div>
+                        <div id="resulterror_2" style="display: none;" class="text-center text-warning"><strong>Numéro n'existe pas dans la base sur la plateforme</strong></div>
                         <div id="resulterrorformat" style="display: none;" class="text-center text-warning"><strong>Format non-conforme</strong></div>
 
                         <!--form control-->
@@ -83,6 +84,7 @@
                 var matriculeaej = $('#matriculeaej').val();
 
                 var createurl = "{{ route('entretient.create',':test') }}"
+                var editdemandeurl = "{{ route('diagnostik.modif',':matricule') }}"
 
                 if(matriculeaej == ""){
                     $('#loader').fadeOut();
@@ -113,11 +115,15 @@
                                             $('#profile').fadeIn();
                                             $('#aej_ok').hide();
                                             $('#return').hide();
+
                                             var url= createurl.replace(':test',matriculeaej);
-                                            console.table(url);
+                                            var urleditdemandeurlocale = editdemandeurl.replace(':matricule',matriculeaej);
+
+                                            console.table(urleditdemandeurlocale);
                                             $('#close').attr('href',createurl.replace(':test',matriculeaej))
                                             $('#urlprofile').attr('href','https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/update/'+array[0].value)
-                                            $('#profile').attr('href','https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/update/'+array[0].value)
+                                           // $('#profile').attr('href','https://www.agenceemploijeunes.ci/site/01aej18/digit/demandeur/demandeursall/update/'+array[0].value)
+                                            $('#profile').attr('href',urleditdemandeurlocale)
                                             $('#matriculeaej').val(array[0].label);
                                             $('#matricule_aej').val(array[0].label);
                                             $('#sexe').val(array[0].sexe);
@@ -158,8 +164,7 @@
                                 }*/
                             }else{
                                 $('#loader').fadeOut();
-                                $('#resulterror').fadeIn();
-
+                                $('#resulterror_2').fadeIn();
                             }
                             console.log();
                         },error: function (jqXHR, exception) {

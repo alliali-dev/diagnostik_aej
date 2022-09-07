@@ -2,6 +2,7 @@
 
  use App\Http\Controllers\Diagnostik\DiagnostikController;
  use App\Http\Controllers\EntretientDiagController;
+ use App\Http\Controllers\Users\UsersController;
  use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -78,6 +79,10 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/getRec3', [DiagnostikController::class,'getRec3'])->name('getrec3');
     Route::get('/getRec4', [DiagnostikController::class,'getRec4'])->name('getrec4');
     Route::get('/getRec5', [DiagnostikController::class,'getRec5'])->name('getrec5');
+    // la route modification
+
+    Route::get('/modif/{matricule?}', [DiagnostikController::class,'modif'])->name('modif');
+    Route::post('/update/demandeur', [DiagnostikController::class,'update_demandeur'])->name('updatedemandeur');
 
     // route d'exportation in excell  {{route('diagnostik.export_rc1)}}
     Route::get('/export/recontre1','DiagnostikController@exportRencontre1')->name('export_rc1');
@@ -132,7 +137,7 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     Route::get('/disabledTable', 'UsersController@disabledUsersTable')->name('disabledUsersTable');
     Route::get('/deletedTable', 'UsersController@deletedUsersTable')->name('deletedUsersTable');
 
-    Route::get('/profile', 'UsersController@profile')->name('profile');
+    Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
 
     /* Users's Clients */
     Route::get('/manage-clients', 'UsersController@myClients')->name('myClients');
@@ -145,6 +150,4 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     /* Agency */
     Route::get('/agencies-clients', 'UsersController@agenciesClients')->name('agenciesClients');
     Route::get('/agencies-clients-table', 'UsersController@agenciesClientsTable')->name('agenciesClientsTable');
-
-
 });

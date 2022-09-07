@@ -56,4 +56,13 @@ class User extends Authenticatable
     public function suivirencontres() {
         return $this->hasMany(SuiviRencontre::class);
     }
+
+    public function entretientdiags(){
+        return $this->belongsToMany('User', 'entretient_diags','user_id', 'entretient_diag_id');
+
+    }
+    public function entretientdiag(){
+        return $this->belongsToMany(User::class, 'entretient_diags','entretient_diag_id','user_id');
+
+    }
 }

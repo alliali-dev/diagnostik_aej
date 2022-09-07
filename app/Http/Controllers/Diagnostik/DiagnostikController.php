@@ -52,7 +52,8 @@ class DiagnostikController extends Controller
     public function listeentretient(Request $request)
     {
         if ($request->ajax()) {
-            $data = EntretientDiag::mine()->where('state',false)->get();
+            //old $data = EntretientDiag::mine()->where('state',false)->get();
+            $data = EntretientDiag::mine()->where('state',true)->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -618,14 +619,13 @@ class DiagnostikController extends Controller
         }
     }
 
-
     public function getRec5(Request $request)
     {
         if ($request->ajax()) {
             $data = Rencontre::mine()
                 ->where('typerencontre', 5 )
                 ->where('status',true)
-                ->where('findrdv',false);
+                ->orWhere('findrdv',true);
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -661,8 +661,6 @@ class DiagnostikController extends Controller
                 ->make(true);
         }
     }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -793,6 +791,8 @@ class DiagnostikController extends Controller
     {
         //
     }
+
+
     public function diagnos (){
         return view('diagnostic.diagnos');
     }
@@ -809,6 +809,16 @@ class DiagnostikController extends Controller
         //
     }
 
+    public function update_demandeur(Request $request){
+
+        $data = $request->all();
+        //dd($data);
+        $response = Http::post('http://localhost:8888/aejtechnologie/update/demandeur/', $data);
+        $body = json_decode($response->body());
+        dd($body);
+        return redirect()->route('entretient.create',$request->matriculeaej);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -818,5 +828,123 @@ class DiagnostikController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function modif($matricule){
+
+        $url_demandeur_edit     = "https://agenceemploijeunes.ci/site/demandeur/edit/".$matricule;
+        $response_edit          = Http::get($url_demandeur_edit);
+        $demandeur_edit         = json_decode($response_edit->body());
+        $url                    =  "https://agenceemploijeunes.ci/site/demandeur/parameter";
+        $response               = Http::get($url);
+        $demandeur_parameter    = json_decode($response->body());
+
+        /*$ville                = $demandeur_parameter->ville;
+        $sexe                   = $demandeur_parameter->sexe;
+        $statutdemandeur        = $demandeur_parameter->statutdemandeur;
+        $pays                   = $demandeur_parameter->pays;
+        $motifinscription       = $demandeur_parameter->motifinscription;
+        $typepieceidentite      = $demandeur_parameter->typepieceidentite;
+        $niveauetude            = $demandeur_parameter->niveauetude;
+        $diplome                = $demandeur_parameter->diplome;
+        $specialite             = $demandeur_parameter->specialite;
+        $secteuractivite        = $demandeur_parameter->secteuractivite;
+        $soussecteuractivite    = $demandeur_parameter->soussecteuractivite;
+        $divisionregionaleaej   = $demandeur_parameter->divisionregionaleaej;
+        $typeenseignement       = $demandeur_parameter->typeenseignement;
+        $typesituationhandicap  = $demandeur_parameter->typesituationhandicap;
+        $uniteexperience        = $demandeur_parameter->uniteexperience;
+        $categoriedemandeur     = $demandeur_parameter->categoriedemandeur;
+        $agencecnps             = $demandeur_parameter->agencecnps;
+        $situationamatrimoniale = $demandeur_parameter->situationamatrimoniale;
+        $commune                = $demandeur_parameter->commune;*/
+
+        $statutdemandeur = [];
+
+        foreach ($demandeur_parameter->statutdemandeur as $item) {
+            $statutdemandeur[$item->id] = $item->libelle;
+        }
+
+        $sexes = [];
+        foreach($demandeur_parameter->sexe as $item){
+            $sexes[$item->id] = $item->libelle;
+        }
+
+        $pays = [];
+        foreach($demandeur_parameter->pays as $item){
+            $pays[$item->id] = $item->nom;
+        }
+
+        $motifinscriptions = [];
+        foreach($demandeur_parameter->motifinscription as $item){
+            $motifinscriptions[$item->id] = $item->libelle;
+        }
+
+        $typepieceidentites = [];
+        foreach($demandeur_parameter->typepieceidentite as $item){
+            $typepieceidentites[$item->id] = $item->libelle;
+        }
+
+        $niveauetudes = [];
+        foreach($demandeur_parameter->niveauetude as $item){
+            $niveauetudes[$item->id] = $item->libelle;
+        }
+
+        $diplomes = [];
+        foreach($demandeur_parameter->diplome as $item){
+            $diplomes[$item->id] = $item->libelle;
+        }
+
+        $specialites = [];
+        foreach($demandeur_parameter->specialite as $item){
+            $specialites[$item->id] = $item->libelle;
+        }
+
+        $villes = [];
+        foreach($demandeur_parameter->ville as $item){
+            $villes[$item->id] = $item->nom;
+        }
+
+        $typesituationhandicaps = [];
+        foreach($demandeur_parameter->typesituationhandicap as $item){
+            $typesituationhandicaps[$item->id] = $item->libelle;
+        }
+
+        $lieuhabitations = [];
+        foreach($demandeur_parameter->commune as $item){
+            $lieuhabitations[$item->id] = $item->nom;
+        }
+
+        $lieunaissances = [];
+        foreach($demandeur_parameter->commune as $item){
+            $lieunaissances[$item->id] = $item->nom;
+        }
+
+        $situationamatrimoniales = [];
+        foreach($demandeur_parameter->situationamatrimoniale as $item){
+            $situationamatrimoniales[$item->id] = $item->libelle;
+        }
+
+        $categoriedemandeurs = [];
+        foreach($demandeur_parameter->categoriedemandeur as $item){
+            $categoriedemandeurs[$item->id] = $item->libelle;
+        }
+
+        $agencecnps = [];
+        foreach($demandeur_parameter->agencecnps as $item){
+            $agencecnps[$item->id] = $item->nom;
+        }
+
+        $typeenseignements = [];
+        foreach($demandeur_parameter->typeenseignement as $item){
+            $typeenseignements[$item->id] = $item->libelle;
+        }
+
+        $uniteexperiences = [];
+        foreach($demandeur_parameter->uniteexperience as $item){
+            $uniteexperiences[$item->id] = $item->libelle;
+        }
+
+        return view('diagnostic.modif',compact('lieuhabitations','demandeur_parameter','statutdemandeur','agencecnps','uniteexperiences','typeenseignements','categoriedemandeurs','situationamatrimoniales','niveauetudes','specialites','typepieceidentites','sexes','pays','diplomes','motifinscriptions','typesituationhandicaps','lieunaissances','villes','demandeur_edit'));
     }
 }

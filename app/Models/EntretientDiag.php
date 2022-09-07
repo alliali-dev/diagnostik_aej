@@ -43,7 +43,7 @@ class EntretientDiag extends Model
             return $query;
         } elseif(auth()->user()->hasRole('Chef Agence')){
             return $query->where('agence_id',  session()->get('orig_agence'));
-        } elseif(auth()->user()->hasRole('Conseiller Emploi')){
+        } elseif(auth()->user()->hasRole('Conseiller') || auth()->user()->hasRole('Assistant Conseiller') || auth()->user()->hasRole('Conseiller Emploi Junior')){
             return $query->where('agence_id',  session()->get('orig_agence'))
                 ->where('user_id',  Auth::id());
         }
@@ -54,6 +54,10 @@ class EntretientDiag extends Model
     }
 
     public function suivi(){
-        return $this->belongsTo(SuiviRencontre::class,'matriculeaej','matricule_aej');
+        return $this->hasMany(SuiviRencontre::class,'matricule_aej','matriculeaej');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

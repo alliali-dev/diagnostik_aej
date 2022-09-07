@@ -15,7 +15,9 @@
         <div class="card-content">
 
             <div class="card-body">
-                {{ Form::model($profil,['route' => ['profile.store'],  'novalidate']) }}
+                {{ Form::model($profil,['route' => ['users.update'],  'novalidate']) }}
+
+                @method('PUT')
                 <div class="form-body">
 
                     <div class="row">
@@ -26,6 +28,9 @@
                                 {{ Form::text('name', null, ['class'=>'form-control col-md-12', 'id' => 'name', 'required'=>true ]) }}
                             </div>
                         </div>
+
+                        <input type="hidden" name="profile" value="profile">
+                        <input type="hidden" name="id" value="{{ $profil->id }}">
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
@@ -49,7 +54,7 @@
                             <span id='message'></span>
                         </div>
 
-                        <div class="col-12">
+                      {{--  <div class="col-12">
                             <div class="form-group">
                                 <label for="timezone" class="control-label">Timezone</label>
                                 {{ Form::select('timezone', setTimezones(), isset($profil->settings['timezone']) ? $profil->settings['timezone'] : 'Africa/Casablanca', ['class'=>'form-control']) }}
@@ -63,7 +68,7 @@
                                        name="clickBankusername">
                             </div>
                         </div>
-
+--}}
                         <div class="col-12">
                             <button class="btn btn-primary waves-effect waves-light">
                                 <span><i class="feather icon-save"></i> Sauvegarder</span>
@@ -88,7 +93,7 @@
             $('[name="password"], [name="repassword"]').on('keyup change', function () {
                 if ($('[name="password"]').val() !== $('[name="repassword"]').val()) {
                     $('#error-message').fadeOut().remove();
-                    $('<span id="error-message">Passwords do not match.</span>').css('color', 'red').insertAfter($('[name="repassword"]'));
+                    $('<span id="error-message">Les mots de passe ne correspondent pas.</span>').css('color', 'red').insertAfter($('[name="repassword"]'));
                     $('form').find('button[type="submit"]').attr('disabled', true);
                 } else {
                     $('#error-message').fadeOut();

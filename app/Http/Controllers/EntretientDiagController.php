@@ -7,6 +7,8 @@ use App\Models\Commune;
 use App\Models\EntretientDiag;
 use App\Models\Niveauetude;
 use App\Models\Specialite;
+use App\Models\SuiviRencontre;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -97,7 +99,8 @@ class EntretientDiagController extends Controller
 
     }
 
-    public function index(){
+    public function index(EntretientDiag $t){
+
         $entretiens  = EntretientDiag::mine()->paginate(15);
         return view('entretientdiag.index',compact('entretiens'));
     }

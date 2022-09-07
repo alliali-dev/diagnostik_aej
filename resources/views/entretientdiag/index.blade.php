@@ -53,7 +53,9 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         @foreach($entretiens as $item)
+                            @if($item->state == 0)
                             <tr>
                                 <td> {{ $item->matriculeaej }}</td>
                                 <td> {{ $item->nomprenom }}</td>
@@ -103,10 +105,11 @@
                                     </button>
                                 </td>--}}
                             </tr>
+                            @endif
                         @endforeach
                         @if(count($entretiens) < 1)
                             <tr>
-                                <td colspan="10" class="text-center">Pas d'agence trouvé !</td>
+                                <td colspan="10" class="text-center">Pas d'entretien trouvé !</td>
                             </tr>
                         @endif
                         </tbody>

@@ -175,9 +175,9 @@
                 },
                 columns: [
                     {data: 'id' , orderable: false, searchable: false},
-                    {data: 'matricule_aej' , orderable: false, searchable: false},
-                    {data: 'nomprenom' , orderable: false, searchable: false},
-                    {data: 'sexe' , orderable: false, searchable: false},
+                    {data: 'matricule_aej' , orderable: false, searchable: true},
+                    {data: 'nomprenom' , orderable: false, searchable: true},
+                    {data: 'sexe' , orderable: false, searchable: true},
                     {data: 'conseiller', orderable: false, searchable: false},
                     {data: 'action', orderable: false, searchable: false},
                 ]

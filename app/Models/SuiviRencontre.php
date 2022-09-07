@@ -44,7 +44,7 @@ class SuiviRencontre extends Model
         }elseif(auth()->user()->hasRole('Chef Agence')){
             return $query->where('agence_id',  session()->get('orig_agence'))
                 ->get();
-        }elseif(auth()->user()->hasRole('Conseiller Emploi')){
+        }elseif(auth()->user()->hasRole('Conseiller') || auth()->user()->hasRole('Assistant Conseiller') || auth()->user()->hasRole('Conseiller Emploi Junior')){
             return $query->where('agence_id',  session()->get('orig_agence'))
                 ->where('user_id',  Auth::id())
                 ->get();
