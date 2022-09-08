@@ -1,0 +1,7 @@
+AuthName "diagnostic.emploijeunes.ci statistics"
+AuthType Basic
+AuthUserFile /home/diagnostic/.stats-htpasswd
+require valid-user
+<Files .stats-htpasswd>
+deny from all
+</Files>
