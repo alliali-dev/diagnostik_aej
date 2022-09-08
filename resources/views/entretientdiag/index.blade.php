@@ -6,11 +6,9 @@
 
 
 @section('css')
-    <style>
-        th{
-            font-size: 10px;
-        }
-    </style>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">--}}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -33,7 +31,7 @@
                 </div>
 
                 <div class="table-responsive-sm">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped" id="tableEntretien">
                         <thead>
                         <tr>
                             <th>#n aej</th>
@@ -49,75 +47,75 @@
                             <th>Dépôt de dossier en entreprise</th>
                             <th>Grille Diagnostique</th>
                             <th>Guide Entretien</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($entretiens as $item)
-                            @if($item->state == 0)
-                            <tr>
-                                <td> {{ $item->matriculeaej }}</td>
-                                <td> {{ $item->nomprenom }}</td>
-                                <td> {{ $item->niveauformaion }}</td>
-                                <td> {{ $item->niveauexperience }}</td>
-                                {{--<td> {{ $item->adeqormaexper }}</td>
-                                <td> {{ $item->conmetieractiv }}</td>
-                                <td> {{ $item->adqformmetieractiv }}</td>
-                                <td> {{ $item->adqexpmetieractiv }}</td>--}}
-                                <td> {{ $item->maitoutrechempl }}</td>
-                                {{--<td> {{ $item->conexigmarch }}</td>--}}
-                                <td> {{ $item->depdossent }}</td>
-                                <td>
-                                    @if($item->file_grille_diagnostic )
-                                        <a href="{{ asset('fichiers/diagnostic/'.$item->file_grille_diagnostic) }}" style="font-size: 16px;"
-                                                class="badge badge-info mr-1" target="_blank">
-                                            <i class="feather icon-eye"></i>
-                                        </a>
-                                    @endif
+{{--                        @foreach($entretiens as $item)--}}
+
+{{--                            <tr>--}}
+{{--                                <td> {{ $item->matriculeaej }}</td>--}}
+{{--                                <td> {{ $item->nomprenom }}</td>--}}
+{{--                                <td> {{ $item->niveauformaion }}</td>--}}
+{{--                                <td> {{ $item->niveauexperience }}</td>--}}
+{{--                                <td> {{ $item->adeqormaexper }}</td>--}}
+{{--                                <td> {{ $item->conmetieractiv }}</td>--}}
+{{--                                <td> {{ $item->adqformmetieractiv }}</td>--}}
+{{--                                <td> {{ $item->adqexpmetieractiv }}</td>--}}
+{{--                                <td> {{ $item->maitoutrechempl }}</td>--}}
+{{--                                <td> {{ $item->conexigmarch }}</td>--}}
+{{--                                <td> {{ $item->depdossent }}</td>--}}
+{{--                                <td>--}}
+{{--                                    @if($item->file_grille_diagnostic )--}}
+{{--                                        <a href="{{ asset('fichiers/diagnostic/'.$item->file_grille_diagnostic) }}" style="font-size: 16px;"--}}
+{{--                                                class="badge badge-info mr-1" target="_blank">--}}
+{{--                                            <i class="feather icon-eye"></i>--}}
+{{--                                        </a>--}}
+{{--                                    @endif--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    @if($item->file_guide_entretient)--}}
+{{--                                        <a href="{{ asset('fichiers/entretient/'.$item->file_guide_entretient) }}" style="font-size: 16px;" target="_blank"--}}
+{{--                                           class="badge badge-primary mr-1">--}}
+{{--                                            <i class="feather icon-eye"></i>--}}
+{{--                                        </a>--}}
+{{--                                    @endif--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <a class="badge badge-success mr-1" href="{{ route('diagnostik.create',$item->matriculeaej) }}" style="font-size: small;">--}}
+{{--                                        <i class="feather icon-arrow-right"></i>--}}
+{{--                                        Effectuer un entretien--}}
+{{--                                    </a>--}}
+{{--                                </td>--}}
+{{--                                <td class="float-right">--}}
+{{--                                    <button type="button"--}}
+{{--                                            data-toggle="modal"--}}
+{{--                                            data-target="#editAgence"--}}
+{{--                                            class="btn btn-icon btn-icon rounded-circle btn-primary mr-0 waves-effect waves-light">--}}
+{{--                                        <i class="feather icon-edit"></i>--}}
+{{--                                    </button>--}}
+{{--                                    <button type="button"--}}
+{{--                                            data-toggle="modal"--}}
+{{--                                            data-target="#deletedAgence"--}}
+{{--                                            class="btn btn-icon btn-icon rounded-circle btn-danger mr-0 waves-effect waves-light">--}}
+{{--                                        <i class="feather icon-trash"></i>--}}
+{{--                                    </button>--}}
                                 </td>
-                                <td>
-                                    @if($item->file_guide_entretient)
-                                        <a href="{{ asset('fichiers/entretient/'.$item->file_guide_entretient) }}" style="font-size: 16px;" target="_blank"
-                                           class="badge badge-primary mr-1">
-                                            <i class="feather icon-eye"></i>
-                                        </a>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a class="badge badge-success mr-1" href="{{ route('diagnostik.create',$item->matriculeaej) }}" style="font-size: small;">
-                                        <i class="feather icon-arrow-right"></i>
-                                        Effectuer un entretien
-                                    </a>
-                                </td>
-                                {{--<td class="float-right">
-                                    <button type="button"
-                                            data-toggle="modal"
-                                            data-target="#editAgence"
-                                            class="btn btn-icon btn-icon rounded-circle btn-primary mr-0 waves-effect waves-light">
-                                        <i class="feather icon-edit"></i>
-                                    </button>
-                                    <button type="button"
-                                            data-toggle="modal"
-                                            data-target="#deletedAgence"
-                                            class="btn btn-icon btn-icon rounded-circle btn-danger mr-0 waves-effect waves-light">
-                                        <i class="feather icon-trash"></i>
-                                    </button>
-                                </td>--}}
-                            </tr>
-                            @endif
-                        @endforeach
-                        @if(count($entretiens) < 1)
-                            <tr>
-                                <td colspan="10" class="text-center">Pas d'entretien trouvé !</td>
-                            </tr>
-                        @endif
+{{--                            </tr>--}}
+
+{{--                        @endforeach--}}
+{{--                        @if(count($entretiens) < 1)--}}
+{{--                            <tr>--}}
+{{--                                <td colspan="10" class="text-center">Pas d'entretien trouvé !</td>--}}
+{{--                            </tr>--}}
+{{--                        @endif--}}
                         </tbody>
                     </table>
                 </div>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center mt-2">
-                        {{ $entretiens->links() }}
+{{--                        {{ $entretiens->links() }}--}}
                     </ul>
                 </nav>
             </div>
@@ -223,7 +221,46 @@
 
 @endsection
 @section('js')
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></>
+    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
+        $(function() {
+            $('#tableEntretien').DataTable({
+                "language": {
+                    "lengthMenu": "Afficher _MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé - désolé",
+                    "info": "Afficher la page _PAGE_ de _PAGES_",
+                    "infoEmpty": "Aucun dossier disponible",
+                    "processing":     "Traitement...",
+                    "search":         "Recherche:",
+                    "infoFiltered": "(filtré de _MAX_ total des enregistrements)",
+                    "paginate": {
+                        "first":      "Premier",
+                        "last":       "Dernier",
+                        "next":       "Suivant",
+                        "previous":   "Précédent"
+                    },
+                },
+                processing: true,
+                serverSide: true,
+
+                ajax: {
+                    url: '{{ route('diagnostik.listsuivi') }}' /*http://localhost:8888/aejtechnologie/all_demandeur*/
+                },
+                columns: [
+                    {data: 'matriculeaej', orderable: false, searchable: true},
+                    {data: 'nomprenom', orderable: false, searchable: true},
+                    {data: 'niveauformation', orderable: false, searchable: false},
+                    {data: 'niveauexperience', orderable: false, searchable: false},
+                    {data: 'maitoutrechempl', orderable: false, searchable: false},
+                    {data: 'depdossent', orderable: false, searchable: false},
+                    {data: 'actionBtn2', orderable: false, searchable: false},
+                    {data: 'actionBtn3', orderable: false, searchable: false},
+                    {data: 'action', orderable: false, searchable: false},
+
+                ]
+            });
+        });
         $('#deletedAgence').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');

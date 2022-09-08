@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,17 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="diagnostic select 2">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_09_2022_16_47__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_09_2022_16_47__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_09_2022_11_09__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_09_2022_11_09__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_09_25__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_09_25__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/modif.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/modif.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntretientDiagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntretientDiagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Rencontre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Rencontre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +51,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -184,17 +192,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/entretientdiag" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/select2" />
@@ -211,6 +219,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -350,6 +359,8 @@
       <workItem from="1662384169101" duration="249000" />
       <workItem from="1662454465411" duration="1802000" />
       <workItem from="1662475321566" duration="310000" />
+      <workItem from="1662586995656" duration="7676000" />
+      <workItem from="1662628650608" duration="15274000" />
     </task>
     <task id="LOCAL-00015" summary="add">
       <created>1638289132126</created>
@@ -698,7 +709,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -710,7 +721,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="after test local" />
@@ -731,29 +741,15 @@
     <MESSAGE value="fix bug formation" />
     <option name="LAST_COMMIT_MESSAGE" value="fix bug formation" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656434974116">
-      <screen x="0" y="25" width="1680" height="950" />
-    </state>
-    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.950@0.25.1680.950" timestamp="1656434974116" />
-    <state x="578" y="262" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.956@0.25.1680.956" timestamp="1656364840259" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1662456359097">
-      <screen x="0" y="25" width="1680" height="958" />
-    </state>
-    <state x="440" y="225" key="Vcs.Push.Dialog.v2/0.25.1680.950@0.25.1680.950" timestamp="1656433316236" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.953@0.25.1680.953" timestamp="1656449850178" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.954@0.25.1680.954" timestamp="1656496340287" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1657637130052" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.958@0.25.1680.958" timestamp="1662456359097" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.959@0.25.1680.959" timestamp="1662053440903" />
-    <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1662045043704">
-      <screen x="0" y="25" width="1680" height="959" />
-    </state>
-    <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1680.959@0.25.1680.959" timestamp="1662045043704" />
-    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1662456322393">
-      <screen x="0" y="25" width="1680" height="958" />
-    </state>
-    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.958@0.25.1680.958" timestamp="1662456322393" />
-    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.959@0.25.1680.959" timestamp="1662050875135" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/routes/web.php</url>
+          <line>67</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
