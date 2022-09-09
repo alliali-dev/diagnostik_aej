@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('diagnostik.liste-complete') }}">
+                        <a href="{{ route('diagnostik.mes_rencontres') }}">
                             <i></i><span class="menu-item" data-i18n="Categorie create">Liste complète</span>
                         </a>
                     </li>

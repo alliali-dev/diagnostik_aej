@@ -49,7 +49,7 @@ class DiagnostikController extends Controller
         return view('diagnostic.enattende_diagnostique',compact('entretients'));
     }
     public function  list(){
-        $listRencontres = Rencontre::all();
+        $listRencontres = Rencontre::paginate(4);
         return view('diagnostic.index', compact('listRencontres'));
     }
 
@@ -695,11 +695,6 @@ class DiagnostikController extends Controller
     {
         if ($request->ajax()) {
             $data = Rencontre::mine()
-                ->where('typerencontre', 5 )
-                ->where('status',true)
-                ->orWhere('findrdv',true);
-
-            return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
@@ -714,7 +709,7 @@ class DiagnostikController extends Controller
                     return $nomprenom;
                 })
                 ->editColumn('sexe', function ($row){
-                    $sexe = $row->suivirencontre->sexe ;
+                    $sexe = $row->sexe ;
                     return $sexe;
                 })
                 ->editColumn('lieudereisdence', function ($row){
@@ -722,7 +717,7 @@ class DiagnostikController extends Controller
                     return $lieudereisdence;
                 })
                 ->editColumn('dureerencontre', function ($row){
-                    $dureerencontre = $row->suivirencontre->dureerencontre ;
+                    $dureerencontre = $row->dureerencontre ;
                     return $dureerencontre;
                 })
 
@@ -735,11 +730,11 @@ class DiagnostikController extends Controller
                     return $diplome;
                 })
                 ->editColumn('modalite', function ($row){
-                    $modalite = $row->suivirencontre->modalite ;
+                    $modalite = $row->modalite ;
                     return $modalite;
                 })
                 ->editColumn('axetravail', function ($row){
-                    $axetravail = $row->suivirencontre->axetravail ;
+                    $axetravail = $row->axetravail ;
                     return $axetravail;
                 })
                 ->rawColumns(['action'])
@@ -831,7 +826,12 @@ class DiagnostikController extends Controller
         return back();
     }
 
-
+    public function liste(){
+        $rencontres5 = Rencontre::mine()
+            ->where('typerencontre', 5)
+            ->where('status', true);
+        return view('diagnostic.index', compact('rencontres5'));
+    }
     public function mes_suivies(){
 
         $rencontres1 = Rencontre::mine()
