@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="table-responsive-sm">
-                    <table class="table table-hover table-striped"  id="liste">
+                    <table class="table table-bordered"  id="renTb7">
                         <thead>
                         <tr>
                             <th>N AEJ</th>
@@ -67,7 +67,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script>
         $(function () {
-            $('#liste').DataTable({
+            $('#renTb7').DataTable({
                 "language": {
                     "lengthMenu": "Afficher _MENU_ enregistrements par page",
                     "zeroRecords": "Rien n'a été trouvé - désolé",
@@ -86,7 +86,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('diagnostik.getrec5') }}'
+                    url: '{{ route('diagnostik.getrec7') }}'
                 },
                 columns: [
                     {data: 'matricule_aej' , orderable: false, searchable: true},

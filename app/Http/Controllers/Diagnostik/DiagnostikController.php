@@ -48,10 +48,6 @@ class DiagnostikController extends Controller
         })->paginate(15);
         return view('diagnostic.enattende_diagnostique',compact('entretients'));
     }
-    public function  list(){
-        $listRencontres = Rencontre::paginate(4);
-        return view('diagnostic.index', compact('listRencontres'));
-    }
 
     public function listesuivi(Request $request)
     {
@@ -685,10 +681,71 @@ class DiagnostikController extends Controller
     public function getRec5(Request $request)
     {
         if ($request->ajax()) {
-            $data = Rencontre::mine()
+            $data = Rencontre::mine();
+            return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
+                    $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->suivirencontre->matricule_aej).'" style="font-size: small;">
+                                    <i class="feather icon-arrow-right"></i>
+                                    Passer entretien
+                                   </a>';
+                    return $actionBtn;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->suivirencontre->matricule_aej ;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->suivirencontre->nomprenom ;
+                    return $nomprenom;
+                })
+                ->editColumn('sexe', function ($row){
+                    $sexe = $row->sexe ;
+                    return $sexe;
+                })
+                ->editColumn('lieudereisdence', function ($row){
+                    $lieudereisdence = $row->suivirencontre->lieudereisdence ;
+                    return $lieudereisdence;
+                })
+                ->editColumn('dureerencontre', function ($row){
+                    $dureerencontre = $row->dureerencontre ;
+                    return $dureerencontre;
+                })
+
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
+                ->editColumn('diplome', function ($row){
+                    $diplome = $row->suivirencontre->diplome ;
+                    return $diplome;
+                })
+                ->editColumn('modalite', function ($row){
+                    $modalite = $row->modalite ;
+                    return $modalite;
+                })
+                ->editColumn('axetravail', function ($row){
+                    $axetravail = $row->axetravail ;
+                    return $axetravail;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+
+    public function getRec7(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Rencontre::mine();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->suivirencontre->matricule_aej).'" style="font-size: small;">
+                                    <i class="feather icon-arrow-right"></i>
+                                    Passer entretien
+                                   </a>';
                     return $actionBtn;
                 })
                 ->editColumn('matricule_aej', function ($row){
@@ -817,11 +874,11 @@ class DiagnostikController extends Controller
         return back();
     }
 
-    public function liste(){
-        $rencontres5 = Rencontre::mine()
+    public function list_rencontres(){
+        $ts = Rencontre::mine()
             ->where('typerencontre', 5)
             ->where('status', true);
-        return view('diagnostic.index', compact('rencontres5'));
+        return view('diagnostic.index', compact('ts'));
     }
     public function mes_suivies(){
 

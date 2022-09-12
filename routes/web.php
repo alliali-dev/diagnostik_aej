@@ -79,6 +79,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/getRec3', [DiagnostikController::class,'getRec3'])->name('getrec3');
     Route::get('/getRec4', [DiagnostikController::class,'getRec4'])->name('getrec4');
     Route::get('/getRec5', [DiagnostikController::class,'getRec5'])->name('getrec5');
+    Route::get('/getRec7', [DiagnostikController::class,'getRec7'])->name('getrec7');
     Route::get('/getRec6', [DiagnostikController::class,'listesuivi'])->name('listsuivi');
 
     // la route modification
@@ -97,7 +98,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::post('/store',[DiagnostikController::class,'store'])->name('store');
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');
     Route::get('/mes_suivies', 'DiagnostikController@mes_suivies')->name('mes_suivies');
-    Route::get('/mes_rencontres', 'DiagnostikController@liste')->name('mes_rencontres');
+    Route::get('/mes_rencontres', 'DiagnostikController@list_rencontres')->name('mes_rencontres');
     Route::put('/update/{id}', 'DiagnostikController@update')->name('umes_rencontrespdate');
     Route::get('/diagnos','DiagnostikController@diagnos')->name('diagnos');///autocomSpecialite autocomNiveauEtude
     Route::post('autocomville', 'DiagnostikController@autocomVille')->name('autocomville');
