@@ -56,67 +56,58 @@ class DiagnostikController extends Controller
     public function listesuivi(Request $request)
     {
         if ($request->ajax()) {
-            //old $data = EntretientDiag::mine()->where('state',false)->get();
+
             $data = EntretientDiag::mine()->orderBy('state', 'asc')->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
-                    // $end_date = Carbon::parse($row->dateprochainrdv);
-                    // $endOutput = $end_date->diff(\Carbon\Carbon::now())->format('rdv dans %d jr %h hr');
                     if ($row->state == 0){
                         $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
-                                    <i class="feather icon-arrow-right"></i>
-                                    Effectuer un entretien
-                                   </a>';
+                                        <i class="feather icon-arrow-right"></i>
+                                        Effectuer un entretien
+                                       </a>';
                     }
-
-
                     return $actionBtn;
                 })
-                ->editColumn('actionBtn2', function ($row){
-                    $actionBtn2 = '';
-
+                ->addColumn('actionBtn2', function ($row){
+                        $actionBtn2 = '';
                         $actionBtn2 .= '<a href="'. asset('fichiers/diagnostic/'.$row->file_grille_diagnostic).'" style="font-size: 16px;"
                                                 class="badge badge-info mr-1" target="_blank">
                                             <i class="feather icon-eye"></i>
                                         </a>';
-
-
+                        return $actionBtn2;
                     })
-                ->editColumn('actionBtn3', function ($row){
-                    $actionBtn3 = '';
-
+                ->addColumn('actionBtn3', function ($row){
+                        $actionBtn3 = '';
                         $actionBtn3 .= '<a href="'.asset('fichiers/entretient/'.$row->file_guide_entretient).'" style="font-size: 16px;" target="_blank"
                                            class="badge badge-primary mr-1">
                                             <i class="feather icon-eye"></i>
                                         </a>';
-
-
+                        return $actionBtn3;
                 })
-
                 ->editColumn('matricule_aej', function ($row){
-                    $matricule_aej = $row->matriculeaej ;
+                    $matricule_aej = $row->matriculeaej;
                     return $matricule_aej;
                 })
                 ->editColumn('nomprenom', function ($row){
-                    $nomprenom = $row->nomprenom ;
+                    $nomprenom = $row->nomprenom;
                     return $nomprenom;
                 })
                 ->editColumn('niveauformation', function ($row){
-                    $niveauformation = $row->niveauformation ;
+                    $niveauformation = $row->niveauformation;
                     return $niveauformation;
                 })
                 ->editColumn('maitoutrechempl', function ($row){
-                    $maitoutrechempl = $row->maitoutrechempl ;
+                    $maitoutrechempl = $row->maitoutrechempl;
                     return $maitoutrechempl;
                 })
                 ->editColumn('depdossent', function ($row){
-                    $depdossent = $row->depdossent ;
+                    $depdossent = $row->depdossent;
                     return $depdossent;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','actionBtn2','actionBtn3'])
                 ->make(true);
         }
     }
@@ -899,7 +890,9 @@ class DiagnostikController extends Controller
         $data = $request->all();
         //dd($data);
         $response = Http::post('https://agenceemploijeunes.ci/site/update/demandeur/', $data);
+        //$response = Http::post('localhost:8888/aejtechnologie/update/demandeur', $data);
         $body = json_decode($response->body());
+       // dd($body);
         return redirect()->route('entretient.create',$request->matriculeaej);
     }
 
@@ -919,9 +912,11 @@ class DiagnostikController extends Controller
         $url_demandeur_edit     = "https://agenceemploijeunes.ci/site/demandeur/edit/".$matricule;
         $response_edit          = Http::get($url_demandeur_edit);
         $demandeur_edit         = json_decode($response_edit->body());
+        //$url                    =  "localhost:8888/aejtechnologie/demandeur/parameter";
         $url                    =  "https://agenceemploijeunes.ci/site/demandeur/parameter";
         $response               = Http::get($url);
         $demandeur_parameter    = json_decode($response->body());
+        //dd($demandeur_parameter);
 
         /*$ville                = $demandeur_parameter->ville;
         $sexe                   = $demandeur_parameter->sexe;

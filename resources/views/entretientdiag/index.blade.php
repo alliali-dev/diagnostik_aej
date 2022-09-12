@@ -4,10 +4,8 @@
 
 @section('subTitle') Liste des entretiens @endsection
 
-
 @section('css')
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
-        {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">--}}
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 @endsection
 
@@ -31,13 +29,13 @@
                 </div>
 
                 <div class="table-responsive-sm">
-                    <table class="table table-hover table-striped" id="tableEntretien">
+                    <table class="table table-bordered" id="tableEntretien" style="width: 100%;">
                         <thead>
                         <tr>
-                            <th>#n aej</th>
-                            <th>Nom et Prenom</th>
-                            <th>Niveau formaion</th>
-                            <th>Niveau expérience</th>
+                            <th>N* Matricule</th>
+                            <th>Nom & Prenom</th>
+                            <th>Niveau Formaion</th>
+                            <th>Niveau Expérience</th>
                            {{-- <th>adéquation formation expérience</th>--}}
                            {{-- <th>Connaissance du métier / activité</th>--}}
                             {{--<th>Adéquation formation métier / activité</th>--}}
@@ -113,11 +111,11 @@
                         </tbody>
                     </table>
                 </div>
-                <nav aria-label="Page navigation example">
+                {{--<nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center mt-2">
-{{--                        {{ $entretiens->links() }}--}}
+                    --}}{{--{{ $entretiens->links() }}--}}{{--
                     </ul>
-                </nav>
+                </nav>--}}
             </div>
         </div>
     </section>
@@ -134,26 +132,25 @@
                 </div>
                 <div class="modal-body">
                 {{ Form::open(['route'=>'users.agencestore', 'files'=>true , 'method' => 'POST']) }}
-                {{csrf_field()}}
-                <!-- Form Group -->
-                    <div class="form-group">
-                        <label for="email-1">Name</label>
-                        <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
-                    </div>
-                    <div class="form-group">
-                        <label for="email-1">Code</label>
-                        <input type="text" name="code" class="form-control" aria-describedby="emailHelp1">
-                    </div>
-                    <div class="form-group text-right mb-0">
-                        <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
-                    </div>
+                    {{ csrf_field() }}
+                    <!-- Form Group -->
+                        <div class="form-group">
+                            <label for="email-1">Name</label>
+                            <input type="text" name="name" class="form-control"  aria-describedby="emailHelp1">
+                        </div>
+                        <div class="form-group">
+                            <label for="email-1">Code</label>
+                            <input type="text" name="code" class="form-control" aria-describedby="emailHelp1">
+                        </div>
+                        <div class="form-group text-right mb-0">
+                            <button type="submit" class="btn btn-success text-uppercase">Ajouter</button>
+                        </div>
                     <!-- /form group -->
-                    {{ Form::close() }}
+                {{ Form::close() }}
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Modal New Social Viewer -->
     <div class="modal fade" id="editAgence" tabindex="-1" role="dialog"
@@ -168,23 +165,23 @@
                 </div>
                 <div class="modal-body">
                 {{ Form::open(['route'=>'users.agenceupdate', 'files'=>true , 'method' => 'POST']) }}
-                @method('PUT')
-                @csrf()
-                <!-- Form Group -->
-                    <div class="form-group">
-                        <label for="email-1">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp1">
-                    </div>
-                    <input type="hidden" name="id" id="id">
-                    <div class="form-group">
-                        <label for="email-1">Code</label>
-                        <input type="text" name="code" class="form-control" id="code" aria-describedby="emailHelp1">
-                    </div>
-                    <div class="form-group text-right mb-0">
-                        <button type="submit" class="btn btn-success text-uppercase">Modifier</button>
-                    </div>
+                    @method('PUT')
+                    @csrf()
+                    <!-- Form Group -->
+                        <div class="form-group">
+                            <label for="email-1">Name</label>
+                            <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp1">
+                        </div>
+                        <input type="hidden" name="id" id="id">
+                        <div class="form-group">
+                            <label for="email-1">Code</label>
+                            <input type="text" name="code" class="form-control" id="code" aria-describedby="emailHelp1">
+                        </div>
+                        <div class="form-group text-right mb-0">
+                            <button type="submit" class="btn btn-success text-uppercase">Modifier</button>
+                        </div>
                     <!-- /form group -->
-                    {{ Form::close() }}
+                 {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -221,7 +218,7 @@
 
 @endsection
 @section('js')
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(function() {
@@ -243,7 +240,6 @@
                 },
                 processing: true,
                 serverSide: true,
-
                 ajax: {
                     url: '{{ route('diagnostik.listsuivi') }}' /*http://localhost:8888/aejtechnologie/all_demandeur*/
                 },
@@ -261,6 +257,7 @@
                 ]
             });
         });
+
         $('#deletedAgence').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');
@@ -278,5 +275,6 @@
             modal.find('.modal-body #name').val(name);
             modal.find('.modal-body #code').val(code);
         });
+
     </script>
 @endsection

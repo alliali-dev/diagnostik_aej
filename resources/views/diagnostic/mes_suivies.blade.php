@@ -132,18 +132,18 @@
                                 <div class="table-responsive-sm">
                                     <table class="table table-bordered" id="renTb3" style="width: 100%;">
                                         <thead>
-                                        <tr>
-                                            <th>N AEJ</th>
-                                            <th>NOM PRENOM</th>
-                                            <th>SEXE</th>
-                                            <th>COMMUNE</th>
-                                            <th>DIPLOME</th>
-                                            <th>DUREE (h:m:s:ms)</th>
-                                            <th>DATE RDV</th>
-                                            <th>MODALITE</th>
-                                            <th>AXE TRAVAIL</th>
-                                            <th>Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>N AEJ</th>
+                                                <th>NOM PRENOM</th>
+                                                <th>SEXE</th>
+                                                <th>COMMUNE</th>
+                                                <th>DIPLOME</th>
+                                                <th>DUREE (h:m:s:ms)</th>
+                                                <th>DATE RDV</th>
+                                                <th>MODALITE</th>
+                                                <th>AXE TRAVAIL</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>

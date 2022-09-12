@@ -98,7 +98,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');
     Route::get('/mes_suivies', 'DiagnostikController@mes_suivies')->name('mes_suivies');
     Route::get('/mes_rencontres', 'DiagnostikController@liste')->name('mes_rencontres');
-    Route::put('/update/{id}', 'DiagnostikController@update')->name('update');
+    Route::put('/update/{id}', 'DiagnostikController@update')->name('umes_rencontrespdate');
     Route::get('/diagnos','DiagnostikController@diagnos')->name('diagnos');///autocomSpecialite autocomNiveauEtude
     Route::post('autocomville', 'DiagnostikController@autocomVille')->name('autocomville');
     Route::post('/store1to2rencontre', [DiagnostikController::class, 'store1to2rencontre'])->name('store1to2rencontre');
