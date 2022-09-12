@@ -10,6 +10,7 @@ use App\Models\Specialite;
 use App\Models\SuiviRencontre;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
@@ -99,8 +100,12 @@ class EntretientDiagController extends Controller
 
     }
 
-    public function index(EntretientDiag $t){
-
+    public function index(){
+        // $entretiens = DB::table('entretient_diags')
+        //             ->join('users', 'users.id', '=', 'entretient_diags.user_id')
+        //             ->join('suivi_rencontres', 'suivi_rencontres.user_id', '=', 'users.id')
+        //             ->where('entretient_diags.state', '=', 0)
+        //             ->get();
         $entretiens  = EntretientDiag::mine()->paginate(15);
         return view('entretientdiag.index',compact('entretiens'));
     }

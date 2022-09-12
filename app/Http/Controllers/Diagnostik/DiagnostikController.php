@@ -48,12 +48,75 @@ class DiagnostikController extends Controller
         })->paginate(15);
         return view('diagnostic.enattende_diagnostique',compact('entretients'));
     }
+    public function  list(){
+        $listRencontres = Rencontre::paginate(4);
+        return view('diagnostic.index', compact('listRencontres'));
+    }
+
+    public function listesuivi(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = EntretientDiag::mine()->orderBy('state', 'asc')->get();
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                    if ($row->state == 0){
+                        $actionBtn .= '<a class="badge badge-success mr-1" href="'. route('diagnostik.create',$row->matriculeaej).'" style="font-size: small;">
+                                        <i class="feather icon-arrow-right"></i>
+                                        Effectuer un entretien
+                                       </a>';
+                    }
+                    return $actionBtn;
+                })
+                ->addColumn('actionBtn2', function ($row){
+                        $actionBtn2 = '';
+                        $actionBtn2 .= '<a href="'. asset('fichiers/diagnostic/'.$row->file_grille_diagnostic).'" style="font-size: 16px;"
+                                                class="badge badge-info mr-1" target="_blank">
+                                            <i class="feather icon-eye"></i>
+                                        </a>';
+                        return $actionBtn2;
+                    })
+                ->addColumn('actionBtn3', function ($row){
+                        $actionBtn3 = '';
+                        $actionBtn3 .= '<a href="'.asset('fichiers/entretient/'.$row->file_guide_entretient).'" style="font-size: 16px;" target="_blank"
+                                           class="badge badge-primary mr-1">
+                                            <i class="feather icon-eye"></i>
+                                        </a>';
+                        return $actionBtn3;
+                })
+                ->editColumn('matricule_aej', function ($row){
+                    $matricule_aej = $row->matriculeaej;
+                    return $matricule_aej;
+                })
+                ->editColumn('nomprenom', function ($row){
+                    $nomprenom = $row->nomprenom;
+                    return $nomprenom;
+                })
+                ->editColumn('niveauformation', function ($row){
+                    $niveauformation = $row->niveauformation;
+                    return $niveauformation;
+                })
+                ->editColumn('maitoutrechempl', function ($row){
+                    $maitoutrechempl = $row->maitoutrechempl;
+                    return $maitoutrechempl;
+                })
+                ->editColumn('depdossent', function ($row){
+                    $depdossent = $row->depdossent;
+                    return $depdossent;
+                })
+                ->rawColumns(['action','actionBtn2','actionBtn3'])
+                ->make(true);
+        }
+    }
 
     public function listeentretient(Request $request)
     {
         if ($request->ajax()) {
             //old $data = EntretientDiag::mine()->where('state',false)->get();
-            $data = EntretientDiag::mine()->where('state',true)->get();
+            $data = EntretientDiag::mine()->where('state',0)->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -623,11 +686,6 @@ class DiagnostikController extends Controller
     {
         if ($request->ajax()) {
             $data = Rencontre::mine()
-                ->where('typerencontre', 5 )
-                ->where('status',true)
-                ->orWhere('findrdv',true);
-
-            return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
@@ -642,20 +700,33 @@ class DiagnostikController extends Controller
                     return $nomprenom;
                 })
                 ->editColumn('sexe', function ($row){
-                    $sexe = $row->suivirencontre->sexe ;
+                    $sexe = $row->sexe ;
                     return $sexe;
                 })
                 ->editColumn('lieudereisdence', function ($row){
                     $lieudereisdence = $row->suivirencontre->lieudereisdence ;
                     return $lieudereisdence;
                 })
+                ->editColumn('dureerencontre', function ($row){
+                    $dureerencontre = $row->dureerencontre ;
+                    return $dureerencontre;
+                })
+
+                ->editColumn('dateprochainrdv', function ($row){
+                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
+                    return $dateprochainrdv->format('M d, Y');
+                })
                 ->editColumn('diplome', function ($row){
                     $diplome = $row->suivirencontre->diplome ;
                     return $diplome;
                 })
-                ->editColumn('dateprochainrdv', function ($row){
-                    $dateprochainrdv = Carbon::parse($row->dateprochainrdv);
-                    return $dateprochainrdv->format('M d, Y');
+                ->editColumn('modalite', function ($row){
+                    $modalite = $row->modalite ;
+                    return $modalite;
+                })
+                ->editColumn('axetravail', function ($row){
+                    $axetravail = $row->axetravail ;
+                    return $axetravail;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -746,7 +817,12 @@ class DiagnostikController extends Controller
         return back();
     }
 
-
+    public function liste(){
+        $rencontres5 = Rencontre::mine()
+            ->where('typerencontre', 5)
+            ->where('status', true);
+        return view('diagnostic.index', compact('rencontres5'));
+    }
     public function mes_suivies(){
 
         $rencontres1 = Rencontre::mine()
@@ -814,7 +890,9 @@ class DiagnostikController extends Controller
         $data = $request->all();
         //dd($data);
         $response = Http::post('https://agenceemploijeunes.ci/site/update/demandeur/', $data);
+        //$response = Http::post('localhost:8888/aejtechnologie/update/demandeur', $data);
         $body = json_decode($response->body());
+       // dd($body);
         return redirect()->route('entretient.create',$request->matriculeaej);
     }
 
@@ -834,9 +912,11 @@ class DiagnostikController extends Controller
         $url_demandeur_edit     = "https://agenceemploijeunes.ci/site/demandeur/edit/".$matricule;
         $response_edit          = Http::get($url_demandeur_edit);
         $demandeur_edit         = json_decode($response_edit->body());
+        //$url                    =  "localhost:8888/aejtechnologie/demandeur/parameter";
         $url                    =  "https://agenceemploijeunes.ci/site/demandeur/parameter";
         $response               = Http::get($url);
         $demandeur_parameter    = json_decode($response->body());
+        //dd($demandeur_parameter);
 
         /*$ville                = $demandeur_parameter->ville;
         $sexe                   = $demandeur_parameter->sexe;

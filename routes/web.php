@@ -79,6 +79,8 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('/getRec3', [DiagnostikController::class,'getRec3'])->name('getrec3');
     Route::get('/getRec4', [DiagnostikController::class,'getRec4'])->name('getrec4');
     Route::get('/getRec5', [DiagnostikController::class,'getRec5'])->name('getrec5');
+    Route::get('/getRec6', [DiagnostikController::class,'listesuivi'])->name('listsuivi');
+
     // la route modification
 
     Route::get('/modif/{matricule?}', [DiagnostikController::class,'modif'])->name('modif');
@@ -95,7 +97,8 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::post('/store',[DiagnostikController::class,'store'])->name('store');
     Route::delete('/destroy/', 'DiagnostikController@destroy')->name('destroy');
     Route::get('/mes_suivies', 'DiagnostikController@mes_suivies')->name('mes_suivies');
-    Route::put('/update/{id}', 'DiagnostikController@update')->name('update');
+    Route::get('/mes_rencontres', 'DiagnostikController@liste')->name('mes_rencontres');
+    Route::put('/update/{id}', 'DiagnostikController@update')->name('umes_rencontrespdate');
     Route::get('/diagnos','DiagnostikController@diagnos')->name('diagnos');///autocomSpecialite autocomNiveauEtude
     Route::post('autocomville', 'DiagnostikController@autocomVille')->name('autocomville');
     Route::post('/store1to2rencontre', [DiagnostikController::class, 'store1to2rencontre'])->name('store1to2rencontre');
@@ -105,6 +108,7 @@ Route::group(['prefix'=>'Diagnostik','namespace'=>'Diagnostik','as'=>'diagnostik
     Route::get('datatable-attente-diagnostic', [DiagnostikController::class,'listeentretient'])->name('datatable-attente-diagnostic');
     Route::get('liste-attente-diagnostic', [DiagnostikController::class,'index'])->name('liste-attente-diagnostic');
     Route::post('/update-terminer', [DiagnostikController::class,'updateTerminer'])->name('updateterminer');
+
 });
 
  Route::get('/api', [DiagnostikController::class,'apiGetMatricule'])->name('api');

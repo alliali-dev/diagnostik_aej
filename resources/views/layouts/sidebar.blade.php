@@ -64,6 +64,11 @@
                             <i></i><span class="menu-item" data-i18n="Categorie create">Mes Suivies</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('diagnostik.mes_rencontres') }}">
+                            <i></i><span class="menu-item" data-i18n="Categorie create">Liste complète</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
