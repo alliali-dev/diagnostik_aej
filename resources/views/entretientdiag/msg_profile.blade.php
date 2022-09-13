@@ -153,6 +153,7 @@
                                         }
 
                                     },error: function (jqXHR, exception) {
+                                        console.log(exception);
                                         alert('reessayer svp !!!');
                                         $('#loader').fadeOut();
                                         $('#resulterrorformat').fadeIn();

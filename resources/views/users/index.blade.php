@@ -36,6 +36,7 @@
                             <th>#</th>
                             <th>Nom</th>
                             <th>E-mail</th>
+                            <th>Agence</th>
                             <th>Status</th>
                             <th>Rôle</th>
                             <th>Crée le</th>
@@ -105,6 +106,7 @@
                     {data: 'id'},
                     {data: 'name'},
                     {data: 'email'},
+                    {data: 'agence_id'},
                     {data: 'status'},
                     {data: 'roles', orderable: false, searchable: false},
                     {data: 'created_at'},

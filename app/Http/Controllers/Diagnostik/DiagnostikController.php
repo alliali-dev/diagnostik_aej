@@ -809,9 +809,7 @@ class DiagnostikController extends Controller
         $data_rencontre['typerencontre']= 1;
         $data_rencontre['agence_id']= session()->get('orig_agence');
 
-            //state
 
-        //dd($data_demandeur,$data_rencontre);
         $suivierencontre =  SuiviRencontre::create($data_demandeur);
             if ($suivierencontre){
                 $entretientdiag = EntretientDiag::find($request->id_entretiendiag);

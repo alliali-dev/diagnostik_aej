@@ -125,7 +125,7 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
 
     Route::get('/', 'UsersController@index')->name('index');
     Route::get('/create', 'UsersController@create')->name('create');
-    Route::post('/store', 'UsersController@store')->name('store');
+    Route::post('/store',  [ UsersController::class,'store'])->name('store');
     Route::get('/{id}/edit', 'UsersController@edit')->name('edit');
     // Route::get('/{id}/edit', 'UsersController@edit')->name('edit');
     Route::get('/{id}/passwordreset', 'UsersController@passwordreset')->name('passwordReset');
@@ -138,7 +138,7 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     Route::get('/logout-as', 'UsersController@logoutAs')->name('logout-as');
     Route::get('/disabled', 'UsersController@disabledUsers')->name('disabled');
     Route::get('/deleted', 'UsersController@deletedUsers')->name('deleted');
-    Route::get('/activeTable', 'UsersController@activeUsersTable')->name('activeUsersTable');
+    Route::get('/activeTable', [UsersController::class,'activeUsersTable'])->name('activeUsersTable');
     Route::get('/disabledTable', 'UsersController@disabledUsersTable')->name('disabledUsersTable');
     Route::get('/deletedTable', 'UsersController@deletedUsersTable')->name('deletedUsersTable');
 
