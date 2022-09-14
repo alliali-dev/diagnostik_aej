@@ -2,6 +2,7 @@
 
  use App\Http\Controllers\Diagnostik\DiagnostikController;
  use App\Http\Controllers\EntretientDiagController;
+ use App\Http\Controllers\HomeController;
  use App\Http\Controllers\Users\UsersController;
  use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/',  [HomeController::class,'index'])->name('home');
 
 Route::group(['prefix'=>'Session','namespace'=>'Session','as'=>'session.'], function () {
     Route::post('/login', 'SessionController@login')->name('connexion');

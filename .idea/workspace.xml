@@ -20,25 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="diagnostic select 2">
-      <change afterPath="$PROJECT_DIR$/public/app-assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app-assets/table/dataTables.colVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/diagnostik_aej.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/diagnostik_aej.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Chefagence/ChefagenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Chefagence/ChefagenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/chefagence/entretiendiag.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/chefagence/entretiendiag.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/chefagence/rencontre1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/chefagence/rencontre1.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/enattende_diagnostique.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/enattende_diagnostique.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/mes_suivies.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/mes_suivies.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entretientdiag/msg_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Rencontre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Rencontre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,14 +348,8 @@
       <workItem from="1662970102199" duration="697000" />
       <workItem from="1663070789720" duration="3650000" />
       <workItem from="1663081206029" duration="204000" />
-      <workItem from="1663147425283" duration="3276000" />
-    </task>
-    <task id="LOCAL-00018" summary="test">
-      <created>1638442470535</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1638442470535</updated>
+      <workItem from="1663147425283" duration="3599000" />
+      <workItem from="1663152723651" duration="304000" />
     </task>
     <task id="LOCAL-00019" summary="test">
       <created>1638442553888</created>
@@ -709,7 +687,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663071589272</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="diagnostiq fix bug">
+      <created>1663152214468</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1663152214469</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -747,7 +732,8 @@
     <MESSAGE value="amelioration du module diagnostique" />
     <MESSAGE value="text" />
     <MESSAGE value="sdiagnostique" />
-    <option name="LAST_COMMIT_MESSAGE" value="sdiagnostique" />
+    <MESSAGE value="diagnostiq fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="diagnostiq fix bug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="578" y="262" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1663150522765">
@@ -759,13 +745,13 @@
       <screen x="0" y="25" width="1680" height="958" />
     </state>
     <state x="168" y="107" key="MergeDialog/0.25.1680.958@0.25.1680.958" timestamp="1662892643128" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1663071591758">
-      <screen x="0" y="25" width="1680" height="958" />
+    <state x="440" y="226" key="Vcs.Push.Dialog.v2" timestamp="1663152217944">
+      <screen x="0" y="25" width="1680" height="956" />
     </state>
     <state x="440" y="225" key="Vcs.Push.Dialog.v2/0.25.1680.950@0.25.1680.950" timestamp="1656433316236" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.953@0.25.1680.953" timestamp="1656449850178" />
     <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.954@0.25.1680.954" timestamp="1656496340287" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1657637130052" />
+    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1663152217944" />
     <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.958@0.25.1680.958" timestamp="1663071591758" />
     <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.959@0.25.1680.959" timestamp="1662053440903" />
     <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1662898825034">
