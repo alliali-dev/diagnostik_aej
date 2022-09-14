@@ -5,14 +5,10 @@
 @section('subTitle') Modifier utilisateur @endsection
 
 @section('content')
-
-
     <section id="users" class="card">
-
         <div class="card-header">
             <h4 class="card-title"></h4>
         </div>
-
         <div class="card-content">
 
             <div class="card-body">
@@ -26,15 +22,10 @@
                         </div>
                     </div>
                 </div>
-
-
                 {{ Form::model($user, ['route'=>['users.update']], 'novalidate')}}
-                @csrf
-
+                    @csrf
                 <div class="form-body">
-
                     <div class="row">
-
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="name">Agence Aej</label>
@@ -44,7 +35,6 @@
                                 <input type="hidden" name="agence_id" id='agenceid' readonly>
                             </div><!--form control-->
                         </div>
-
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="name">Nom</label>

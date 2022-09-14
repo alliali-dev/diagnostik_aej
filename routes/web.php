@@ -130,7 +130,7 @@ Route::group(['prefix' => 'users','namespace'=>'Users', 'as' => 'users.'], funct
     Route::get('/{id}/edit', 'UsersController@edit')->name('edit');
     // Route::get('/{id}/edit', 'UsersController@edit')->name('edit');
     Route::get('/{id}/passwordreset', 'UsersController@passwordreset')->name('passwordReset');
-    Route::put('/update', 'UsersController@update')->name('update');
+    Route::put('/update', [ UsersController::class,'update'])->name('update');
     Route::get('/{id}/view', 'UsersController@show')->name('view');
     //Route::get('/{id}/view', 'UsersController@show')->name('view');
     Route::post('/delete', 'UsersController@delete')->name('delete');
