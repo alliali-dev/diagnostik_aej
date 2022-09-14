@@ -26,5 +26,7 @@
     <orderEntry type="library" name="jquery.stopwatch" level="application" />
     <orderEntry type="library" name="dataTables.bootstrap4" level="application" />
     <orderEntry type="library" name="moment.js" level="application" />
+    <orderEntry type="library" name="buttons.dataTables" level="application" />
+    <orderEntry type="library" name="dataTables.colVis" level="application" />
   </component>
 </module>

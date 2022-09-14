@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title') Gestion de rencontre @endsection
-@section('subTitle') Rencontre 1 | 2 | 3 | 4 | 5 @endsection
+@section('title') Rencontre @endsection
+@section('subTitle') Mes Suivies rencontre 1 | 2 | 3 | 4 | 5 @endsection
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">

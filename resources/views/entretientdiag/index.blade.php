@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Entretien @endsection
+@section('title') Diagnostique @endsection
 
-@section('subTitle') Liste des entretiens @endsection
+@section('subTitle') Suivie @endsection
 
 @section('css')
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">

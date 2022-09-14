@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title') Entretient diagnostique @endsection
-@section('subTitle') Mise à jour profil @endsection
+@section('title') Diagnostique @endsection
+@section('subTitle')Création@endsection
 @section('content')
     <h2 style="color: orangered" align="center">
         Veuillez, effectuer la mise à jour du profil du demandeur concerné par l'entretien.

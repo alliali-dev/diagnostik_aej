@@ -12,86 +12,105 @@
 
 @section('content')
 
+    <section id="basic-alerts">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Filtre</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label>Rencontre</label>
+                                        <select name="typerencontre" id="typerencontre" class="form-control">
+                                            <option value="" selected> {{ __('--Choisir type rencontre--') }}</option>
+                                            @foreach($typerencontres as $item)
+                                                <option value="{{ $item['id'] }}"> {{ $item['name']  }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Conseiller Emploi</label>
+                                        <select name="cemploi" id="cemploi" class="form-control">
+                                            <option value="" selected> {{ __('--Choisir Conseiller Emploi--') }}</option>
+                                            @foreach($cemplois as $item)
+                                                <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Date de Debut RDV</label>
+                                        <input type="text" id="datedebut" name="datedebut" class="form-control">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Date de Fin RDV</label>
+                                        <input type="text" id="datefin" name="datefin" class="form-control">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <label>Modalite</label>
+                                        <select name="modalite" id="modalite" class="form-control">
+                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                            <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
+                                            <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="modalite">Axe de travail</label>
+                                        <select name="axetravail" id="axetravail" class="form-control">
+                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                            <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
+                                            <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
+                                            <option value="{{__('PS')}}">{{__('PS')}}</option>
+                                            <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
+                                            <option value="{{__('AGR')}}">{{__('AGR')}}</option>
+                                            <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
+                                            <option value="{{__('ED')}}">{{__('ED')}}</option>
+                                            <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
+                                            <option value="{{__('PC')}}">{{__('PC')}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="approche">Approche SOFT SKILLS</label>
+                                        <select name="approche" id="approche" class="form-control">
+                                            <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
+                                            <option value="{{__('OUI')}}">{{__('OUI')}}</option>
+                                            <option value="{{__('NON')}}">{{__('NON')}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12 mb-1 mb-lg-0">
+                                </div>
+                                <div class="col-lg-6 col-md-12 mb-1 mb-lg-0">
+                                    <button type="button" class="btn btn-primary btn-block waves-effect waves-float waves-light" id="search">
+                                        Recherche
+                                    </button>
+                                </div>
+                                <div class="col-lg-3 col-md-12 mb-1 mb-lg-0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="card">
         <div class="card-header">
             <h4 class="card-title"></h4>
         </div>
         <div class="card-content">
             <div class="card-body">
-                <div class="mb-3">
-                   <div class="row">
-                           <legend>Filtre</legend>
-                           <div class="col-sm-3">
-                               <label>Rencontre</label>
-                               <select name="typerencontre" id="typerencontre" class="form-control">
-                                   <option value="" selected> {{ __('--Choisir type rencontre--') }}</option>
-                                   @foreach($typerencontres as $item)
-                                       <option value="{{ $item['id'] }}"> {{ $item['name']  }}</option>
-                                   @endforeach
-                               </select>
-                           </div>
-                       <div class="col-sm-3">
-                           <label>Conseiller Emploi</label>
-                           <select name="cemploi" id="cemploi" class="form-control">
-                               <option value="" selected> {{ __('--Choisir Conseiller Emploi--') }}</option>
-                               @foreach($cemplois as $item)
-                                   <option value="{{ $item->id }}"> {{ $item->name }}</option>
-                               @endforeach
-                           </select>
-                       </div>
-                       <div class="col-sm-3">
-                           <label>Date de Debut RDV</label>
-                           <input type="text" id="datedebut" name="datedebut" class="form-control">
-                       </div>
-                       <div class="col-sm-3">
-                           <label>Date de Fin RDV</label>
-                           <input type="text" id="datefin" name="datefin" class="form-control">
-                       </div>
-                   </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label>Modalite</label>
-                            <select name="modalite" id="modalite" class="form-control">
-                                <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                <option value="{{__('ACCOMPAGNEMENT')}}">{{__('ACCOMPAGNEMENT')}}</option>
-                                <option value="{{__('SUIVI')}}">{{__('SUIVI')}}</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="modalite">Axe de travail</label>
-                            <select name="axetravail" id="axetravail" class="form-control">
-                                <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                <option value="{{__('FCQ')}}">{{__('FCQ')}}</option>
-                                <option value="{{__('PNSJ')}}">{{__('PNSJ')}}</option>
-                                <option value="{{__('PS')}}">{{__('PS')}}</option>
-                                <option value="{{__('THIMO')}}">{{__('THIMO')}}</option>
-                                <option value="{{__('AGR')}}">{{__('AGR')}}</option>
-                                <option value="{{__('PISEAF')}}">{{__('PISEAF')}}</option>
-                                <option value="{{__('ED')}}">{{__('ED')}}</option>
-                                <option value="{{__('PAEP')}}">{{__('PAEP')}}</option>
-                                <option value="{{__('PC')}}">{{__('PC')}}</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="approche">Approche SOFT SKILLS</label>
-                            <select name="approche" id="approche" class="form-control">
-                                <option value="{{__('')}}" selected>{{__('-- selectionner --')}}</option>
-                                <option value="{{__('OUI')}}">{{__('OUI')}}</option>
-                                <option value="{{__('NON')}}">{{__('NON')}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div style="margin-top: 10px">
-                        <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
-                            recherche
-                        </button>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-10">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <form action="{{ route('chefagence.exportFilter') }}" method="POST">
                             @csrf()
                             <input type="hidden" name="typerencontre" id="typerencontre_e" value="{{\request('typerencontre')}}">
@@ -101,7 +120,8 @@
                             <input type="hidden" name="modalite" id="modalite_e" value="{{\request('modalite')}}">
                             <input type="hidden" name="axetravail" id="axetravail_e" value="{{\request('axetravail')}}">
                             <input type="hidden" name="approche" id="approche_e" value="{{\request('approche')}}">
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-info btn-block waves-effect waves-float waves-light">
+                                <i class="feather icon-file"></i>
                                 Export Excel
                             </button>
                         </form>

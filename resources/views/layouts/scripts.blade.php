@@ -15,9 +15,12 @@
 <script src="{{ asset('app-assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('app-assets/table/dataTables.colVis.js') }}"></script>
+<script src="//cdn.datatables.net/colvis/1.1.2/js/dataTables.colVis.min.js"></script>
 {{--<script src="{{ asset('app-assets/vendors/js/forms/select/select2.min.js') }}"></script>--}}
 <!-- END: Page Vendor JS-->
-
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 @yield('js')
 <script>
     function webClock() {
