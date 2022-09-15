@@ -35,7 +35,7 @@ class ChefagenceController extends Controller
             ['name' => '5eme rencontre','id' => 5],
         ];
 
-        $cemplois = User::where('agence_id', session()->get('orig_agence'))->where('id','!=',auth()->id())->get();
+        $cemplois = User::mine()->where('id','!=',auth()->id())->get();
         $rencontres = Rencontre::mine()->paginate(15);
         return view('chefagence.rencontre1',compact('cemplois','typerencontres','rencontres'));
     }
@@ -48,7 +48,7 @@ class ChefagenceController extends Controller
             ['name' => '4eme rencontre',    'id' => 4],
             ['name' => '5eme rencontre',    'id' => 5],
         ];
-        $cemplois = User::where('agence_id', session()->get('orig_agence'))->where('id','!=',auth()->id())->get();
+        $cemplois = User::mine()->where('id','!=',auth()->id())->get();
         $entretiens  = EntretientDiag::mine()->paginate(15);
         return view('chefagence.entretiendiag',compact('entretiens','cemplois','typerencontres'));
     }

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Ma liste de demandeur @endsection
+@section('title') Rencontre @endsection
 
-@section('subTitle') Liste de demandeur ayant été évalué @endsection
+@section('subTitle') 1ère Rencontre @endsection
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">

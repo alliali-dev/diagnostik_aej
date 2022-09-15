@@ -36,6 +36,7 @@
                             <th>#</th>
                             <th>Nom</th>
                             <th>E-mail</th>
+                            <th>Agence</th>
                             <th>Status</th>
                             <th>Rôle</th>
                             <th>Crée le</th>
@@ -90,9 +91,7 @@
     </section>
 @endsection
 @section('js')
-@section('js')
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
         $(function () {
             $('#usersTable').DataTable({
@@ -101,41 +100,73 @@
                 ajax: {
                     url: '{{ route('users.activeUsersTable') }}'
                 },
+                dom:'<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                colVis: {
+                    exclude: [ 0 ]
+                },
                 columns: [
                     {data: 'id'},
                     {data: 'name'},
                     {data: 'email'},
+                    {data: 'agence_id'},
                     {data: 'status'},
                     {data: 'roles', orderable: false, searchable: false},
                     {data: 'created_at'},
                     {data: 'updated_at'},
                     {data: 'actions', orderable: false, searchable: false},
-                ]
+                ], buttons: [
+                    {
+                        extend: 'colvis',
+                        text: 'Colonne',
+                        className: 'btn btn-relief-success dropdown-toggle mr-2',
+                    },
+                    {
+                        extend: 'collection',
+                        className: 'btn btn-relief-primary dropdown-toggle mr-2',
+                        text: 'Extraction',
+                        buttons: [
+                            {
+                                extend: 'print',
+                                text: 'Print',
+                                className: 'dropdown-item',
+                                exportOptions: { columns: [3, 4, 5, 6, 7] }
+                            },
+                            {
+                                extend: 'csv',
+                                text:  'Csv',
+                                className: 'dropdown-item',
+                                exportOptions: { columns: [3, 4, 5, 6, 7] }
+                            },
+                            {
+                                extend: 'excel',
+                                text: 'Excel',
+                                className: 'dropdown-item',
+                                exportOptions: { columns: [3, 4, 5, 6, 7] }
+                            },
+                            {
+                                extend: 'pdf',
+                                text:  'Pdf',
+                                className: 'dropdown-item',
+                                exportOptions: { columns: [3, 4, 5, 6, 7] }
+                            },
+                            {
+                                extend: 'copy',
+                                text:  'Copy',
+                                className: 'dropdown-item',
+                                exportOptions: { columns: [3, 4, 5, 6, 7] }
+                            }
+                        ],
+                        init: function (api, node, config) {
+                            $(node).removeClass('btn-secondary');
+                            $(node).parent().removeClass('btn-group');
+                            setTimeout(function () {
+                                $(node).closest('.dt-buttons').removeClass('btn-group').addClass('d-inline-flex');
+                            }, 50);
+
+                        }
+                    },
+                ],
             });
         });
     </script>
-@endsection
-{{--<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<script>
-    $(function () {
-        $('#usersTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: '{{ route('users.activeUsersTable') }}'
-            },
-            columns: [
-                {data: 'id'},
-                {data: 'name'},
-                {data: 'email'},
-                {data: 'status'},
-                {data: 'roles', orderable: false, searchable: false},
-                {data: 'created_at'},
-                {data: 'updated_at'},
-                {data: 'actions', orderable: false, searchable: false},
-            ]
-        });
-    });
-</script>--}}
 @endsection

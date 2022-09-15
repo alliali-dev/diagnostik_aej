@@ -12,38 +12,63 @@
 
 @section('content')
 
+    <section id="basic-alerts">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Recherche</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="row mb-3">
+                                <div class="col-lg-4 col-md-6">
+                                    <label>Conseiller Emploi</label>
+                                    <select name="cemploi" id="cemploi" class="form-control">
+                                        <option value="" selected> {{ __('--Choisir Conseiller Emploi--') }}</option>
+                                        @foreach($cemplois as $item)
+                                            <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <label>Date Creation de Debut</label>
+                                    <input type="text" id="datedebut" name="datedebut" class="form-control datepicker" data-date-format="mm/dd/yyyy">
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <label>Date de Fin</label>
+                                    <input type="text" id="datefin" name="datefin" class="form-control datepicker" data-date-format="mm/dd/yyyy">
+                                </div>
+                                {{--<div class="">
+                                    <button class="btn btn-info waves-effect waves-light" type="button" style="height: 45px" id="search">
+                                        ok
+                                    </button>
+                                </div>--}}
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12 mb-1 mb-lg-0">
+                                </div>
+                                <div class="col-lg-6 col-md-12 mb-1 mb-lg-0">
+                                    <button type="button" class="btn btn-primary btn-block waves-effect waves-float waves-light" id="search">
+                                        Recherche
+                                    </button>
+                                </div>
+                                <div class="col-lg-3 col-md-12 mb-1 mb-lg-0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="card">
         <div class="card-header">
             <h4 class="card-title"></h4>
         </div>
         <div class="card-content">
             <div class="card-body">
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label>Conseiller Emploi</label>
-                            <select name="cemploi" id="cemploi" class="form-control">
-                                <option value="" selected> {{ __('--Choisir Conseiller Emploi--') }}</option>
-                                @foreach($cemplois as $item)
-                                    <option value="{{ $item->id }}"> {{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-sm-2">
-                            <label>Date Creation de Debut</label>
-                            <input type="text" id="datedebut" name="datedebut" class="form-control datepicker" data-date-format="mm/dd/yyyy">
-                        </div>
-                        <div class="col-sm-2">
-                            <label>Date de Fin</label>
-                            <input type="text" id="datefin" name="datefin" class="form-control datepicker" data-date-format="mm/dd/yyyy">
-                        </div>
-                        <div style="margin-top: 10px">
-                            <button class="btn btn-warning waves-effect waves-light" type="button" style="height: 45px" id="search">
-                                Recherche
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-9">
                     </div>
@@ -53,7 +78,8 @@
                             <input type="hidden" name="cemploi" id="cemploi_e" value="{{\request('cemploi')}}">
                             <input type="hidden" name="datedebut" id="datedebut_e"  value="{{\request('datedebut')}}">
                             <input type="hidden" name="datefin" id="datefin_e" value="{{\request('datefin')}}">
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-info btn-block waves-effect waves-float waves-light">
+                                <i class="feather icon-file"></i>
                                 Export Excel
                             </button>
                         </form>

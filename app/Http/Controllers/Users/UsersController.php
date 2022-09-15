@@ -105,8 +105,6 @@ class UsersController extends Controller
 
     public function store()
     {
-	    /*if ( ! Auth::Users()->can('Manage') )
-		    abort(401, 'You can not do this action');*/
         $this->validate(request(), [
             'name' => 'sometimes|required',
             'email' => 'sometimes|required|email|unique:users',
@@ -143,11 +141,7 @@ class UsersController extends Controller
             }
         }
 
-        //flash('Users saved successfully.', 'success');
-
-        session()->flash('success','Users saved successfully.');
-        if(Auth::user()->can('Reseller') || Auth::user()->can('Reseller Pro') || Auth::user()->can('Bundle'))
-	        return redirect(route('users.myClients'));
+        session()->flash('success','Les utilisateurs ont été sauvegardés avec succès.');
 
         return redirect(route('users.index'));
     }
@@ -168,6 +162,9 @@ class UsersController extends Controller
 
         if(!is_null($request['password']))
             $user->password = bcrypt($request['password']);
+
+        if ($request->has('email'))
+            $user->email = $request['email'];
 
 	    if ($request->has('name'))
             $user->name = $request['name'];
@@ -280,6 +277,10 @@ class UsersController extends Controller
                     }
                 }
                 return $actions;
+            })
+            ->editColumn('agence_id', function ($model){
+                $agence = $model->agence->name;
+                return $agence;
             })
             ->editColumn('status', function ($model){
                 if ($model->confirmed)
