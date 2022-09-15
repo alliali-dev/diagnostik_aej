@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Profile @endsection
+@section('title') Profil @endsection
 
-@section('subTitle') My Account @endsection
+@section('subTitle') Mon compte @endsection
 
 @section('content')
 

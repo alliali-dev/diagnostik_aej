@@ -23,14 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e987485-895f-40c0-ac8d-318a1362d700" name="Default Changelist" comment="diagnostic select 2">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_09_25__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_09_25__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_09_25_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_09_25__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_13__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_09_2022_16_16__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Diagnostik/DiagnostikController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Rencontre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Rencontre.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SuiviRencontre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SuiviRencontre.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/diagnostic/mes_suivies.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/diagnostic/mes_suivies.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -360,14 +368,12 @@
       <workItem from="1662891321112" duration="5824000" />
       <workItem from="1662970102199" duration="697000" />
       <workItem from="1662980547069" duration="7678000" />
-      <workItem from="1662997730058" duration="2926000" />
-    </task>
-    <task id="LOCAL-00017" summary="test">
-      <created>1638442085013</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1638442085013</updated>
+      <workItem from="1662997730058" duration="3002000" />
+      <workItem from="1663061272022" duration="5732000" />
+      <workItem from="1663103920186" duration="1832000" />
+      <workItem from="1663146069539" duration="7877000" />
+      <workItem from="1663235440825" duration="5064000" />
+      <workItem from="1663262085153" duration="590000" />
     </task>
     <task id="LOCAL-00018" summary="test">
       <created>1638442470535</created>
@@ -705,7 +711,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662552695589</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="diagnostic select 2">
+      <created>1663002444550</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1663002444550</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -737,40 +750,10 @@
     <MESSAGE value="init fix bug" />
     <MESSAGE value="date in diagnostik suivie" />
     <MESSAGE value="diagnostic" />
-    <MESSAGE value="diagnostic select 2" />
     <MESSAGE value="fix bug formation" />
     <MESSAGE value="amelioration du module diagnostique" />
     <MESSAGE value="text" />
-    <option name="LAST_COMMIT_MESSAGE" value="text" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1656434974116">
-      <screen x="0" y="25" width="1680" height="950" />
-    </state>
-    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.950@0.25.1680.950" timestamp="1656434974116" />
-    <state x="578" y="262" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1680.956@0.25.1680.956" timestamp="1656364840259" />
-    <state x="168" y="107" key="MergeDialog" timestamp="1662892643128">
-      <screen x="0" y="25" width="1680" height="958" />
-    </state>
-    <state x="168" y="107" key="MergeDialog/0.25.1680.958@0.25.1680.958" timestamp="1662892643128" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2" timestamp="1662552697572">
-      <screen x="0" y="25" width="1680" height="958" />
-    </state>
-    <state x="440" y="225" key="Vcs.Push.Dialog.v2/0.25.1680.950@0.25.1680.950" timestamp="1656433316236" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.953@0.25.1680.953" timestamp="1656449850178" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.954@0.25.1680.954" timestamp="1656496340287" />
-    <state x="440" y="226" key="Vcs.Push.Dialog.v2/0.25.1680.956@0.25.1680.956" timestamp="1657637130052" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.958@0.25.1680.958" timestamp="1662552697572" />
-    <state x="440" y="227" key="Vcs.Push.Dialog.v2/0.25.1680.959@0.25.1680.959" timestamp="1662053440903" />
-    <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1662898825034">
-      <screen x="0" y="25" width="1680" height="958" />
-    </state>
-    <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1680.958@0.25.1680.958" timestamp="1662898825034" />
-    <state x="100" y="125" width="1480" height="759" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1680.959@0.25.1680.959" timestamp="1662045043704" />
-    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1662892552305">
-      <screen x="0" y="25" width="1680" height="958" />
-    </state>
-    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.958@0.25.1680.958" timestamp="1662892552305" />
-    <state x="632" y="422" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.959@0.25.1680.959" timestamp="1662050875135" />
+    <MESSAGE value="diagnostic select 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="diagnostic select 2" />
   </component>
 </project>

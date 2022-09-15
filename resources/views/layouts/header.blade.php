@@ -97,7 +97,7 @@
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('users.profile') }}">
-                                        <i class="feather icon-user-plus"></i> Profile
+                                        <i class="feather icon-user-plus"></i> Profil
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

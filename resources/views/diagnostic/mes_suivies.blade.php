@@ -202,7 +202,6 @@
                                             <th>DATE RDV</th>
                                             <th>MODALITE</th>
                                             <th>AXE TRAVAIL</th>
-                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -1091,7 +1090,7 @@
                     {data: 'dateprochainrdv', orderable: false, searchable: false},
                     {data: 'modalite' , orderable: false, searchable: false},
                     {data: 'axetravail', orderable: false, searchable: false},
-                    {data: 'action', orderable: false, searchable: false},
+
                 ]
             });
         });
